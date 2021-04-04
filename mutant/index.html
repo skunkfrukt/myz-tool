@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Mutantkrafs</title>
+    <meta charset="UTF-8" />
+    <style>
+        #roll {
+            height: 60px;
+        }
+
+        .die {
+            text-align: center;
+            font-size: 40px;
+            border: 2px solid black;
+            border-radius: 10px;
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+        }
+
+        .die-base {
+            background-color: yellow;
+        }
+
+        .die-skill {
+            background-color: green;
+            color: white;
+        }
+
+        .die-gear {
+            background-color: #202020;
+            color: white;
+        }
+
+        .stat label {
+            display: inline-block;
+            width: 80px;
+        }
+
+        .skill label,
+        .special-skill select {
+            display: inline-block;
+            width: 120px;
+        }
+
+        .stat input,
+        .skill input,
+        .special-skill input {
+            width: 30px;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        dieGlyphs = {
+            "base": ["☣", "2️", "3️", "4️", "5️", "☢"],
+            "skill": ["1️", "2️", "3️", "4️", "5️", "☢"],
+            "gear": ["✴", "2️", "3️", "4️", "5️", "☢"],
+            "other": ["1", "2", "3", "4", "5", "6"]
+        }
+
+        function getModifiedStat(statId) {
+            var stat = getValueById(statId, "stat");
+            var trauma = getValueById(statId, "trauma");
+            return Math.max(0, stat - trauma);
+        }
+
+        function rollOne() {
+            return Math.floor(Math.random() * 6) + 1;
+        }
+
+        function sortDescending(array) {
+            array.sort(function (a, b) { return b - a });
+        }
+
+        function roll(numDice) {
+            dice = [];
+            diceString = "";
+            for (var i = 0; i < numDice; i++) {
+                die = rollOne();
+                dice.push(die);
+            }
+            sortDescending(dice);
+
+            return dice
+        }
+
+        function rollAll(base, skill, gear, other) {
+            return {
+                "base": roll(base),
+                "skill": roll(skill),
+                "gear": roll(gear),
+                "other": roll(other),
+                "rerollable": true
+            }
+        }
+
+        function addDieGraphic(number, dieType) {
+            var dieGraphic = $('<span class="die"></span>').text(dieGlyphs[dieType][number - 1]).addClass("die-" + dieType);
+            $("#roll").append(dieGraphic);
+        }
+
+        function addAllDiceGraphicsForOneType(dice, dieType) {
+            for (var i = 0; i < dice.length; i++) {
+                addDieGraphic(dice[i], dieType)
+            }
+        }
+
+        function displayResult(result, clear) {
+            if (clear) {
+                var outputElement = $("#roll");
+                outputElement.empty();
+            }
+
+            addAllDiceGraphicsForOneType(result.base, "base");
+            addAllDiceGraphicsForOneType(result.skill, "skill");
+            addAllDiceGraphicsForOneType(result.gear, "gear");
+            addAllDiceGraphicsForOneType(result.other, "other");
+
+            $("#rerollButton").prop("disabled", !result.rerollable)
+        }
+
+        function rollAndDisplay(base, skill, gear, other) {
+            var result = rollAll(base, skill, gear, other);
+            displayResult(result, true);
+            window.lastRoll = result;
+        }
+
+        function rerollAndDisplay() {
+            var result = reroll(window.lastRoll);
+            displayResult(result, true);
+        }
+
+        function rerollByDieType(dice, dieType) {
+            newDice = []
+            for (var i = 0; i < dice.length; i++) {
+                oldDie = dice[i];
+                if ((dieType === "base" && (oldDie === 1 || oldDie === 6))
+                    || (dieType === "skill" && oldDie === 6)
+                    || (dieType === "gear" && (oldDie === 1 || oldDie === 6))
+                ) {
+                    newDice.push(oldDie);
+                } else {
+                    newDice.push(rollOne());
+                }
+            }
+            sortDescending(newDice);
+            return newDice;
+        }
+
+        function reroll(previousResult) {
+            return {
+                "base": rerollByDieType(previousResult.base, "base"),
+                "skill": rerollByDieType(previousResult.skill, "skill"),
+                "gear": rerollByDieType(previousResult.gear, "gear"),
+                "other": rerollByDieType(previousResult.other, "other"),
+                "rerollable": false
+            };
+        }
+
+        function getValueById(valueId, prefix) {
+            if (valueId) {
+                var parsedValue = parseInt($("#" + prefix + "-" + valueId).val());
+                return isNaN(parsedValue) ? 0 : parsedValue;
+            }
+            return 0;
+        }
+
+        function getStatValue(statId) {
+            return getModifiedStat(statId);
+        }
+
+        function getSkillValue(skillId) {
+            return getValueById(skillId, "skill");
+        }
+
+        function getGearValue(gearId) {
+            return getValueById(gearId, "gear");
+        }
+
+        $(document).ready(function () {
+            $(".stat button").click(function () {
+                var statValue = getStatValue($(this).attr("data-stat"));
+                rollAndDisplay(statValue, 0, 0, 0);
+            });
+
+            $(".skill button").click(function () {
+                var statValue = getStatValue($(this).attr("data-stat"));
+                var skillValue = getSkillValue($(this).attr("data-skill"));
+                rollAndDisplay(statValue, skillValue, 0, 0);
+            });
+
+            $(".special-skill button").click(function () {
+                var statId = $(this).siblings("select").children("option:selected").attr("data-stat");
+                var statValue = getStatValue(statId);
+                var skillValue = getSkillValue($(this).attr("data-skill"));
+                rollAndDisplay(statValue, skillValue, 0, 0);
+            });
+
+            $(".adhoc button").click(function () {
+                var statValue = getStatValue("adhoc");
+                var skillValue = getSkillValue("adhoc");
+                var gearValue = getGearValue("adhoc");
+                rollAndDisplay(statValue, skillValue, gearValue, 0);
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div>
+        <div id="roll">&nbsp;</div>
+        <button id="rerollButton" onclick="rerollAndDisplay();" disabled>Pressa</button>
+        <div class="adhoc">
+            <label for="stat-adhoc">GE</label>
+            <input id="stat-adhoc" type="number" min="1" max="5" size="1" />
+            <label for="skill-adhoc">F</label>
+            <input id="skill-adhoc" type="number" min="1" max="5" size="1" />
+            <label for="gear-adhoc">P</label>
+            <input id="gear-adhoc" type="number" min="1" max="5" size="1" />
+            <button class="roll-button" data-stat="adhoc" data-skill="adhoc" data-gear="adhoc">🎲</button>
+        </div>
+        <div class="stats">
+            <h2>Grundegenskaper</h2>
+            <div class="stat">
+                <label for="stat-sty">Styrka</label>
+                <input id="stat-sty" type="number" min="1" max="5" size="1" />
+                <button class="roll-button" data-stat="sty">🎲</button>
+                <label for="trauma-sty">Skada</label>
+                <input id="trauma-sty" type="number" min="0" max="5" size="1" />
+            </div>
+            <div class="stat">
+                <label for="stat-kyl">Kyla</label>
+                <input id="stat-kyl" type="number" min="1" max="5" size="1" />
+                <button class="roll-button" data-stat="kyl">🎲</button>
+                <label for="trauma-kyl">Stress</label>
+                <input id="trauma-kyl" type="number" min="0" max="5" size="1" />
+            </div>
+            <div class="stat">
+                <label for="stat-skp">Skärpa</label>
+                <input id="stat-skp" type="number" min="1" max="5" size="1" />
+                <button class="roll-button" data-stat="skp">🎲</button>
+                <label for="trauma-skp">Förvirring</label>
+                <input id="trauma-skp" type="number" min="0" max="5" size="1" />
+            </div>
+            <div class="stat">
+                <label for="stat-kns">Känsla</label>
+                <input id="stat-kns" type="number" min="1" max="5" size="1" />
+                <button class="roll-button" data-stat="kns">🎲</button>
+                <label for="trauma-kns">Tvivel</label>
+                <input id="trauma-kns" type="number" min="0" max="5" size="1" />
+            </div>
+        </div>
+        <div class="skills">
+            <h2>Färdigheter</h2>
+            <div class="skill">
+                <label for="skill-kampaPa">Kämpa på</label>
+                <input id="skill-kampaPa" type="number" min="0" max="3" size="1" />
+                <button class="roll-button" data-stat="sty" data-skill="kampaPa">🎲</button>
+            </div>
+            <div class="skill">
+                <label for="skill-taKrafttag">Ta krafttag</label>
+                <input id="skill-taKrafttag" type="number" min="0" max="3" size="1" />
+                <button class="roll-button" data-stat="sty" data-skill="taKrafttag">🎲</button>
+            </div>
+            <div class="skill">
+                <label for="skill-slass">Slåss</label>
+                <input id="skill-slass" type="number" min="0" max="3" size="1" />
+                <button class="roll-button" data-stat="sty" data-skill="slass">🎲</button>
+            </div>
+
+            <div class="skill">
+                <label for="skill-smyga">Smyga</label>
+                <input id="skill-smyga" type="number" min="0" max="3" size="1" />
+                <button class="roll-button" data-stat="kyl" data-skill="smyga">🎲</button>
+            </div>
+            <div class="skill">
+                <label for="skill-fly">Fly</label>
+                <input id="skill-fly" type="number" min="0" max="3" size="1" />
+                <button class="roll-button" data-stat="kyl" data-skill="fly">🎲</button>
+            </div>
+            <div class="skill">
+                <label for="skill-skjuta">Skjuta</label>
+                <input id="skill-skjuta" type="number" min="0" max="3" size="1" />
+                <button class="roll-button" data-stat="kyl" data-skill="skjuta">🎲</button>
+            </div>
+
+            <div class="skill">
+                <label for="skill-speja">Speja</label>
+                <input id="skill-speja" type="number" min="0" max="3" size="1" />
+                <button class="roll-button" data-stat="skp" data-skill="speja">🎲</button>
+            </div>
+            <div class="skill">
+                <label for="skill-forstaSigPa">Förstå sig på</label>
+                <input id="skill-forstaSigPa" type="number" min="0" max="3" size="1" />
+                <button class="roll-button" data-stat="skp" data-skill="forstaSigPa">🎲</button>
+            </div>
+            <div class="skill">
+                <label for="skill-kannaZonen">Känna Zonen</label>
+                <input id="skill-kannaZonen" type="number" min="0" max="3" size="1" />
+                <button class="roll-button" data-stat="skp" data-skill="kannaZonen">🎲</button>
+            </div>
+
+            <div class="skill">
+                <label for="skill-genomskada">Genomskåda</label>
+                <input id="skill-genomskada" type="number" min="0" max="3" size="1" />
+                <button class="roll-button" data-stat="kns" data-skill="genomskada">🎲</button>
+            </div>
+            <div class="skill">
+                <label for="skill-manipulera">Manipulera</label>
+                <input id="skill-manipulera" type="number" min="0" max="3" size="1" />
+                <button class="roll-button" data-stat="kns" data-skill="manipulera">🎲</button>
+            </div>
+            <div class="skill">
+                <label for="skill-varda">Vårda</label>
+                <input id="skill-varda" type="number" min="0" max="3" size="1" />
+                <button class="roll-button" data-stat="kns" data-skill="varda">🎲</button>
+            </div>
+
+            <div class="special-skill">
+                <select id="skill-special-1-name">
+                    <option>-</option>
+                    <option data-stat="sty">Mucka</option>
+                    <option data-stat="skp">Mecka</option>
+                    <option data-stat="kyl">Leda vägen</option>
+                    <option data-stat="kns">Schackra</option>
+                    <option data-stat="skp">Bussa på</option>
+                    <option data-stat="kns">Inspirera</option>
+                    <option data-stat="kns">Kommendera</option>
+                    <option data-stat="kyl">Uthärda</option>
+                </select>
+                <input id="skill-special-1" type="number" min="0" max="3" size="1" />
+                <button class="roll-button" data-skill="special-1">🎲</button>
+            </div>
+            <div class="special-skill">
+                <select id="skill-special-2-name">
+                    <option>-</option>
+                    <option data-stat="sty">Mucka</option>
+                    <option data-stat="skp">Mecka</option>
+                    <option data-stat="kyl">Leda vägen</option>
+                    <option data-stat="kns">Schackra</option>
+                    <option data-stat="skp">Bussa på</option>
+                    <option data-stat="kns">Inspirera</option>
+                    <option data-stat="kns">Kommendera</option>
+                    <option data-stat="kyl">Uthärda</option>
+                </select>
+                <input id="skill-special-2" type="number" min="0" max="3" size="1" />
+                <button class="roll-button" data-skill="special-2">🎲</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
