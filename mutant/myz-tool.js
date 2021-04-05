@@ -124,6 +124,70 @@ function getGearValue(gearId) {
     return getValueById(gearId, "gear");
 }
 
+function saveOneField(fieldId) {
+    var value = $(fieldId).val();
+    window.localStorage.setItem("myz-tool" + fieldId, value);
+}
+
+function saveData() {
+    saveOneField("#stat-strength");
+    saveOneField("#stat-agility");
+    saveOneField("#stat-wits");
+    saveOneField("#stat-empathy");
+
+    saveOneField("#trauma-strength");
+    saveOneField("#trauma-agility");
+    saveOneField("#trauma-wits");
+    saveOneField("#trauma-empathy");
+
+    saveOneField("#skill-endure")
+    saveOneField("#skill-force")
+    saveOneField("#skill-fight")
+    saveOneField("#skill-sneak")
+    saveOneField("#skill-move")
+    saveOneField("#skill-shoot")
+    saveOneField("#skill-scout")
+    saveOneField("#skill-comprehend")
+    saveOneField("#skill-knowTheZone")
+    saveOneField("#skill-senseEmotion")
+    saveOneField("#skill-manipulate")
+    saveOneField("#skill-heal")
+    saveOneField("#skill-special-1")
+    saveOneField("#skill-special-2")
+}
+
+function loadOneField(fieldId) {
+    var value = window.localStorage.getItem("myz-tool" + fieldId);
+    $(fieldId).val(value);
+}
+
+function loadData() {
+    loadOneField("#stat-strength");
+    loadOneField("#stat-agility");
+    loadOneField("#stat-wits");
+    loadOneField("#stat-empathy");
+
+    loadOneField("#trauma-strength");
+    loadOneField("#trauma-agility");
+    loadOneField("#trauma-wits");
+    loadOneField("#trauma-empathy");
+
+    loadOneField("#skill-endure")
+    loadOneField("#skill-force")
+    loadOneField("#skill-fight")
+    loadOneField("#skill-sneak")
+    loadOneField("#skill-move")
+    loadOneField("#skill-shoot")
+    loadOneField("#skill-scout")
+    loadOneField("#skill-comprehend")
+    loadOneField("#skill-knowTheZone")
+    loadOneField("#skill-senseEmotion")
+    loadOneField("#skill-manipulate")
+    loadOneField("#skill-heal")
+    loadOneField("#skill-special-1")
+    loadOneField("#skill-special-2")
+}
+
 $(document).ready(function () {
     $(".stat button").click(function () {
         var statValue = getStatValue($(this).attr("data-stat"));
@@ -149,4 +213,6 @@ $(document).ready(function () {
         var gearValue = getGearValue("adhoc");
         rollAndDisplay(statValue, skillValue, gearValue, 0);
     });
+
+    loadData();
 });
