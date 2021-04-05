@@ -4,9 +4,22 @@
 <head>
     <title>Mutantkrafs</title>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="myz-tool.css" />
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+    <link rel="stylesheet" href="myz-tool.css" />
     <script src="myz-tool.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#accordion").accordion({
+                collapsible: true,
+                heightStyle: "content"
+            });
+        });
+    </script>
 </head>
 
 <body>
@@ -22,8 +35,10 @@
             <input id="gear-adhoc" class="small" type="number" min="1" max="5" size="1" />
             <button class="roll-button" data-stat="adhoc" data-skill="adhoc" data-gear="adhoc">🎲</button>
         </div>
+    </div>
+    <div id="accordion">
+        <h3>Grundegenskaper</h3>
         <div class="stats">
-            <h2>Grundegenskaper</h2>
             <div class="stat">
                 <label for="stat-strength">Styrka</label>
                 <input id="stat-strength" class="small" type="number" min="1" max="5" size="1" />
@@ -53,8 +68,8 @@
                 <input id="trauma-empathy" class="small" type="number" min="0" max="5" size="1" />
             </div>
         </div>
+        <h3>Färdigheter</h3>
         <div class="skills">
-            <h2>Färdigheter</h2>
             <div class="skill">
                 <label for="skill-endure">Kämpa på</label>
                 <input id="skill-endure" class="small" type="number" min="0" max="3" size="1" />
@@ -150,8 +165,8 @@
                 <button class="roll-button" data-skill="special-2">🎲</button>
             </div>
         </div>
+        <h3>Otäckt gammalt krafs</h3>
         <div class="gear">
-            <h2>Krafs</h2>
             <div class="melee-weapon">
                 <label for="gear-weapon-melee-1-name">🪓</label>
                 <input id="gear-weapon-melee-1-name" class="gear-name" />
@@ -237,10 +252,11 @@
                 <input id="food" type="number" min="0" max="99" size="1" />
             </div>
         </div>
-        <div class="save-load">
-            <button onclick="saveData();">Spara</button>
-            <button onclick="loadData();">Ladda</button>
-        </div>
+
+    </div>
+    <div class="save-load">
+        <button onclick="saveData();">Spara</button>
+        <button onclick="loadData();">Ladda</button>
     </div>
 </body>
 

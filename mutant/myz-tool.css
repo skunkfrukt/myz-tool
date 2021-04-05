@@ -36,10 +36,6 @@
     width: 80px;
 }
 
-.skills, .gear {
-    float: left;
-}
-
 .gear {
     padding-left: 10px;
 }
