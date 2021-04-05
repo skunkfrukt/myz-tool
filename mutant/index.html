@@ -122,14 +122,14 @@
             <div class="special-skill">
                 <select id="skill-special-1-name">
                     <option>-</option>
-                    <option data-stat="strength">Mucka</option>
-                    <option data-stat="wits">Mecka</option>
-                    <option data-stat="agility">Leda vägen</option>
-                    <option data-stat="empathy">Schackra</option>
-                    <option data-stat="wits">Bussa på</option>
-                    <option data-stat="empathy">Inspirera</option>
-                    <option data-stat="empathy">Kommendera</option>
-                    <option data-stat="agility">Uthärda</option>
+                    <option value="Mucka" data-stat="strength">Mucka</option>
+                    <option value="Mecka" data-stat="wits">Mecka</option>
+                    <option value="Leda vägen" data-stat="agility">Leda vägen</option>
+                    <option value="Schackra" data-stat="empathy">Schackra</option>
+                    <option value="Bussa på" data-stat="wits">Bussa på</option>
+                    <option value="Inspirera" data-stat="empathy">Inspirera</option>
+                    <option value="Kommendera" data-stat="empathy">Kommendera</option>
+                    <option value="Uthärda" data-stat="agility">Uthärda</option>
                 </select>
                 <input id="skill-special-1" type="number" min="0" max="3" size="1" />
                 <button class="roll-button" data-skill="special-1">🎲</button>
@@ -137,14 +137,14 @@
             <div class="special-skill">
                 <select id="skill-special-2-name">
                     <option>-</option>
-                    <option data-stat="strength">Mucka</option>
-                    <option data-stat="wits">Mecka</option>
-                    <option data-stat="agility">Leda vägen</option>
-                    <option data-stat="empathy">Schackra</option>
-                    <option data-stat="wits">Bussa på</option>
-                    <option data-stat="empathy">Inspirera</option>
-                    <option data-stat="empathy">Kommendera</option>
-                    <option data-stat="agility">Uthärda</option>
+                    <option value="Mucka" data-stat="strength">Mucka</option>
+                    <option value="Mecka" data-stat="wits">Mecka</option>
+                    <option value="Leda vägen" data-stat="agility">Leda vägen</option>
+                    <option value="Schackra" data-stat="empathy">Schackra</option>
+                    <option value="Bussa på" data-stat="wits">Bussa på</option>
+                    <option value="Inspirera" data-stat="empathy">Inspirera</option>
+                    <option value="Kommendera" data-stat="empathy">Kommendera</option>
+                    <option value="Uthärda" data-stat="agility">Uthärda</option>
                 </select>
                 <input id="skill-special-2" type="number" min="0" max="3" size="1" />
                 <button class="roll-button" data-skill="special-2">🎲</button>
@@ -152,6 +152,7 @@
         </div>
     </div>
     <div>
+        <br />
         <button onclick="saveData();">Spara</button>
         <button onclick="loadData();">Ladda</button>
     </div>

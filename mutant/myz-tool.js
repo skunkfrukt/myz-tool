@@ -140,20 +140,22 @@ function saveData() {
     saveOneField("#trauma-wits");
     saveOneField("#trauma-empathy");
 
-    saveOneField("#skill-endure")
-    saveOneField("#skill-force")
-    saveOneField("#skill-fight")
-    saveOneField("#skill-sneak")
-    saveOneField("#skill-move")
-    saveOneField("#skill-shoot")
-    saveOneField("#skill-scout")
-    saveOneField("#skill-comprehend")
-    saveOneField("#skill-knowTheZone")
-    saveOneField("#skill-senseEmotion")
-    saveOneField("#skill-manipulate")
-    saveOneField("#skill-heal")
-    saveOneField("#skill-special-1")
-    saveOneField("#skill-special-2")
+    saveOneField("#skill-endure");
+    saveOneField("#skill-force");
+    saveOneField("#skill-fight");
+    saveOneField("#skill-sneak");
+    saveOneField("#skill-move");
+    saveOneField("#skill-shoot");
+    saveOneField("#skill-scout");
+    saveOneField("#skill-comprehend");
+    saveOneField("#skill-knowTheZone");
+    saveOneField("#skill-senseEmotion");
+    saveOneField("#skill-manipulate");
+    saveOneField("#skill-heal");
+    saveOneField("#skill-special-1-name");
+    saveOneField("#skill-special-1");
+    saveOneField("#skill-special-2-name");
+    saveOneField("#skill-special-2");
 }
 
 function loadOneField(fieldId) {
@@ -172,20 +174,22 @@ function loadData() {
     loadOneField("#trauma-wits");
     loadOneField("#trauma-empathy");
 
-    loadOneField("#skill-endure")
-    loadOneField("#skill-force")
-    loadOneField("#skill-fight")
-    loadOneField("#skill-sneak")
-    loadOneField("#skill-move")
-    loadOneField("#skill-shoot")
-    loadOneField("#skill-scout")
-    loadOneField("#skill-comprehend")
-    loadOneField("#skill-knowTheZone")
-    loadOneField("#skill-senseEmotion")
-    loadOneField("#skill-manipulate")
-    loadOneField("#skill-heal")
-    loadOneField("#skill-special-1")
-    loadOneField("#skill-special-2")
+    loadOneField("#skill-endure");
+    loadOneField("#skill-force");
+    loadOneField("#skill-fight");
+    loadOneField("#skill-sneak");
+    loadOneField("#skill-move");
+    loadOneField("#skill-shoot");
+    loadOneField("#skill-scout");
+    loadOneField("#skill-comprehend");
+    loadOneField("#skill-knowTheZone");
+    loadOneField("#skill-senseEmotion");
+    loadOneField("#skill-manipulate");
+    loadOneField("#skill-heal");
+    loadOneField("#skill-special-1-name");
+    loadOneField("#skill-special-1");
+    loadOneField("#skill-special-2-name");
+    loadOneField("#skill-special-2");
 }
 
 $(document).ready(function () {
