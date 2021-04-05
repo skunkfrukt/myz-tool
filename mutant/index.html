@@ -15,107 +15,107 @@
         <button id="rerollButton" onclick="rerollAndDisplay();" disabled>Pressa</button>
         <div class="adhoc">
             <label for="stat-adhoc">GE</label>
-            <input id="stat-adhoc" type="number" min="1" max="5" size="1" />
+            <input id="stat-adhoc" class="small" type="number" min="1" max="5" size="1" />
             <label for="skill-adhoc">F</label>
-            <input id="skill-adhoc" type="number" min="1" max="5" size="1" />
+            <input id="skill-adhoc" class="small" type="number" min="1" max="5" size="1" />
             <label for="gear-adhoc">P</label>
-            <input id="gear-adhoc" type="number" min="1" max="5" size="1" />
+            <input id="gear-adhoc" class="small" type="number" min="1" max="5" size="1" />
             <button class="roll-button" data-stat="adhoc" data-skill="adhoc" data-gear="adhoc">🎲</button>
         </div>
         <div class="stats">
             <h2>Grundegenskaper</h2>
             <div class="stat">
                 <label for="stat-strength">Styrka</label>
-                <input id="stat-strength" type="number" min="1" max="5" size="1" />
+                <input id="stat-strength" class="small" type="number" min="1" max="5" size="1" />
                 <button class="roll-button" data-stat="strength">🎲</button>
                 <label for="trauma-strength">Skada</label>
-                <input id="trauma-strength" type="number" min="0" max="5" size="1" />
+                <input id="trauma-strength" class="small" type="number" min="0" max="5" size="1" />
             </div>
             <div class="stat">
                 <label for="stat-agility">Kyla</label>
-                <input id="stat-agility" type="number" min="1" max="5" size="1" />
+                <input id="stat-agility" class="small" type="number" min="1" max="5" size="1" />
                 <button class="roll-button" data-stat="agility">🎲</button>
                 <label for="trauma-agility">Stress</label>
-                <input id="trauma-agility" type="number" min="0" max="5" size="1" />
+                <input id="trauma-agility" class="small" type="number" min="0" max="5" size="1" />
             </div>
             <div class="stat">
                 <label for="stat-wits">Skärpa</label>
-                <input id="stat-wits" type="number" min="1" max="5" size="1" />
+                <input id="stat-wits" class="small" type="number" min="1" max="5" size="1" />
                 <button class="roll-button" data-stat="wits">🎲</button>
                 <label for="trauma-wits">Förvirring</label>
-                <input id="trauma-wits" type="number" min="0" max="5" size="1" />
+                <input id="trauma-wits" class="small" type="number" min="0" max="5" size="1" />
             </div>
             <div class="stat">
                 <label for="stat-empathy">Känsla</label>
-                <input id="stat-empathy" type="number" min="1" max="5" size="1" />
+                <input id="stat-empathy" class="small" type="number" min="1" max="5" size="1" />
                 <button class="roll-button" data-stat="empathy">🎲</button>
                 <label for="trauma-empathy">Tvivel</label>
-                <input id="trauma-empathy" type="number" min="0" max="5" size="1" />
+                <input id="trauma-empathy" class="small" type="number" min="0" max="5" size="1" />
             </div>
         </div>
         <div class="skills">
             <h2>Färdigheter</h2>
             <div class="skill">
                 <label for="skill-endure">Kämpa på</label>
-                <input id="skill-endure" type="number" min="0" max="3" size="1" />
+                <input id="skill-endure" class="small" type="number" min="0" max="3" size="1" />
                 <button class="roll-button" data-stat="strength" data-skill="endure">🎲</button>
             </div>
             <div class="skill">
                 <label for="skill-force">Ta krafttag</label>
-                <input id="skill-force" type="number" min="0" max="3" size="1" />
+                <input id="skill-force" class="small" type="number" min="0" max="3" size="1" />
                 <button class="roll-button" data-stat="strength" data-skill="force">🎲</button>
             </div>
             <div class="skill">
                 <label for="skill-fight">Slåss</label>
-                <input id="skill-fight" type="number" min="0" max="3" size="1" />
+                <input id="skill-fight" class="small" type="number" min="0" max="3" size="1" />
                 <button class="roll-button" data-stat="strength" data-skill="fight">🎲</button>
             </div>
 
             <div class="skill">
                 <label for="skill-sneak">Smyga</label>
-                <input id="skill-sneak" type="number" min="0" max="3" size="1" />
+                <input id="skill-sneak" class="small" type="number" min="0" max="3" size="1" />
                 <button class="roll-button" data-stat="agility" data-skill="sneak">🎲</button>
             </div>
             <div class="skill">
                 <label for="skill-move">Fly</label>
-                <input id="skill-move" type="number" min="0" max="3" size="1" />
+                <input id="skill-move" class="small" type="number" min="0" max="3" size="1" />
                 <button class="roll-button" data-stat="agility" data-skill="move">🎲</button>
             </div>
             <div class="skill">
                 <label for="skill-shoot">Skjuta</label>
-                <input id="skill-shoot" type="number" min="0" max="3" size="1" />
+                <input id="skill-shoot" class="small" type="number" min="0" max="3" size="1" />
                 <button class="roll-button" data-stat="agility" data-skill="shoot">🎲</button>
             </div>
 
             <div class="skill">
                 <label for="skill-scout">Speja</label>
-                <input id="skill-scout" type="number" min="0" max="3" size="1" />
+                <input id="skill-scout" class="small" type="number" min="0" max="3" size="1" />
                 <button class="roll-button" data-stat="wits" data-skill="scout">🎲</button>
             </div>
             <div class="skill">
                 <label for="skill-comprehend">Förstå sig på</label>
-                <input id="skill-comprehend" type="number" min="0" max="3" size="1" />
+                <input id="skill-comprehend" class="small" type="number" min="0" max="3" size="1" />
                 <button class="roll-button" data-stat="wits" data-skill="comprehend">🎲</button>
             </div>
             <div class="skill">
                 <label for="skill-knowTheZone">Känna Zonen</label>
-                <input id="skill-knowTheZone" type="number" min="0" max="3" size="1" />
+                <input id="skill-knowTheZone" class="small" type="number" min="0" max="3" size="1" />
                 <button class="roll-button" data-stat="wits" data-skill="knowTheZone">🎲</button>
             </div>
 
             <div class="skill">
                 <label for="skill-senseEmotion">Genomskåda</label>
-                <input id="skill-senseEmotion" type="number" min="0" max="3" size="1" />
+                <input id="skill-senseEmotion" class="small" type="number" min="0" max="3" size="1" />
                 <button class="roll-button" data-stat="empathy" data-skill="senseEmotion">🎲</button>
             </div>
             <div class="skill">
                 <label for="skill-manipulate">Manipulera</label>
-                <input id="skill-manipulate" type="number" min="0" max="3" size="1" />
+                <input id="skill-manipulate" class="small" type="number" min="0" max="3" size="1" />
                 <button class="roll-button" data-stat="empathy" data-skill="manipulate">🎲</button>
             </div>
             <div class="skill">
                 <label for="skill-heal">Vårda</label>
-                <input id="skill-heal" type="number" min="0" max="3" size="1" />
+                <input id="skill-heal" class="small" type="number" min="0" max="3" size="1" />
                 <button class="roll-button" data-stat="empathy" data-skill="heal">🎲</button>
             </div>
 
@@ -131,7 +131,7 @@
                     <option value="Kommendera" data-stat="empathy">Kommendera</option>
                     <option value="Uthärda" data-stat="agility">Uthärda</option>
                 </select>
-                <input id="skill-special-1" type="number" min="0" max="3" size="1" />
+                <input id="skill-special-1" class="small" type="number" min="0" max="3" size="1" />
                 <button class="roll-button" data-skill="special-1">🎲</button>
             </div>
             <div class="special-skill">
@@ -146,15 +146,101 @@
                     <option value="Kommendera" data-stat="empathy">Kommendera</option>
                     <option value="Uthärda" data-stat="agility">Uthärda</option>
                 </select>
-                <input id="skill-special-2" type="number" min="0" max="3" size="1" />
+                <input id="skill-special-2" class="small" type="number" min="0" max="3" size="1" />
                 <button class="roll-button" data-skill="special-2">🎲</button>
             </div>
         </div>
-    </div>
-    <div>
-        <br />
-        <button onclick="saveData();">Spara</button>
-        <button onclick="loadData();">Ladda</button>
+        <div class="gear">
+            <h2>Krafs</h2>
+            <div class="melee-weapon">
+                <label for="gear-weapon-melee-1-name">🪓</label>
+                <input id="gear-weapon-melee-1-name" class="gear-name" />
+                <input id="gear-weapon-melee-1" class="small" type="number" min="1" max="5" size="1" />
+                <button class="roll-button" data-stat="strength" data-skill="fight"
+                    data-gear="weapon-melee-1">🎲</button>
+            </div>
+            <div class="melee-weapon">
+                <label for="gear-weapon-melee-2-name">🪓</label>
+                <input id="gear-weapon-melee-2-name" class="gear-name" />
+                <input id="gear-weapon-melee-2" class="small" type="number" min="1" max="5" size="1" />
+                <button class="roll-button" data-stat="strength" data-skill="fight"
+                    data-gear="weapon-melee-2">🎲</button>
+            </div>
+            <div class="ranged-weapon">
+                <label for="gear-weapon-ranged-1-name">🔫</label>
+                <input id="gear-weapon-ranged-1-name" class="gear-name" />
+                <input id="gear-weapon-ranged-1" class="small" type="number" min="1" max="5" size="1" />
+                <button class="roll-button" data-stat="agility" data-skill="shoot" data-gear="weapon-ranged-1"
+                    data-modifier="-3">🎲
+                    Arm</button>
+                <button class="roll-button" data-stat="agility" data-skill="shoot" data-gear="weapon-ranged-1"
+                    data-modifier="0">🎲
+                    Nära</button>
+                <button class="roll-button" data-stat="agility" data-skill="shoot" data-gear="weapon-ranged-1"
+                    data-modifier="-1">🎲
+                    Kort</button>
+                <button class="roll-button" data-stat="agility" data-skill="shoot" data-gear="weapon-ranged-1"
+                    data-modifier="-2">🎲
+                    Långt</button>
+            </div>
+            <div class="ranged-weapon">
+                <label for="gear-weapon-ranged-2-name">🔫</label>
+                <input id="gear-weapon-ranged-2-name" class="gear-name" />
+                <input id="gear-weapon-ranged-2" class="small" type="number" min="1" max="5" size="1" />
+                <button class="roll-button" data-stat="agility" data-skill="shoot" data-gear="weapon-ranged-2"
+                    data-modifier="-3">🎲
+                    Arm</button>
+                <button class="roll-button" data-stat="agility" data-skill="shoot" data-gear="weapon-ranged-2"
+                    data-modifier="0">🎲
+                    Nära</button>
+                <button class="roll-button" data-stat="agility" data-skill="shoot" data-gear="weapon-ranged-2"
+                    data-modifier="-1">🎲
+                    Kort</button>
+                <button class="roll-button" data-stat="agility" data-skill="shoot" data-gear="weapon-ranged-2"
+                    data-modifier="-2">🎲
+                    Långt</button>
+            </div>
+            <div class="tool">
+                🛠️
+                <input id="tool-1-name" class="gear-name" />
+            </div>
+            <div class="tool">
+                🛠️
+                <input id="tool-2-name" class="gear-name" />
+            </div>
+            <div class="tool">
+                🛠️
+                <input id="tool-3-name" class="gear-name" />
+            </div>
+            <div class="tool">
+                🛠️
+                <input id="tool-4-name" class="gear-name" />
+            </div>
+            <div class="tool">
+                🛠️
+                <input id="tool-5-name" class="gear-name" />
+            </div>
+            <div class="tool">
+                🛠️
+                <input id="tool-6-name" class="gear-name" />
+            </div>
+            <div class="resource">
+                <label for="bullets" class="small">Patroner</label>
+                <input id="bullets" type="number" min="0" max="99" size="1" />
+            </div>
+            <div class="resource">
+                <label for="water" class="small">Vatten</label>
+                <input id="water" type="number" min="0" max="99" size="1" />
+            </div>
+            <div class="resource">
+                <label for="food" class="small">Krubb</label>
+                <input id="food" type="number" min="0" max="99" size="1" />
+            </div>
+        </div>
+        <div class="save-load">
+            <button onclick="saveData();">Spara</button>
+            <button onclick="loadData();">Ladda</button>
+        </div>
     </div>
 </body>
 

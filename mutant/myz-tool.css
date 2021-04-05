@@ -27,9 +27,25 @@
     color: white;
 }
 
-.stat label {
+.die-negative {
+    background-color: red;
+}
+
+.stat label, label.small {
     display: inline-block;
     width: 80px;
+}
+
+.skills, .gear {
+    float: left;
+}
+
+.gear {
+    padding-left: 10px;
+}
+
+.gear-name {
+    width: 100px;
 }
 
 .skill label, .special-skill select {
@@ -37,6 +53,11 @@
     width: 120px;
 }
 
-.stat input, .skill input, .special-skill input {
+input.small {
     width: 30px;
+}
+
+.save-load {
+    clear: both;
+    padding-top: 10px;
 }

@@ -2,6 +2,7 @@ dieGlyphs = {
     "base": ["☣", "2️", "3️", "4️", "5️", "☢"],
     "skill": ["1️", "2️", "3️", "4️", "5️", "☢"],
     "gear": ["✴", "2️", "3️", "4️", "5️", "☢"],
+    "negative": ["1️", "2️", "3️", "4️", "5️", "☢"],
     "other": ["1", "2", "3", "4", "5", "6"]
 }
 
@@ -32,13 +33,15 @@ function roll(numDice) {
 }
 
 function rollAll(base, skill, gear, other) {
-    return {
+    result = {
         "base": roll(base),
-        "skill": roll(skill),
+        "skill": skill >= 0 ? roll(skill) : [],
         "gear": roll(gear),
+        "negative": skill < 0 ? roll(-skill) : [],
         "other": roll(other),
         "rerollable": true
     }
+    return result;
 }
 
 function addDieGraphic(number, dieType) {
@@ -61,6 +64,7 @@ function displayResult(result, clear) {
     addAllDiceGraphicsForOneType(result.base, "base");
     addAllDiceGraphicsForOneType(result.skill, "skill");
     addAllDiceGraphicsForOneType(result.gear, "gear");
+    addAllDiceGraphicsForOneType(result.negative, "negative");
     addAllDiceGraphicsForOneType(result.other, "other");
 
     $("#rerollButton").prop("disabled", !result.rerollable)
@@ -99,6 +103,7 @@ function reroll(previousResult) {
         "base": rerollByDieType(previousResult.base, "base"),
         "skill": rerollByDieType(previousResult.skill, "skill"),
         "gear": rerollByDieType(previousResult.gear, "gear"),
+        "negative": rerollByDieType(previousResult.negative, "negative"),
         "other": rerollByDieType(previousResult.other, "other"),
         "rerollable": false
     };
@@ -215,6 +220,24 @@ $(document).ready(function () {
         var statValue = getStatValue("adhoc");
         var skillValue = getSkillValue("adhoc");
         var gearValue = getGearValue("adhoc");
+        rollAndDisplay(statValue, skillValue, gearValue, 0);
+    });
+
+    $(".melee-weapon button").click(function () {
+        var statValue = getStatValue("strength");
+        var skillValue = getSkillValue("fight");
+        var gearValue = getGearValue($(this).attr("data-gear"));
+        rollAndDisplay(statValue, skillValue, gearValue, 0);
+    });
+
+    $(".ranged-weapon button").click(function () {
+        var statValue = getStatValue("agility");
+        var skillValue = getSkillValue("shoot");
+        var gearValue = getGearValue($(this).attr("data-gear"));
+        var modifierValue = parseInt($(this).attr("data-modifier"));
+        if (!isNaN(modifierValue)) {
+            skillValue += modifierValue;
+        }
         rollAndDisplay(statValue, skillValue, gearValue, 0);
     });
 
