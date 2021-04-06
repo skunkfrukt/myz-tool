@@ -161,6 +161,25 @@ function saveData() {
     saveOneField("#skill-special-1");
     saveOneField("#skill-special-2-name");
     saveOneField("#skill-special-2");
+
+    saveOneField("#gear-weapon-melee-1-name");
+    saveOneField("#gear-weapon-melee-1");
+    saveOneField("#gear-weapon-melee-2-name");
+    saveOneField("#gear-weapon-melee-2");
+    saveOneField("#gear-weapon-ranged-1-name");
+    saveOneField("#gear-weapon-ranged-1");
+    saveOneField("#gear-weapon-ranged-2-name");
+    saveOneField("#gear-weapon-ranged-2");
+    saveOneField("#gear-tool-1-name");
+    saveOneField("#gear-tool-2-name");
+    saveOneField("#gear-tool-3-name");
+    saveOneField("#gear-tool-4-name");
+    saveOneField("#gear-tool-5-name");
+    saveOneField("#gear-tool-6-name");
+
+    saveOneField("#bullets");
+    saveOneField("#water");
+    saveOneField("#food");
 }
 
 function loadOneField(fieldId) {
@@ -195,6 +214,25 @@ function loadData() {
     loadOneField("#skill-special-1");
     loadOneField("#skill-special-2-name");
     loadOneField("#skill-special-2");
+
+    loadOneField("#gear-weapon-melee-1-name");
+    loadOneField("#gear-weapon-melee-1");
+    loadOneField("#gear-weapon-melee-2-name");
+    loadOneField("#gear-weapon-melee-2");
+    loadOneField("#gear-weapon-ranged-1-name");
+    loadOneField("#gear-weapon-ranged-1");
+    loadOneField("#gear-weapon-ranged-2-name");
+    loadOneField("#gear-weapon-ranged-2");
+    loadOneField("#gear-tool-1-name");
+    loadOneField("#gear-tool-2-name");
+    loadOneField("#gear-tool-3-name");
+    loadOneField("#gear-tool-4-name");
+    loadOneField("#gear-tool-5-name");
+    loadOneField("#gear-tool-6-name");
+
+    loadOneField("#bullets");
+    loadOneField("#water");
+    loadOneField("#food");
 }
 
 $(document).ready(function () {
