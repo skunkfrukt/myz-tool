@@ -64,6 +64,7 @@ function displayResult(result, clear) {
             addAllDiceGraphicsForOneType(result.gear, "gear");
             addAllDiceGraphicsForOneType(result.negative, "negative");
             addAllDiceGraphicsForOneType(result.other, "other");
+            $("#roll").append($("<span></span>"));
 
             $("#rerollButton").prop("disabled", !result.rerollable)
         });
