@@ -3,7 +3,7 @@ dieGlyphs = {
     "skill": ["1️", "2️", "3️", "4️", "5️", "☢"],
     "gear": ["✴", "2️", "3️", "4️", "5️", "☢"],
     "negative": ["1️", "2️", "3️", "4️", "5️", "☢"],
-    "other": ["1", "2", "3", "4", "5", "6"]
+    "other": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"]
 }
 
 function getModifiedStat(statId) {
@@ -194,6 +194,14 @@ $(document).ready(function () {
         var gearValue = getGearValue("weapon-ranged-" + selectedWeaponIndex);
         var modifier = parseInt($("#ranged-attack-distance").val());
         rollAndDisplay(statValue, skillValue + modifier, gearValue, 0);
+    });
+
+    $("#roll-initiative").click(function () {
+        var agility = getStatValue("agility");
+        var die = rollOne();
+        displayResult({
+            "base": [], "skill": [], "gear": [], "other": [die + agility], "negative": [], "rerollable": false
+        }, true);
     });
 
     loadData();
