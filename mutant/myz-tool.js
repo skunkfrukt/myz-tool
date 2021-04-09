@@ -57,17 +57,17 @@ function addAllDiceGraphicsForOneType(dice, dieType) {
 
 function displayResult(result, clear) {
     if (clear) {
-        var outputElement = $("#roll");
-        outputElement.empty();
+        $("#roll span").hide("fade", {}, 500, function () {
+            $("#roll").empty();
+            addAllDiceGraphicsForOneType(result.base, "base");
+            addAllDiceGraphicsForOneType(result.skill, "skill");
+            addAllDiceGraphicsForOneType(result.gear, "gear");
+            addAllDiceGraphicsForOneType(result.negative, "negative");
+            addAllDiceGraphicsForOneType(result.other, "other");
+
+            $("#rerollButton").prop("disabled", !result.rerollable)
+        });
     }
-
-    addAllDiceGraphicsForOneType(result.base, "base");
-    addAllDiceGraphicsForOneType(result.skill, "skill");
-    addAllDiceGraphicsForOneType(result.gear, "gear");
-    addAllDiceGraphicsForOneType(result.negative, "negative");
-    addAllDiceGraphicsForOneType(result.other, "other");
-
-    $("#rerollButton").prop("disabled", !result.rerollable)
 }
 
 function rollAndDisplay(base, skill, gear, other) {
@@ -135,51 +135,9 @@ function saveOneField(fieldId) {
 }
 
 function saveData() {
-    saveOneField("#stat-strength");
-    saveOneField("#stat-agility");
-    saveOneField("#stat-wits");
-    saveOneField("#stat-empathy");
-
-    saveOneField("#trauma-strength");
-    saveOneField("#trauma-agility");
-    saveOneField("#trauma-wits");
-    saveOneField("#trauma-empathy");
-
-    saveOneField("#skill-endure");
-    saveOneField("#skill-force");
-    saveOneField("#skill-fight");
-    saveOneField("#skill-sneak");
-    saveOneField("#skill-move");
-    saveOneField("#skill-shoot");
-    saveOneField("#skill-scout");
-    saveOneField("#skill-comprehend");
-    saveOneField("#skill-knowTheZone");
-    saveOneField("#skill-senseEmotion");
-    saveOneField("#skill-manipulate");
-    saveOneField("#skill-heal");
-    saveOneField("#skill-special-1-name");
-    saveOneField("#skill-special-1");
-    saveOneField("#skill-special-2-name");
-    saveOneField("#skill-special-2");
-
-    saveOneField("#gear-weapon-melee-1-name");
-    saveOneField("#gear-weapon-melee-1");
-    saveOneField("#gear-weapon-melee-2-name");
-    saveOneField("#gear-weapon-melee-2");
-    saveOneField("#gear-weapon-ranged-1-name");
-    saveOneField("#gear-weapon-ranged-1");
-    saveOneField("#gear-weapon-ranged-2-name");
-    saveOneField("#gear-weapon-ranged-2");
-    saveOneField("#gear-tool-1-name");
-    saveOneField("#gear-tool-2-name");
-    saveOneField("#gear-tool-3-name");
-    saveOneField("#gear-tool-4-name");
-    saveOneField("#gear-tool-5-name");
-    saveOneField("#gear-tool-6-name");
-
-    saveOneField("#bullets");
-    saveOneField("#water");
-    saveOneField("#food");
+    $(".saved").each(function (i) {
+        saveOneField("#" + $(this).attr("id"));
+    });
 }
 
 function loadOneField(fieldId) {
@@ -188,55 +146,13 @@ function loadOneField(fieldId) {
 }
 
 function loadData() {
-    loadOneField("#stat-strength");
-    loadOneField("#stat-agility");
-    loadOneField("#stat-wits");
-    loadOneField("#stat-empathy");
-
-    loadOneField("#trauma-strength");
-    loadOneField("#trauma-agility");
-    loadOneField("#trauma-wits");
-    loadOneField("#trauma-empathy");
-
-    loadOneField("#skill-endure");
-    loadOneField("#skill-force");
-    loadOneField("#skill-fight");
-    loadOneField("#skill-sneak");
-    loadOneField("#skill-move");
-    loadOneField("#skill-shoot");
-    loadOneField("#skill-scout");
-    loadOneField("#skill-comprehend");
-    loadOneField("#skill-knowTheZone");
-    loadOneField("#skill-senseEmotion");
-    loadOneField("#skill-manipulate");
-    loadOneField("#skill-heal");
-    loadOneField("#skill-special-1-name");
-    loadOneField("#skill-special-1");
-    loadOneField("#skill-special-2-name");
-    loadOneField("#skill-special-2");
-
-    loadOneField("#gear-weapon-melee-1-name");
-    loadOneField("#gear-weapon-melee-1");
-    loadOneField("#gear-weapon-melee-2-name");
-    loadOneField("#gear-weapon-melee-2");
-    loadOneField("#gear-weapon-ranged-1-name");
-    loadOneField("#gear-weapon-ranged-1");
-    loadOneField("#gear-weapon-ranged-2-name");
-    loadOneField("#gear-weapon-ranged-2");
-    loadOneField("#gear-tool-1-name");
-    loadOneField("#gear-tool-2-name");
-    loadOneField("#gear-tool-3-name");
-    loadOneField("#gear-tool-4-name");
-    loadOneField("#gear-tool-5-name");
-    loadOneField("#gear-tool-6-name");
-
-    loadOneField("#bullets");
-    loadOneField("#water");
-    loadOneField("#food");
+    $(".saved").each(function (i) {
+        loadOneField("#" + $(this).attr("id"));
+    });
 }
 
 $(document).ready(function () {
-    $(".stat button").click(function () {
+    $("button.roll-stat").click(function () {
         var statValue = getStatValue($(this).attr("data-stat"));
         rollAndDisplay(statValue, 0, 0, 0);
     });
@@ -258,25 +174,25 @@ $(document).ready(function () {
         var statValue = getStatValue("adhoc");
         var skillValue = getSkillValue("adhoc");
         var gearValue = getGearValue("adhoc");
-        rollAndDisplay(statValue, skillValue, gearValue, 0);
+        var modifier = getValueById("adhoc", "modifier");
+        rollAndDisplay(statValue, skillValue + modifier, gearValue, 0);
     });
 
-    $(".melee-weapon button").click(function () {
+    $(".roll-fight").click(function () {
         var statValue = getStatValue("strength");
         var skillValue = getSkillValue("fight");
-        var gearValue = getGearValue($(this).attr("data-gear"));
+        var selectedWeaponIndex = $("input[name='selected-melee-weapon']:checked").val();
+        var gearValue = getGearValue("weapon-melee-" + selectedWeaponIndex);
         rollAndDisplay(statValue, skillValue, gearValue, 0);
     });
 
-    $(".ranged-weapon button").click(function () {
+    $(".roll-shoot").click(function () {
         var statValue = getStatValue("agility");
         var skillValue = getSkillValue("shoot");
-        var gearValue = getGearValue($(this).attr("data-gear"));
-        var modifierValue = parseInt($(this).attr("data-modifier"));
-        if (!isNaN(modifierValue)) {
-            skillValue += modifierValue;
-        }
-        rollAndDisplay(statValue, skillValue, gearValue, 0);
+        var selectedWeaponIndex = $("input[name='selected-ranged-weapon']:checked").val();
+        var gearValue = getGearValue("weapon-ranged-" + selectedWeaponIndex);
+        var modifier = parseInt($("#ranged-attack-distance").val());
+        rollAndDisplay(statValue, skillValue + modifier, gearValue, 0);
     });
 
     loadData();

@@ -2,6 +2,21 @@
     height: 60px;
 }
 
+.color-base, .die-base {
+    background-color: yellow;
+    color: black;
+}
+
+.color-skill, .die-skill {
+    background-color: green;
+    color: white;
+}
+
+.color-gear, .die-gear {
+    background-color: #202020;
+    color: white;
+}
+
 .die {
     text-align: center;
     font-size: 40px;
@@ -11,20 +26,6 @@
     width: 50px;
     height: 50px;
     line-height: 50px;
-}
-
-.die-base {
-    background-color: yellow;
-}
-
-.die-skill {
-    background-color: green;
-    color: white;
-}
-
-.die-gear {
-    background-color: #202020;
-    color: white;
 }
 
 .die-negative {
