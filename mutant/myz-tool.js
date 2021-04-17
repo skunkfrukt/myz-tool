@@ -198,9 +198,14 @@ $(document).ready(function () {
 
     $("#roll-initiative").click(function () {
         var agility = getStatValue("agility");
-        var die = rollOne();
+        var rolls = [rollOne() + agility];
+
+        if ($("#experienced-fighter").is(":checked")) {
+            rolls.push(rollOne() + agility);
+        }
+
         displayResult({
-            "base": [], "skill": [], "gear": [], "other": [die + agility], "negative": [], "rerollable": false
+            "base": [], "skill": [], "gear": [], "other": rolls, "negative": [], "rerollable": false
         }, true);
     });
 
