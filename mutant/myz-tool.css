@@ -26,6 +26,7 @@
     width: 50px;
     height: 50px;
     line-height: 50px;
+    position: relative;
 }
 
 .die-negative {
@@ -57,4 +58,11 @@ input.small {
 .save-load {
     clear: both;
     padding-top: 10px;
+}
+
+sup {
+    position: absolute;
+    top: -15px;
+    right: 3px;
+    font-size: 50%;
 }
