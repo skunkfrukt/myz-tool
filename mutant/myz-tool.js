@@ -130,25 +130,39 @@ function getGearValue(gearId) {
     return getValueById(gearId, "gear");
 }
 
-function saveOneField(fieldId) {
+function getCharName() {
+    return getQuery()["char"];
+}
+
+function saveOneField(fieldId, charName) {
     var value = $(fieldId).val();
-    window.localStorage.setItem("myz-tool" + fieldId, value);
+    var itemName = "myz-tool" + fieldId;
+    if (charName) {
+        itemName += ("[" + charName + "]");
+    }
+    window.localStorage.setItem(itemName, value);
 }
 
 function saveData() {
+    var charName = getCharName();
     $(".saved").each(function (i) {
-        saveOneField("#" + $(this).attr("id"));
+        saveOneField("#" + $(this).attr("id"), charName);
     });
 }
 
-function loadOneField(fieldId) {
-    var value = window.localStorage.getItem("myz-tool" + fieldId);
+function loadOneField(fieldId, charName) {
+    var itemName = "myz-tool" + fieldId;
+    if (charName) {
+        itemName += ("[" + charName + "]");
+    }
+    var value = window.localStorage.getItem(itemName);
     $(fieldId).val(value);
 }
 
 function loadData() {
+    var charName = getCharName();
     $(".saved").each(function (i) {
-        loadOneField("#" + $(this).attr("id"));
+        loadOneField("#" + $(this).attr("id"), charName);
     });
 }
 
@@ -165,6 +179,19 @@ function rollAdHoc() {
     var gearValue = getGearValue("adhoc");
     var modifier = getValueById("adhoc", "modifier");
     rollAndDisplay(statValue, skillValue + modifier, gearValue, 0);
+}
+
+function getQuery() {
+    var rawQuery = window.location.search;
+    var output = {}
+    if (rawQuery.startsWith("?")) {
+        var items = rawQuery.substring(1).split(";");
+        for (var i = 0; i < items.length; i++) {
+            var keyValue = items[i].split("=");
+            output[keyValue[0]] = keyValue[1];
+        }
+    }
+    return output;
 }
 
 $(document).ready(function () {
