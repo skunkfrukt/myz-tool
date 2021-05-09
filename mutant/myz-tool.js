@@ -152,18 +152,37 @@ function loadData() {
     });
 }
 
+function setAdHoc(stat, skill, gear, modifier) {
+    $("#stat-adhoc").val(stat);
+    $("#skill-adhoc").val(skill);
+    $("#gear-adhoc").val(gear);
+    $("#modifier-adhoc").val(modifier);
+}
+
+function rollAdHoc() {
+    var statValue = getStatValue("adhoc");
+    var skillValue = getSkillValue("adhoc");
+    var gearValue = getGearValue("adhoc");
+    var modifier = getValueById("adhoc", "modifier");
+    rollAndDisplay(statValue, skillValue + modifier, gearValue, 0);
+}
+
 $(document).ready(function () {
     $("button.roll-stat").click(function () {
         var statValue = getStatValue($(this).attr("data-stat"));
         var modifier = getValueById("stat", "modifier");
-        rollAndDisplay(statValue, modifier, 0, 0);
+
+        setAdHoc(statValue, 0, 0, modifier);
+        rollAdHoc();
     });
 
     $("button.roll-skill").click(function () {
         var statValue = getStatValue($(this).attr("data-stat"));
         var skillValue = getSkillValue($(this).attr("data-skill"));
         var modifier = getValueById("skill", "modifier");
-        rollAndDisplay(statValue, skillValue + modifier, 0, 0);
+
+        setAdHoc(statValue, skillValue, 0, modifier);
+        rollAdHoc();
     });
 
     $("button.roll-special-skill").click(function () {
@@ -171,16 +190,13 @@ $(document).ready(function () {
         var statId = $("#skill-" + selectedSkill + "-name").children("option:selected").attr("data-stat");
         var statValue = getStatValue(statId);
         var skillValue = getSkillValue($(this).attr("data-skill"));
-        rollAndDisplay(statValue, skillValue, 0, 0);
+        var modifier = getValueById("skill", "modifier");
+
+        setAdHoc(statValue, skillValue, 0, modifier);
+        rollAdHoc();
     });
 
-    $(".adhoc button").click(function () {
-        var statValue = getStatValue("adhoc");
-        var skillValue = getSkillValue("adhoc");
-        var gearValue = getGearValue("adhoc");
-        var modifier = getValueById("adhoc", "modifier");
-        rollAndDisplay(statValue, skillValue + modifier, gearValue, 0);
-    });
+    $(".adhoc button").click(rollAdHoc);
 
     $(".roll-fight").click(function () {
         var statValue = getStatValue("strength");
@@ -188,7 +204,9 @@ $(document).ready(function () {
         var selectedWeaponIndex = $("input[name='selected-melee-weapon']:checked").val();
         var gearValue = getGearValue("weapon-melee-" + selectedWeaponIndex);
         var modifier = getValueById("fight", "modifier");
-        rollAndDisplay(statValue, skillValue + modifier, gearValue, 0);
+
+        setAdHoc(statValue, skillValue, gearValue, modifier);
+        rollAdHoc();
     });
 
     $(".roll-shoot").click(function () {
@@ -197,7 +215,9 @@ $(document).ready(function () {
         var selectedWeaponIndex = $("input[name='selected-ranged-weapon']:checked").val();
         var gearValue = getGearValue("weapon-ranged-" + selectedWeaponIndex);
         var modifier = parseInt($("#ranged-attack-distance").val()) + getValueById("shoot", "modifier");
-        rollAndDisplay(statValue, skillValue + modifier, gearValue, 0);
+
+        setAdHoc(statValue, skillValue, gearValue, modifier);
+        rollAdHoc();
     });
 
     $("#roll-initiative").click(function () {
