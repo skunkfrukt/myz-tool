@@ -3,7 +3,7 @@ dieGlyphs = {
     "skill": ["1️", "2️", "3️", "4️", "5️", "☢<sup>6</sup>"],
     "gear": ["✴<sup>1</sup>", "2️", "3️", "4️", "5️", "☢<sup>6</sup>"],
     "negative": ["1️", "2️", "3️", "4️", "5️", "☢<sup>6</sup>"],
-    "other": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"]
+    "other": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"]
 }
 
 function getModifiedStat(statId) {
@@ -158,14 +158,15 @@ $(document).ready(function () {
         rollAndDisplay(statValue, 0, 0, 0);
     });
 
-    $(".skill button").click(function () {
+    $("button.roll-skill").click(function () {
         var statValue = getStatValue($(this).attr("data-stat"));
         var skillValue = getSkillValue($(this).attr("data-skill"));
         rollAndDisplay(statValue, skillValue, 0, 0);
     });
 
-    $(".special-skill button").click(function () {
-        var statId = $(this).siblings("select").children("option:selected").attr("data-stat");
+    $("button.roll-special-skill").click(function () {
+        var selectedSkill = $(this).attr("data-skill");
+        var statId = $("#skill-" + selectedSkill + "-name").children("option:selected").attr("data-stat");
         var statValue = getStatValue(statId);
         var skillValue = getSkillValue($(this).attr("data-skill"));
         rollAndDisplay(statValue, skillValue, 0, 0);
@@ -198,6 +199,11 @@ $(document).ready(function () {
 
     $("#roll-initiative").click(function () {
         var agility = getStatValue("agility");
+
+        if ($("#experienced-fighter-plus2").is(":checked")) {
+            agility += 2;
+        }
+
         var rolls = [rollOne() + agility];
 
         if ($("#experienced-fighter").is(":checked")) {
