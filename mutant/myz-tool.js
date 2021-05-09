@@ -155,13 +155,15 @@ function loadData() {
 $(document).ready(function () {
     $("button.roll-stat").click(function () {
         var statValue = getStatValue($(this).attr("data-stat"));
-        rollAndDisplay(statValue, 0, 0, 0);
+        var modifier = getValueById("stat", "modifier");
+        rollAndDisplay(statValue, modifier, 0, 0);
     });
 
     $("button.roll-skill").click(function () {
         var statValue = getStatValue($(this).attr("data-stat"));
         var skillValue = getSkillValue($(this).attr("data-skill"));
-        rollAndDisplay(statValue, skillValue, 0, 0);
+        var modifier = getValueById("skill", "modifier");
+        rollAndDisplay(statValue, skillValue + modifier, 0, 0);
     });
 
     $("button.roll-special-skill").click(function () {
@@ -185,7 +187,8 @@ $(document).ready(function () {
         var skillValue = getSkillValue("fight");
         var selectedWeaponIndex = $("input[name='selected-melee-weapon']:checked").val();
         var gearValue = getGearValue("weapon-melee-" + selectedWeaponIndex);
-        rollAndDisplay(statValue, skillValue, gearValue, 0);
+        var modifier = getValueById("fight", "modifier");
+        rollAndDisplay(statValue, skillValue + modifier, gearValue, 0);
     });
 
     $(".roll-shoot").click(function () {
@@ -193,7 +196,7 @@ $(document).ready(function () {
         var skillValue = getSkillValue("shoot");
         var selectedWeaponIndex = $("input[name='selected-ranged-weapon']:checked").val();
         var gearValue = getGearValue("weapon-ranged-" + selectedWeaponIndex);
-        var modifier = parseInt($("#ranged-attack-distance").val());
+        var modifier = parseInt($("#ranged-attack-distance").val()) + getValueById("shoot", "modifier");
         rollAndDisplay(statValue, skillValue + modifier, gearValue, 0);
     });
 
