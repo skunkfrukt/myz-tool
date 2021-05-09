@@ -270,7 +270,7 @@ $(document).ready(function () {
         window.location.search = "?char=" + charName;
     });
 
-    $("#change-char-name").val(getCharName());
+    $("#change-char-name").val(decodeURIComponent(getCharName()));
 
     loadData();
 });
