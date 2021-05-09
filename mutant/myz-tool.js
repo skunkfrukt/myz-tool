@@ -1,8 +1,8 @@
 dieGlyphs = {
-    "base": ["☣", "2️", "3️", "4️", "5️", "☢"],
-    "skill": ["1️", "2️", "3️", "4️", "5️", "☢"],
-    "gear": ["✴", "2️", "3️", "4️", "5️", "☢"],
-    "negative": ["1️", "2️", "3️", "4️", "5️", "☢"],
+    "base": ["☣<sup>1</sup>", "2️", "3️", "4️", "5️", "☢<sup>6</sup>"],
+    "skill": ["1️", "2️", "3️", "4️", "5️", "☢<sup>6</sup>"],
+    "gear": ["✴<sup>1</sup>", "2️", "3️", "4️", "5️", "☢<sup>6</sup>"],
+    "negative": ["1️", "2️", "3️", "4️", "5️", "☢<sup>6</sup>"],
     "other": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"]
 }
 
@@ -45,7 +45,7 @@ function rollAll(base, skill, gear, other) {
 }
 
 function addDieGraphic(number, dieType) {
-    var dieGraphic = $('<span class="die"></span>').text(dieGlyphs[dieType][number - 1]).addClass("die-" + dieType);
+    var dieGraphic = $('<span class="die"></span>').html(dieGlyphs[dieType][number - 1]).addClass("die-" + dieType);
     $("#roll").append(dieGraphic);
 }
 
