@@ -265,5 +265,12 @@ $(document).ready(function () {
         }, true);
     });
 
+    $("#change-char").click(function () {
+        var charName = $("#change-char-name").val();
+        window.location.search = "?char=" + charName;
+    });
+
+    $("#change-char-name").val(getCharName());
+
     loadData();
 });
