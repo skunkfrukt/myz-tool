@@ -277,5 +277,9 @@ $(document).ready(function () {
         $("#change-char-name").val(decodeURIComponent(charName));
     }
 
+    $(".controlgroup-vertical").controlgroup({
+        "direction": "vertical"
+    });
+
     loadData();
 });
