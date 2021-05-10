@@ -270,6 +270,8 @@ $(document).ready(function () {
         window.location.search = "?char=" + charName;
     });
 
+    $("label input[type='checkbox']").checkboxradio();
+
     var charName = getCharName();
     if (charName) {
         $("#change-char-name").val(decodeURIComponent(charName));
