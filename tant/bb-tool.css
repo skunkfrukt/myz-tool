@@ -1,0 +1,72 @@
+#roll {
+    height: 60px;
+}
+
+.hidden {
+    display: none;
+}
+
+.color-base, .die-base {
+    background-color: yellow;
+    color: black;
+}
+
+.color-skill, .die-skill {
+    background-color: green;
+    color: white;
+}
+
+.color-gear, .die-gear {
+    background-color: #202020;
+    color: white;
+}
+
+.die, .mod {
+    text-align: center;
+    font-size: 40px;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    position: relative;
+}
+
+.die {
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: #202020;
+    color: white;
+}
+
+.die-negative {
+    background-color: red;
+}
+
+.gear {
+    padding-left: 10px;
+}
+
+.gear-name {
+    width: 100px;
+}
+
+.special-skill select {
+    display: inline-block;
+    width: 120px;
+}
+
+input.small {
+    width: 40px;
+}
+
+.save-load {
+    clear: both;
+    padding-top: 10px;
+}
+
+sup {
+    position: absolute;
+    top: -15px;
+    right: 3px;
+    font-size: 50%;
+}

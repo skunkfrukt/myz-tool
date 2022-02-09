@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Tantkrafs</title>
+    <meta charset="UTF-8" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css">
+    <!--<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+    <link rel="stylesheet" href="bb-tool.css" />
+    <script src="bb-tool.js"></script>
+</head>
+
+<body>
+    <div>
+        <div id="roll">
+            <span class="die">B</span>
+            <span class="die">B</span>
+            <span class="mod">🛠️</span>
+        </div>
+    </div>
+    <div>
+        <h3>Abilities</h3>
+        <div class="stats">
+            <table>
+                <tr>
+                    <td><label for="vitality">Vitality</label></td>
+                    <td><input id="vitality" class="saved small color-base" type="number" size="1" value="0" />
+                    </td>
+                    <td><button class="roll-btn" data-mod="vitality" data-dice="2">🎲🎲</button></td>
+                    <td><button class="roll-btn" data-mod="vitality" data-dice="3">🎲🎲🎲</button></td>
+                </tr>
+                <tr>
+                    <td><label for="composure">Composure</label></td>
+                    <td><input id="composure" class="saved small color-base" type="number" size="1" value="1" />
+                    </td>
+                    <td><button class="roll-btn" data-mod="composure" data-dice="2">🎲🎲</button></td>
+                    <td><button class="roll-btn" data-mod="composure" data-dice="3">🎲🎲🎲</button></td>
+                </tr>
+                <tr>
+                    <td><label for="reason">Reason</label></td>
+                    <td><input id="reason" class="saved small color-base" type="number" size="1" value="1" /></td>
+                    <td><button class="roll-btn" data-mod="reason" data-dice="2">🎲🎲</button></td>
+                    <td><button class="roll-btn" data-mod="reason" data-dice="3">🎲🎲🎲</button></td>
+                </tr>
+                <tr>
+                    <td><label for="presence">Presence</label></td>
+                    <td><input id="presence" class="saved small color-base" type="number" size="1" value="0" />
+                    </td>
+                    <td><button class="roll-btn" data-mod="presence" data-dice="2">🎲🎲</button></td>
+                    <td><button class="roll-btn" data-mod="presence" data-dice="3">🎲🎲🎲</button></td>
+                </tr>
+                <tr>
+                    <td><label for="sensitivity">Sensitivity</label></td>
+                    <td><input id="sensitivity" class="saved small color-base" type="number" size="1" value="-1" />
+                    </td>
+                    <td><button class="roll-btn" data-mod="sensitivity" data-dice="2">🎲🎲</button></td>
+                    <td><button class="roll-btn" data-mod="sensitivity" data-dice="3">🎲🎲🎲</button></td>
+                </tr>
+            </table>
+        </div>
+        <!--<h3>Clues</h3>
+        <div class="clues">
+        </div>-->
+    </div>
+</body>
+
+</html>
