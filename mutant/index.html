@@ -15,7 +15,9 @@
     <script src="myz-tool.js"></script>
     <script>
         $(document).ready(function () {
-            $("#tabs").tabs();
+            $("#tabs").tabs({
+                "disabled": [4, 5, 6]
+            });
         });
     </script>
 </head>
@@ -31,27 +33,13 @@
             <span class="die die-gear">Z</span>
             <span class="die die-other">🛠️</span>
         </div>
-        <div class="adhoc">
-            <label>Tärningar</label>
-            <input id="stat-adhoc" class="small color-base" type="number" size="1" title="Grundegenskap" />
-            <input id="skill-adhoc" class="small color-skill" type="number" size="1" title="Färdighet" />
-            <input id="gear-adhoc" class="small color-gear" type="number" size="1" title="Pryl" />
-            <label for="modifier-adhoc">Modifikation</label>
-            <input id="modifier-adhoc" class="small" type="number" size="1" />
-            <button class="roll-adhoc" data-statref="#stat-adhoc" data-skillref="#skill-adhoc" data-gear="adhoc">🎲
-                Slå</button>
-            <button id="rerollButton" onclick="rerollAndDisplay();" disabled>⚠️ Pressa</button>
-        </div>
         <p>
-            <button class="roll-quick" data-amount="1">1🎲</button>
-            <button class="roll-quick" data-amount="2">2🎲</button>
-            <button class="roll-quick" data-amount="3">3🎲</button>
-            <button class="roll-quick" data-amount="4">4🎲</button>
-            <button class="roll-quick" data-amount="5">5🎲</button>
+            <button id="rerollButton" onclick="rerollAndDisplay();" disabled>⚠️ Pressa</button>
         </p>
     </div>
     <div id="tabs">
         <ul>
+            <li><a href="#tab-dice" title="Tärningar">&#127922;</a></li>
             <li><a href="#tab-stats" title="Grundegenskaper">&#x1F464;</a></li>
             <li><a href="#tab-skills" title="Färdigheter">&#x1F393;</a></li>
             <li><a href="#tab-combat" title="Strid & Vapen">&#x2694;&#xFE0F;</a></li>
@@ -345,64 +333,71 @@
                             </select></td>
                         <td data-toggled-by="#skill-special-2-name" data-active-for-value="Bussa på (KYL)">
                             <input id="skill-animal-handling-agi-2" class="saved small color-skill" type="number"
-                                size="1" />
+                                size="1" data-name="Bussa på" />
                         </td>
                         <td data-toggled-by="#skill-special-2-name" data-active-for-value="Bussa på (KYL)">
                             <button class="roll-skill" data-statref="#stat-agility"
                                 data-skillref="#skill-animal-handling-agi-2" data-modref="#modifier-skill">🎲</button>
                         </td>
                         <td data-toggled-by="#skill-special-2-name" data-active-for-value="Bussa på">
-                            <input id="skill-animal-handling-2" class="saved small color-skill" type="number"
-                                size="1" />
+                            <input id="skill-animal-handling-2" class="saved small color-skill" type="number" size="1"
+                                data-name="Bussa på" />
                         </td>
                         <td data-toggled-by="#skill-special-2-name" data-active-for-value="Bussa på">
                             <button class="roll-skill" data-statref="#stat-wits"
                                 data-skillref="#skill-animal-handling-2" data-modref="#modifier-skill">🎲</button>
                         </td>
                         <td data-toggled-by="#skill-special-2-name" data-active-for-value="Inspirera">
-                            <input id="skill-inspire-2" class="saved small color-skill" type="number" size="1" />
+                            <input id="skill-inspire-2" class="saved small color-skill" type="number" size="1"
+                                data-name="Inspirera" />
                         </td>
                         <td data-toggled-by="#skill-special-2-name" data-active-for-value="Inspirera">
                             <button class="roll-skill" data-statref="#stat-empathy" data-skillref="#skill-inspire-2"
                                 data-modref="#modifier-skill">🎲</button>
                         </td>
                         <td data-toggled-by="#skill-special-2-name" data-active-for-value="Kommendera">
-                            <input id="skill-command-2" class="saved small color-skill" type="number" size="1" />
+                            <input id="skill-command-2" class="saved small color-skill" type="number" size="1"
+                                data-name="Kommendera" />
                         </td>
                         <td data-toggled-by="#skill-special-2-name" data-active-for-value="Kommendera">
                             <button class="roll-skill" data-statref="#stat-empathy" data-skillref="#skill-command-2"
                                 data-modref="#modifier-skill">🎲</button>
                         </td>
                         <td data-toggled-by="#skill-special-2-name" data-active-for-value="Leda vägen">
-                            <input id="skill-navigate-2" class="saved small color-skill" type="number" size="1" />
+                            <input id="skill-navigate-2" class="saved small color-skill" type="number" size="1"
+                                data-name="Leda vägen" />
                         </td>
                         <td data-toggled-by="#skill-special-2-name" data-active-for-value="Leda vägen">
                             <button class="roll-skill" data-statref="#stat-agility" data-skillref="#skill-navigate-2"
                                 data-modref="#modifier-skill">🎲</button>
                         </td>
                         <td data-toggled-by="#skill-special-2-name" data-active-for-value="Mecka">
-                            <input id="skill-tinker-2" class="saved small color-skill" type="number" size="1" />
+                            <input id="skill-tinker-2" class="saved small color-skill" type="number" size="1"
+                                data-name="Mecka" />
                         </td>
                         <td data-toggled-by="#skill-special-2-name" data-active-for-value="Mecka">
                             <button class="roll-skill" data-statref="#stat-wits" data-skillref="#skill-tinker-2"
                                 data-modref="#modifier-skill">🎲</button>
                         </td>
                         <td data-toggled-by="#skill-special-2-name" data-active-for-value="Mucka">
-                            <input id="skill-intimidate-2" class="saved small color-skill" type="number" size="1" />
+                            <input id="skill-intimidate-2" class="saved small color-skill" type="number" size="1"
+                                data-name="Mucka" />
                         </td>
                         <td data-toggled-by="#skill-special-2-name" data-active-for-value="Mucka">
                             <button class="roll-skill" data-statref="#stat-strength" data-skillref="#skill-intimidate-2"
                                 data-modref="#modifier-skill">🎲</button>
                         </td>
                         <td data-toggled-by="#skill-special-2-name" data-active-for-value="Schackra">
-                            <input id="skill-scrounge-2" class="saved small color-skill" type="number" size="1" />
+                            <input id="skill-scrounge-2" class="saved small color-skill" type="number" size="1"
+                                data-name="Schackra" />
                         </td>
                         <td data-toggled-by="#skill-special-2-name" data-active-for-value="Schackra">
                             <button class="roll-skill" data-statref="#stat-empathy" data-skillref="#skill-scrounge-2"
                                 data-modref="#modifier-skill">🎲</button>
                         </td>
                         <td data-toggled-by="#skill-special-2-name" data-active-for-value="Uthärda">
-                            <input id="skill-endure-2" class="saved small color-skill" type="number" size="1" />
+                            <input id="skill-endure-2" class="saved small color-skill" type="number" size="1"
+                                data-name="Uthärda" />
                         </td>
                         <td data-toggled-by="#skill-special-2-name" data-active-for-value="Uthärda">
                             <button class="roll-skill" data-statref="#stat-agility" data-skillref="#skill-endure-2"
@@ -437,14 +432,17 @@
                         <div class="melee-weapon">
                             <input type="radio" name="selected-melee-weapon" value="0" />
                             <label for="gear-weapon-melee-0">Obeväpnad</label>
-                            <input id="gear-weapon-melee-0" class="small" type="hidden" value="0" />
+                            <input type="hidden" id="gear-weapon-melee-0-name" value="Obeväpnad" />
+                            <input id="gear-weapon-melee-0" class="small" type="hidden" value="0"
+                                data-nameref="#gear-weapon-melee-0-name" />
                         </div>
                         <div class="melee-weapon">
                             <input type="radio" name="selected-melee-weapon" checked value="1" />
                             <label for="gear-weapon-melee-1-name">Vapen 1:</label>
                             <input id="gear-weapon-melee-1-name" class="saved gear-name" />
                             <label for="gear-weapon-melee-1">Bonus</label>
-                            <input id="gear-weapon-melee-1" class="saved small color-gear" type="number" size="1" />
+                            <input id="gear-weapon-melee-1" class="saved small color-gear" type="number" size="1"
+                                data-nameref="#gear-weapon-melee-1-name" />
                             <label for="gear-weapon-melee-1-damage">Skada</label>
                             <input id="gear-weapon-melee-1-damage" class="saved small" type="number" size="1" />
                         </div>
@@ -453,7 +451,8 @@
                             <label for="gear-weapon-melee-2-name">Vapen 2:</label>
                             <input id="gear-weapon-melee-2-name" class="saved gear-name" />
                             <label for="gear-weapon-melee-2">Bonus</label>
-                            <input id="gear-weapon-melee-2" class="saved small color-gear" type="number" size="1" />
+                            <input id="gear-weapon-melee-2" class="saved small color-gear" type="number" size="1"
+                                data-nameref="#gear-weapon-melee-2-name" />
                             <label for="gear-weapon-melee-2-damage">Skada</label>
                             <input id="gear-weapon-melee-2-damage" class="saved small" type="number" size="1" />
                         </div>
@@ -462,13 +461,13 @@
                             <label for="gear-weapon-melee-3-name">Vapen 3:</label>
                             <input id="gear-weapon-melee-3-name" class="saved gear-name" />
                             <label for="gear-weapon-melee-3">Bonus</label>
-                            <input id="gear-weapon-melee-3" class="saved small color-gear" type="number" size="1" />
+                            <input id="gear-weapon-melee-3" class="saved small color-gear" type="number" size="1"
+                                data-nameref="#gear-weapon-melee-3-name" />
                             <label for="gear-weapon-melee-3-damage">Skada</label>
                             <input id="gear-weapon-melee-3-damage" class="saved small" type="number" size="1" />
                         </div>
                         <div>
-                            <button class="roll-fight" data-statref="#stat-strength" data-skillref="#skill-fight">🎲
-                                Slåss</button>
+                            <button class="roll-fight">🎲 Slåss</button>
                             <input id="modifier-fight" class="small" type="number" />
                             <label for="modifier-fight">Modifikation</label>
                         </div>
@@ -483,7 +482,8 @@
                             <label for="gear-weapon-ranged-1-name">Vapen 1:</label>
                             <input id="gear-weapon-ranged-1-name" class="saved gear-name" />
                             <label for="gear-weapon-ranged-1">Bonus</label>
-                            <input id="gear-weapon-ranged-1" class="saved small color-gear" type="number" size="1" />
+                            <input id="gear-weapon-ranged-1" class="saved small color-gear" type="number" size="1"
+                                data-nameref="#gear-weapon-ranged-1-name" />
                             <label for="gear-weapon-ranged-1-damage">Skada</label>
                             <input id="gear-weapon-ranged-1-damage" class="saved small" type="number" size="1" />
                         </div>
@@ -492,7 +492,8 @@
                             <label for="gear-weapon-ranged-2-name">Vapen 2:</label>
                             <input id="gear-weapon-ranged-2-name" class="saved gear-name" />
                             <label for="gear-weapon-ranged-2">Bonus</label>
-                            <input id="gear-weapon-ranged-2" class="saved small color-gear" type="number" size="1" />
+                            <input id="gear-weapon-ranged-2" class="saved small color-gear" type="number" size="1"
+                                data-nameref="#gear-weapon-ranged-2-name" />
                             <label for="gear-weapon-ranged-2-damage">Skada</label>
                             <input id="gear-weapon-ranged-2-damage" class="saved small" type="number" size="1" />
                         </div>
@@ -501,7 +502,8 @@
                             <label for="gear-weapon-ranged-3-name">Vapen 3:</label>
                             <input id="gear-weapon-ranged-3-name" class="saved gear-name" />
                             <label for="gear-weapon-ranged-3">Bonus</label>
-                            <input id="gear-weapon-ranged-3" class="saved small color-gear" type="number" size="1" />
+                            <input id="gear-weapon-ranged-3" class="saved small color-gear" type="number" size="1"
+                                data-nameref="#gear-weapon-ranged-3-name" />
                             <label for="gear-weapon-ranged-3-damage">Skada</label>
                             <input id="gear-weapon-ranged-3-damage" class="saved small" type="number" size="1" />
                         </div>
@@ -520,6 +522,7 @@
                         <div>
                             <button class="roll-shoot" data-statref="#stat-agility" data-skillref="#skill-shoot">🎲
                                 Skjuta</button>
+                            <input type="hidden" id="modifier-shoot-total" />
                             <input id="modifier-shoot" class="small" type="number" />
                             <label for="modifier-shoot">Modifikation</label>
                         </div>
@@ -841,6 +844,27 @@
             <div>
                 <textarea id="notes" class="saved"></textarea>
             </div>
+        </div>
+        <div id="tab-dice">
+            <h3>Tärningar</h3>
+            <div class="adhoc">
+                <label>Tärningar</label>
+                <input id="stat-adhoc" class="small color-base" type="number" size="1" title="Grundegenskap" />
+                <input id="skill-adhoc" class="small color-skill" type="number" size="1" title="Färdighet" />
+                <input id="gear-adhoc" class="small color-gear" type="number" size="1" title="Pryl" />
+                <label for="modifier-adhoc">Modifikation</label>
+                <input id="modifier-adhoc" class="small" type="number" size="1" />
+                <button class="roll-adhoc" data-statref="#stat-adhoc" data-skillref="#skill-adhoc" data-gear="adhoc">🎲
+                    Slå</button>
+            </div>
+            <p>
+                <button class="roll-quick" data-amount="1">1🎲</button>
+                <button class="roll-quick" data-amount="2">2🎲</button>
+                <button class="roll-quick" data-amount="3">3🎲</button>
+                <button class="roll-quick" data-amount="4">4🎲</button>
+                <button class="roll-quick" data-amount="5">5🎲</button>
+                <button class="roll-quick" data-amount="100">100🎲</button>
+            </p>
         </div>
     </div>
     <div class="save-load">

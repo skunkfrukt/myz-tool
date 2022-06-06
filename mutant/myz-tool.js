@@ -70,7 +70,7 @@ function displayResult(result, clear) {
         $("#rerollButton").prop("disabled", !result.rerollable)
     }
 
-    var text = "Slag #" + ++rollNumber;
+    var text = "#" + ++rollNumber;
     if (result.description) {
         text += ": " + result.description;
     }
@@ -135,14 +135,6 @@ function getStatValue(statId) {
     return getModifiedStat(statId);
 }
 
-function getSkillValue(skillId) {
-    return getValueById(skillId, "skill");
-}
-
-function getGearValue(gearId) {
-    return getValueById(gearId, "gear");
-}
-
 function getCharName() {
     return getQuery()["char"];
 }
@@ -186,12 +178,20 @@ function setAdHoc(stat, skill, gear, modifier) {
     $("#modifier-adhoc").val(modifier);
 }
 
-function rollAdHoc(description = null) {
-    var statValue = getStatValue("adhoc");
-    var skillValue = getSkillValue("adhoc");
-    var gearValue = getGearValue("adhoc");
-    var modifier = getValueById("adhoc", "modifier");
-    rollAndDisplay(statValue, skillValue + modifier, gearValue, 0);
+function rollAdHoc() {
+    var statValue = intValueOfField("#stat-adhoc");
+    var skillValue = intValueOfField("#skill-adhoc");
+    var gearValue = intValueOfField("#gear-adhoc");
+    var modifier = intValueOfField("#modifier-adhoc");
+
+    var description = "[";
+    description += '<span class="stat-value">' + statValue + "T6</span>";
+    description += ' + <span class="skill-value">' + skillValue + "T6</span>";
+    description += describeModField("#modifier-adhoc");
+    description += ' + <span class="gear-value">' + gearValue + "T6</span>";
+    description += "]";
+
+    rollAndDisplay(statValue, skillValue + modifier, gearValue, 0, description);
 }
 
 function getQuery() {
@@ -222,6 +222,7 @@ function rollStat(statField, modField) {
     description += "]";
 
     rollAndDisplay(modifiedStatValue, modValue, 0, 0, description);
+    $(modField).val("");
 }
 
 function rollSkill(statField, skillField, modField) {
@@ -243,6 +244,34 @@ function rollSkill(statField, skillField, modField) {
     description += "]";
 
     rollAndDisplay(modifiedStatValue, modifiedSkillValue, 0, 0, description);
+    $(modField).val("");
+}
+
+function rollGear(statField, skillField, gearField, modField) {
+    var statValue = intValueOfField(statField);
+    var damageField = $(statField).attr("data-traumaref");
+    var damageValue = intValueOfField(damageField);
+    var modifiedStatValue = statValue - damageValue;
+
+    var skillValue = intValueOfField(skillField);
+    var skillName = $(skillField).attr("data-name");
+
+    var modValue = intValueOfField(modField);
+    var modifiedSkillValue = skillValue + modValue;
+
+    var gearValue = intValueOfField(gearField);
+    var gearNameField = $(gearField).attr("data-nameref");
+    var gearName = $(gearNameField).val();
+
+    var statAbbr = $(statField).attr("data-abbr");
+    var description = skillName + ' [<span class="stat-value">' + modifiedStatValue + "T6 (" + statAbbr + ")</span>";
+    description += ' + <span class="skill-value">' + skillValue + "T6 (" + skillName + ")</span>";
+    description += describeModField(modField);
+    description += ' + <span class="gear-value">' + gearValue + "T6 (" + gearName + ")</span>"
+    description += "]";
+
+    rollAndDisplay(modifiedStatValue, modifiedSkillValue, gearValue, 0, description);
+    $(modField).val("");
 }
 
 function describeModField(modField) {
@@ -254,6 +283,14 @@ function describeModField(modField) {
     } else {
         return ' - <span class="mod-value-negative">' + Math.abs(modValue) + "T6 (mod)</span>";
     }
+}
+
+function calculateTotalShootModifier() {
+    var modifier = intValueOfField("#modifier-shoot");
+    var rangeModifier = intValueOfField("#ranged-attack-distance");
+    var aimModifier = $("#aim").is(":checked") ? 1 : 0;
+
+    $("#modifier-shoot-total").val(modifier + rangeModifier + aimModifier);
 }
 
 $(document).ready(function () {
@@ -272,45 +309,28 @@ $(document).ready(function () {
         rollSkill(statField, skillField, modField);
     });
 
-    $("button.roll-special-skill").click(function () {
-        var selectedSkill = $(this).attr("data-skill");
-        var statId = $("#skill-" + selectedSkill + "-name").children("option:selected").attr("data-stat");
-        var statValue = getStatValue(statId);
-        var skillValue = getSkillValue($(this).attr("data-skill"));
-        var modifier = getValueById("skill", "modifier");
-
-        setAdHoc(statValue, skillValue, 0, modifier);
-        rollAdHoc();
-    });
-
     $("button.roll-adhoc").click(rollAdHoc);
 
     $(".roll-fight").click(function () {
-        var statValue = getStatValue("strength");
-        var skillValue = getSkillValue("fight");
         var selectedWeaponIndex = $("input[name='selected-melee-weapon']:checked").val();
-        var gearValue = getGearValue("weapon-melee-" + selectedWeaponIndex);
-        var modifier = getValueById("fight", "modifier");
+        var gearField = "#gear-weapon-melee-" + selectedWeaponIndex;
 
-        setAdHoc(statValue, skillValue, gearValue, modifier);
-        rollAdHoc();
+        rollGear("#stat-strength", "#skill-fight", gearField, "#modifier-fight");
     });
 
     $(".roll-shoot").click(function () {
-        var statValue = getStatValue("agility");
-        var skillValue = getSkillValue("shoot");
-        var selectedWeaponIndex = $("input[name='selected-ranged-weapon']:checked").val();
-        var gearValue = getGearValue("weapon-ranged-" + selectedWeaponIndex);
-        var modifier = parseInt($("#ranged-attack-distance").val()) + getValueById("shoot", "modifier");
+        calculateTotalShootModifier();
 
-        setAdHoc(statValue, skillValue, gearValue, modifier);
-        rollAdHoc();
+        var selectedWeaponIndex = $("input[name='selected-ranged-weapon']:checked").val();
+        var gearField = "#gear-weapon-ranged-" + selectedWeaponIndex;
+
+        rollGear("#stat-agility", "#skill-shoot", gearField, "#modifier-shoot-total");
     });
 
     $("#roll-initiative").click(function () {
         var agility = getStatValue("agility");
 
-        var description = "Initiativ [1T6 + " + agility + " (Kyl)";
+        var description = 'Initiativ [1T6 + <span class="stat-value">' + agility + " (Kyl)</span>";
 
         if ($("#experienced-fighter-plus2").is(":checked")) {
             agility += 2;
@@ -333,8 +353,8 @@ $(document).ready(function () {
 
     $(".roll-quick").click(function () {
         var number = parseInt($(this).attr("data-amount"));
-        setAdHoc(number, 0, 0, 0);
-        rollAdHoc();
+
+        rollAndDisplay(number, 0, 0, 0, "[" + number + "T6]");
     });
 
     $("label input[type='checkbox']").checkboxradio();
