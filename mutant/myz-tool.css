@@ -34,7 +34,7 @@
 }
 
 .die-negative {
-    background-color: red;
+    background-color: #c00;
 }
 
 .gear {
@@ -64,4 +64,28 @@ sup {
     top: -15px;
     right: 3px;
     font-size: 50%;
+}
+
+[data-toggled-by]:not(.active) {
+    display: none;
+}
+
+.stat-value {
+    font-weight: bold;
+    color: #c80;
+}
+
+.skill-value {
+    font-weight: bold;
+    color: #080;
+}
+
+.mod-value-positive {
+    font-weight: bold;
+    color: #080;
+}
+
+.mod-value-negative {
+    font-weight: bold;
+    color: #c00;
 }

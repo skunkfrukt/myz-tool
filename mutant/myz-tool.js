@@ -74,7 +74,7 @@ function displayResult(result, clear) {
     if (result.description) {
         text += ": " + result.description;
     }
-    $("#roll-desc").text(text);
+    $("#roll-desc").html(text);
 }
 
 function rollAndDisplay(base, skill, gear, other, description = null) {
@@ -217,7 +217,7 @@ function rollStat(statField, modField) {
 
     var statName = $(statField).attr("data-name");
     var statAbbr = $(statField).attr("data-abbr");
-    var description = statName + " [" + modifiedStatValue + "T6 (" + statAbbr + ")";
+    var description = statName + ' [<span class="stat-value">' + modifiedStatValue + "T6 (" + statAbbr + ")</span>";
     description += describeModField(modField);
     description += "]";
 
@@ -237,8 +237,8 @@ function rollSkill(statField, skillField, modField) {
     var modifiedSkillValue = skillValue + modValue;
 
     var statAbbr = $(statField).attr("data-abbr");
-    var description = skillName + " [" + modifiedStatValue + "T6 (" + statAbbr + ")";
-    description += " + " + skillValue + "T6 (" + skillName + ")";
+    var description = skillName + ' [<span class="stat-value">' + modifiedStatValue + "T6 (" + statAbbr + ")</span>";
+    description += ' + <span class="skill-value">' + skillValue + "T6 (" + skillName + ")</span>";
     description += describeModField(modField);
     description += "]";
 
@@ -250,9 +250,9 @@ function describeModField(modField) {
     if (modValue === 0) {
         return "";
     } else if (modValue > 0) {
-        return " + " + modValue + "T6 (mod)";
+        return ' + <span class="mod-value-positive">' + modValue + "T6 (mod)</span>";
     } else {
-        return " - " + Math.abs(modValue) + "T6 (mod)";
+        return ' - <span class="mod-value-negative">' + Math.abs(modValue) + "T6 (mod)</span>";
     }
 }
 
@@ -346,6 +346,14 @@ $(document).ready(function () {
 
     $(".controlgroup-vertical").controlgroup({
         "direction": "vertical"
+    });
+
+    $(".select-special-skill").change(function () {
+        var idOfThis = $(this).attr("id");
+        var valueOfThis = $(this).val();
+        var allToggledFieldsSelector = "[data-toggled-by='#" + idOfThis + "']";
+        $(allToggledFieldsSelector).removeClass("active");
+        $(allToggledFieldsSelector + "[data-active-for-value='" + valueOfThis + "']").addClass("active");
     });
 
     loadData();
