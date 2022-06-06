@@ -6,6 +6,8 @@ dieGlyphs = {
     "other": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"]
 }
 
+var rollNumber = 0;
+
 function getModifiedStat(statId) {
     var stat = getValueById(statId, "stat");
     var trauma = getValueById(statId, "trauma");
@@ -31,14 +33,15 @@ function roll(numDice) {
     return dice
 }
 
-function rollAll(base, skill, gear, other) {
+function rollAll(base, skill, gear, other, description = null) {
     result = {
         "base": roll(base),
         "skill": skill >= 0 ? roll(skill) : [],
         "gear": roll(gear),
         "negative": skill < 0 ? roll(-skill) : [],
         "other": roll(other),
-        "rerollable": true
+        "rerollable": true,
+        "description": description
     }
     return result;
 }
@@ -66,10 +69,16 @@ function displayResult(result, clear) {
 
         $("#rerollButton").prop("disabled", !result.rerollable)
     }
+
+    var text = "Slag #" + ++rollNumber;
+    if (result.description) {
+        text += ": " + result.description;
+    }
+    $("#roll-desc").text(text);
 }
 
-function rollAndDisplay(base, skill, gear, other) {
-    var result = rollAll(base, skill, gear, other);
+function rollAndDisplay(base, skill, gear, other, description = null) {
+    var result = rollAll(base, skill, gear, other, description);
     displayResult(result, true);
     window.lastRoll = result;
 }
@@ -92,12 +101,11 @@ function rerollByDieType(dice, dieType) {
             newDice.push(rollOne());
         }
     }
-    sortDescending(newDice);
     return newDice;
 }
 
 function reroll(previousResult) {
-    return {
+    var result = {
         "base": rerollByDieType(previousResult.base, "base"),
         "skill": rerollByDieType(previousResult.skill, "skill"),
         "gear": rerollByDieType(previousResult.gear, "gear"),
@@ -105,14 +113,22 @@ function reroll(previousResult) {
         "other": rerollByDieType(previousResult.other, "other"),
         "rerollable": false
     };
+    if (previousResult.description) {
+        result.description = "PRESSA: " + previousResult.description;
+    } else {
+        result.description = "PRESSA";
+    }
+    return result;
+}
+
+function intValueOfField(selector) {
+    var rawValue = $(selector).val();
+    var parsedValue = parseInt(rawValue);
+    return isNaN(parsedValue) ? 0 : parsedValue;
 }
 
 function getValueById(valueId, prefix) {
-    if (valueId) {
-        var parsedValue = parseInt($("#" + prefix + "-" + valueId).val());
-        return isNaN(parsedValue) ? 0 : parsedValue;
-    }
-    return 0;
+    return valueId ? intValueOfField("#" + prefix + "-" + valueId) : 0;
 }
 
 function getStatValue(statId) {
@@ -170,7 +186,7 @@ function setAdHoc(stat, skill, gear, modifier) {
     $("#modifier-adhoc").val(modifier);
 }
 
-function rollAdHoc() {
+function rollAdHoc(description = null) {
     var statValue = getStatValue("adhoc");
     var skillValue = getSkillValue("adhoc");
     var gearValue = getGearValue("adhoc");
@@ -191,22 +207,69 @@ function getQuery() {
     return output;
 }
 
+function rollStat(statField, modField) {
+    var statValue = intValueOfField(statField);
+    var damageField = $(statField).attr("data-traumaref");
+    var damageValue = intValueOfField(damageField);
+    var modifiedStatValue = statValue - damageValue;
+
+    var modValue = intValueOfField(modField);
+
+    var statName = $(statField).attr("data-name");
+    var statAbbr = $(statField).attr("data-abbr");
+    var description = statName + " [" + modifiedStatValue + "T6 (" + statAbbr + ")";
+    description += describeModField(modField);
+    description += "]";
+
+    rollAndDisplay(modifiedStatValue, modValue, 0, 0, description);
+}
+
+function rollSkill(statField, skillField, modField) {
+    var statValue = intValueOfField(statField);
+    var damageField = $(statField).attr("data-traumaref");
+    var damageValue = intValueOfField(damageField);
+    var modifiedStatValue = statValue - damageValue;
+
+    var skillValue = intValueOfField(skillField);
+    var skillName = $(skillField).attr("data-name");
+
+    var modValue = intValueOfField(modField);
+    var modifiedSkillValue = skillValue + modValue;
+
+    var statAbbr = $(statField).attr("data-abbr");
+    var description = skillName + " [" + modifiedStatValue + "T6 (" + statAbbr + ")";
+    description += " + " + skillValue + "T6 (" + skillName + ")";
+    description += describeModField(modField);
+    description += "]";
+
+    rollAndDisplay(modifiedStatValue, modifiedSkillValue, 0, 0, description);
+}
+
+function describeModField(modField) {
+    var modValue = intValueOfField(modField);
+    if (modValue === 0) {
+        return "";
+    } else if (modValue > 0) {
+        return " + " + modValue + "T6 (mod)";
+    } else {
+        return " - " + Math.abs(modValue) + "T6 (mod)";
+    }
+}
+
 $(document).ready(function () {
     $("button.roll-stat").click(function () {
-        var statValue = getStatValue($(this).attr("data-stat"));
-        var modifier = getValueById("stat", "modifier");
+        var statField = $(this).attr("data-statref");
+        var modField = $(this).attr("data-modref");
 
-        setAdHoc(statValue, 0, 0, modifier);
-        rollAdHoc();
+        rollStat(statField, modField);
     });
 
     $("button.roll-skill").click(function () {
-        var statValue = getStatValue($(this).attr("data-stat"));
-        var skillValue = getSkillValue($(this).attr("data-skill"));
-        var modifier = getValueById("skill", "modifier");
+        var statField = $(this).attr("data-statref");
+        var skillField = $(this).attr("data-skillref");
+        var modField = $(this).attr("data-modref");
 
-        setAdHoc(statValue, skillValue, 0, modifier);
-        rollAdHoc();
+        rollSkill(statField, skillField, modField);
     });
 
     $("button.roll-special-skill").click(function () {
@@ -220,7 +283,7 @@ $(document).ready(function () {
         rollAdHoc();
     });
 
-    $(".adhoc button").click(rollAdHoc);
+    $("button.roll-adhoc").click(rollAdHoc);
 
     $(".roll-fight").click(function () {
         var statValue = getStatValue("strength");
@@ -247,18 +310,19 @@ $(document).ready(function () {
     $("#roll-initiative").click(function () {
         var agility = getStatValue("agility");
 
+        var description = "Initiativ [1T6 + " + agility + " (Kyl)";
+
         if ($("#experienced-fighter-plus2").is(":checked")) {
             agility += 2;
+            description += " + 2 (Stridsvan)";
         }
 
         var rolls = [rollOne() + agility];
 
-        if ($("#experienced-fighter").is(":checked")) {
-            rolls.push(rollOne() + agility);
-        }
+        description += "]";
 
         displayResult({
-            "base": [], "skill": [], "gear": [], "other": rolls, "negative": [], "rerollable": false
+            "base": [], "skill": [], "gear": [], "other": rolls, "negative": [], "rerollable": false, "description": description
         }, true);
     });
 

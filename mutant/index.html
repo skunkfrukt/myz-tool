@@ -22,6 +22,9 @@
 
 <body>
     <div>
+        <p>
+            <span id="roll-desc">&nbsp;</span>
+        </p>
         <div id="roll">
             <span class="die die-base">M</span>
             <span class="die die-skill">Y</span>
@@ -35,7 +38,8 @@
             <input id="gear-adhoc" class="small color-gear" type="number" size="1" title="Pryl" />
             <label for="modifier-adhoc">Modifikation</label>
             <input id="modifier-adhoc" class="small" type="number" size="1" />
-            <button class="roll-button" data-stat="adhoc" data-skill="adhoc" data-gear="adhoc">🎲 Slå</button>
+            <button class="roll-adhoc" data-statref="#stat-adhoc" data-skillref="#skill-adhoc" data-gear="adhoc">🎲
+                Slå</button>
             <button id="rerollButton" onclick="rerollAndDisplay();" disabled>⚠️ Pressa</button>
         </div>
         <p>
@@ -50,7 +54,7 @@
         <ul>
             <li><a href="#tab-stats" title="Grundegenskaper">&#x1F464;</a></li>
             <li><a href="#tab-skills" title="Färdigheter">&#x1F393;</a></li>
-            <li><a href="#tab-combat" title="Vapen & Strid">&#x2694;&#xFE0F;</a></li>
+            <li><a href="#tab-combat" title="Strid & Vapen">&#x2694;&#xFE0F;</a></li>
         </ul>
         <div id="tab-stats">
             <h3>Grundegenskaper</h3>
@@ -58,35 +62,43 @@
                 <table>
                     <tr>
                         <td><label for="stat-strength">Styrka</label></td>
-                        <td><input id="stat-strength" class="saved small color-base" type="number" size="1" /></td>
+                        <td><input id="stat-strength" class="saved small color-base" type="number" size="1"
+                                data-name="Styrka" data-abbr="STY" data-traumaref="#trauma-strength" /></td>
                         <td>-</td>
                         <td><input id="trauma-strength" class="saved small" type="number" size="1" /></td>
                         <td><label for="trauma-strength">Skada</label></td>
-                        <td><button class="roll-stat" data-stat="strength">🎲</button></td>
+                        <td><button class="roll-stat" data-statref="#stat-strength"
+                                data-modref="#modifier-stat">🎲</button></td>
                     </tr>
                     <tr>
                         <td><label for="stat-agility">Kyla</label></td>
-                        <td><input id="stat-agility" class="saved small color-base" type="number" size="1" /></td>
+                        <td><input id="stat-agility" class="saved small color-base" type="number" size="1"
+                                data-name="Kyla" data-abbr="KYL" data-traumaref="#trauma-agility" /></td>
                         <td>-</td>
                         <td><input id="trauma-agility" class="saved small" type="number" size="1" /></td>
                         <td><label for="trauma-agility">Stress</label></td>
-                        <td><button class="roll-stat" data-stat="agility">🎲</button></td>
+                        <td><button class="roll-stat" data-statref="#stat-agility"
+                                data-modref="#modifier-stat">🎲</button></td>
                     </tr>
                     <tr>
                         <td><label for="stat-wits">Skärpa</label></td>
-                        <td><input id="stat-wits" class="saved small color-base" type="number" size="1" /> </td>
+                        <td><input id="stat-wits" class="saved small color-base" type="number" size="1"
+                                data-name="Skärpa" data-abbr="SKP" data-traumaref="#trauma-wits" /> </td>
                         <td>-</td>
                         <td><input id="trauma-wits" class="saved small" type="number" size="1" /></td>
                         <td><label for="trauma-wits">Förvirring</label></td>
-                        <td><button class="roll-stat" data-stat="wits">🎲</button></td>
+                        <td><button class="roll-stat" data-statref="#stat-wits" data-modref="#modifier-stat">🎲</button>
+                        </td>
                     </tr>
                     <tr>
                         <td><label for="stat-empathy">Känsla</label></td>
-                        <td><input id="stat-empathy" class="saved small color-base" type="number" size="1" /></td>
+                        <td><input id="stat-empathy" class="saved small color-base" type="number" size="1"
+                                data-name="Känsla" data-abbr="KNS" data-traumaref="#trauma-empathy" /></td>
                         <td>-</td>
                         <td><input id="trauma-empathy" class="saved small" type="number" size="1" /></td>
                         <td><label for="trauma-empathy">Tvivel</label></td>
-                        <td><button class="roll-stat" data-stat="empathy">🎲</button></td>
+                        <td><button class="roll-stat" data-statref="#stat-empathy"
+                                data-modref="#modifier-stat">🎲</button></td>
                     </tr>
                     <tr>
                         <td colspan="5">
@@ -99,11 +111,6 @@
                         <td><label for="modifier-stat">Modifikation</label></td>
                     </tr>
                 </table>
-                <div>
-
-
-                </div>
-                <!--todo modification-->
             </div>
         </div>
         <div id="tab-skills">
@@ -112,145 +119,177 @@
                 <table>
                     <tr>
                         <td> <label for="skill-endure">Kämpa på (Sty)</label> </td>
-                        <td> <input id="skill-endure" class="saved small color-skill" type="number" size="1" /> </td>
-                        <td> <button class="roll-skill" data-stat="strength" data-skill="endure">🎲</button> </td>
+                        <td> <input id="skill-endure" class="saved small color-skill" type="number" size="1"
+                                data-name="Kämpa på" /> </td>
+                        <td> <button class="roll-skill" data-statref="#stat-strength" data-skillref="#skill-endure"
+                                data-modref="#modifier-skill">🎲</button> </td>
                     </tr>
                     <tr class="hidden">
                         <td><label for="skill-endure">Kämpa på (Kyl)</label></td>
                         <td></td>
-                        <td><button class="roll-skill" data-stat="agility" data-skill="endure">🎲</button></td>
+                        <td><button class="roll-skill" data-statref="#stat-agility" data-skillref="#skill-endure"
+                                data-modref="#modifier-skill">🎲</button></td>
                         <td>[Talang: Oberörd]</td>
                     </tr>
                     <tr>
                         <td><label for="skill-force">Ta krafttag (Sty)</label></td>
-                        <td><input id="skill-force" class="saved small color-skill" type="number" size="1" /></td>
-                        <td><button class="roll-skill" data-stat="strength" data-skill="force">🎲</button></td>
+                        <td><input id="skill-force" class="saved small color-skill" type="number" size="1"
+                                data-name="Ta krafttag" /></td>
+                        <td><button class=" roll-skill" data-statref="#stat-strength" data-skillref="#skill-force"
+                                data-modref="#modifier-skill">🎲</button></td>
                     </tr>
                     <tr>
                         <td><label for="skill-fight">Slåss (Sty)</label></td>
-                        <td><input id="skill-fight" class="saved small color-skill" type="number" size="1" /></td>
-                        <td><button class="roll-skill" data-stat="strength" data-skill="fight">🎲</button></td>
+                        <td><input id="skill-fight" class="saved small color-skill" type="number" size="1"
+                                data-name="Slåss" /></td>
+                        <td><button class="roll-skill" data-statref="#stat-strength" data-skillref="#skill-fight"
+                                data-modref="#modifier-skill">🎲</button></td>
                     </tr>
 
                     <tr>
                         <td><label for="skill-sneak">Smyga (Kyl)</label></td>
-                        <td><input id="skill-sneak" class="saved small color-skill" type="number" size="1" /></td>
-                        <td><button class="roll-skill" data-stat="agility" data-skill="sneak">🎲</button></td>
+                        <td><input id="skill-sneak" class="saved small color-skill" type="number" size="1"
+                                data-name="Smyga" /></td>
+                        <td><button class="roll-skill" data-statref="#stat-agility" data-skillref="#skill-sneak"
+                                data-modref="#modifier-skill">🎲</button></td>
                     </tr>
                     <tr>
                         <td><label for="skill-move">Fly (Kyl)</label></td>
-                        <td><input id="skill-move" class="saved small color-skill" type="number" size="1" /></td>
-                        <td><button class="roll-skill" data-stat="agility" data-skill="move">🎲</button></td>
+                        <td><input id="skill-move" class="saved small color-skill" type="number" size="1"
+                                data-name="Fly" /></td>
+                        <td><button class="roll-skill" data-statref="#stat-agility" data-skillref="#skill-move"
+                                data-modref="#modifier-skill">🎲</button></td>
                     </tr>
                     <tr class="hidden">
                         <td><label for="skill-move">Fly (Skp)</label></td>
                         <td></td>
-                        <td><button class="roll-skill" data-stat="wits" data-skill="move">🎲</button></td>
+                        <td><button class="roll-skill" data-statref="#stat-wits" data-skillref="#skill-move"
+                                data-modref="#modifier-skill">🎲</button></td>
                         <td>[Talang: Analytiker]</td>
                     </tr>
                     <tr class="hidden">
                         <td><label for="skill-move">Fly (Sty)</label></td>
                         <td></td>
-                        <td><button class="roll-skill" data-stat="strength" data-skill="move">🎲</button></td>
+                        <td><button class="roll-skill" data-statref="#stat-strength" data-skillref="#skill-move"
+                                data-modref="#modifier-skill">🎲</button></td>
                         <td>[Talang: Övervåld]</td>
                     </tr>
                     <tr>
                         <td><label for="skill-shoot">Skjuta (Kyl)</label></td>
-                        <td><input id="skill-shoot" class="saved small color-skill" type="number" size="1" /></td>
-                        <td><button class="roll-skill" data-stat="agility" data-skill="shoot">🎲</button></td>
+                        <td><input id="skill-shoot" class="saved small color-skill" type="number" size="1"
+                                data-name="Skjuta" /></td>
+                        <td><button class="roll-skill" data-statref="#stat-agility" data-skillref="#skill-shoot"
+                                data-modref="#modifier-skill">🎲</button></td>
                     </tr>
 
                     <tr>
                         <td><label for="skill-scout">Speja (Skp)</label></td>
-                        <td><input id="skill-scout" class="saved small color-skill" type="number" size="1" /></td>
-                        <td><button class="roll-skill" data-stat="wits" data-skill="scout">🎲</button></td>
+                        <td><input id="skill-scout" class="saved small color-skill" type="number" size="1"
+                                data-name="Speja" /></td>
+                        <td><button class="roll-skill" data-statref="#stat-wits" data-skillref="#skill-scout"
+                                data-modref="#modifier-skill">🎲</button></td>
                     </tr>
                     <tr class="hidden">
                         <td><label for="skill-scout">Speja (Kns)</label></td>
                         <td></td>
-                        <td><button class="roll-skill" data-stat="empathy" data-skill="scout">🎲</button></td>
+                        <td><button class="roll-skill" data-statref="#stat-empathy" data-skillref="#skill-scout"
+                                data-modref="#modifier-skill">🎲</button></td>
                         <td>[Talang: Onda aningar]</td>
                     </tr>
                     <tr>
                         <td><label for="skill-comprehend">Förstå sig på (Skp)</label></td>
-                        <td><input id="skill-comprehend" class="saved small color-skill" type="number" size="1" /></td>
-                        <td><button class="roll-skill" data-stat="wits" data-skill="comprehend">🎲</button></td>
+                        <td><input id="skill-comprehend" class="saved small color-skill" type="number" size="1"
+                                data-name="Förstå sig på" /></td>
+                        <td><button class="roll-skill" data-statref="#stat-wits" data-skillref="#skill-comprehend"
+                                data-modref="#modifier-skill">🎲</button></td>
                     </tr>
                     <tr>
                         <td><label for="skill-knowTheZone">Känna Zonen (Skp)</label></td>
-                        <td><input id="skill-knowTheZone" class="saved small color-skill" type="number" size="1" /></td>
-                        <td><button class="roll-skill" data-stat="wits" data-skill="knowTheZone">🎲</button></td>
+                        <td><input id="skill-knowTheZone" class="saved small color-skill" type="number" size="1"
+                                data-name="Känna Zonen" /></td>
+                        <td><button class="roll-skill" data-statref="#stat-wits" data-skillref="#skill-knowTheZone"
+                                data-modref="#modifier-skill">🎲</button></td>
                     </tr>
 
                     <tr>
                         <td><label for="skill-senseEmotion">Genomskåda (Kns)</label></td>
-                        <td><input id="skill-senseEmotion" class="saved small color-skill" type="number" size="1" />
+                        <td><input id="skill-senseEmotion" class="saved small color-skill" type="number" size="1"
+                                data-name="Genomskåda" />
                         </td>
-                        <td><button class="roll-skill" data-stat="empathy" data-skill="senseEmotion">🎲</button></td>
+                        <td><button class="roll-skill" data-statref="#stat-empathy" data-skillref="#skill-senseEmotion"
+                                data-modref="#modifier-skill">🎲</button></td>
                     </tr>
                     <tr class="hidden">
                         <td><label for="skill-senseEmotion">Genomskåda (Skp)</label></td>
                         <td></td>
-                        <td><button class="roll-skill" data-stat="wits" data-skill="senseEmotion">🎲</button></td>
+                        <td><button class="roll-skill" data-statref="#stat-wits" data-skillref="#skill-senseEmotion"
+                                data-modref="#modifier-skill">🎲</button></td>
                         <td>[Talang: Personlig matematik]</td>
                     </tr>
                     <tr>
                         <td><label for="skill-manipulate">Manipulera (Kns)</label></td>
-                        <td><input id="skill-manipulate" class="saved small color-skill" type="number" size="1" /></td>
-                        <td><button class="roll-skill" data-stat="empathy" data-skill="manipulate">🎲</button></td>
+                        <td><input id="skill-manipulate" class="saved small color-skill" type="number" size="1"
+                                data-name="Manipulera" /></td>
+                        <td><button class="roll-skill" data-statref="#stat-empathy" data-skillref="#skill-manipulate"
+                                data-modref="#modifier-skill">🎲</button></td>
                     </tr>
                     <tr>
                         <td><label for="skill-heal">Vårda (Kns)</label></td>
-                        <td><input id="skill-heal" class="saved small color-skill" type="number" size="1" /></td>
-                        <td><button class="roll-skill" data-stat="empathy" data-skill="heal">🎲</button></td>
+                        <td><input id="skill-heal" class="saved small color-skill" type="number" size="1"
+                                data-name="Vårda" /></td>
+                        <td><button class="roll-skill" data-statref="#stat-empathy" data-skillref="#skill-heal"
+                                data-modref="#modifier-skill">🎲</button></td>
                     </tr>
                     <tr>
                         <td><select id="skill-special-1-name" class="saved">
                                 <option selected></option>
-                                <option value="Bussa på (KYL)" data-stat="agility">Bussa på (Kyl)</option>
-                                <option value="Bussa på" data-stat="wits">Bussa på (Skp)</option>
-                                <option value="Inspirera" data-stat="empathy">Inspirera (Kns)</option>
-                                <option value="Kommendera" data-stat="empathy">Kommendera (Kns)</option>
-                                <option value="Leda vägen" data-stat="agility">Leda vägen (Kyl)</option>
-                                <option value="Mecka" data-stat="wits">Mecka (Skp)</option>
-                                <option value="Mucka" data-stat="strength">Mucka (Sty)</option>
-                                <option value="Schackra" data-stat="empathy">Schackra (Kns)</option>
-                                <option value="Uthärda" data-stat="agility">Uthärda (Kyl)</option>
+                                <option value="Bussa på (KYL)" data-statref="#stat-agility">Bussa på (Kyl)</option>
+                                <option value="Bussa på" data-statref="#stat-wits">Bussa på (Skp)</option>
+                                <option value="Inspirera" data-statref="#stat-empathy">Inspirera (Kns)</option>
+                                <option value="Kommendera" data-statref="#stat-empathy">Kommendera (Kns)</option>
+                                <option value="Leda vägen" data-statref="#stat-agility">Leda vägen (Kyl)</option>
+                                <option value="Mecka" data-statref="#stat-wits">Mecka (Skp)</option>
+                                <option value="Mucka" data-statref="#stat-strength">Mucka (Sty)</option>
+                                <option value="Schackra" data-statref="#stat-empathy">Schackra (Kns)</option>
+                                <option value="Uthärda" data-statref="#stat-agility">Uthärda (Kyl)</option>
                             </select></td>
                         <td> <input id="skill-special-1" class="saved small color-skill" type="number" size="1" /></td>
-                        <td> <button class="roll-special-skill" data-skill="special-1">🎲</button></td>
+                        <td> <button class="roll-special-skill" data-skillref="#skill-special-1"
+                                data-modref="#modifier-skill">🎲</button></td>
                     </tr>
                     <tr>
                         <td> <select id="skill-special-2-name" class="saved">
                                 <option selected></option>
-                                <option value="Bussa på (KYL)" data-stat="agility">Bussa på (Kyl)</option>
-                                <option value="Bussa på" data-stat="wits">Bussa på (Skp)</option>
-                                <option value="Inspirera" data-stat="empathy">Inspirera (Kns)</option>
-                                <option value="Kommendera" data-stat="empathy">Kommendera (Kns)</option>
-                                <option value="Leda vägen" data-stat="agility">Leda vägen (Kyl)</option>
-                                <option value="Mecka" data-stat="wits">Mecka (Skp)</option>
-                                <option value="Mucka" data-stat="strength">Mucka (Sty)</option>
-                                <option value="Schackra" data-stat="empathy">Schackra (Kns)</option>
-                                <option value="Uthärda" data-stat="agility">Uthärda (Kyl)</option>
+                                <option value="Bussa på (KYL)" data-statref="#stat-agility">Bussa på (Kyl)</option>
+                                <option value="Bussa på" data-statref="#stat-wits">Bussa på (Skp)</option>
+                                <option value="Inspirera" data-statref="#stat-empathy">Inspirera (Kns)</option>
+                                <option value="Kommendera" data-statref="#stat-empathy">Kommendera (Kns)</option>
+                                <option value="Leda vägen" data-statref="#stat-agility">Leda vägen (Kyl)</option>
+                                <option value="Mecka" data-statref="#stat-wits">Mecka (Skp)</option>
+                                <option value="Mucka" data-statref="#stat-strength">Mucka (Sty)</option>
+                                <option value="Schackra" data-statref="#stat-empathy">Schackra (Kns)</option>
+                                <option value="Uthärda" data-statref="#stat-agility">Uthärda (Kyl)</option>
                             </select></td>
                         <td> <input id="skill-special-2" class="saved small color-skill" type="number" size="1" /></td>
-                        <td> <button class="roll-special-skill" data-skill="special-2">🎲</button></td>
+                        <td> <button class="roll-special-skill" data-skillref="#skill-special-2"
+                                data-modref="#modifier-skill">🎲</button></td>
                     </tr>
                     <tr>
                         <td> <select id="skill-special-3-name" class="saved">
                                 <option selected></option>
-                                <option value="Bussa på (KYL)" data-stat="agility">Bussa på (Kyl)</option>
-                                <option value="Bussa på" data-stat="wits">Bussa på (Skp)</option>
-                                <option value="Inspirera" data-stat="empathy">Inspirera (Kns)</option>
-                                <option value="Kommendera" data-stat="empathy">Kommendera (Kns)</option>
-                                <option value="Leda vägen" data-stat="agility">Leda vägen (Kyl)</option>
-                                <option value="Mecka" data-stat="wits">Mecka (Skp)</option>
-                                <option value="Mucka" data-stat="strength">Mucka (Sty)</option>
-                                <option value="Schackra" data-stat="empathy">Schackra (Kns)</option>
-                                <option value="Uthärda" data-stat="agility">Uthärda (Kyl)</option>
+                                <option value="Bussa på (KYL)" data-statref="#stat-agility">Bussa på (Kyl)</option>
+                                <option value="Bussa på" data-statref="#stat-wits">Bussa på (Skp)</option>
+                                <option value="Inspirera" data-statref="#stat-empathy">Inspirera (Kns)</option>
+                                <option value="Kommendera" data-statref="#stat-empathy">Kommendera (Kns)</option>
+                                <option value="Leda vägen" data-statref="#stat-agility">Leda vägen (Kyl)</option>
+                                <option value="Mecka" data-statref="#stat-wits">Mecka (Skp)</option>
+                                <option value="Mucka" data-statref="#stat-strength">Mucka (Sty)</option>
+                                <option value="Schackra" data-statref="#stat-empathy">Schackra (Kns)</option>
+                                <option value="Uthärda" data-statref="#stat-agility">Uthärda (Kyl)</option>
                             </select></td>
                         <td> <input id="skill-special-3" class="saved small color-skill" type="number" size="1" /></td>
-                        <td> <button class="roll-special-skill" data-skill="special-3">🎲</button></td>
+                        <td> <button class="roll-special-skill" data-skillref="#skill-special-3"
+                                data-modref="#modifier-skill">🎲</button></td>
                     </tr>
                     <tr>
                         <td colspan="2">
@@ -314,7 +353,8 @@
                             <input id="gear-weapon-melee-3-damage" class="saved small" type="number" size="1" />
                         </div>
                         <div>
-                            <button class="roll-fight" data-stat="strength" data-skill="fight">🎲 Slåss</button>
+                            <button class="roll-fight" data-statref="#stat-strength" data-skillref="#skill-fight">🎲
+                                Slåss</button>
                             <input id="modifier-fight" class="small" type="number" />
                             <label for="modifier-fight">Modifikation</label>
                         </div>
@@ -364,7 +404,8 @@
                             <input type="checkbox" id="cover" /><label for="cover">Skydd</label>
                         </div>
                         <div>
-                            <button class="roll-shoot" data-stat="agility" data-skill="shoot">🎲 Skjuta</button>
+                            <button class="roll-shoot" data-statref="#stat-agility" data-skillref="#skill-shoot">🎲
+                                Skjuta</button>
                             <input id="modifier-shoot" class="small" type="number" />
                             <label for="modifier-shoot">Modifikation</label>
                         </div>
