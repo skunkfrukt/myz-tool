@@ -15,10 +15,7 @@
     <script src="myz-tool.js"></script>
     <script>
         $(document).ready(function () {
-            $("#accordion").accordion({
-                collapsible: true,
-                heightStyle: "content"
-            });
+            $("#tabs").tabs();
         });
     </script>
 </head>
@@ -41,321 +38,341 @@
             <button class="roll-button" data-stat="adhoc" data-skill="adhoc" data-gear="adhoc">🎲 Slå</button>
             <button id="rerollButton" onclick="rerollAndDisplay();" disabled>⚠️ Pressa</button>
         </div>
+        <p>
+            <button class="roll-quick" data-amount="1">1🎲</button>
+            <button class="roll-quick" data-amount="2">2🎲</button>
+            <button class="roll-quick" data-amount="3">3🎲</button>
+            <button class="roll-quick" data-amount="4">4🎲</button>
+            <button class="roll-quick" data-amount="5">5🎲</button>
+        </p>
     </div>
-    <div id="accordion">
-        <h3>Grundegenskaper</h3>
-        <div class="stats">
-            <table>
-                <tr>
-                    <td><label for="stat-strength">Styrka</label></td>
-                    <td><input id="stat-strength" class="saved small color-base" type="number" size="1" /></td>
-                    <td>-</td>
-                    <td><input id="trauma-strength" class="saved small" type="number" size="1" /></td>
-                    <td><label for="trauma-strength">Skada</label></td>
-                    <td><button class="roll-stat" data-stat="strength">🎲</button></td>
-                </tr>
-                <tr>
-                    <td><label for="stat-agility">Kyla</label></td>
-                    <td><input id="stat-agility" class="saved small color-base" type="number" size="1" /></td>
-                    <td>-</td>
-                    <td><input id="trauma-agility" class="saved small" type="number" size="1" /></td>
-                    <td><label for="trauma-agility">Stress</label></td>
-                    <td><button class="roll-stat" data-stat="agility">🎲</button></td>
-                </tr>
-                <tr>
-                    <td><label for="stat-wits">Skärpa</label></td>
-                    <td><input id="stat-wits" class="saved small color-base" type="number" size="1" /> </td>
-                    <td>-</td>
-                    <td><input id="trauma-wits" class="saved small" type="number" size="1" /></td>
-                    <td><label for="trauma-wits">Förvirring</label></td>
-                    <td><button class="roll-stat" data-stat="wits">🎲</button></td>
-                </tr>
-                <tr>
-                    <td><label for="stat-empathy">Känsla</label></td>
-                    <td><input id="stat-empathy" class="saved small color-base" type="number" size="1" /></td>
-                    <td>-</td>
-                    <td><input id="trauma-empathy" class="saved small" type="number" size="1" /></td>
-                    <td><label for="trauma-empathy">Tvivel</label></td>
-                    <td><button class="roll-stat" data-stat="empathy">🎲</button></td>
-                </tr>
-                <tr>
-                    <td colspan="5">
-                        <hr />
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="3"></td>
-                    <td><input id="modifier-stat" class="small" type="number" /></td>
-                    <td><label for="modifier-stat">Modifikation</label></td>
-                </tr>
-            </table>
-            <div>
+    <div id="tabs">
+        <ul>
+            <li><a href="#tab-stats" title="Grundegenskaper">&#x1F464;</a></li>
+            <li><a href="#tab-skills" title="Färdigheter">&#x1F393;</a></li>
+            <li><a href="#tab-combat" title="Vapen & Strid">&#x2694;&#xFE0F;</a></li>
+        </ul>
+        <div id="tab-stats">
+            <h3>Grundegenskaper</h3>
+            <div class="stats">
+                <table>
+                    <tr>
+                        <td><label for="stat-strength">Styrka</label></td>
+                        <td><input id="stat-strength" class="saved small color-base" type="number" size="1" /></td>
+                        <td>-</td>
+                        <td><input id="trauma-strength" class="saved small" type="number" size="1" /></td>
+                        <td><label for="trauma-strength">Skada</label></td>
+                        <td><button class="roll-stat" data-stat="strength">🎲</button></td>
+                    </tr>
+                    <tr>
+                        <td><label for="stat-agility">Kyla</label></td>
+                        <td><input id="stat-agility" class="saved small color-base" type="number" size="1" /></td>
+                        <td>-</td>
+                        <td><input id="trauma-agility" class="saved small" type="number" size="1" /></td>
+                        <td><label for="trauma-agility">Stress</label></td>
+                        <td><button class="roll-stat" data-stat="agility">🎲</button></td>
+                    </tr>
+                    <tr>
+                        <td><label for="stat-wits">Skärpa</label></td>
+                        <td><input id="stat-wits" class="saved small color-base" type="number" size="1" /> </td>
+                        <td>-</td>
+                        <td><input id="trauma-wits" class="saved small" type="number" size="1" /></td>
+                        <td><label for="trauma-wits">Förvirring</label></td>
+                        <td><button class="roll-stat" data-stat="wits">🎲</button></td>
+                    </tr>
+                    <tr>
+                        <td><label for="stat-empathy">Känsla</label></td>
+                        <td><input id="stat-empathy" class="saved small color-base" type="number" size="1" /></td>
+                        <td>-</td>
+                        <td><input id="trauma-empathy" class="saved small" type="number" size="1" /></td>
+                        <td><label for="trauma-empathy">Tvivel</label></td>
+                        <td><button class="roll-stat" data-stat="empathy">🎲</button></td>
+                    </tr>
+                    <tr>
+                        <td colspan="5">
+                            <hr />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3"></td>
+                        <td><input id="modifier-stat" class="small" type="number" /></td>
+                        <td><label for="modifier-stat">Modifikation</label></td>
+                    </tr>
+                </table>
+                <div>
 
 
+                </div>
+                <!--todo modification-->
             </div>
-            <!--todo modification-->
         </div>
-        <h3>Färdigheter</h3>
-        <div class="skills">
-            <table>
-                <tr>
-                    <td> <label for="skill-endure">Kämpa på (Sty)</label> </td>
-                    <td> <input id="skill-endure" class="saved small color-skill" type="number" size="1" /> </td>
-                    <td> <button class="roll-skill" data-stat="strength" data-skill="endure">🎲</button> </td>
-                </tr>
-                <tr class="hidden">
-                    <td><label for="skill-endure">Kämpa på (Kyl)</label></td>
-                    <td></td>
-                    <td><button class="roll-skill" data-stat="agility" data-skill="endure">🎲</button></td>
-                    <td>[Talang: Oberörd]</td>
-                </tr>
-                <tr>
-                    <td><label for="skill-force">Ta krafttag (Sty)</label></td>
-                    <td><input id="skill-force" class="saved small color-skill" type="number" size="1" /></td>
-                    <td><button class="roll-skill" data-stat="strength" data-skill="force">🎲</button></td>
-                </tr>
-                <tr>
-                    <td><label for="skill-fight">Slåss (Sty)</label></td>
-                    <td><input id="skill-fight" class="saved small color-skill" type="number" size="1" /></td>
-                    <td><button class="roll-skill" data-stat="strength" data-skill="fight">🎲</button></td>
-                </tr>
+        <div id="tab-skills">
+            <h3>Färdigheter</h3>
+            <div class="skills">
+                <table>
+                    <tr>
+                        <td> <label for="skill-endure">Kämpa på (Sty)</label> </td>
+                        <td> <input id="skill-endure" class="saved small color-skill" type="number" size="1" /> </td>
+                        <td> <button class="roll-skill" data-stat="strength" data-skill="endure">🎲</button> </td>
+                    </tr>
+                    <tr class="hidden">
+                        <td><label for="skill-endure">Kämpa på (Kyl)</label></td>
+                        <td></td>
+                        <td><button class="roll-skill" data-stat="agility" data-skill="endure">🎲</button></td>
+                        <td>[Talang: Oberörd]</td>
+                    </tr>
+                    <tr>
+                        <td><label for="skill-force">Ta krafttag (Sty)</label></td>
+                        <td><input id="skill-force" class="saved small color-skill" type="number" size="1" /></td>
+                        <td><button class="roll-skill" data-stat="strength" data-skill="force">🎲</button></td>
+                    </tr>
+                    <tr>
+                        <td><label for="skill-fight">Slåss (Sty)</label></td>
+                        <td><input id="skill-fight" class="saved small color-skill" type="number" size="1" /></td>
+                        <td><button class="roll-skill" data-stat="strength" data-skill="fight">🎲</button></td>
+                    </tr>
 
-                <tr>
-                    <td><label for="skill-sneak">Smyga (Kyl)</label></td>
-                    <td><input id="skill-sneak" class="saved small color-skill" type="number" size="1" /></td>
-                    <td><button class="roll-skill" data-stat="agility" data-skill="sneak">🎲</button></td>
-                </tr>
-                <tr>
-                    <td><label for="skill-move">Fly (Kyl)</label></td>
-                    <td><input id="skill-move" class="saved small color-skill" type="number" size="1" /></td>
-                    <td><button class="roll-skill" data-stat="agility" data-skill="move">🎲</button></td>
-                </tr>
-                <tr class="hidden">
-                    <td><label for="skill-move">Fly (Skp)</label></td>
-                    <td></td>
-                    <td><button class="roll-skill" data-stat="wits" data-skill="move">🎲</button></td>
-                    <td>[Talang: Analytiker]</td>
-                </tr>
-                <tr class="hidden">
-                    <td><label for="skill-move">Fly (Sty)</label></td>
-                    <td></td>
-                    <td><button class="roll-skill" data-stat="strength" data-skill="move">🎲</button></td>
-                    <td>[Talang: Övervåld]</td>
-                </tr>
-                <tr>
-                    <td><label for="skill-shoot">Skjuta (Kyl)</label></td>
-                    <td><input id="skill-shoot" class="saved small color-skill" type="number" size="1" /></td>
-                    <td><button class="roll-skill" data-stat="agility" data-skill="shoot">🎲</button></td>
-                </tr>
+                    <tr>
+                        <td><label for="skill-sneak">Smyga (Kyl)</label></td>
+                        <td><input id="skill-sneak" class="saved small color-skill" type="number" size="1" /></td>
+                        <td><button class="roll-skill" data-stat="agility" data-skill="sneak">🎲</button></td>
+                    </tr>
+                    <tr>
+                        <td><label for="skill-move">Fly (Kyl)</label></td>
+                        <td><input id="skill-move" class="saved small color-skill" type="number" size="1" /></td>
+                        <td><button class="roll-skill" data-stat="agility" data-skill="move">🎲</button></td>
+                    </tr>
+                    <tr class="hidden">
+                        <td><label for="skill-move">Fly (Skp)</label></td>
+                        <td></td>
+                        <td><button class="roll-skill" data-stat="wits" data-skill="move">🎲</button></td>
+                        <td>[Talang: Analytiker]</td>
+                    </tr>
+                    <tr class="hidden">
+                        <td><label for="skill-move">Fly (Sty)</label></td>
+                        <td></td>
+                        <td><button class="roll-skill" data-stat="strength" data-skill="move">🎲</button></td>
+                        <td>[Talang: Övervåld]</td>
+                    </tr>
+                    <tr>
+                        <td><label for="skill-shoot">Skjuta (Kyl)</label></td>
+                        <td><input id="skill-shoot" class="saved small color-skill" type="number" size="1" /></td>
+                        <td><button class="roll-skill" data-stat="agility" data-skill="shoot">🎲</button></td>
+                    </tr>
 
-                <tr>
-                    <td><label for="skill-scout">Speja (Skp)</label></td>
-                    <td><input id="skill-scout" class="saved small color-skill" type="number" size="1" /></td>
-                    <td><button class="roll-skill" data-stat="wits" data-skill="scout">🎲</button></td>
-                </tr>
-                <tr class="hidden">
-                    <td><label for="skill-scout">Speja (Kns)</label></td>
-                    <td></td>
-                    <td><button class="roll-skill" data-stat="empathy" data-skill="scout">🎲</button></td>
-                    <td>[Talang: Onda aningar]</td>
-                </tr>
-                <tr>
-                    <td><label for="skill-comprehend">Förstå sig på (Skp)</label></td>
-                    <td><input id="skill-comprehend" class="saved small color-skill" type="number" size="1" /></td>
-                    <td><button class="roll-skill" data-stat="wits" data-skill="comprehend">🎲</button></td>
-                </tr>
-                <tr>
-                    <td><label for="skill-knowTheZone">Känna Zonen (Skp)</label></td>
-                    <td><input id="skill-knowTheZone" class="saved small color-skill" type="number" size="1" /></td>
-                    <td><button class="roll-skill" data-stat="wits" data-skill="knowTheZone">🎲</button></td>
-                </tr>
+                    <tr>
+                        <td><label for="skill-scout">Speja (Skp)</label></td>
+                        <td><input id="skill-scout" class="saved small color-skill" type="number" size="1" /></td>
+                        <td><button class="roll-skill" data-stat="wits" data-skill="scout">🎲</button></td>
+                    </tr>
+                    <tr class="hidden">
+                        <td><label for="skill-scout">Speja (Kns)</label></td>
+                        <td></td>
+                        <td><button class="roll-skill" data-stat="empathy" data-skill="scout">🎲</button></td>
+                        <td>[Talang: Onda aningar]</td>
+                    </tr>
+                    <tr>
+                        <td><label for="skill-comprehend">Förstå sig på (Skp)</label></td>
+                        <td><input id="skill-comprehend" class="saved small color-skill" type="number" size="1" /></td>
+                        <td><button class="roll-skill" data-stat="wits" data-skill="comprehend">🎲</button></td>
+                    </tr>
+                    <tr>
+                        <td><label for="skill-knowTheZone">Känna Zonen (Skp)</label></td>
+                        <td><input id="skill-knowTheZone" class="saved small color-skill" type="number" size="1" /></td>
+                        <td><button class="roll-skill" data-stat="wits" data-skill="knowTheZone">🎲</button></td>
+                    </tr>
 
-                <tr>
-                    <td><label for="skill-senseEmotion">Genomskåda (Kns)</label></td>
-                    <td><input id="skill-senseEmotion" class="saved small color-skill" type="number" size="1" /></td>
-                    <td><button class="roll-skill" data-stat="empathy" data-skill="senseEmotion">🎲</button></td>
-                </tr>
-                <tr class="hidden">
-                    <td><label for="skill-senseEmotion">Genomskåda (Skp)</label></td>
-                    <td></td>
-                    <td><button class="roll-skill" data-stat="wits" data-skill="senseEmotion">🎲</button></td>
-                    <td>[Talang: Personlig matematik]</td>
-                </tr>
-                <tr>
-                    <td><label for="skill-manipulate">Manipulera (Kns)</label></td>
-                    <td><input id="skill-manipulate" class="saved small color-skill" type="number" size="1" /></td>
-                    <td><button class="roll-skill" data-stat="empathy" data-skill="manipulate">🎲</button></td>
-                </tr>
-                <tr>
-                    <td><label for="skill-heal">Vårda (Kns)</label></td>
-                    <td><input id="skill-heal" class="saved small color-skill" type="number" size="1" /></td>
-                    <td><button class="roll-skill" data-stat="empathy" data-skill="heal">🎲</button></td>
-                </tr>
-                <tr>
-                    <td><select id="skill-special-1-name" class="saved">
-                            <option selected></option>
-                            <option value="Bussa på (KYL)" data-stat="agility">Bussa på (Kyl)</option>
-                            <option value="Bussa på" data-stat="wits">Bussa på (Skp)</option>
-                            <option value="Inspirera" data-stat="empathy">Inspirera (Kns)</option>
-                            <option value="Kommendera" data-stat="empathy">Kommendera (Kns)</option>
-                            <option value="Leda vägen" data-stat="agility">Leda vägen (Kyl)</option>
-                            <option value="Mecka" data-stat="wits">Mecka (Skp)</option>
-                            <option value="Mucka" data-stat="strength">Mucka (Sty)</option>
-                            <option value="Schackra" data-stat="empathy">Schackra (Kns)</option>
-                            <option value="Uthärda" data-stat="agility">Uthärda (Kyl)</option>
-                        </select></td>
-                    <td> <input id="skill-special-1" class="saved small color-skill" type="number" size="1" /></td>
-                    <td> <button class="roll-special-skill" data-skill="special-1">🎲</button></td>
-                </tr>
-                <tr>
-                    <td> <select id="skill-special-2-name" class="saved">
-                            <option selected></option>
-                            <option value="Bussa på (KYL)" data-stat="agility">Bussa på (Kyl)</option>
-                            <option value="Bussa på" data-stat="wits">Bussa på (Skp)</option>
-                            <option value="Inspirera" data-stat="empathy">Inspirera (Kns)</option>
-                            <option value="Kommendera" data-stat="empathy">Kommendera (Kns)</option>
-                            <option value="Leda vägen" data-stat="agility">Leda vägen (Kyl)</option>
-                            <option value="Mecka" data-stat="wits">Mecka (Skp)</option>
-                            <option value="Mucka" data-stat="strength">Mucka (Sty)</option>
-                            <option value="Schackra" data-stat="empathy">Schackra (Kns)</option>
-                            <option value="Uthärda" data-stat="agility">Uthärda (Kyl)</option>
-                        </select></td>
-                    <td> <input id="skill-special-2" class="saved small color-skill" type="number" size="1" /></td>
-                    <td> <button class="roll-special-skill" data-skill="special-2">🎲</button></td>
-                </tr>
-                <tr>
-                    <td> <select id="skill-special-3-name" class="saved">
-                            <option selected></option>
-                            <option value="Bussa på (KYL)" data-stat="agility">Bussa på (Kyl)</option>
-                            <option value="Bussa på" data-stat="wits">Bussa på (Skp)</option>
-                            <option value="Inspirera" data-stat="empathy">Inspirera (Kns)</option>
-                            <option value="Kommendera" data-stat="empathy">Kommendera (Kns)</option>
-                            <option value="Leda vägen" data-stat="agility">Leda vägen (Kyl)</option>
-                            <option value="Mecka" data-stat="wits">Mecka (Skp)</option>
-                            <option value="Mucka" data-stat="strength">Mucka (Sty)</option>
-                            <option value="Schackra" data-stat="empathy">Schackra (Kns)</option>
-                            <option value="Uthärda" data-stat="agility">Uthärda (Kyl)</option>
-                        </select></td>
-                    <td> <input id="skill-special-3" class="saved small color-skill" type="number" size="1" /></td>
-                    <td> <button class="roll-special-skill" data-skill="special-3">🎲</button></td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <hr />
-                    </td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td> <input id="modifier-skill" class="small" type="number" /> </td>
-                    <td colspan="2"> <label for="modifier-skill">Modifikation</label> </td>
-                </tr>
-            </table>
-            <!--todo modification-->
+                    <tr>
+                        <td><label for="skill-senseEmotion">Genomskåda (Kns)</label></td>
+                        <td><input id="skill-senseEmotion" class="saved small color-skill" type="number" size="1" />
+                        </td>
+                        <td><button class="roll-skill" data-stat="empathy" data-skill="senseEmotion">🎲</button></td>
+                    </tr>
+                    <tr class="hidden">
+                        <td><label for="skill-senseEmotion">Genomskåda (Skp)</label></td>
+                        <td></td>
+                        <td><button class="roll-skill" data-stat="wits" data-skill="senseEmotion">🎲</button></td>
+                        <td>[Talang: Personlig matematik]</td>
+                    </tr>
+                    <tr>
+                        <td><label for="skill-manipulate">Manipulera (Kns)</label></td>
+                        <td><input id="skill-manipulate" class="saved small color-skill" type="number" size="1" /></td>
+                        <td><button class="roll-skill" data-stat="empathy" data-skill="manipulate">🎲</button></td>
+                    </tr>
+                    <tr>
+                        <td><label for="skill-heal">Vårda (Kns)</label></td>
+                        <td><input id="skill-heal" class="saved small color-skill" type="number" size="1" /></td>
+                        <td><button class="roll-skill" data-stat="empathy" data-skill="heal">🎲</button></td>
+                    </tr>
+                    <tr>
+                        <td><select id="skill-special-1-name" class="saved">
+                                <option selected></option>
+                                <option value="Bussa på (KYL)" data-stat="agility">Bussa på (Kyl)</option>
+                                <option value="Bussa på" data-stat="wits">Bussa på (Skp)</option>
+                                <option value="Inspirera" data-stat="empathy">Inspirera (Kns)</option>
+                                <option value="Kommendera" data-stat="empathy">Kommendera (Kns)</option>
+                                <option value="Leda vägen" data-stat="agility">Leda vägen (Kyl)</option>
+                                <option value="Mecka" data-stat="wits">Mecka (Skp)</option>
+                                <option value="Mucka" data-stat="strength">Mucka (Sty)</option>
+                                <option value="Schackra" data-stat="empathy">Schackra (Kns)</option>
+                                <option value="Uthärda" data-stat="agility">Uthärda (Kyl)</option>
+                            </select></td>
+                        <td> <input id="skill-special-1" class="saved small color-skill" type="number" size="1" /></td>
+                        <td> <button class="roll-special-skill" data-skill="special-1">🎲</button></td>
+                    </tr>
+                    <tr>
+                        <td> <select id="skill-special-2-name" class="saved">
+                                <option selected></option>
+                                <option value="Bussa på (KYL)" data-stat="agility">Bussa på (Kyl)</option>
+                                <option value="Bussa på" data-stat="wits">Bussa på (Skp)</option>
+                                <option value="Inspirera" data-stat="empathy">Inspirera (Kns)</option>
+                                <option value="Kommendera" data-stat="empathy">Kommendera (Kns)</option>
+                                <option value="Leda vägen" data-stat="agility">Leda vägen (Kyl)</option>
+                                <option value="Mecka" data-stat="wits">Mecka (Skp)</option>
+                                <option value="Mucka" data-stat="strength">Mucka (Sty)</option>
+                                <option value="Schackra" data-stat="empathy">Schackra (Kns)</option>
+                                <option value="Uthärda" data-stat="agility">Uthärda (Kyl)</option>
+                            </select></td>
+                        <td> <input id="skill-special-2" class="saved small color-skill" type="number" size="1" /></td>
+                        <td> <button class="roll-special-skill" data-skill="special-2">🎲</button></td>
+                    </tr>
+                    <tr>
+                        <td> <select id="skill-special-3-name" class="saved">
+                                <option selected></option>
+                                <option value="Bussa på (KYL)" data-stat="agility">Bussa på (Kyl)</option>
+                                <option value="Bussa på" data-stat="wits">Bussa på (Skp)</option>
+                                <option value="Inspirera" data-stat="empathy">Inspirera (Kns)</option>
+                                <option value="Kommendera" data-stat="empathy">Kommendera (Kns)</option>
+                                <option value="Leda vägen" data-stat="agility">Leda vägen (Kyl)</option>
+                                <option value="Mecka" data-stat="wits">Mecka (Skp)</option>
+                                <option value="Mucka" data-stat="strength">Mucka (Sty)</option>
+                                <option value="Schackra" data-stat="empathy">Schackra (Kns)</option>
+                                <option value="Uthärda" data-stat="agility">Uthärda (Kyl)</option>
+                            </select></td>
+                        <td> <input id="skill-special-3" class="saved small color-skill" type="number" size="1" /></td>
+                        <td> <button class="roll-special-skill" data-skill="special-3">🎲</button></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <hr />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td> <input id="modifier-skill" class="small" type="number" /> </td>
+                        <td colspan="2"> <label for="modifier-skill">Modifikation</label> </td>
+                    </tr>
+                </table>
+                <!--todo modification-->
+            </div>
         </div>
-        <h3>Strid &amp; Vapen</h3>
-        <div class="gear">
-            <fieldset>
-                <legend>Initiativ</legend>
-                <button id="roll-initiative">🎲 Initiativ</button>
-                <input type="checkbox" id="experienced-fighter-plus2" /><label for="experienced-fighter-plus2">Stridsvan
-                    (+2)</label>
-                <input type="checkbox" id="experienced-fighter" /><label for="experienced-fighter">Stridsvan
-                    (2T6)</label>
-            </fieldset>
-            <fieldset>
-                <legend>Närstrid</legend>
-                <div class="controlgroup">
-                    <div class="melee-weapon">
-                        <input type="radio" name="selected-melee-weapon" value="0" />
-                        <label for="gear-weapon-melee-0">Obeväpnad</label>
-                        <input id="gear-weapon-melee-0" class="small" type="hidden" value="0" />
+        <div id="tab-combat">
+            <h3>Strid &amp; Vapen</h3>
+            <div class="gear">
+                <fieldset>
+                    <legend>Initiativ</legend>
+                    <button id="roll-initiative">🎲 Initiativ</button>
+                    <input type="checkbox" id="experienced-fighter-plus2" /><label
+                        for="experienced-fighter-plus2">Stridsvan
+                        (+2)</label>
+                    <input type="checkbox" id="experienced-fighter" /><label for="experienced-fighter">Stridsvan
+                        (2T6)</label>
+                </fieldset>
+                <fieldset>
+                    <legend>Närstrid</legend>
+                    <div class="controlgroup">
+                        <div class="melee-weapon">
+                            <input type="radio" name="selected-melee-weapon" value="0" />
+                            <label for="gear-weapon-melee-0">Obeväpnad</label>
+                            <input id="gear-weapon-melee-0" class="small" type="hidden" value="0" />
+                        </div>
+                        <div class="melee-weapon">
+                            <input type="radio" name="selected-melee-weapon" checked value="1" />
+                            <label for="gear-weapon-melee-1-name">Vapen 1:</label>
+                            <input id="gear-weapon-melee-1-name" class="saved gear-name" />
+                            <label for="gear-weapon-melee-1">Bonus</label>
+                            <input id="gear-weapon-melee-1" class="saved small color-gear" type="number" size="1" />
+                            <label for="gear-weapon-melee-1-damage">Skada</label>
+                            <input id="gear-weapon-melee-1-damage" class="saved small" type="number" size="1" />
+                        </div>
+                        <div class="melee-weapon">
+                            <input type="radio" name="selected-melee-weapon" value="2" />
+                            <label for="gear-weapon-melee-2-name">Vapen 2:</label>
+                            <input id="gear-weapon-melee-2-name" class="saved gear-name" />
+                            <label for="gear-weapon-melee-2">Bonus</label>
+                            <input id="gear-weapon-melee-2" class="saved small color-gear" type="number" size="1" />
+                            <label for="gear-weapon-melee-2-damage">Skada</label>
+                            <input id="gear-weapon-melee-2-damage" class="saved small" type="number" size="1" />
+                        </div>
+                        <div class="melee-weapon">
+                            <input type="radio" name="selected-melee-weapon" value="3" />
+                            <label for="gear-weapon-melee-3-name">Vapen 3:</label>
+                            <input id="gear-weapon-melee-3-name" class="saved gear-name" />
+                            <label for="gear-weapon-melee-3">Bonus</label>
+                            <input id="gear-weapon-melee-3" class="saved small color-gear" type="number" size="1" />
+                            <label for="gear-weapon-melee-3-damage">Skada</label>
+                            <input id="gear-weapon-melee-3-damage" class="saved small" type="number" size="1" />
+                        </div>
+                        <div>
+                            <button class="roll-fight" data-stat="strength" data-skill="fight">🎲 Slåss</button>
+                            <input id="modifier-fight" class="small" type="number" />
+                            <label for="modifier-fight">Modifikation</label>
+                        </div>
                     </div>
-                    <div class="melee-weapon">
-                        <input type="radio" name="selected-melee-weapon" checked value="1" />
-                        <label for="gear-weapon-melee-1-name">Vapen 1:</label>
-                        <input id="gear-weapon-melee-1-name" class="saved gear-name" />
-                        <label for="gear-weapon-melee-1">Bonus</label>
-                        <input id="gear-weapon-melee-1" class="saved small color-gear" type="number" size="1" />
-                        <label for="gear-weapon-melee-1-damage">Skada</label>
-                        <input id="gear-weapon-melee-1-damage" class="saved small" type="number" size="1" />
-                    </div>
-                    <div class="melee-weapon">
-                        <input type="radio" name="selected-melee-weapon" value="2" />
-                        <label for="gear-weapon-melee-2-name">Vapen 2:</label>
-                        <input id="gear-weapon-melee-2-name" class="saved gear-name" />
-                        <label for="gear-weapon-melee-2">Bonus</label>
-                        <input id="gear-weapon-melee-2" class="saved small color-gear" type="number" size="1" />
-                        <label for="gear-weapon-melee-2-damage">Skada</label>
-                        <input id="gear-weapon-melee-2-damage" class="saved small" type="number" size="1" />
-                    </div>
-                    <div class="melee-weapon">
-                        <input type="radio" name="selected-melee-weapon" value="3" />
-                        <label for="gear-weapon-melee-3-name">Vapen 3:</label>
-                        <input id="gear-weapon-melee-3-name" class="saved gear-name" />
-                        <label for="gear-weapon-melee-3">Bonus</label>
-                        <input id="gear-weapon-melee-3" class="saved small color-gear" type="number" size="1" />
-                        <label for="gear-weapon-melee-3-damage">Skada</label>
-                        <input id="gear-weapon-melee-3-damage" class="saved small" type="number" size="1" />
-                    </div>
-                    <div>
-                        <button class="roll-fight" data-stat="strength" data-skill="fight">🎲 Slåss</button>
-                        <input id="modifier-fight" class="small" type="number" />
-                        <label for="modifier-fight">Modifikation</label>
-                    </div>
-                </div>
-            </fieldset>
+                </fieldset>
 
-            <fieldset>
-                <legend>Avstånd</legend>
-                <div class="controlgroup">
-                    <div class="ranged-weapon">
-                        <input type="radio" name="selected-ranged-weapon" checked value="1" />
-                        <label for="gear-weapon-ranged-1-name">Vapen 1:</label>
-                        <input id="gear-weapon-ranged-1-name" class="saved gear-name" />
-                        <label for="gear-weapon-ranged-1">Bonus</label>
-                        <input id="gear-weapon-ranged-1" class="saved small color-gear" type="number" size="1" />
-                        <label for="gear-weapon-ranged-1-damage">Skada</label>
-                        <input id="gear-weapon-ranged-1-damage" class="saved small" type="number" size="1" />
+                <fieldset>
+                    <legend>Avstånd</legend>
+                    <div class="controlgroup">
+                        <div class="ranged-weapon">
+                            <input type="radio" name="selected-ranged-weapon" checked value="1" />
+                            <label for="gear-weapon-ranged-1-name">Vapen 1:</label>
+                            <input id="gear-weapon-ranged-1-name" class="saved gear-name" />
+                            <label for="gear-weapon-ranged-1">Bonus</label>
+                            <input id="gear-weapon-ranged-1" class="saved small color-gear" type="number" size="1" />
+                            <label for="gear-weapon-ranged-1-damage">Skada</label>
+                            <input id="gear-weapon-ranged-1-damage" class="saved small" type="number" size="1" />
+                        </div>
+                        <div class="ranged-weapon">
+                            <input type="radio" name="selected-ranged-weapon" value="2" />
+                            <label for="gear-weapon-ranged-2-name">Vapen 2:</label>
+                            <input id="gear-weapon-ranged-2-name" class="saved gear-name" />
+                            <label for="gear-weapon-ranged-2">Bonus</label>
+                            <input id="gear-weapon-ranged-2" class="saved small color-gear" type="number" size="1" />
+                            <label for="gear-weapon-ranged-2-damage">Skada</label>
+                            <input id="gear-weapon-ranged-2-damage" class="saved small" type="number" size="1" />
+                        </div>
+                        <div class="ranged-weapon">
+                            <input type="radio" name="selected-ranged-weapon" value="3" />
+                            <label for="gear-weapon-ranged-3-name">Vapen 3:</label>
+                            <input id="gear-weapon-ranged-3-name" class="saved gear-name" />
+                            <label for="gear-weapon-ranged-3">Bonus</label>
+                            <input id="gear-weapon-ranged-3" class="saved small color-gear" type="number" size="1" />
+                            <label for="gear-weapon-ranged-3-damage">Skada</label>
+                            <input id="gear-weapon-ranged-3-damage" class="saved small" type="number" size="1" />
+                        </div>
+                        <div>
+                            <label for="ranged-attack-distance">Avstånd</label>
+                            <select id="ranged-attack-distance">
+                                <option value="-3">Armslängd (-3)</option>
+                                <option value="0" selected>Nära</option>
+                                <option value="-1">Kort (-1)</option>
+                                <option value="-2">Långt (-2)</option>
+                                <option value="1">Armslängd - hjälplös motståndare (+1)</option>
+                            </select>
+                            <input type="checkbox" id="aim" /><label for="aim">Sikta noga</label>
+                            <input type="checkbox" id="cover" /><label for="cover">Skydd</label>
+                        </div>
+                        <div>
+                            <button class="roll-shoot" data-stat="agility" data-skill="shoot">🎲 Skjuta</button>
+                            <input id="modifier-shoot" class="small" type="number" />
+                            <label for="modifier-shoot">Modifikation</label>
+                        </div>
                     </div>
-                    <div class="ranged-weapon">
-                        <input type="radio" name="selected-ranged-weapon" value="2" />
-                        <label for="gear-weapon-ranged-2-name">Vapen 2:</label>
-                        <input id="gear-weapon-ranged-2-name" class="saved gear-name" />
-                        <label for="gear-weapon-ranged-2">Bonus</label>
-                        <input id="gear-weapon-ranged-2" class="saved small color-gear" type="number" size="1" />
-                        <label for="gear-weapon-ranged-2-damage">Skada</label>
-                        <input id="gear-weapon-ranged-2-damage" class="saved small" type="number" size="1" />
-                    </div>
-                    <div class="ranged-weapon">
-                        <input type="radio" name="selected-ranged-weapon" value="3" />
-                        <label for="gear-weapon-ranged-3-name">Vapen 3:</label>
-                        <input id="gear-weapon-ranged-3-name" class="saved gear-name" />
-                        <label for="gear-weapon-ranged-3">Bonus</label>
-                        <input id="gear-weapon-ranged-3" class="saved small color-gear" type="number" size="1" />
-                        <label for="gear-weapon-ranged-3-damage">Skada</label>
-                        <input id="gear-weapon-ranged-3-damage" class="saved small" type="number" size="1" />
-                    </div>
-                    <div>
-                        <label for="ranged-attack-distance">Avstånd</label>
-                        <select id="ranged-attack-distance">
-                            <option value="-3">Armslängd (-3)</option>
-                            <option value="0" selected>Nära</option>
-                            <option value="-1">Kort (-1)</option>
-                            <option value="-2">Långt (-2)</option>
-                            <option value="1">Armslängd - hjälplös motståndare (+1)</option>
-                        </select>
-                        <input type="checkbox" id="aim" /><label for="aim">Sikta noga</label>
-                        <input type="checkbox" id="cover" /><label for="cover">Skydd</label>
-                    </div>
-                    <div>
-                        <button class="roll-shoot" data-stat="agility" data-skill="shoot">🎲 Skjuta</button>
-                        <input id="modifier-shoot" class="small" type="number" />
-                        <label for="modifier-shoot">Modifikation</label>
-                    </div>
-                </div>
-            </fieldset>
+                </fieldset>
+            </div>
         </div>
-        <h3>Prylar</h3>
+        <!--<h3>Prylar</h3>
         <div class="gear">
             <div class="tool">
                 🛠️
@@ -661,7 +678,7 @@
         <h3>Anteckningar</h3>
         <div>
             <textarea id="notes" class="saved"></textarea>
-        </div>
+        </div>-->
     </div>
     <div class="save-load">
         <button onclick="saveData();">Spara</button>

@@ -27,7 +27,6 @@ function roll(numDice) {
         die = rollOne();
         dice.push(die);
     }
-    sortDescending(dice);
 
     return dice
 }
@@ -57,17 +56,15 @@ function addAllDiceGraphicsForOneType(dice, dieType) {
 
 function displayResult(result, clear) {
     if (clear) {
-        $("#roll span").hide("fade", {}, 500, function () {
-            $("#roll").empty();
-            addAllDiceGraphicsForOneType(result.base, "base");
-            addAllDiceGraphicsForOneType(result.skill, "skill");
-            addAllDiceGraphicsForOneType(result.gear, "gear");
-            addAllDiceGraphicsForOneType(result.negative, "negative");
-            addAllDiceGraphicsForOneType(result.other, "other");
-            $("#roll").append($("<span></span>"));
+        $("#roll").empty();
+        addAllDiceGraphicsForOneType(result.base, "base");
+        addAllDiceGraphicsForOneType(result.skill, "skill");
+        addAllDiceGraphicsForOneType(result.gear, "gear");
+        addAllDiceGraphicsForOneType(result.negative, "negative");
+        addAllDiceGraphicsForOneType(result.other, "other");
+        $("#roll").append($("<span></span>"));
 
-            $("#rerollButton").prop("disabled", !result.rerollable)
-        });
+        $("#rerollButton").prop("disabled", !result.rerollable)
     }
 }
 
@@ -268,6 +265,12 @@ $(document).ready(function () {
     $("#change-char").click(function () {
         var charName = $("#change-char-name").val();
         window.location.search = "?char=" + charName;
+    });
+
+    $(".roll-quick").click(function () {
+        var number = parseInt($(this).attr("data-amount"));
+        setAdHoc(number, 0, 0, 0);
+        rollAdHoc();
     });
 
     $("label input[type='checkbox']").checkboxradio();
