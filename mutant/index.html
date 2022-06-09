@@ -160,25 +160,76 @@
                                 <button class="roll-skill" data-statref="#stat-agility" data-skillref="#skill-endure"
                                     data-modref="#modifier-skill">🎲 Kyl</button>
                             </span>
+                            <span data-toggled-by="#talent-laborer">
+                                <label for="mod-laborer-endure">Projekt
+                                    <input type="checkbox" id="mod-laborer-endure" class="conditional-mod"
+                                        data-skillref="#skill-endure" data-mod-name="Knegare" value="2" />
+                                </label>
+                            </span>
                         </td>
                     </tr>
                     <tr>
-                        <td><label for="skill-force">Ta krafttag (Sty)</label></td>
-                        <td><input id="skill-force" class="saved small color-skill" type="number" size="1"
-                                data-name="Ta krafttag" /></td>
-                        <td><button class=" roll-skill" data-statref="#stat-strength" data-skillref="#skill-force"
-                                data-modref="#modifier-skill">🎲</button></td>
+                        <td>
+                            <label for="skill-force">Ta krafttag (Sty)</label>
+                        </td>
+                        <td>
+                            <input id="skill-force" class="saved small color-skill" type="number" size="1"
+                                data-name="Ta krafttag" />
+                        </td>
+                        <td>
+                            <button class=" roll-skill" data-statref="#stat-strength" data-skillref="#skill-force"
+                                data-modref="#modifier-skill">🎲</button>
+                        </td>
+                        <td>
+                            <span data-toggled-by="#talent-laborer">
+                                <label for="mod-laborer-force">Projekt
+                                    <input type="checkbox" id="mod-laborer-force" class="conditional-mod"
+                                        data-skillref="#skill-force" data-mod-name="Knegare" value="2" />
+                                </label>
+                            </span>
+                        </td>
                     </tr>
                     <tr>
-                        <td><label for="skill-fight">Slåss (Sty)</label></td>
-                        <td><input id="skill-fight" class="saved small color-skill" type="number" size="1"
-                                data-name="Slåss" /></td>
-                        <td><button class="roll-skill" data-statref="#stat-strength" data-skillref="#skill-fight"
-                                data-modref="#modifier-skill">🎲</button></td>
                         <td>
-                            <span data-toggled-by="#talent-flyweight"><button class="roll-skill"
-                                    data-statref="#stat-agility" data-skillref="#skill-fight"
+                            <label for="skill-fight">Slåss (Sty)</label>
+                        </td>
+                        <td>
+                            <input id="skill-fight" class="saved small color-skill" type="number" size="1"
+                                data-name="Slåss" />
+                        </td>
+                        <td>
+                            <button class="roll-skill" data-statref="#stat-strength" data-skillref="#skill-fight"
+                                data-modref="#modifier-skill">🎲</button>
+                            <span data-toggled-by="#talent-flyweight">
+                                <button class="roll-skill" data-statref="#stat-agility" data-skillref="#skill-fight"
                                     data-modref="#modifier-skill">🎲 Kyl (parera)</button>
+                            </span>
+                        </td>
+                        <td>
+                            <span data-toggled-by="#talent-motorhead">
+                                <label for="mod-motorhead-fight">Ramma
+                                    <input type="checkbox" id="mod-motorhead-fight" class="conditional-mod"
+                                        data-skillref="#skill-fight" data-mod-name="Motorskalle" value="1" />
+                                </label>
+                            </span>
+                            <span data-toggled-by="#talent-heavy-attack">
+                                <label for="mod-heavy-attack">Offra manöver
+                                    <input type="checkbox" id="mod-heavy-attack" class="conditional-mod"
+                                        data-skillref="#skill-fight" data-mod-name="Krafthugg" value="1" />
+                                </label>
+                            </span>
+                            <span data-toggled-by="#talent-quick-footwork">
+                                <label for="mod-quick-footwork">Parera (närstrid)
+                                    <input type="checkbox" id="mod-quick-footwork" class="conditional-mod"
+                                        data-skillref="#skill-fight" data-mod-name="Snabbt fotarbete" value="2" />
+                                </label>
+                            </span>
+                            <span data-toggled-by="#talent-laborer">
+                                <label for="mod-laborer-fight">Projekt
+                                    <input type="checkbox" id="mod-laborer-fight" class="conditional-mod"
+                                        data-skillref="#skill-fight" data-mod-name="Knegare" value="2" />
+                                </label>
+                            </span>
                         </td>
                     </tr>
 
@@ -188,6 +239,14 @@
                                 data-name="Smyga" /></td>
                         <td><button class="roll-skill" data-statref="#stat-agility" data-skillref="#skill-sneak"
                                 data-modref="#modifier-skill">🎲</button></td>
+                        <td>
+                            <span data-toggled-by="#talent-laborer">
+                                <label for="mod-laborer-sneak">Projekt
+                                    <input type="checkbox" id="mod-laborer-sneak" class="conditional-mod"
+                                        data-skillref="#skill-sneak" data-mod-name="Knegare" value="2" />
+                                </label>
+                            </span>
+                        </td>
                     </tr>
                     <tr>
                         <td><label for="skill-move">Fly (Kyl)</label></td>
@@ -204,6 +263,12 @@
                                 <button class="roll-skill" data-statref="#stat-strength" data-skillref="#skill-move"
                                     data-modref="#modifier-skill">🎲 Sty</button>
                             </span>
+                            <span data-toggled-by="#talent-laborer">
+                                <label for="mod-laborer-move">Projekt
+                                    <input type="checkbox" id="mod-laborer-move" class="conditional-mod"
+                                        data-skillref="#skill-move" data-mod-name="Knegare" value="2" />
+                                </label>
+                            </span>
                         </td>
                     </tr>
                     <tr>
@@ -212,6 +277,14 @@
                                 data-name="Skjuta" /></td>
                         <td><button class="roll-skill" data-statref="#stat-agility" data-skillref="#skill-shoot"
                                 data-modref="#modifier-skill">🎲</button></td>
+                        <td>
+                            <span data-toggled-by="#talent-laborer">
+                                <label for="mod-laborer-shoot">Projekt
+                                    <input type="checkbox" id="mod-laborer-shoot" class="conditional-mod"
+                                        data-skillref="#skill-shoot" data-mod-name="Knegare" value="2" />
+                                </label>
+                            </span>
+                        </td>
                     </tr>
 
                     <tr>
@@ -231,6 +304,18 @@
                                 <button class="roll-skill" data-statref="#stat-empathy" data-skillref="#skill-scout"
                                     data-modref="#modifier-skill">🎲 Kns</button>
                             </span>
+                            <span data-toggled-by="#talent-monster-hunter">
+                                <label for="mod-monster-hunter">Zonbest
+                                    <input type="checkbox" id="mod-monster-hunter" class="conditional-mod"
+                                        data-skillref="#skill-scout" data-mod-name="Monsterjägare" value="2" />
+                                </label>
+                            </span>
+                            <span data-toggled-by="#talent-laborer">
+                                <label for="mod-laborer-scout">Projekt
+                                    <input type="checkbox" id="mod-laborer-scout" class="conditional-mod"
+                                        data-skillref="#skill-scout" data-mod-name="Knegare" value="2" />
+                                </label>
+                            </span>
                         </td>
                     </tr>
                     <tr>
@@ -239,6 +324,26 @@
                                 data-name="Förstå sig på" /></td>
                         <td><button class="roll-skill" data-statref="#stat-wits" data-skillref="#skill-comprehend"
                                 data-modref="#modifier-skill">🎲</button></td>
+                        <td>
+                            <span data-toggled-by="#talent-artifact-knowledge">
+                                <label for="mod-artifact-knowledge">Artefakt
+                                    <input type="checkbox" id="mod-artifact-knowledge" class="conditional-mod"
+                                        data-skillref="#skill-comprehend" data-mod-name="Prylvan" value="1" />
+                                </label>
+                            </span>
+                            <span data-toggled-by="#talent-tomb-raider">
+                                <label for="mod-tomb-raider">Ruin
+                                    <input type="checkbox" id="mod-tomb-raider" class="conditional-mod"
+                                        data-skillref="#skill-comprehend" data-mod-name="Ruinkrälare" value="2" />
+                                </label>
+                            </span>
+                            <span data-toggled-by="#talent-laborer">
+                                <label for="mod-laborer-comprehend">Projekt
+                                    <input type="checkbox" id="mod-laborer-comprehend" class="conditional-mod"
+                                        data-skillref="#skill-comprehend" data-mod-name="Knegare" value="2" />
+                                </label>
+                            </span>
+                        </td>
                     </tr>
                     <tr>
                         <td>
@@ -253,9 +358,14 @@
                                 data-modref="#modifier-skill">🎲</button>
                         </td>
                         <td>
+                            <span data-toggled-by="#talent-laborer">
+                                <label for="mod-laborer-know-the-zone">Projekt
+                                    <input type="checkbox" id="mod-laborer-know-the-zone" class="conditional-mod"
+                                        data-skillref="#skill-knowTheZone" data-mod-name="Knegare" value="2" />
+                                </label>
+                            </span>
                             <span data-toggled-by="#talent-zone-cook">
-                                <button class="roll-skill" data-statref="#stat-wits" data-skillref="#skill-knowTheZone"
-                                    data-modref="#modifier-skill">🎲 Zonkock</button>
+                                <strong>Zonkock</strong>
                             </span>
                         </td>
                     </tr>
@@ -277,21 +387,61 @@
                                 <button class="roll-skill" data-statref="#stat-wits" data-skillref="#skill-senseEmotion"
                                     data-modref="#modifier-skill">🎲 Skp</button>
                             </span>
+                            <span data-toggled-by="#talent-laborer">
+                                <label for="mod-laborer-sense-emotion">Projekt
+                                    <input type="checkbox" id="mod-laborer-sense-emotion" class="conditional-mod"
+                                        data-skillref="#skill-senseEmotion" data-mod-name="Knegare" value="2" />
+                                </label>
+                            </span>
                         </td>
                     </tr>
                     <tr>
-                        <td><label for="skill-manipulate">Manipulera (Kns)</label></td>
-                        <td><input id="skill-manipulate" class="saved small color-skill" type="number" size="1"
-                                data-name="Manipulera" /></td>
-                        <td><button class="roll-skill" data-statref="#stat-empathy" data-skillref="#skill-manipulate"
-                                data-modref="#modifier-skill">🎲</button></td>
+                        <td>
+                            <label for="skill-manipulate">Manipulera (Kns)</label>
+                        </td>
+                        <td>
+                            <input id="skill-manipulate" class="saved small color-skill" type="number" size="1"
+                                data-name="Manipulera" />
+                        </td>
+                        <td>
+                            <button class="roll-skill" data-statref="#stat-empathy" data-skillref="#skill-manipulate"
+                                data-modref="#modifier-skill">🎲</button>
+                        </td>
+                        <td>
+                            <span data-toggled-by="#talent-laborer">
+                                <label for="mod-laborer-manipulate">Projekt
+                                    <input type="checkbox" id="mod-laborer-manipulate" class="conditional-mod"
+                                        data-skillref="#skill-manipulate" data-mod-name="Knegare" value="2" />
+                                </label>
+                            </span>
+                        </td>
                     </tr>
                     <tr>
-                        <td><label for="skill-heal">Vårda (Kns)</label></td>
-                        <td><input id="skill-heal" class="saved small color-skill" type="number" size="1"
-                                data-name="Vårda" /></td>
-                        <td><button class="roll-skill" data-statref="#stat-empathy" data-skillref="#skill-heal"
-                                data-modref="#modifier-skill">🎲</button></td>
+                        <td>
+                            <label for="skill-heal">Vårda (Kns)</label>
+                        </td>
+                        <td>
+                            <input id="skill-heal" class="saved small color-skill" type="number" size="1"
+                                data-name="Vårda" />
+                        </td>
+                        <td>
+                            <button class="roll-skill" data-statref="#stat-empathy" data-skillref="#skill-heal"
+                                data-modref="#modifier-skill">🎲</button>
+                        </td>
+                        <td>
+                            <span data-toggled-by="#talent-physician">
+                                <label for="mod-physician">Skada
+                                    <input type="checkbox" id="mod-physician" class="conditional-mod"
+                                        data-skillref="#skill-heal" data-mod-name="Anatomikunnig" value="1" />
+                                </label>
+                            </span>
+                            <span data-toggled-by="#talent-laborer">
+                                <label for="mod-laborer-heal">Projekt
+                                    <input type="checkbox" id="mod-laborer-heal" class="conditional-mod"
+                                        data-skillref="#skill-heal" data-mod-name="Knegare" value="2" />
+                                </label>
+                            </span>
+                        </td>
                     </tr>
                     <tr class="toggled-by-job" data-active-for-job="bruiser">
                         <td>
@@ -318,6 +468,26 @@
                             <button class="roll-skill" data-statref="#stat-wits"
                                 data-skillref="#skill-tinker">🎲</button>
                         </td>
+                        <td>
+                            <span data-toggled-by="#talent-motorhead">
+                                <label for="mod-tinker-with-vehicle">Fordon
+                                    <input type="checkbox" id="mod-tinker-with-vehicle" class="conditional-mod"
+                                        data-skillref="#skill-tinker" data-mod-name="Motorskalle" value="1" />
+                                </label>
+                            </span>
+                            <span data-toggled-by="#talent-fixer">
+                                <label for="mod-repair">Reparation
+                                    <input type="checkbox" id="mod-repair" class="conditional-mod"
+                                        data-skillref="#skill-tinker" data-mod-name="Reparatör" value="1" />
+                                </label>
+                            </span>
+                            <span data-toggled-by="#talent-inventor">
+                                <label for="mod-invent">Hemmabygge
+                                    <input type="checkbox" id="mod-invent" class="conditional-mod"
+                                        data-skillref="#skill-tinker" data-mod-name="Uppfinnare" value="1" />
+                                </label>
+                            </span>
+                        </td>
                     </tr>
                     <tr class="toggled-by-job" data-active-for-job="navigator">
                         <td>
@@ -330,6 +500,11 @@
                         <td>
                             <button class="roll-skill" data-statref="#stat-agility"
                                 data-skillref="#skill-navigate">🎲</button>
+                        </td>
+                        <td>
+                            <span data-toggled-by="#talent-treasure-hunter">
+                                <strong>Sakletare</strong>
+                            </span>
                         </td>
                     </tr>
                     <tr class="toggled-by-job" data-active-for-job="scrounger">
@@ -357,6 +532,14 @@
                             <button class="roll-skill" data-statref="#stat-agility"
                                 data-skillref="#skill-animal-handling">🎲</button>
                         </td>
+                        <td>
+                            <span data-toggled-by="#talent-bloodhound">
+                                <label for="mod-track">Spårning
+                                    <input type="checkbox" id="mod-track" class="conditional-mod"
+                                        data-skillref="#skill-animal-handling" data-mod-name="Blodhund" value="2" />
+                                </label>
+                            </span>
+                        </td>
                     </tr>
                     <tr class="toggled-by-job" data-active-for-job="chronicler">
                         <td>
@@ -370,31 +553,70 @@
                             <button class="roll-skill" data-statref="#stat-empathy"
                                 data-skillref="#skill-inspire">🎲</button>
                         </td>
+                        <td>
+                            <span data-toggled-by="#talent-warmonger">
+                                <label for="mod-warmonger">Slåss/Skjuta
+                                    <input type="checkbox" id="mod-warmonger" class="conditional-mod"
+                                        data-skillref="#skill-inspire" data-mod-name="Våldshetsare" value="1" />
+                                </label>
+                            </span>
+                            <span data-toggled-by="talent-artist">
+                                <strong>Artist</strong>
+                            </span>
+                        </td>
                     </tr>
                     <tr class="toggled-by-job" data-active-for-job="boss">
                         <td>
                             <label for="skill-command">Kommendera (Kns)</label>
                         </td>
                         <td>
-                            <input id="skill-command-1" class="saved small color-skill" type="number" size="1"
+                            <input id="skill-command" class="saved small color-skill" type="number" size="1"
                                 data-name="Kommendera" />
                         </td>
                         <td>
                             <button class="roll-skill" data-statref="#stat-empathy"
                                 data-skillref="#skill-command">🎲</button>
                         </td>
+                        <td>
+                            <span data-toggled-by="#talent-protector-of-the-ark">
+                                <label for="mod-protector-of-the-ark">Beskyddarvh.
+                                    <input type="checkbox" id="mod-protector-of-the-ark" class="conditional-mod"
+                                        data-skillref="#skill-command" data-mod-name="Arkens beskyddare" value="2" />
+                                </label>
+                            </span>
+                            <span data-toggled-by="#talent-commander">
+                                <label for="mod-commander">Ej beskyddarvh.
+                                    <input type="checkbox" id="mod-commander" class="conditional-mod"
+                                        data-skillref="#skill-command" data-mod-name="Kommendant" value="2" />
+                                </label>
+                            </span>
+                        </td>
                     </tr>
                     <tr class="toggled-by-job" data-active-for-job="slave">
                         <td>
-                            <label for="skill-endure">Uthärda (Kyl)</label>
+                            <label for="skill-persist">Uthärda (Kyl)</label>
                         </td>
                         <td>
-                            <input id="skill-endure" class="saved small color-skill" type="number" size="1"
+                            <input id="skill-persist" class="saved small color-skill" type="number" size="1"
                                 data-name="Uthärda" />
                         </td>
                         <td>
                             <button class="roll-skill" data-statref="#stat-agility"
-                                data-skillref="#skill-endure">🎲</button>
+                                data-skillref="#skill-persist">🎲</button>
+                        </td>
+                        <td>
+                            <span data-toggled-by="#talent-unfazed">
+                                <label for="mod-unfazed">Tvivel
+                                    <input type="checkbox" id="mod-unfazed" class="conditional-mod"
+                                        data-skillref="#skill-persist" data-mod-name="Oberörd" value="1" />
+                                </label>
+                            </span>
+                            <span data-toggled-by="#talent-tank">
+                                <label for="mod-tank">Skada
+                                    <input type="checkbox" id="mod-tank" class="conditional-mod"
+                                        data-skillref="#skill-persist" data-mod-name="Slagtålig" value="1" />
+                                </label>
+                            </span>
                         </td>
                     </tr>
                     <tr>
@@ -588,26 +810,21 @@
                                         class="check-talent toggles-fields" />
                                 </label>
 
-                                <!-- +1 Slåss när man rammar med ett fordon (conditional mod) -->
-                                <!-- +1 Mecka för att laga/modifiera fordon (conditonal mod) -->
                                 <label for="talent-motorhead" class="toggled-by-job"
-                                    data-active-for-job="gearhead">Motorskalle*
+                                    data-active-for-job="gearhead">Motorskalle
                                     <input type="checkbox" id="talent-motorhead" class="check-talent toggles-fields" />
                                 </label>
-                                <!-- +1 Mecka vid reparation (conditional mod) -->
                                 <label for="talent-fixer" class="toggled-by-job"
-                                    data-active-for-job="gearhead">Reparatör*
+                                    data-active-for-job="gearhead">Reparatör
                                     <input type="checkbox" id="talent-fixer" class="check-talent toggles-fields" />
                                 </label>
-                                <!-- +1 Mecka vid hemmabyggen (conditional mod) -->
                                 <label for="talent-inventor" class="toggled-by-job"
-                                    data-active-for-job="gearhead">Uppfinnare*
+                                    data-active-for-job="gearhead">Uppfinnare
                                     <input type="checkbox" id="talent-inventor" class="check-talent toggles-fields" />
                                 </label>
 
-                                <!-- +2 Speja mot zonbest (conditional mod) -->
                                 <label for="talent-monster-hunter" class="toggled-by-job"
-                                    data-active-for-job="navigator">Monsterjägare*
+                                    data-active-for-job="navigator">Monsterjägare
                                     <input type="checkbox" id="talent-monster-hunter"
                                         class="check-talent toggles-fields" />
                                 </label>
@@ -616,15 +833,14 @@
                                     data-active-for-job="navigator">Rötnos*
                                     <input type="checkbox" id="talent-rot-nose" class="check-talent toggles-fields" />
                                 </label>
-                                <!-- +2 Leda vägen (permanent mod)
-                                    Primär effekt blir att hitta artefakter; upptäcka hot blir bonuseffekt (beskrivning) -->
                                 <label for="talent-treasure-hunter" class="toggled-by-job"
-                                    data-active-for-job="navigator">Sakletare*
+                                    data-active-for-job="navigator">Sakletare
                                     <input type="checkbox" id="talent-treasure-hunter"
-                                        class="check-talent toggles-fields" />
+                                        class="check-talent toggles-fields conditional-mod permanent-mod"
+                                        data-skillref="#skill-navigate" data-mod-name="Sakletare" , value="2" />
                                 </label>
 
-                                <!-- Manipulera get +1 Tvivel (beskrivning) -->
+                                <!-- Manipulera ger +1 Tvivel (beskrivning) -->
                                 <label for="talent-mean-bastard" class="toggled-by-job"
                                     data-active-for-job="scrounger">Elak jävel*
                                     <input type="checkbox" id="talent-mean-bastard"
@@ -641,9 +857,8 @@
                                         class="check-talent toggles-fields" />
                                 </label>
 
-                                <!-- +2 Bussa på vid spårning (conditional mod) -->
                                 <label for="talent-bloodhound" class="toggled-by-job"
-                                    data-active-for-job="mutantWithDog">Blodhund*
+                                    data-active-for-job="mutantWithDog">Blodhund
                                     <input type="checkbox" id="talent-bloodhound" class="check-talent toggles-fields" />
                                 </label>
                                 <!-- Hundens STY = 4; +1 Slåss för hunden (permanent mod for dog) -->
@@ -659,46 +874,39 @@
                                         class="check-talent toggles-fields" />
                                 </label>
 
-                                <!-- Kan slå INSPIRERA en gång/session för att uppträda; varje 6:a ger T6 patroner eller krubb. -->
                                 <label for="talent-artist" class="toggled-by-job"
-                                    data-active-for-job="chronicler">Artist*
+                                    data-active-for-job="chronicler">Artist
                                     <input type="checkbox" id="talent-artist" class="check-talent toggles-fields" />
                                 </label>
-                                <!-- +1 Vårda om någon är bruten av Skada (conditional mod) -->
                                 <label for="talent-physician" class="toggled-by-job"
-                                    data-active-for-job="chronicler">Anatomikunnig*
+                                    data-active-for-job="chronicler">Anatomikunnig
                                     <input type="checkbox" id="talent-physician" class="check-talent toggles-fields" />
                                 </label>
-                                <!-- +1 Inspirera någon som Slåss/Skjuter (conditional mod) -->
                                 <label for="talent-warmonger" class="toggled-by-job"
-                                    data-active-for-job="chronicler">Våldshetsare*
+                                    data-active-for-job="chronicler">Våldshetsare
                                     <input type="checkbox" id="talent-warmonger" class="check-talent toggles-fields" />
                                 </label>
 
-                                <!-- +2 Kommendera vid beskyddarverksamhet (conditional mod)-->
                                 <label for="talent-protector-of-the-ark" class="toggled-by-job"
-                                    data-active-for-job="boss">Arkens beskyddare*
+                                    data-active-for-job="boss">Arkens beskyddare
                                     <input type="checkbox" id="talent-protector-of-the-ark"
                                         class="check-talent toggles-fields" />
                                 </label>
-                                <!-- +2 Kommendera UTOM vid beskyddarverksamhet (conditonal mod) -->
                                 <label for="talent-commander" class="toggled-by-job"
-                                    data-active-for-job="boss">Kommendant*
+                                    data-active-for-job="boss">Kommendant
                                     <input type="checkbox" id="talent-commander" class="check-talent toggles-fields" />
                                 </label>
-                                <!-- Gänget har skjutvapen -->
+                                <!-- Gänget har skjutvapen (complicated) -->
                                 <label for="talent-gunslingers" class="toggled-by-job"
                                     data-active-for-job="boss">Revolvermän*
                                     <input type="checkbox" id="talent-gunslingers"
                                         class="check-talent toggles-fields" />
                                 </label>
 
-                                <!-- +1 Uthärda mot Tvivel (conditional mod) -->
-                                <label for="talent-unfazed" class="toggled-by-job" data-active-for-job="slave">Obrydd*
+                                <label for="talent-unfazed" class="toggled-by-job" data-active-for-job="slave">Obrydd
                                     <input type="checkbox" id="talent-unfazed" class="check-talent toggles-fields" />
                                 </label>
-                                <!-- +1 Uthärda mot Skada (conditional mod) -->
-                                <label for="talent-tank" class="toggled-by-job" data-active-for-job="slave">Slagtålig*
+                                <label for="talent-tank" class="toggled-by-job" data-active-for-job="slave">Slagtålig
                                     <input type="checkbox" id="talent-tank" class="check-talent toggles-fields" />
                                 </label>
                                 <!-- Uthärda ger +1 per 6:a på nästa handling (complicated af)-->
@@ -724,11 +932,9 @@
                                 <label for="talent-flyweight">Flugviktare
                                     <input type="checkbox" id="talent-flyweight" class="check-talent toggles-fields" />
                                 </label>
-                                <!-- +2 vid projekt (conditional mod; multiple skills)-->
-                                <label for="talent-laborer">Knegare*
+                                <label for="talent-laborer">Knegare
                                     <input type="checkbox" id="talent-laborer" class="check-talent toggles-fields" />
                                 </label>
-                                <!-- +1 Slåss genom att offra manöver (conditional mod) -->
                                 <label for="talent-heavy-attack">Krafthugg
                                     <input type="checkbox" id="talent-heavy-attack"
                                         class="check-talent toggles-fields" />
@@ -772,8 +978,7 @@
                                     <input type="checkbox" id="talent-personal-mathematics"
                                         class="check-talent toggles-fields" />
                                 </label>
-                                <!-- +1 Förstå sig på för artefakter (conditional mod)-->
-                                <label for="talent-artifact-knowledge">Prylvan*
+                                <label for="talent-artifact-knowledge">Prylvan
                                     <input type="checkbox" id="talent-artifact-knowledge"
                                         class="check-talent toggles-fields" />
                                 </label>
@@ -784,8 +989,7 @@
                         </td>
                         <td>
                             <div class="controlgroup-vertical">
-                                <!-- +2 Förstå sig på för ruiner (conditional mod) -->
-                                <label for="talent-tomb-raider">Ruinkrälare*
+                                <label for="talent-tomb-raider">Ruinkrälare
                                     <input type="checkbox" id="talent-tomb-raider"
                                         class="check-talent toggles-fields" />
                                 </label>
@@ -799,8 +1003,7 @@
                                 <label for="talent-quick-draw">Snabbdragare
                                     <input type="checkbox" id="talent-quick-draw" class="check-talent" />
                                 </label>
-                                <!-- +2 Parera i närstrid (conditional mod)-->
-                                <label for="talent-quick-footwork">Snabbt fotarbete*
+                                <label for="talent-quick-footwork">Snabbt fotarbete
                                     <input type="checkbox" id="talent-quick-footwork"
                                         class="check-talent, toggles-fields" />
                                 </label>

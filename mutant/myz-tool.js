@@ -234,12 +234,27 @@ function rollSkill(statField, skillField, modField) {
     var skillValue = intValueOfField(skillField);
     var skillName = $(skillField).attr("data-name");
 
-    var modValue = intValueOfField(modField);
-    var modifiedSkillValue = skillValue + modValue;
-
     var statAbbr = $(statField).attr("data-abbr");
     var description = skillName + ' [<span class="stat-value">' + modifiedStatValue + "T6 (" + statAbbr + ")</span>";
     description += ' + <span class="skill-value">' + skillValue + "T6 (" + skillName + ")</span>";
+
+    var modValue = intValueOfField(modField);
+
+    var talentMods = 0;
+
+    $(".conditional-mod[data-skillref='" + skillField + "']").each(function () {
+        if ($(this).is(":checked")) {
+            var idOfThis = "#" + $(this).attr("id");
+            talentMods += intValueOfField(idOfThis);
+            description += describeModField(idOfThis);
+            if (!$(this).hasClass("permanent-mod")) {
+                $(this).prop("checked", false).trigger("change");
+            }
+        }
+    });
+
+    var modifiedSkillValue = skillValue + modValue + talentMods;
+
     description += describeModField(modField);
     description += "]";
 
@@ -276,12 +291,17 @@ function rollGear(statField, skillField, gearField, modField) {
 
 function describeModField(modField) {
     var modValue = intValueOfField(modField);
+    var modName = $(modField).attr("data-mod-name");
+    if (!modName) {
+        modName = "mod";
+    }
+
     if (modValue === 0) {
         return "";
     } else if (modValue > 0) {
-        return ' + <span class="mod-value-positive">' + modValue + "T6 (mod)</span>";
+        return ' + <span class="mod-value-positive">' + modValue + "T6 (" + modName + ")</span>";
     } else {
-        return ' - <span class="mod-value-negative">' + Math.abs(modValue) + "T6 (mod)</span>";
+        return ' - <span class="mod-value-negative">' + Math.abs(modValue) + "T6 (" + modName + ")</span>";
     }
 }
 
