@@ -293,176 +293,108 @@
                         <td><button class="roll-skill" data-statref="#stat-empathy" data-skillref="#skill-heal"
                                 data-modref="#modifier-skill">🎲</button></td>
                     </tr>
-                    <tr>
-                        <td><select id="skill-special-1-name" class="saved select-special-skill">
-                                <option selected></option>
-                                <option value="Bussa på (KYL)">Bussa på (Kyl)</option>
-                                <option value="Bussa på">Bussa på (Skp)</option>
-                                <option value="Inspirera">Inspirera (Kns)</option>
-                                <option value="Kommendera">Kommendera (Kns)</option>
-                                <option value="Leda vägen">Leda vägen (Kyl)</option>
-                                <option value="Mecka">Mecka (Skp)</option>
-                                <option value="Mucka">Mucka (Sty)</option>
-                                <option value="Schackra">Schackra (Kns)</option>
-                                <option value="Uthärda">Uthärda (Kyl)</option>
-                            </select></td>
-                        <td data-toggled-by="#skill-special-1-name" data-active-for-value="Bussa på (KYL)">
-                            <input id="skill-animal-handling-agi-1" class="saved small color-skill" type="number"
-                                size="1" data-name="Bussa på" />
+                    <tr class="toggled-by-job" data-active-for-job="bruiser">
+                        <td>
+                            <label for="skill-intimidate">Mucka (Str)</label>
                         </td>
-                        <td data-toggled-by="#skill-special-1-name" data-active-for-value="Bussa på (KYL)">
+                        <td>
+                            <input id="skill-intimidate" class="saved small color-skill" type="number" size="1"
+                                data-name="Mucka" />
+                        </td>
+                        <td>
+                            <button class="roll-skill" data-statref="#stat-strength"
+                                data-skillref="#skill-intimidate">🎲</button>
+                        </td>
+                    </tr>
+                    <tr class="toggled-by-job" data-active-for-job="gearhead">
+                        <td>
+                            <label for="skill-tinker">Mecka (Skp)</label>
+                        </td>
+                        <td>
+                            <input id="skill-tinker" class="saved small color-skill" type="number" size="1"
+                                data-name="Mecka" />
+                        </td>
+                        <td>
+                            <button class="roll-skill" data-statref="#stat-wits"
+                                data-skillref="#skill-tinker">🎲</button>
+                        </td>
+                    </tr>
+                    <tr class="toggled-by-job" data-active-for-job="navigator">
+                        <td>
+                            <label for="skill-navigate">Leda vägen (Kyl)</label>
+                        </td>
+                        <td>
+                            <input id="skill-navigate" class="saved small color-skill" type="number" size="1"
+                                data-name="Leda vägen" />
+                        </td>
+                        <td>
                             <button class="roll-skill" data-statref="#stat-agility"
-                                data-skillref="#skill-animal-handling-agi-1" data-modref="#modifier-skill">🎲</button>
+                                data-skillref="#skill-navigate">🎲</button>
                         </td>
-                        <td data-toggled-by="#skill-special-1-name" data-active-for-value="Bussa på">
-                            <input id="skill-animal-handling-1" class="saved small color-skill" type="number" size="1"
+                    </tr>
+                    <tr class="toggled-by-job" data-active-for-job="scrounger">
+                        <td>
+                            <label for="skill-scrounge">Schackra (Kns)</label>
+                        </td>
+                        <td>
+                            <input id="skill-scrounge" class="saved small color-skill" type="number" size="1"
+                                data-name="Schackra" />
+                        </td>
+                        <td>
+                            <button class="roll-skill" data-statref="#stat-empathy"
+                                data-skillref="#skill-scrounge">🎲</button>
+                        </td>
+                    </tr>
+                    <tr class="toggled-by-job" data-active-for-job="mutantWithDog">
+                        <td>
+                            <label for="skill-animal-handling">Bussa på (Kyl)</label>
+                        </td>
+                        <td>
+                            <input id="skill-animal-handling" class="saved small color-skill" type="number" size="1"
                                 data-name="Bussa på" />
                         </td>
-                        <td data-toggled-by="#skill-special-1-name" data-active-for-value="Bussa på">
-                            <button class="roll-skill" data-statref="#stat-wits"
-                                data-skillref="#skill-animal-handling-1" data-modref="#modifier-skill">🎲</button>
+                        <td>
+                            <button class="roll-skill" data-statref="#stat-agility"
+                                data-skillref="#skill-animal-handling">🎲</button>
                         </td>
-                        <td data-toggled-by="#skill-special-1-name" data-active-for-value="Inspirera">
-                            <input id="skill-inspire-1" class="saved small color-skill" type="number" size="1"
+                    </tr>
+                    <tr class="toggled-by-job" data-active-for-job="chronicler">
+                        <td>
+                            <label for="skill-inspire">Inspirera (Kns)</label>
+                        </td>
+                        <td>
+                            <input id="skill-inspire" class="saved small color-skill" type="number" size="1"
                                 data-name="Inspirera" />
                         </td>
-                        <td data-toggled-by="#skill-special-1-name" data-active-for-value="Inspirera">
-                            <button class="roll-skill" data-statref="#stat-empathy" data-skillref="#skill-inspire-1"
-                                data-modref="#modifier-skill">🎲</button>
+                        <td>
+                            <button class="roll-skill" data-statref="#stat-empathy"
+                                data-skillref="#skill-inspire">🎲</button>
                         </td>
-                        <td data-toggled-by="#skill-special-1-name" data-active-for-value="Kommendera">
+                    </tr>
+                    <tr class="toggled-by-job" data-active-for-job="boss">
+                        <td>
+                            <label for="skill-command">Kommendera (Kns)</label>
+                        </td>
+                        <td>
                             <input id="skill-command-1" class="saved small color-skill" type="number" size="1"
                                 data-name="Kommendera" />
                         </td>
-                        <td data-toggled-by="#skill-special-1-name" data-active-for-value="Kommendera">
-                            <button class="roll-skill" data-statref="#stat-empathy" data-skillref="#skill-command-1"
-                                data-modref="#modifier-skill">🎲</button>
-                        </td>
-                        <td data-toggled-by="#skill-special-1-name" data-active-for-value="Leda vägen">
-                            <input id="skill-navigate-1" class="saved small color-skill" type="number" size="1"
-                                data-name="Leda vägen" />
-                        </td>
-                        <td data-toggled-by="#skill-special-1-name" data-active-for-value="Leda vägen">
-                            <button class="roll-skill" data-statref="#stat-agility" data-skillref="#skill-navigate-1"
-                                data-modref="#modifier-skill">🎲</button>
-                        </td>
-                        <td data-toggled-by="#skill-special-1-name" data-active-for-value="Mecka">
-                            <input id="skill-tinker-1" class="saved small color-skill" type="number" size="1"
-                                data-name="Mecka" />
-                        </td>
-                        <td data-toggled-by="#skill-special-1-name" data-active-for-value="Mecka">
-                            <button class="roll-skill" data-statref="#stat-wits" data-skillref="#skill-tinker-1"
-                                data-modref="#modifier-skill">🎲</button>
-                        </td>
-                        <td data-toggled-by="#skill-special-1-name" data-active-for-value="Mucka">
-                            <input id="skill-intimidate-1" class="saved small color-skill" type="number" size="1"
-                                data-name="Mucka" />
-                        </td>
-                        <td data-toggled-by="#skill-special-1-name" data-active-for-value="Mucka">
-                            <button class="roll-skill" data-statref="#stat-strength" data-skillref="#skill-intimidate-1"
-                                data-modref="#modifier-skill">🎲</button>
-                        </td>
-                        <td data-toggled-by="#skill-special-1-name" data-active-for-value="Schackra">
-                            <input id="skill-scrounge-1" class="saved small color-skill" type="number" size="1"
-                                data-name="Schackra" />
-                        </td>
-                        <td data-toggled-by="#skill-special-1-name" data-active-for-value="Schackra">
-                            <button class="roll-skill" data-statref="#stat-empathy" data-skillref="#skill-scrounge-1"
-                                data-modref="#modifier-skill">🎲</button>
-                        </td>
-                        <td data-toggled-by="#skill-special-1-name" data-active-for-value="Uthärda">
-                            <input id="skill-endure-1" class="saved small color-skill" type="number" size="1"
-                                data-name="Uthärda" />
-                        </td>
-                        <td data-toggled-by="#skill-special-1-name" data-active-for-value="Uthärda">
-                            <button class="roll-skill" data-statref="#stat-agility" data-skillref="#skill-endure-1"
-                                data-modref="#modifier-skill">🎲</button>
+                        <td>
+                            <button class="roll-skill" data-statref="#stat-empathy"
+                                data-skillref="#skill-command">🎲</button>
                         </td>
                     </tr>
-                    <tr>
-                        <td><select id="skill-special-2-name" class="saved select-special-skill">
-                                <option selected></option>
-                                <option value="Bussa på (KYL)">Bussa på (Kyl)</option>
-                                <option value="Bussa på">Bussa på (Skp)</option>
-                                <option value="Inspirera">Inspirera (Kns)</option>
-                                <option value="Kommendera">Kommendera (Kns)</option>
-                                <option value="Leda vägen">Leda vägen (Kyl)</option>
-                                <option value="Mecka">Mecka (Skp)</option>
-                                <option value="Mucka">Mucka (Sty)</option>
-                                <option value="Schackra">Schackra (Kns)</option>
-                                <option value="Uthärda">Uthärda (Kyl)</option>
-                            </select></td>
-                        <td data-toggled-by="#skill-special-2-name" data-active-for-value="Bussa på (KYL)">
-                            <input id="skill-animal-handling-agi-2" class="saved small color-skill" type="number"
-                                size="1" data-name="Bussa på" />
+                    <tr class="toggled-by-job" data-active-for-job="slave">
+                        <td>
+                            <label for="skill-endure">Uthärda (Kyl)</label>
                         </td>
-                        <td data-toggled-by="#skill-special-2-name" data-active-for-value="Bussa på (KYL)">
-                            <button class="roll-skill" data-statref="#stat-agility"
-                                data-skillref="#skill-animal-handling-agi-2" data-modref="#modifier-skill">🎲</button>
-                        </td>
-                        <td data-toggled-by="#skill-special-2-name" data-active-for-value="Bussa på">
-                            <input id="skill-animal-handling-2" class="saved small color-skill" type="number" size="1"
-                                data-name="Bussa på" />
-                        </td>
-                        <td data-toggled-by="#skill-special-2-name" data-active-for-value="Bussa på">
-                            <button class="roll-skill" data-statref="#stat-wits"
-                                data-skillref="#skill-animal-handling-2" data-modref="#modifier-skill">🎲</button>
-                        </td>
-                        <td data-toggled-by="#skill-special-2-name" data-active-for-value="Inspirera">
-                            <input id="skill-inspire-2" class="saved small color-skill" type="number" size="1"
-                                data-name="Inspirera" />
-                        </td>
-                        <td data-toggled-by="#skill-special-2-name" data-active-for-value="Inspirera">
-                            <button class="roll-skill" data-statref="#stat-empathy" data-skillref="#skill-inspire-2"
-                                data-modref="#modifier-skill">🎲</button>
-                        </td>
-                        <td data-toggled-by="#skill-special-2-name" data-active-for-value="Kommendera">
-                            <input id="skill-command-2" class="saved small color-skill" type="number" size="1"
-                                data-name="Kommendera" />
-                        </td>
-                        <td data-toggled-by="#skill-special-2-name" data-active-for-value="Kommendera">
-                            <button class="roll-skill" data-statref="#stat-empathy" data-skillref="#skill-command-2"
-                                data-modref="#modifier-skill">🎲</button>
-                        </td>
-                        <td data-toggled-by="#skill-special-2-name" data-active-for-value="Leda vägen">
-                            <input id="skill-navigate-2" class="saved small color-skill" type="number" size="1"
-                                data-name="Leda vägen" />
-                        </td>
-                        <td data-toggled-by="#skill-special-2-name" data-active-for-value="Leda vägen">
-                            <button class="roll-skill" data-statref="#stat-agility" data-skillref="#skill-navigate-2"
-                                data-modref="#modifier-skill">🎲</button>
-                        </td>
-                        <td data-toggled-by="#skill-special-2-name" data-active-for-value="Mecka">
-                            <input id="skill-tinker-2" class="saved small color-skill" type="number" size="1"
-                                data-name="Mecka" />
-                        </td>
-                        <td data-toggled-by="#skill-special-2-name" data-active-for-value="Mecka">
-                            <button class="roll-skill" data-statref="#stat-wits" data-skillref="#skill-tinker-2"
-                                data-modref="#modifier-skill">🎲</button>
-                        </td>
-                        <td data-toggled-by="#skill-special-2-name" data-active-for-value="Mucka">
-                            <input id="skill-intimidate-2" class="saved small color-skill" type="number" size="1"
-                                data-name="Mucka" />
-                        </td>
-                        <td data-toggled-by="#skill-special-2-name" data-active-for-value="Mucka">
-                            <button class="roll-skill" data-statref="#stat-strength" data-skillref="#skill-intimidate-2"
-                                data-modref="#modifier-skill">🎲</button>
-                        </td>
-                        <td data-toggled-by="#skill-special-2-name" data-active-for-value="Schackra">
-                            <input id="skill-scrounge-2" class="saved small color-skill" type="number" size="1"
-                                data-name="Schackra" />
-                        </td>
-                        <td data-toggled-by="#skill-special-2-name" data-active-for-value="Schackra">
-                            <button class="roll-skill" data-statref="#stat-empathy" data-skillref="#skill-scrounge-2"
-                                data-modref="#modifier-skill">🎲</button>
-                        </td>
-                        <td data-toggled-by="#skill-special-2-name" data-active-for-value="Uthärda">
-                            <input id="skill-endure-2" class="saved small color-skill" type="number" size="1"
+                        <td>
+                            <input id="skill-endure" class="saved small color-skill" type="number" size="1"
                                 data-name="Uthärda" />
                         </td>
-                        <td data-toggled-by="#skill-special-2-name" data-active-for-value="Uthärda">
-                            <button class="roll-skill" data-statref="#stat-agility" data-skillref="#skill-endure-2"
-                                data-modref="#modifier-skill">🎲</button>
+                        <td>
+                            <button class="roll-skill" data-statref="#stat-agility"
+                                data-skillref="#skill-endure">🎲</button>
                         </td>
                     </tr>
                     <tr>
