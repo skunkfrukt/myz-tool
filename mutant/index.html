@@ -133,7 +133,7 @@
                     </tr>
                     <tr>
                         <td colspan="3"></td>
-                        <td><input id="modifier-stat" class="small" type="number" /></td>
+                        <td><input id="modifier-stat" class="small mod" type="number" /></td>
                         <td><label for="modifier-stat">Modifikation</label></td>
                     </tr>
                 </table>
@@ -506,6 +506,11 @@
                                 <strong>Sakletare</strong>
                             </span>
                         </td>
+                        <td>
+                            <span data-toggled-by="#talent-rot-nose">
+                                <strong>Rötnos</strong>
+                            </span>
+                        </td>
                     </tr>
                     <tr class="toggled-by-job" data-active-for-job="scrounger">
                         <td>
@@ -626,7 +631,7 @@
                     </tr>
                     <tr>
                         <td></td>
-                        <td> <input id="modifier-skill" class="small" type="number" /> </td>
+                        <td> <input id="modifier-skill" class="small mod" type="number" /> </td>
                         <td colspan="2"> <label for="modifier-skill">Modifikation</label> </td>
                     </tr>
                 </table>
@@ -682,7 +687,7 @@
                         </div>
                         <div>
                             <button class="roll-fight">🎲 Slåss</button>
-                            <input id="modifier-fight" class="small" type="number" />
+                            <input id="modifier-fight" class="small mod" type="number" />
                             <label for="modifier-fight">Modifikation</label>
                         </div>
                     </div>
@@ -737,7 +742,7 @@
                             <button class="roll-shoot" data-statref="#stat-agility" data-skillref="#skill-shoot">🎲
                                 Skjuta</button>
                             <input type="hidden" id="modifier-shoot-total" />
-                            <input id="modifier-shoot" class="small" type="number" />
+                            <input id="modifier-shoot" class="small mod" type="number" />
                             <label for="modifier-shoot">Modifikation</label>
                         </div>
                     </div>
@@ -792,13 +797,13 @@
                     <tr>
                         <td>
                             <div class="controlgroup-vertical">
-                                <!-- MUCKA +1 stress (beskrivning) -->
+                                <!-- UNIMPLEMENTED_TALENT MUCKA +1 stress (beskrivning) -->
                                 <label for="talent-tough-bastard" class="toggled-by-job"
                                     data-active-for-job="bruiser">Hård jävel*
                                     <input type="checkbox" id="talent-tough-bastard"
                                         class="check-talent toggles-fields" />
                                 </label>
-                                <!-- 2 Skada obeväpnad (beskrivning) -->
+                                <!-- UNIMPLEMENTED_TALENT 2 Skada obeväpnad (beskrivning) -->
                                 <label for="talent-kidney-punch" class="toggled-by-job"
                                     data-active-for-job="bruiser">Njurslag*
                                     <input type="checkbox" id="talent-kidney-punch"
@@ -828,9 +833,8 @@
                                     <input type="checkbox" id="talent-monster-hunter"
                                         class="check-talent toggles-fields" />
                                 </label>
-                                <!-- Bonuseffekt vid Leda vägen kan sänka rötnivån ett steg (beskrivning) -->
                                 <label for="talent-rot-nose" class="toggled-by-job"
-                                    data-active-for-job="navigator">Rötnos*
+                                    data-active-for-job="navigator">Rötnos
                                     <input type="checkbox" id="talent-rot-nose" class="check-talent toggles-fields" />
                                 </label>
                                 <label for="talent-treasure-hunter" class="toggled-by-job"
@@ -840,7 +844,7 @@
                                         data-skillref="#skill-navigate" data-mod-name="Sakletare" , value="2" />
                                 </label>
 
-                                <!-- Manipulera ger +1 Tvivel (beskrivning) -->
+                                <!-- UNIMPLEMENTED_TALENT Manipulera ger +1 Tvivel (beskrivning) -->
                                 <label for="talent-mean-bastard" class="toggled-by-job"
                                     data-active-for-job="scrounger">Elak jävel*
                                     <input type="checkbox" id="talent-mean-bastard"
@@ -850,7 +854,7 @@
                                     data-active-for-job="scrounger">Hållhake
                                     <input type="checkbox" id="talent-leverage" class="check-talent" />
                                 </label>
-                                <!-- Dubbla resurser av Schackra (beskrivning) -->
+                                <!--UNIMPLEMENTED_TALENT Dubbla resurser av Schackra (beskrivning) -->
                                 <label for="talent-big-spender" class="toggled-by-job"
                                     data-active-for-job="scrounger">Storhandlare*
                                     <input type="checkbox" id="talent-big-spender"
@@ -861,13 +865,13 @@
                                     data-active-for-job="mutantWithDog">Blodhund
                                     <input type="checkbox" id="talent-bloodhound" class="check-talent toggles-fields" />
                                 </label>
-                                <!-- Hundens STY = 4; +1 Slåss för hunden (permanent mod for dog) -->
+                                <!-- UNIMPLEMENTED_TALENT Hundens STY = 4; +1 Slåss för hunden (permanent mod for dog) -->
                                 <label for="talent-fighting-dog" class="toggled-by-job"
                                     data-active-for-job="mutantWithDog">Kamphund*
                                     <input type="checkbox" id="talent-fighting-dog"
                                         class="check-talent toggles-fields" />
                                 </label>
-                                <!-- Kan använda hundens GE till Kämpa på, Fly (men eget FV) -->
+                                <!-- UNIMPLEMENTED_TALENT Kan använda hundens GE till Kämpa på, Fly (men eget FV) -->
                                 <label for="talent-mutants-best-friend" class="toggled-by-job"
                                     data-active-for-job="mutantWithDog">Mutantens bästa vän*
                                     <input type="checkbox" id="talent-mutants-best-friend"
@@ -896,7 +900,7 @@
                                     data-active-for-job="boss">Kommendant
                                     <input type="checkbox" id="talent-commander" class="check-talent toggles-fields" />
                                 </label>
-                                <!-- Gänget har skjutvapen (complicated) -->
+                                <!-- UNIMPLEMENTED_TALENT Gänget har skjutvapen (complicated) -->
                                 <label for="talent-gunslingers" class="toggled-by-job"
                                     data-active-for-job="boss">Revolvermän*
                                     <input type="checkbox" id="talent-gunslingers"
@@ -909,7 +913,7 @@
                                 <label for="talent-tank" class="toggled-by-job" data-active-for-job="slave">Slagtålig
                                     <input type="checkbox" id="talent-tank" class="check-talent toggles-fields" />
                                 </label>
-                                <!-- Uthärda ger +1 per 6:a på nästa handling (complicated af)-->
+                                <!-- UNIMPLEMENTED_TALENT Uthärda ger +1 per 6:a på nästa handling (complicated af)-->
                                 <label for="talent-rebel" class="toggled-by-job" data-active-for-job="slave">Rebell*
                                     <input type="checkbox" id="talent-rebel" class="check-talent toggles-fields" />
                                 </label>
@@ -939,7 +943,7 @@
                                     <input type="checkbox" id="talent-heavy-attack"
                                         class="check-talent toggles-fields" />
                                 </label>
-                                <!-- +1 Skada när du Skjuter på Långt avstånd (beskrivning) -->
+                                <!-- UNIMPLEMENTED_TALENT +1 Skada när du Skjuter på Långt avstånd (beskrivning) -->
                                 <label for="talent-sniper">Krypskytt
                                     <input type="checkbox" id="talent-sniper" class="check-talent" />
                                 </label>
@@ -953,7 +957,7 @@
                                 <label for="talent-bodyguard">Livvakt
                                     <input type="checkbox" id="talent-bodyguard" class="check-talent" />
                                 </label>
-                                <!-- +1 Skada när du Skjuter på Nära/Armslängds avstånd (beskrivning) -->
+                                <!-- UNIMPLEMENTED_TALENT +1 Skada när du Skjuter på Nära/Armslängds avstånd (beskrivning) -->
                                 <label for="talent-assassin">Lönnmördare*
                                     <input type="checkbox" id="talent-assassin" class="check-talent" />
                                 </label>
@@ -970,7 +974,7 @@
                                     <input type="checkbox" id="talent-premonition"
                                         class="check-talent toggles-fields" />
                                 </label>
-                                <!-- Doubles weight capacity -->
+                                <!-- UNIMPLEMENTED_TALENT Doubles weight capacity -->
                                 <label for="talent-mule">Packåsna*
                                     <input type="checkbox" id="talent-mule" class="check-talent" />
                                 </label>
@@ -993,7 +997,7 @@
                                     <input type="checkbox" id="talent-tomb-raider"
                                         class="check-talent toggles-fields" />
                                 </label>
-                                <!-- +1 mod till person som Inspireras om hen följer råd (beskrivning) -->
+                                <!-- UNIMPLEMENTED_TALENT +1 mod till person som Inspireras om hen följer råd (beskrivning) -->
                                 <label for="talent-advisor">Rådgivare*
                                     <input type="checkbox" id="talent-advisor" class="check-talent" />
                                 </label>
@@ -1007,7 +1011,7 @@
                                     <input type="checkbox" id="talent-quick-footwork"
                                         class="check-talent, toggles-fields" />
                                 </label>
-                                <!-- +1 Slåss/Skjuta med specifik vapentyp (conditional mod; complicated) -->
+                                <!-- UNIMPLEMENTED_TALENT +1 Slåss/Skjuta med specifik vapentyp (conditional mod; complicated) -->
                                 <label for="talent-specialist">Specialist*
                                     <input type="checkbox" id="talent-specialist" class="check-talent toggles-fields" />
                                 </label>
@@ -1219,7 +1223,7 @@
                 <input id="skill-adhoc" class="small color-skill" type="number" size="1" title="Färdighet" />
                 <input id="gear-adhoc" class="small color-gear" type="number" size="1" title="Pryl" />
                 <label for="modifier-adhoc">Modifikation</label>
-                <input id="modifier-adhoc" class="small" type="number" size="1" />
+                <input id="modifier-adhoc" class="small mod" type="number" size="1" />
                 <button class="roll-adhoc" data-statref="#stat-adhoc" data-skillref="#skill-adhoc" data-gear="adhoc">🎲
                     Slå</button>
             </div>
@@ -1229,7 +1233,6 @@
                 <button class="roll-quick" data-amount="3">3🎲</button>
                 <button class="roll-quick" data-amount="4">4🎲</button>
                 <button class="roll-quick" data-amount="5">5🎲</button>
-                <button class="roll-quick" data-amount="100">100🎲</button>
             </p>
         </div>
     </div>

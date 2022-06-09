@@ -185,10 +185,10 @@ function rollAdHoc() {
     var modifier = intValueOfField("#modifier-adhoc");
 
     var description = "[";
-    description += '<span class="stat-value">' + statValue + "T6</span>";
-    description += ' + <span class="skill-value">' + skillValue + "T6</span>";
+    description += '<span class="stat-value">' + statValue + "&#x1F3B2;</span>";
+    description += ' + <span class="skill-value">' + skillValue + "&#x1F3B2;</span>";
     description += describeModField("#modifier-adhoc");
-    description += ' + <span class="gear-value">' + gearValue + "T6</span>";
+    description += ' + <span class="gear-value">' + gearValue + "&#x1F3B2;</span>";
     description += "]";
 
     rollAndDisplay(statValue, skillValue + modifier, gearValue, 0, description);
@@ -217,12 +217,12 @@ function rollStat(statField, modField) {
 
     var statName = $(statField).attr("data-name");
     var statAbbr = $(statField).attr("data-abbr");
-    var description = statName + ' [<span class="stat-value">' + modifiedStatValue + "T6 (" + statAbbr + ")</span>";
+    var description = statName + ' [<span class="stat-value">' + modifiedStatValue + "&#x1F3B2; (" + statAbbr + ")</span>";
     description += describeModField(modField);
     description += "]";
 
     rollAndDisplay(modifiedStatValue, modValue, 0, 0, description);
-    $(modField).val("");
+    $(modField).val("").trigger("change");
 }
 
 function rollSkill(statField, skillField, modField) {
@@ -235,8 +235,8 @@ function rollSkill(statField, skillField, modField) {
     var skillName = $(skillField).attr("data-name");
 
     var statAbbr = $(statField).attr("data-abbr");
-    var description = skillName + ' [<span class="stat-value">' + modifiedStatValue + "T6 (" + statAbbr + ")</span>";
-    description += ' + <span class="skill-value">' + skillValue + "T6 (" + skillName + ")</span>";
+    var description = skillName + ' [<span class="stat-value">' + modifiedStatValue + "&#x1F3B2; (" + statAbbr + ")</span>";
+    description += ' + <span class="skill-value">' + skillValue + "&#x1F3B2; (" + skillName + ")</span>";
 
     var modValue = intValueOfField(modField);
 
@@ -259,7 +259,7 @@ function rollSkill(statField, skillField, modField) {
     description += "]";
 
     rollAndDisplay(modifiedStatValue, modifiedSkillValue, 0, 0, description);
-    $(modField).val("");
+    $(modField).val("").trigger("change");
 }
 
 function rollGear(statField, skillField, gearField, modField) {
@@ -279,14 +279,14 @@ function rollGear(statField, skillField, gearField, modField) {
     var gearName = $(gearNameField).val();
 
     var statAbbr = $(statField).attr("data-abbr");
-    var description = skillName + ' [<span class="stat-value">' + modifiedStatValue + "T6 (" + statAbbr + ")</span>";
-    description += ' + <span class="skill-value">' + skillValue + "T6 (" + skillName + ")</span>";
+    var description = skillName + ' [<span class="stat-value">' + modifiedStatValue + "&#x1F3B2; (" + statAbbr + ")</span>";
+    description += ' + <span class="skill-value">' + skillValue + "&#x1F3B2; (" + skillName + ")</span>";
     description += describeModField(modField);
-    description += ' + <span class="gear-value">' + gearValue + "T6 (" + gearName + ")</span>"
+    description += ' + <span class="gear-value">' + gearValue + "&#x1F3B2; (" + gearName + ")</span>"
     description += "]";
 
     rollAndDisplay(modifiedStatValue, modifiedSkillValue, gearValue, 0, description);
-    $(modField).val("");
+    $(modField).val("").trigger("change");
 }
 
 function describeModField(modField) {
@@ -299,9 +299,9 @@ function describeModField(modField) {
     if (modValue === 0) {
         return "";
     } else if (modValue > 0) {
-        return ' + <span class="mod-value-positive">' + modValue + "T6 (" + modName + ")</span>";
+        return ' + <span class="mod-value-positive">' + modValue + "&#x1F3B2; (" + modName + ")</span>";
     } else {
-        return ' - <span class="mod-value-negative">' + Math.abs(modValue) + "T6 (" + modName + ")</span>";
+        return ' - <span class="mod-value-negative">' + Math.abs(modValue) + "&#x1F3B2; (" + modName + ")</span>";
     }
 }
 
@@ -332,6 +332,16 @@ function changeJob() {
         var value = $(this).val();
         $(".toggled-by-job[data-active-for-job='" + value + "']").addClass("active");
     });
+}
+
+function changeMod() {
+    var thisId = $(this).attr("id");
+    var thisVal = intValueOfField("#" + thisId);
+    if (thisVal >= 0) {
+        $(this).removeClass("color-negative");
+    } else {
+        $(this).addClass("color-negative")
+    }
 }
 
 $(document).ready(function () {
@@ -371,7 +381,7 @@ $(document).ready(function () {
     $("#roll-initiative").click(function () {
         var agility = getStatValue("agility");
 
-        var description = 'Initiativ [1T6 + <span class="stat-value">' + agility + " (Kyl)</span>";
+        var description = 'Initiativ [1&#x1F3B2; + <span class="stat-value">' + agility + " (Kyl)</span>";
 
         if ($("#talent-experienced-fighter").is(":checked")) {
             agility += 2;
@@ -395,7 +405,7 @@ $(document).ready(function () {
     $(".roll-quick").click(function () {
         var number = parseInt($(this).attr("data-amount"));
 
-        rollAndDisplay(number, 0, 0, 0, "[" + number + "T6]");
+        rollAndDisplay(number, 0, 0, 0, "[" + number + "&#x1F3B2;]");
     });
 
     $("label input[type='checkbox']").checkboxradio();
@@ -412,6 +422,8 @@ $(document).ready(function () {
     $(".toggles-fields").change(toggleFields);
 
     $(".job").change(changeJob);
+
+    $(".mod").change(changeMod);
 
     loadData();
 });

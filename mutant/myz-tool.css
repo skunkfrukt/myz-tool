@@ -11,7 +11,7 @@
     color: black;
 }
 
-.color-skill, .die-skill {
+.color-skill, .die-skill, .mod {
     background-color: green;
     color: white;
 }
@@ -33,7 +33,7 @@
     position: relative;
 }
 
-.die-negative {
+.die-negative, .mod.color-negative {
     background-color: #c00;
 }
 
