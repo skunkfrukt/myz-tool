@@ -16,7 +16,7 @@
     <script>
         $(document).ready(function () {
             $("#tabs").tabs({
-                "disabled": [4, 5, 6]
+                "disabled": [4, 6]
             });
         });
     </script>
@@ -49,6 +49,40 @@
             <li><a href="#tab-notes" title="Anteckningar">&#128211;</a></li>
         </ul>
         <div id="tab-stats">
+            <h3>Syssla</h3>
+            <select id="job" class="job">
+                <option value="" selected></option>
+                <option value="bruiser">Krossare</option>
+                <option value="gearhead">Skrotskalle</option>
+                <option value="navigator">Zonstrykare</option>
+                <option value="scrounger">Fixare</option>
+                <option value="mutantWithDog">Mutant med hund</option>
+                <option value="chronicler">Krönikör</option>
+                <option value="boss">Boss</option>
+                <option value="slave">Träl</option>
+            </select>
+            <select id="job2" class="job" data-toggled-by="#talent-polymath">
+                <option value="" selected></option>
+                <option value="bruiser">Krossare</option>
+                <option value="gearhead">Skrotskalle</option>
+                <option value="navigator">Zonstrykare</option>
+                <option value="scrounger">Fixare</option>
+                <option value="mutantWithDog">Mutant med hund</option>
+                <option value="chronicler">Krönikör</option>
+                <option value="boss">Boss</option>
+                <option value="slave">Träl</option>
+            </select>
+            <select id="job3" class="job" data-toggled-by="#talent-polymath2">
+                <option value="" selected></option>
+                <option value="bruiser">Krossare</option>
+                <option value="gearhead">Skrotskalle</option>
+                <option value="navigator">Zonstrykare</option>
+                <option value="scrounger">Fixare</option>
+                <option value="mutantWithDog">Mutant med hund</option>
+                <option value="chronicler">Krönikör</option>
+                <option value="boss">Boss</option>
+                <option value="slave">Träl</option>
+            </select>
             <h3>Grundegenskaper</h3>
             <div class="stats">
                 <table>
@@ -110,18 +144,23 @@
             <div class="skills">
                 <table>
                     <tr>
-                        <td> <label for="skill-endure">Kämpa på (Sty)</label> </td>
-                        <td> <input id="skill-endure" class="saved small color-skill" type="number" size="1"
-                                data-name="Kämpa på" /> </td>
-                        <td> <button class="roll-skill" data-statref="#stat-strength" data-skillref="#skill-endure"
-                                data-modref="#modifier-skill">🎲</button> </td>
-                    </tr>
-                    <tr class="hidden">
-                        <td><label for="skill-endure">Kämpa på (Kyl)</label></td>
-                        <td></td>
-                        <td><button class="roll-skill" data-statref="#stat-agility" data-skillref="#skill-endure"
-                                data-modref="#modifier-skill">🎲</button></td>
-                        <td>[Talang: Oberörd]</td>
+                        <td>
+                            <label for="skill-endure">Kämpa på (Sty)</label>
+                        </td>
+                        <td>
+                            <input id="skill-endure" class="saved small color-skill" type="number" size="1"
+                                data-name="Kämpa på" />
+                        </td>
+                        <td>
+                            <button class="roll-skill" data-statref="#stat-strength" data-skillref="#skill-endure"
+                                data-modref="#modifier-skill">🎲</button>
+                        </td>
+                        <td>
+                            <span data-toggled-by="#talent-unmoved">
+                                <button class="roll-skill" data-statref="#stat-agility" data-skillref="#skill-endure"
+                                    data-modref="#modifier-skill">🎲 Kyl</button>
+                            </span>
+                        </td>
                     </tr>
                     <tr>
                         <td><label for="skill-force">Ta krafttag (Sty)</label></td>
@@ -136,6 +175,11 @@
                                 data-name="Slåss" /></td>
                         <td><button class="roll-skill" data-statref="#stat-strength" data-skillref="#skill-fight"
                                 data-modref="#modifier-skill">🎲</button></td>
+                        <td>
+                            <span data-toggled-by="#talent-flyweight"><button class="roll-skill"
+                                    data-statref="#stat-agility" data-skillref="#skill-fight"
+                                    data-modref="#modifier-skill">🎲 Kyl (parera)</button>
+                        </td>
                     </tr>
 
                     <tr>
@@ -151,20 +195,16 @@
                                 data-name="Fly" /></td>
                         <td><button class="roll-skill" data-statref="#stat-agility" data-skillref="#skill-move"
                                 data-modref="#modifier-skill">🎲</button></td>
-                    </tr>
-                    <tr class="hidden">
-                        <td><label for="skill-move">Fly (Skp)</label></td>
-                        <td></td>
-                        <td><button class="roll-skill" data-statref="#stat-wits" data-skillref="#skill-move"
-                                data-modref="#modifier-skill">🎲</button></td>
-                        <td>[Talang: Analytiker]</td>
-                    </tr>
-                    <tr class="hidden">
-                        <td><label for="skill-move">Fly (Sty)</label></td>
-                        <td></td>
-                        <td><button class="roll-skill" data-statref="#stat-strength" data-skillref="#skill-move"
-                                data-modref="#modifier-skill">🎲</button></td>
-                        <td>[Talang: Övervåld]</td>
+                        <td>
+                            <span data-toggled-by="#talent-analyst">
+                                <button class="roll-skill" data-statref="#stat-wits" data-skillref="#skill-move"
+                                    data-modref="#modifier-skill">🎲 Skp</button>
+                            </span>
+                            <span data-toggled-by="#talent-excessive-force">
+                                <button class="roll-skill" data-statref="#stat-strength" data-skillref="#skill-move"
+                                    data-modref="#modifier-skill">🎲 Sty</button>
+                            </span>
+                        </td>
                     </tr>
                     <tr>
                         <td><label for="skill-shoot">Skjuta (Kyl)</label></td>
@@ -175,18 +215,23 @@
                     </tr>
 
                     <tr>
-                        <td><label for="skill-scout">Speja (Skp)</label></td>
-                        <td><input id="skill-scout" class="saved small color-skill" type="number" size="1"
-                                data-name="Speja" /></td>
-                        <td><button class="roll-skill" data-statref="#stat-wits" data-skillref="#skill-scout"
-                                data-modref="#modifier-skill">🎲</button></td>
-                    </tr>
-                    <tr class="hidden">
-                        <td><label for="skill-scout">Speja (Kns)</label></td>
-                        <td></td>
-                        <td><button class="roll-skill" data-statref="#stat-empathy" data-skillref="#skill-scout"
-                                data-modref="#modifier-skill">🎲</button></td>
-                        <td>[Talang: Onda aningar]</td>
+                        <td>
+                            <label for="skill-scout">Speja (Skp)</label>
+                        </td>
+                        <td>
+                            <input id="skill-scout" class="saved small color-skill" type="number" size="1"
+                                data-name="Speja" />
+                        </td>
+                        <td>
+                            <button class="roll-skill" data-statref="#stat-wits" data-skillref="#skill-scout"
+                                data-modref="#modifier-skill">🎲</button>
+                        </td>
+                        <td>
+                            <span data-toggled-by="#talent-premonition">
+                                <button class="roll-skill" data-statref="#stat-empathy" data-skillref="#skill-scout"
+                                    data-modref="#modifier-skill">🎲 Kns</button>
+                            </span>
+                        </td>
                     </tr>
                     <tr>
                         <td><label for="skill-comprehend">Förstå sig på (Skp)</label></td>
@@ -196,27 +241,43 @@
                                 data-modref="#modifier-skill">🎲</button></td>
                     </tr>
                     <tr>
-                        <td><label for="skill-knowTheZone">Känna Zonen (Skp)</label></td>
-                        <td><input id="skill-knowTheZone" class="saved small color-skill" type="number" size="1"
-                                data-name="Känna Zonen" /></td>
-                        <td><button class="roll-skill" data-statref="#stat-wits" data-skillref="#skill-knowTheZone"
-                                data-modref="#modifier-skill">🎲</button></td>
+                        <td>
+                            <label for="skill-knowTheZone">Känna Zonen (Skp)</label>
+                        </td>
+                        <td>
+                            <input id="skill-knowTheZone" class="saved small color-skill" type="number" size="1"
+                                data-name="Känna Zonen" />
+                        </td>
+                        <td>
+                            <button class="roll-skill" data-statref="#stat-wits" data-skillref="#skill-knowTheZone"
+                                data-modref="#modifier-skill">🎲</button>
+                        </td>
+                        <td>
+                            <span data-toggled-by="#talent-zone-cook">
+                                <button class="roll-skill" data-statref="#stat-wits" data-skillref="#skill-knowTheZone"
+                                    data-modref="#modifier-skill">🎲 Zonkock</button>
+                            </span>
+                        </td>
                     </tr>
 
                     <tr>
-                        <td><label for="skill-senseEmotion">Genomskåda (Kns)</label></td>
-                        <td><input id="skill-senseEmotion" class="saved small color-skill" type="number" size="1"
+                        <td>
+                            <label for="skill-senseEmotion">Genomskåda (Kns)</label>
+                        </td>
+                        <td>
+                            <input id="skill-senseEmotion" class="saved small color-skill" type="number" size="1"
                                 data-name="Genomskåda" />
                         </td>
-                        <td><button class="roll-skill" data-statref="#stat-empathy" data-skillref="#skill-senseEmotion"
-                                data-modref="#modifier-skill">🎲</button></td>
-                    </tr>
-                    <tr class="hidden">
-                        <td><label for="skill-senseEmotion">Genomskåda (Skp)</label></td>
-                        <td></td>
-                        <td><button class="roll-skill" data-statref="#stat-wits" data-skillref="#skill-senseEmotion"
-                                data-modref="#modifier-skill">🎲</button></td>
-                        <td>[Talang: Personlig matematik]</td>
+                        <td>
+                            <button class="roll-skill" data-statref="#stat-empathy" data-skillref="#skill-senseEmotion"
+                                data-modref="#modifier-skill">🎲</button>
+                        </td>
+                        <td>
+                            <span data-toggled-by="#talent-personal-mathematics">
+                                <button class="roll-skill" data-statref="#stat-wits" data-skillref="#skill-senseEmotion"
+                                    data-modref="#modifier-skill">🎲 Skp</button>
+                            </span>
+                        </td>
                     </tr>
                     <tr>
                         <td><label for="skill-manipulate">Manipulera (Kns)</label></td>
@@ -423,8 +484,7 @@
                 <fieldset>
                     <legend>Initiativ</legend>
                     <button id="roll-initiative">🎲 Initiativ</button>
-                    <input type="checkbox" id="experienced-fighter-plus2" /><label
-                        for="experienced-fighter-plus2">Stridsvan</label>
+                    <span class="gear-value" data-toggled-by="#talent-experienced-fighter">+2 (Stridsvan)</span>
                 </fieldset>
                 <fieldset>
                     <legend>Närstrid</legend>
@@ -578,94 +638,265 @@
                     <tr>
                         <td>
                             <div class="controlgroup-vertical">
-                                <label for="talent-001">Analytiker
-                                    <input type="checkbox" id="talent-001" class="check-talent" />
+                                <!-- MUCKA +1 stress (beskrivning) -->
+                                <label for="talent-tough-bastard" class="toggled-by-job"
+                                    data-active-for-job="bruiser">Hård jävel*
+                                    <input type="checkbox" id="talent-tough-bastard"
+                                        class="check-talent toggles-fields" />
                                 </label>
-                                <label for="talent-002">Beundrare
-                                    <input type="checkbox" id="talent-002" class="check-talent" />
+                                <!-- 2 Skada obeväpnad (beskrivning) -->
+                                <label for="talent-kidney-punch" class="toggled-by-job"
+                                    data-active-for-job="bruiser">Njurslag*
+                                    <input type="checkbox" id="talent-kidney-punch"
+                                        class="check-talent toggles-fields" />
                                 </label>
-                                <label for="talent-003">Enstöring
-                                    <input type="checkbox" id="talent-003" class="check-talent" />
+                                <label for="talent-excessive-force" class="toggled-by-job"
+                                    data-active-for-job="bruiser">Övervåld
+                                    <input type="checkbox" id="talent-excessive-force"
+                                        class="check-talent toggles-fields" />
                                 </label>
-                                <label for="talent-004">Feg råtta
-                                    <input type="checkbox" id="talent-004" class="check-talent" />
+
+                                <!-- +1 Slåss när man rammar med ett fordon (conditional mod) -->
+                                <!-- +1 Mecka för att laga/modifiera fordon (conditonal mod) -->
+                                <label for="talent-motorhead" class="toggled-by-job"
+                                    data-active-for-job="gearhead">Motorskalle*
+                                    <input type="checkbox" id="talent-motorhead" class="check-talent toggles-fields" />
                                 </label>
-                                <label for="talent-005">Flugviktare
-                                    <input type="checkbox" id="talent-005" class="check-talent" />
+                                <!-- +1 Mecka vid reparation (conditional mod) -->
+                                <label for="talent-fixer" class="toggled-by-job"
+                                    data-active-for-job="gearhead">Reparatör*
+                                    <input type="checkbox" id="talent-fixer" class="check-talent toggles-fields" />
                                 </label>
-                                <label for="talent-006">Knegare
-                                    <input type="checkbox" id="talent-006" class="check-talent" />
+                                <!-- +1 Mecka vid hemmabyggen (conditional mod) -->
+                                <label for="talent-inventor" class="toggled-by-job"
+                                    data-active-for-job="gearhead">Uppfinnare*
+                                    <input type="checkbox" id="talent-inventor" class="check-talent toggles-fields" />
                                 </label>
-                                <label for="talent-007">Krafthugg
-                                    <input type="checkbox" id="talent-007" class="check-talent" />
+
+                                <!-- +2 Speja mot zonbest (conditional mod) -->
+                                <label for="talent-monster-hunter" class="toggled-by-job"
+                                    data-active-for-job="navigator">Monsterjägare*
+                                    <input type="checkbox" id="talent-monster-hunter"
+                                        class="check-talent toggles-fields" />
                                 </label>
-                                <label for="talent-008">Krypskytt
-                                    <input type="checkbox" id="talent-008" class="check-talent" />
+                                <!-- Bonuseffekt vid Leda vägen kan sänka rötnivån ett steg (beskrivning) -->
+                                <label for="talent-rot-nose" class="toggled-by-job"
+                                    data-active-for-job="navigator">Rötnos*
+                                    <input type="checkbox" id="talent-rot-nose" class="check-talent toggles-fields" />
                                 </label>
-                                <label for="talent-009">Liten i maten
-                                    <input type="checkbox" id="talent-009" class="check-talent" />
+                                <!-- +2 Leda vägen (permanent mod)
+                                    Primär effekt blir att hitta artefakter; upptäcka hot blir bonuseffekt (beskrivning) -->
+                                <label for="talent-treasure-hunter" class="toggled-by-job"
+                                    data-active-for-job="navigator">Sakletare*
+                                    <input type="checkbox" id="talent-treasure-hunter"
+                                        class="check-talent toggles-fields" />
+                                </label>
+
+                                <!-- Manipulera get +1 Tvivel (beskrivning) -->
+                                <label for="talent-mean-bastard" class="toggled-by-job"
+                                    data-active-for-job="scrounger">Elak jävel*
+                                    <input type="checkbox" id="talent-mean-bastard"
+                                        class="check-talent toggles-fields" />
+                                </label>
+                                <label for="talent-leverage" class="toggled-by-job"
+                                    data-active-for-job="scrounger">Hållhake
+                                    <input type="checkbox" id="talent-leverage" class="check-talent" />
+                                </label>
+                                <!-- Dubbla resurser av Schackra (beskrivning) -->
+                                <label for="talent-big-spender" class="toggled-by-job"
+                                    data-active-for-job="scrounger">Storhandlare*
+                                    <input type="checkbox" id="talent-big-spender"
+                                        class="check-talent toggles-fields" />
+                                </label>
+
+                                <!-- +2 Bussa på vid spårning (conditional mod) -->
+                                <label for="talent-bloodhound" class="toggled-by-job"
+                                    data-active-for-job="mutantWithDog">Blodhund*
+                                    <input type="checkbox" id="talent-bloodhound" class="check-talent toggles-fields" />
+                                </label>
+                                <!-- Hundens STY = 4; +1 Slåss för hunden (permanent mod for dog) -->
+                                <label for="talent-fighting-dog" class="toggled-by-job"
+                                    data-active-for-job="mutantWithDog">Kamphund*
+                                    <input type="checkbox" id="talent-fighting-dog"
+                                        class="check-talent toggles-fields" />
+                                </label>
+                                <!-- Kan använda hundens GE till Kämpa på, Fly (men eget FV) -->
+                                <label for="talent-mutants-best-friend" class="toggled-by-job"
+                                    data-active-for-job="mutantWithDog">Mutantens bästa vän*
+                                    <input type="checkbox" id="talent-mutants-best-friend"
+                                        class="check-talent toggles-fields" />
+                                </label>
+
+                                <!-- Kan slå INSPIRERA en gång/session för att uppträda; varje 6:a ger T6 patroner eller krubb. -->
+                                <label for="talent-artist" class="toggled-by-job"
+                                    data-active-for-job="chronicler">Artist*
+                                    <input type="checkbox" id="talent-artist" class="check-talent toggles-fields" />
+                                </label>
+                                <!-- +1 Vårda om någon är bruten av Skada (conditional mod) -->
+                                <label for="talent-physician" class="toggled-by-job"
+                                    data-active-for-job="chronicler">Anatomikunnig*
+                                    <input type="checkbox" id="talent-physician" class="check-talent toggles-fields" />
+                                </label>
+                                <!-- +1 Inspirera någon som Slåss/Skjuter (conditional mod) -->
+                                <label for="talent-warmonger" class="toggled-by-job"
+                                    data-active-for-job="chronicler">Våldshetsare*
+                                    <input type="checkbox" id="talent-warmonger" class="check-talent toggles-fields" />
+                                </label>
+
+                                <!-- +2 Kommendera vid beskyddarverksamhet (conditional mod)-->
+                                <label for="talent-protector-of-the-ark" class="toggled-by-job"
+                                    data-active-for-job="boss">Arkens beskyddare*
+                                    <input type="checkbox" id="talent-protector-of-the-ark"
+                                        class="check-talent toggles-fields" />
+                                </label>
+                                <!-- +2 Kommendera UTOM vid beskyddarverksamhet (conditonal mod) -->
+                                <label for="talent-commander" class="toggled-by-job"
+                                    data-active-for-job="boss">Kommendant*
+                                    <input type="checkbox" id="talent-commander" class="check-talent toggles-fields" />
+                                </label>
+                                <!-- Gänget har skjutvapen -->
+                                <label for="talent-gunslingers" class="toggled-by-job"
+                                    data-active-for-job="boss">Revolvermän*
+                                    <input type="checkbox" id="talent-gunslingers"
+                                        class="check-talent toggles-fields" />
+                                </label>
+
+                                <!-- +1 Uthärda mot Tvivel (conditional mod) -->
+                                <label for="talent-unfazed" class="toggled-by-job" data-active-for-job="slave">Obrydd*
+                                    <input type="checkbox" id="talent-unfazed" class="check-talent toggles-fields" />
+                                </label>
+                                <!-- +1 Uthärda mot Skada (conditional mod) -->
+                                <label for="talent-tank" class="toggled-by-job" data-active-for-job="slave">Slagtålig*
+                                    <input type="checkbox" id="talent-tank" class="check-talent toggles-fields" />
+                                </label>
+                                <!-- Uthärda ger +1 per 6:a på nästa handling (complicated af)-->
+                                <label for="talent-rebel" class="toggled-by-job" data-active-for-job="slave">Rebell*
+                                    <input type="checkbox" id="talent-rebel" class="check-talent toggles-fields" />
                                 </label>
                             </div>
                         </td>
                         <td>
                             <div class="controlgroup-vertical">
-                                <label for="talent-010">Livvakt
-                                    <input type="checkbox" id="talent-010" class="check-talent" />
+                                <label for="talent-analyst">Analytiker
+                                    <input type="checkbox" id="talent-analyst" class="check-talent toggles-fields" />
                                 </label>
-                                <label for="talent-011">Lönnmördare
-                                    <input type="checkbox" id="talent-011" class="check-talent" />
+                                <label for="talent-admirer">Beundrare
+                                    <input type="checkbox" id="talent-admirer" class="check-talent" />
                                 </label>
-                                <label for="talent-012">Mångsysslare
-                                    <input type="checkbox" id="talent-012" class="check-talent" />
+                                <label for="talent-loner">Enstöring
+                                    <input type="checkbox" id="talent-loner" class="check-talent" />
                                 </label>
-                                <label for="talent-013">Oberörd
-                                    <input type="checkbox" id="talent-013" class="check-talent" />
+                                <label for="talent-cowardly-rat">Feg råtta
+                                    <input type="checkbox" id="talent-cowardly-rat" class="check-talent" />
                                 </label>
-                                <label for="talent-014">Onda aningar
-                                    <input type="checkbox" id="talent-014" class="check-talent" />
+                                <label for="talent-flyweight">Flugviktare
+                                    <input type="checkbox" id="talent-flyweight" class="check-talent toggles-fields" />
                                 </label>
-                                <label for="talent-015">Packåsna
-                                    <input type="checkbox" id="talent-015" class="check-talent" />
+                                <!-- +2 vid projekt (conditional mod; multiple skills)-->
+                                <label for="talent-laborer">Knegare*
+                                    <input type="checkbox" id="talent-laborer" class="check-talent toggles-fields" />
                                 </label>
-                                <label for="talent-016">Personlig matematik
-                                    <input type="checkbox" id="talent-016" class="check-talent" />
+                                <!-- +1 Slåss genom att offra manöver (conditional mod) -->
+                                <label for="talent-heavy-attack">Krafthugg
+                                    <input type="checkbox" id="talent-heavy-attack"
+                                        class="check-talent toggles-fields" />
                                 </label>
-                                <label for="talent-017">Prylvan
-                                    <input type="checkbox" id="talent-017" class="check-talent" />
+                                <!-- +1 Skada när du Skjuter på Långt avstånd (beskrivning) -->
+                                <label for="talent-sniper">Krypskytt
+                                    <input type="checkbox" id="talent-sniper" class="check-talent" />
                                 </label>
-                                <label for="talent-018">Reser sig på nio
-                                    <input type="checkbox" id="talent-018" class="check-talent" />
+                                <label for="talent-small-eater">Liten i maten
+                                    <input type="checkbox" id="talent-small-eater" class="check-talent" />
                                 </label>
                             </div>
                         </td>
                         <td>
                             <div class="controlgroup-vertical">
-                                <label for="talent-019">Ruinkrälare
-                                    <input type="checkbox" id="talent-019" class="check-talent" />
+                                <label for="talent-bodyguard">Livvakt
+                                    <input type="checkbox" id="talent-bodyguard" class="check-talent" />
                                 </label>
-                                <label for="talent-020">Rådgivare
-                                    <input type="checkbox" id="talent-020" class="check-talent" />
+                                <!-- +1 Skada när du Skjuter på Nära/Armslängds avstånd (beskrivning) -->
+                                <label for="talent-assassin">Lönnmördare*
+                                    <input type="checkbox" id="talent-assassin" class="check-talent" />
                                 </label>
-                                <label for="talent-021">Slaktare
-                                    <input type="checkbox" id="talent-021" class="check-talent" />
+                                <label for="talent-polymath">Mångsysslare
+                                    <input type="checkbox" id="talent-polymath" class="check-talent toggles-fields" />
                                 </label>
-                                <label for="talent-022">Snabbdragare
-                                    <input type="checkbox" id="talent-022" class="check-talent" />
+                                <label for="talent-polymath2" data-toggled-by="#talent-polymath">Mångsysslare 2
+                                    <input type="checkbox" id="talent-polymath2" class="check-talent toggles-fields" />
                                 </label>
-                                <label for="talent-023">Snabbt fotarbete
-                                    <input type="checkbox" id="talent-023" class="check-talent" />
+                                <label for="talent-unmoved">Oberörd
+                                    <input type="checkbox" id="talent-unmoved" class="check-talent toggles-fields" />
                                 </label>
-                                <label for="talent-024">Specialist
-                                    <input type="checkbox" id="talent-024" class="check-talent" />
+                                <label for="talent-premonition">Onda aningar
+                                    <input type="checkbox" id="talent-premonition"
+                                        class="check-talent toggles-fields" />
                                 </label>
-                                <label for="talent-025">Stridsvan
-                                    <input type="checkbox" id="talent-025" class="check-talent" />
+                                <!-- Doubles weight capacity -->
+                                <label for="talent-mule">Packåsna*
+                                    <input type="checkbox" id="talent-mule" class="check-talent" />
                                 </label>
-                                <label for="talent-026">Sömnlös
-                                    <input type="checkbox" id="talent-026" class="check-talent" />
+                                <label for="talent-personal-mathematics">Personlig matematik
+                                    <input type="checkbox" id="talent-personal-mathematics"
+                                        class="check-talent toggles-fields" />
                                 </label>
-                                <label for="talent-027">Zonkock
-                                    <input type="checkbox" id="talent-027" class="check-talent" />
+                                <!-- +1 Förstå sig på för artefakter (conditional mod)-->
+                                <label for="talent-artifact-knowledge">Prylvan*
+                                    <input type="checkbox" id="talent-artifact-knowledge"
+                                        class="check-talent toggles-fields" />
+                                </label>
+                                <label for="talent-rises-on-nine">Reser sig på nio
+                                    <input type="checkbox" id="talent-rises-on-nine" class="check-talent" />
+                                </label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="controlgroup-vertical">
+                                <!-- +2 Förstå sig på för ruiner (conditional mod) -->
+                                <label for="talent-tomb-raider">Ruinkrälare*
+                                    <input type="checkbox" id="talent-tomb-raider"
+                                        class="check-talent toggles-fields" />
+                                </label>
+                                <!-- +1 mod till person som Inspireras om hen följer råd (beskrivning) -->
+                                <label for="talent-advisor">Rådgivare*
+                                    <input type="checkbox" id="talent-advisor" class="check-talent" />
+                                </label>
+                                <label for="talent-butcher">Slaktare
+                                    <input type="checkbox" id="talent-butcher" class="check-talent" />
+                                </label>
+                                <label for="talent-quick-draw">Snabbdragare
+                                    <input type="checkbox" id="talent-quick-draw" class="check-talent" />
+                                </label>
+                                <!-- +2 Parera i närstrid (conditional mod)-->
+                                <label for="talent-quick-footwork">Snabbt fotarbete*
+                                    <input type="checkbox" id="talent-quick-footwork"
+                                        class="check-talent, toggles-fields" />
+                                </label>
+                                <!-- +1 Slåss/Skjuta med specifik vapentyp (conditional mod; complicated) -->
+                                <label for="talent-specialist">Specialist*
+                                    <input type="checkbox" id="talent-specialist" class="check-talent toggles-fields" />
+                                </label>
+                                <label for="talent-specialist2" data-toggled-by="#talent-specialist">Specialist* 2
+                                    <input type="checkbox" id="talent-specialist2"
+                                        class="check-talent toggles-fields" />
+                                </label>
+                                <label for="talent-specialist3" data-toggled-by="#talent-specialist2">Specialist* 3
+                                    <input type="checkbox" id="talent-specialist3"
+                                        class="check-talent toggles-fields" />
+                                </label>
+                                <label for="talent-specialist4" data-toggled-by="#talent-specialist3">Specialist* 4
+                                    <input type="checkbox" id="talent-specialist4"
+                                        class="check-talent toggles-fields" />
+                                </label>
+                                <label for="talent-experienced-fighter">Stridsvan
+                                    <input type="checkbox" id="talent-experienced-fighter"
+                                        class="check-talent toggles-fields" />
+                                </label>
+                                <label for="talent-insomniac">Sömnlös
+                                    <input type="checkbox" id="talent-insomniac" class="check-talent" />
+                                </label>
+                                <label for="talent-zone-cook">Zonkock
+                                    <input type="checkbox" id="talent-zone-cook" class="check-talent toggles-fields" />
                                 </label>
                             </div>
                         </td>

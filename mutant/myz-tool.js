@@ -293,6 +293,27 @@ function calculateTotalShootModifier() {
     $("#modifier-shoot-total").val(modifier + rangeModifier + aimModifier);
 }
 
+function toggleFields() {
+    var thisId = $(this).attr("id");
+    var checked = $(this).is(":checked");
+    toggledFields = $("[data-toggled-by='#" + thisId + "']");
+
+    if (checked) {
+        toggledFields.addClass("active");
+    } else {
+        toggledFields.removeClass("active");
+    }
+}
+
+function changeJob() {
+    $(".toggled-by-job").removeClass("active");
+
+    $(".job").each(function () {
+        var value = $(this).val();
+        $(".toggled-by-job[data-active-for-job='" + value + "']").addClass("active");
+    });
+}
+
 $(document).ready(function () {
     $("button.roll-stat").click(function () {
         var statField = $(this).attr("data-statref");
@@ -332,7 +353,7 @@ $(document).ready(function () {
 
         var description = 'Initiativ [1T6 + <span class="stat-value">' + agility + " (Kyl)</span>";
 
-        if ($("#experienced-fighter-plus2").is(":checked")) {
+        if ($("#talent-experienced-fighter").is(":checked")) {
             agility += 2;
             description += " + 2 (Stridsvan)";
         }
@@ -375,6 +396,10 @@ $(document).ready(function () {
         $(allToggledFieldsSelector).removeClass("active");
         $(allToggledFieldsSelector + "[data-active-for-value='" + valueOfThis + "']").addClass("active");
     });
+
+    $(".toggles-fields").change(toggleFields);
+
+    $(".job").change(changeJob);
 
     loadData();
 });
