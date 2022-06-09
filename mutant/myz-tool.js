@@ -389,14 +389,6 @@ $(document).ready(function () {
         "direction": "vertical"
     });
 
-    $(".select-special-skill").change(function () {
-        var idOfThis = $(this).attr("id");
-        var valueOfThis = $(this).val();
-        var allToggledFieldsSelector = "[data-toggled-by='#" + idOfThis + "']";
-        $(allToggledFieldsSelector).removeClass("active");
-        $(allToggledFieldsSelector + "[data-active-for-value='" + valueOfThis + "']").addClass("active");
-    });
-
     $(".toggles-fields").change(toggleFields);
 
     $(".job").change(changeJob);
