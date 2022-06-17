@@ -171,13 +171,6 @@ function loadData() {
     });
 }
 
-function setAdHoc(stat, skill, gear, modifier) {
-    $("#stat-adhoc").val(stat);
-    $("#skill-adhoc").val(skill);
-    $("#gear-adhoc").val(gear);
-    $("#modifier-adhoc").val(modifier);
-}
-
 function rollAdHoc() {
     var statValue = intValueOfField("#stat-adhoc");
     var skillValue = intValueOfField("#skill-adhoc");
