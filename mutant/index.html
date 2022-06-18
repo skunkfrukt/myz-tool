@@ -11,8 +11,8 @@
     <!--<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
-    <link rel="stylesheet" href="myz-tool.css?_=e6b45f9a3aea88c67d7b3992a91033fa30abd97e" />
-    <script src="myz-tool.js?_=e0bb86e7b95743913b0b67cb654ec8dc8530903b"></script>
+    <link rel="stylesheet" href="myz-tool.css?_=25c451568853e19f5463c46b3d61c72ec62ab4b6" />
+    <script src="myz-tool.js?_=1a3c88c4091020b9c2e564ff808089038ae4eb59"></script>
 </head>
 
 <body>
@@ -1355,11 +1355,18 @@
     <div class="save-load">
         <button onclick="saveData();">Spara</button>
         <button onclick="loadData();">Ladda</button>
-        <button onclick="importData();">Importera JSON</button>
-        <button onclick="exportData();">Exportera JSON</button>
+        <button id="open-import-dialog-button">Importera JSON</button>
+        <button id="open-export-dialog-button">Exportera JSON</button>
     </div>
-    <div id="exportDialog" class="dialog" title="Exportera JSON">
-        <textarea id="exportedJson"></textarea>
+    <div id="import-dialog" class="dialog" title="Importera JSON">
+        <button id="import-file-button">Importera fil</button>
+        <input id="import-file" type="file" accept=".json" class="hidden" />
+        <button id="import-paste-button">Klistra in</button>
+        <textarea id="import-json"></textarea>
+    </div>
+    <div id="export-dialog" class="dialog" title="Exportera JSON">
+        <textarea id="export-json"></textarea>
+        <button id="export-copy-button">Kopiera</button>
     </div>
 </body>
 

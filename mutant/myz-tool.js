@@ -202,8 +202,8 @@ function importData() {
 
 function exportData() {
     var json = serialize();
-    $("#exportDialog #exportedJson").val(json);
-    $("#exportDialog").dialog("open");
+    $("#export-dialog #export-json").val(json);
+    $("#export-dialog").dialog("open");
 }
 
 function serialize() {
@@ -229,7 +229,7 @@ function serialize() {
             output[key] = value;
         }
     })
-    var json = JSON.stringify(output);
+    var json = JSON.stringify(output, null, 4);
     return json;
 }
 
@@ -430,6 +430,36 @@ function changeMod() {
     }
 }
 
+function loadJsonFromFile() {
+    var files = $(this)[0].files;
+    if (files) {
+        var file = files[0];
+        var reader = new FileReader();
+        reader.addEventListener("load", function () {
+            var content = reader.result;
+            $("#import-json").val(content);
+        });
+        reader.readAsText(file);
+    }
+}
+
+function copyJsonToClipboard() {
+    var json = $("#export-json").val();
+    navigator.clipboard.writeText(json).then(
+        function () { },
+        function () { }
+    );
+}
+
+function pasteJsonFromClipboard() {
+    navigator.clipboard.readText().then(
+        function (json) {
+            $("#import-json").val(json);
+        },
+        function () { }
+    );
+}
+
 $(document).ready(function () {
     $(".tabs").tabs();
 
@@ -515,7 +545,21 @@ $(document).ready(function () {
 
     $(".mod").change(changeMod);
 
-    $("#exportDialog").dialog({
+    $("#import-dialog").dialog({
+        "autoOpen": false,
+        modal: true,
+        buttons: {
+            Importera: function () {
+                deserialize($("#import-json").val());
+                $(this).dialog("close");
+            },
+            Avbryt: function () {
+                $(this).dialog("close");
+            }
+        }
+    });
+
+    $("#export-dialog").dialog({
         "autoOpen": false,
         modal: true,
         buttons: {
@@ -524,6 +568,21 @@ $(document).ready(function () {
             }
         }
     });
+
+    $("#open-import-dialog-button").click(function () {
+        $("#import-dialog").dialog("open");
+    });
+
+    $("#import-file-button").click(function () {
+        $("#import-file").click();
+    });
+    $("#import-file").change(loadJsonFromFile);
+
+    $("#open-export-dialog-button").click(exportData);
+
+    $("#export-copy-button").click(copyJsonToClipboard);
+
+    $("#import-paste-button").click(pasteJsonFromClipboard);
 
     loadData();
 });
