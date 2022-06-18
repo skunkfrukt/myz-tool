@@ -139,20 +139,25 @@ function getCharName() {
     return getQuery()["char"];
 }
 
-function saveOneField(fieldId, charName) {
-    var value = $(fieldId).val();
-    var itemName = "myz-tool" + fieldId;
-    if (charName) {
-        itemName += ("[" + charName + "]");
-    }
-    window.localStorage.setItem(itemName, value);
-}
-
 function saveData() {
     var charName = getCharName();
-    $(".saved").each(function (i) {
-        saveOneField("#" + $(this).attr("id"), charName);
-    });
+    if (!charName) {
+        charName = "";
+    }
+
+    var charList = window.localStorage.getItem("myz-tool::chars");
+    if (!charList) {
+        charList = [];
+    }
+
+    if (charList.indexOf(charName) == -1) {
+        charList.push(charName);
+        charList.sort();
+        window.localStorage.setItem("myz-tool::chars", JSON.stringify(charList));
+    }
+
+    var json = serialize();
+    window.localStorage.setItem("myz-tool::char[" + charName + "]", json);
 }
 
 function loadOneField(fieldId, charName) {
@@ -161,14 +166,96 @@ function loadOneField(fieldId, charName) {
         itemName += ("[" + charName + "]");
     }
     var value = window.localStorage.getItem(itemName);
-    $(fieldId).val(value);
+    $(fieldId).val(value).change();
 }
 
 function loadData() {
     var charName = getCharName();
-    $(".saved").each(function (i) {
-        loadOneField("#" + $(this).attr("id"), charName);
-    });
+    if (!charName) {
+        charName = "";
+    }
+
+    var charList = window.localStorage.getItem("myz-tool::chars");
+
+    if (!charList) {
+        // If using old save file version, replace and delete it after loading.
+        $("input[data-save-as]:not([type='checkbox'])").each(function (i) {
+            var fieldId = "#" + $(this).attr("id");
+            loadOneField(fieldId, charName);
+            var itemName = "myz-tool" + fieldId;
+            if (charName) {
+                itemName += ("[" + charName + "]");
+            }
+            window.localStorage.removeItem(itemName)
+        });
+        saveData();
+    }
+
+    var json = window.localStorage.getItem("myz-tool::char[" + charName + "]");
+    deserialize(json);
+}
+
+function importData() {
+    var json = prompt("Klistra in JSON för sparfil:");
+    deserialize(json);
+}
+
+function exportData() {
+    var json = serialize();
+    $("#exportDialog #exportedJson").val(json);
+    $("#exportDialog").dialog("open");
+}
+
+function serialize() {
+    var output = { "$version": 1 }
+    $("input[data-save-as]:not([type='checkbox'])").each(function () {
+        var key = $(this).attr("data-save-as");
+        var value = $(this).val();
+        if (value) {
+            output[key] = value;
+        }
+    })
+    $("select[data-save-as]").each(function () {
+        var key = $(this).attr("data-save-as");
+        var value = $(this).val();
+        if (value) {
+            output[key] = value;
+        }
+    })
+    $("input[data-save-as][type='checkbox']").each(function () {
+        var key = $(this).attr("data-save-as");
+        var value = $(this).is(":checked");
+        if (value) {
+            output[key] = value;
+        }
+    })
+    var json = JSON.stringify(output);
+    return json;
+}
+
+function deserialize(json) {
+    var parsed = JSON.parse(json);
+    $("input[data-save-as]:not([type='checkbox'])").each(function () {
+        var key = $(this).attr("data-save-as");
+        var value = parsed[key];
+        if (value) {
+            $(this).val(value).change();
+        }
+    })
+    $("select[data-save-as]").each(function () {
+        var key = $(this).attr("data-save-as");
+        var value = parsed[key];
+        if (value) {
+            $(this).val(value).change();
+        }
+    })
+    $("input[data-save-as][type='checkbox']").each(function () {
+        var key = $(this).attr("data-save-as");
+        var value = parsed[key];
+        if (value) {
+            $(this).prop("checked", value).change();
+        }
+    })
 }
 
 function rollAdHoc() {
@@ -417,6 +504,16 @@ $(document).ready(function () {
     $(".job").change(changeJob);
 
     $(".mod").change(changeMod);
+
+    $("#exportDialog").dialog({
+        "autoOpen": false,
+        modal: true,
+        buttons: {
+            OK: function () {
+                $(this).dialog("close");
+            }
+        }
+    });
 
     loadData();
 });
