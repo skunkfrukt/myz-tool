@@ -12,7 +12,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
     <link rel="stylesheet" href="myz-tool.css" />
-    <script src="myz-tool.js?v=2"></script>
+    <script src="myz-tool.js?v=3"></script>
     <script>
         $(document).ready(function () {
             $("#tabs").tabs({
@@ -700,9 +700,12 @@
                         </td>
                     </tr>
                     <tr>
-                        <td></td>
-                        <td> <input id="modifier-skill" class="small mod" type="number" /> </td>
-                        <td colspan="2"> <label for="modifier-skill">Modifikation</label> </td>
+                        <td colspan="4">
+                            <label for="modifier-skill">Modifikation</label>
+                            <input id="modifier-skill" class="small mod" type="number" />
+                            <label for="gear-skill">Prylbonus</label>
+                            <input id="gear-skill" class="small color-gear" type="number" />
+                        </td>
                     </tr>
                 </table>
             </div>

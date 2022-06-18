@@ -336,9 +336,15 @@ function rollSkill(statField, skillField, modField) {
     var modifiedSkillValue = skillValue + modValue + talentMods;
 
     description += describeModField(modField);
+
+    var gearBonus = intValueOfField("#gear-skill");
+    if (gearBonus) {
+        description += ' + <span class="gear-value">' + gearBonus + "&#x1F3B2; (pryl)</span>"
+    }
+
     description += "]";
 
-    rollAndDisplay(modifiedStatValue, modifiedSkillValue, 0, 0, description);
+    rollAndDisplay(modifiedStatValue, modifiedSkillValue, gearBonus, 0, description);
     $(modField).val("").trigger("change");
 }
 
