@@ -50,6 +50,11 @@
     width: 120px;
 }
 
+label.small{
+    width: 80px;
+    display: inline-block;
+}
+
 input.small {
     width: 40px;
 }
@@ -93,4 +98,8 @@ sup {
 .gear-value{
     font-weight: bold;
     color: black;
+}
+
+.tabs .compact {
+    padding: 0;
 }

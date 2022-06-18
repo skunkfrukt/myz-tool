@@ -431,6 +431,8 @@ function changeMod() {
 }
 
 $(document).ready(function () {
+    $(".tabs").tabs();
+
     $("button.roll-stat").click(function () {
         var statField = $(this).attr("data-statref");
         var modField = $(this).attr("data-modref");
@@ -500,6 +502,8 @@ $(document).ready(function () {
     if (charName) {
         $("#change-char-name").val(decodeURIComponent(charName));
     }
+
+    $(".controlgroup").controlgroup()
 
     $(".controlgroup-vertical").controlgroup({
         "direction": "vertical"
