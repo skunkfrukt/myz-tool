@@ -21,3 +21,4 @@ jobs:
         password: ${{ secrets.FTP_PASSWORD }}
         localDir: "mutant"
         remoteDir: "mutant"
+        forceSsl: true
