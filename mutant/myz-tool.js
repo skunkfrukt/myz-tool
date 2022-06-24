@@ -8,6 +8,14 @@ dieGlyphs = {
 
 var rollNumber = 0;
 
+function download(content, fileName, contentType) {
+    var a = document.createElement("a");
+    var file = new Blob([content], { type: contentType });
+    a.href = URL.createObjectURL(file);
+    a.download = fileName;
+    a.click();
+}
+
 function getModifiedStat(statId) {
     var stat = getValueById(statId, "stat");
     var trauma = getValueById(statId, "trauma");
@@ -203,6 +211,11 @@ function importData() {
 function exportData() {
     var json = serialize();
     $("#export-dialog #export-json").val(json);
+
+    var dataUrl = new Blob([json], { type: "application/json" });
+    var filename = "mutant";
+    $("#export-download-link").attr("href", URL.createObjectURL(dataUrl)).attr("download", filename).button();
+
     $("#export-dialog").dialog("open");
 }
 
@@ -561,13 +574,15 @@ $(document).ready(function () {
 
     $("#export-dialog").dialog({
         "autoOpen": false,
-        modal: true,
-        buttons: {
+        modal: true
+        /*buttons: {
             OK: function () {
                 $(this).dialog("close");
             }
-        }
+        }*/
     });
+
+    $("#export-dialog button").button();
 
     $("#open-import-dialog-button").click(function () {
         $("#import-dialog").dialog("open");
