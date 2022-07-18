@@ -473,6 +473,19 @@ function pasteJsonFromClipboard() {
     );
 }
 
+function translateToEnglish() {
+    $("[data-eng]").each(function () {
+        $(this).attr("data-swe", $(this).text());
+        $(this).text($(this).attr("data-eng"));
+    });
+}
+
+function translateToSwedish() {
+    $("[data-eng]").each(function () {
+        $(this).text($(this).attr("data-swe"));
+    });
+}
+
 $(document).ready(function () {
     $(".tabs").tabs();
 
@@ -598,6 +611,8 @@ $(document).ready(function () {
     $("#export-copy-button").click(copyJsonToClipboard);
 
     $("#import-paste-button").click(pasteJsonFromClipboard);
+
+    $("button").button();
 
     loadData();
 });

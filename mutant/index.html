@@ -27,7 +27,7 @@
             <span class="die die-other">🛠️</span>
         </div>
         <p>
-            <button id="rerollButton" onclick="rerollAndDisplay();" disabled>⚠️ Pressa</button>
+            <button id="rerollButton" onclick="rerollAndDisplay();" disabled data-eng="⚠️ Push">⚠️ Pressa</button>
         </p>
     </div>
     <div id="tabs-main" class="tabs">
@@ -45,43 +45,43 @@
             <h3>Syssla</h3>
             <select id="job" class="job" data-save-as="Syssla[0]">
                 <option value="" selected></option>
-                <option value="Krossare">Krossare</option>
-                <option value="Skrotskalle">Skrotskalle</option>
-                <option value="Zonstrykare">Zonstrykare</option>
-                <option value="Fixare">Fixare</option>
-                <option value="Mutant med hund">Mutant med hund</option>
-                <option value="Krönikör">Krönikör</option>
+                <option value="Krossare" data-eng="Bruiser">Krossare</option>
+                <option value="Skrotskalle" data-eng="Gearhead">Skrotskalle</option>
+                <option value="Zonstrykare" data-eng="Ranger">Zonstrykare</option>
+                <option value="Fixare" data-eng="Scrounger">Fixare</option>
+                <option value="Mutant med hund" data-eng="Mutant with dog">Mutant med hund</option>
+                <option value="Krönikör" data-eng="Chronicler">Krönikör</option>
                 <option value="Boss">Boss</option>
-                <option value="Träl">Träl</option>
+                <option value="Träl" data-eng="Slave">Träl</option>
             </select>
             <select id="job2" class="job" data-toggled-by="#talent-polymath" data-save-as="Syssla[1]">
                 <option value="" selected></option>
-                <option value="Krossare">Krossare</option>
-                <option value="Skrotskalle">Skrotskalle</option>
-                <option value="Zonstrykare">Zonstrykare</option>
-                <option value="Fixare">Fixare</option>
-                <option value="Mutant med hund">Mutant med hund</option>
-                <option value="Krönikör">Krönikör</option>
+                <option value="Krossare" data-eng="Bruiser">Krossare</option>
+                <option value="Skrotskalle" data-eng="Gearhead">Skrotskalle</option>
+                <option value="Zonstrykare" data-eng="Ranger">Zonstrykare</option>
+                <option value="Fixare" data-eng="Scrounger">Fixare</option>
+                <option value="Mutant med hund" data-eng="Mutant with dog">Mutant med hund</option>
+                <option value="Krönikör" data-eng="Chronicler">Krönikör</option>
                 <option value="Boss">Boss</option>
-                <option value="Träl">Träl</option>
+                <option value="Träl" data-eng="Slave">Träl</option>
             </select>
             <select id="job3" class="job" data-toggled-by="#talent-polymath2" data-save-as="Syssla[2]">
                 <option value="" selected></option>
-                <option value="Krossare">Krossare</option>
-                <option value="Skrotskalle">Skrotskalle</option>
-                <option value="Zonstrykare">Zonstrykare</option>
-                <option value="Fixare">Fixare</option>
-                <option value="Mutant med hund">Mutant med hund</option>
-                <option value="Krönikör">Krönikör</option>
+                <option value="Krossare" data-eng="Bruiser">Krossare</option>
+                <option value="Skrotskalle" data-eng="Gearhead">Skrotskalle</option>
+                <option value="Zonstrykare" data-eng="Ranger">Zonstrykare</option>
+                <option value="Fixare" data-eng="Scrounger">Fixare</option>
+                <option value="Mutant med hund" data-eng="Mutant with dog">Mutant med hund</option>
+                <option value="Krönikör" data-eng="Chronicler">Krönikör</option>
                 <option value="Boss">Boss</option>
-                <option value="Träl">Träl</option>
+                <option value="Träl" data-eng="Slave">Träl</option>
             </select>
-            <h3>Grundegenskaper</h3>
+            <h3 data-eng="Base stats">Grundegenskaper</h3>
             <div class="stats">
                 <table>
                     <tr>
                         <td>
-                            <label for="stat-strength" class="small">Styrka</label>
+                            <label for="stat-strength" class="small" lang="sv-SE" data-eng="Strength">Styrka</label>
                         </td>
                         <td>
                             <input id="stat-strength" class="saved small color-base" type="number" size="1"
@@ -94,7 +94,7 @@
                                 min="0" />
                         </td>
                         <td>
-                            <label for="trauma-strength">Skada</label>
+                            <label for="trauma-strength" data-eng="Damage">Skada</label>
                         </td>
                         <td>
                             <button class="roll-stat" data-statref="#stat-strength"
@@ -103,7 +103,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <label for="stat-agility">Kyla</label>
+                            <label for="stat-agility" data-eng="Agility">Kyla</label>
                         </td>
                         <td>
                             <input id="stat-agility" class="saved small color-base" type="number" size="1"
@@ -125,7 +125,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <label for="stat-wits">Skärpa</label>
+                            <label for="stat-wits" data-eng="Wits">Skärpa</label>
                         </td>
                         <td>
                             <input id="stat-wits" class="saved small color-base" type="number" size="1"
@@ -138,7 +138,7 @@
                                 min="0" />
                         </td>
                         <td>
-                            <label for="trauma-wits">Förvirring</label>
+                            <label for="trauma-wits" data-eng="Confusion">Förvirring</label>
                         </td>
                         <td>
                             <button class="roll-stat" data-statref="#stat-wits" data-modref="#modifier-stat">🎲</button>
@@ -146,7 +146,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <label for="stat-empathy">Känsla</label>
+                            <label for="stat-empathy" data-eng="Empathy">Känsla</label>
                         </td>
                         <td>
                             <input id="stat-empathy" class="saved small color-base" type="number" size="1"
@@ -159,7 +159,7 @@
                                 min="0" />
                         </td>
                         <td>
-                            <label for="trauma-empathy">Tvivel</label>
+                            <label for="trauma-empathy" data-eng="Doubt">Tvivel</label>
                         </td>
                         <td>
                             <button class="roll-stat" data-statref="#stat-empathy"
@@ -174,18 +174,18 @@
                     <tr>
                         <td colspan="3"></td>
                         <td><input id="modifier-stat" class="small mod" type="number" /></td>
-                        <td><label for="modifier-stat">Modifikation</label></td>
+                        <td><label for="modifier-stat" data-eng="Modifier">Modifikation</label></td>
                     </tr>
                 </table>
             </div>
         </div>
         <div id="tab-skills">
-            <h3>Färdigheter</h3>
+            <h3 data-eng="Skills">Färdigheter</h3>
             <div class="skills">
                 <table>
                     <tr>
                         <td>
-                            <label for="skill-endure">Kämpa på (Sty)</label>
+                            <label for="skill-endure" data-eng="Endure (Str)">Kämpa på (Sty)</label>
                         </td>
                         <td>
                             <input id="skill-endure" class="saved small color-skill" type="number" size="1"
@@ -196,12 +196,12 @@
                                 data-modref="#modifier-skill">🎲</button>
                             <span data-toggled-by="#talent-unmoved">
                                 <button class="roll-skill" data-statref="#stat-agility" data-skillref="#skill-endure"
-                                    data-modref="#modifier-skill">🎲 Kyl</button>
+                                    data-modref="#modifier-skill" data-eng="🎲 Agi">🎲 Kyl</button>
                             </span>
                         </td>
                         <td>
                             <span data-toggled-by="#talent-laborer">
-                                <label for="mod-laborer-endure">Projekt
+                                <label for="mod-laborer-endure"><span data-eng="Project">Projekt</span>
                                     <input type="checkbox" id="mod-laborer-endure" class="conditional-mod"
                                         data-skillref="#skill-endure" data-mod-name="Knegare" value="2" />
                                 </label>
@@ -210,7 +210,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <label for="skill-force">Ta krafttag (Sty)</label>
+                            <label for="skill-force" data-eng="Force (Str)">Ta krafttag (Sty)</label>
                         </td>
                         <td>
                             <input id="skill-force" class="saved small color-skill" type="number" size="1"
@@ -222,7 +222,7 @@
                         </td>
                         <td>
                             <span data-toggled-by="#talent-laborer">
-                                <label for="mod-laborer-force">Projekt
+                                <label for="mod-laborer-force"><span data-eng="Project">Projekt</span>
                                     <input type="checkbox" id="mod-laborer-force" class="conditional-mod"
                                         data-skillref="#skill-force" data-mod-name="Knegare" value="2" />
                                 </label>
@@ -231,7 +231,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <label for="skill-fight">Slåss (Sty)</label>
+                            <label for="skill-fight" data-eng="Fight (Str)">Slåss (Sty)</label>
                         </td>
                         <td>
                             <input id="skill-fight" class="saved small color-skill" type="number" size="1"
@@ -242,31 +242,31 @@
                                 data-modref="#modifier-skill">🎲</button>
                             <span data-toggled-by="#talent-flyweight">
                                 <button class="roll-skill" data-statref="#stat-agility" data-skillref="#skill-fight"
-                                    data-modref="#modifier-skill">🎲 Kyl
+                                    data-modref="#modifier-skill" data-eng="🎲 Agi (parry)">🎲 Kyl
                                     (parera)</button>
                             </span>
                         </td>
                         <td>
                             <span data-toggled-by="#talent-motorhead">
-                                <label for="mod-motorhead-fight">Ramma
+                                <label for="mod-motorhead-fight"><span data-eng="Ram w/ vehicle">Ramma</span>
                                     <input type="checkbox" id="mod-motorhead-fight" class="conditional-mod"
                                         data-skillref="#skill-fight" data-mod-name="Motorskalle" value="1" />
                                 </label>
                             </span>
                             <span data-toggled-by="#talent-heavy-attack">
-                                <label for="mod-heavy-attack">Offra manöver
+                                <label for="mod-heavy-attack"><span data-eng="Sacrifice movement">Offra manöver</span>
                                     <input type="checkbox" id="mod-heavy-attack" class="conditional-mod"
                                         data-skillref="#skill-fight" data-mod-name="Krafthugg" value="1" />
                                 </label>
                             </span>
                             <span data-toggled-by="#talent-quick-footwork">
-                                <label for="mod-quick-footwork">Parera (närstrid)
+                                <label for="mod-quick-footwork"><span data-eng="Parry (melee)">Parera (närstrid)</span>
                                     <input type="checkbox" id="mod-quick-footwork" class="conditional-mod"
                                         data-skillref="#skill-fight" data-mod-name="Snabbt fotarbete" value="2" />
                                 </label>
                             </span>
                             <span data-toggled-by="#talent-laborer">
-                                <label for="mod-laborer-fight">Projekt
+                                <label for="mod-laborer-fight"><span data-eng="Project">Projekt</span>
                                     <input type="checkbox" id="mod-laborer-fight" class="conditional-mod"
                                         data-skillref="#skill-fight" data-mod-name="Knegare" value="2" />
                                 </label>
@@ -276,7 +276,7 @@
 
                     <tr>
                         <td>
-                            <label for="skill-sneak">Smyga (Kyl)</label>
+                            <label for="skill-sneak" data-eng="Sneak (Agi)">Smyga (Kyl)</label>
                         </td>
                         <td>
                             <input id="skill-sneak" class="saved small color-skill" type="number" size="1"
@@ -288,7 +288,7 @@
                         </td>
                         <td>
                             <span data-toggled-by="#talent-laborer">
-                                <label for="mod-laborer-sneak">Projekt
+                                <label for="mod-laborer-sneak"><span data-eng="Project">Projekt</span>
                                     <input type="checkbox" id="mod-laborer-sneak" class="conditional-mod"
                                         data-skillref="#skill-sneak" data-mod-name="Knegare" value="2" />
                                 </label>
@@ -297,7 +297,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <label for="skill-move">Fly (Kyl)</label>
+                            <label for="skill-move" data-eng="Move (Agi)">Fly (Kyl)</label>
                         </td>
                         <td>
                             <input id="skill-move" class="saved small color-skill" type="number" size="1"
@@ -308,16 +308,16 @@
                                 data-modref="#modifier-skill">🎲</button>
                             <span data-toggled-by="#talent-analyst">
                                 <button class="roll-skill" data-statref="#stat-wits" data-skillref="#skill-move"
-                                    data-modref="#modifier-skill">🎲 Skp</button>
+                                    data-modref="#modifier-skill" data-eng="🎲 Wit">🎲 Skp</button>
                             </span>
                             <span data-toggled-by="#talent-excessive-force">
                                 <button class="roll-skill" data-statref="#stat-strength" data-skillref="#skill-move"
-                                    data-modref="#modifier-skill">🎲 Sty</button>
+                                    data-modref="#modifier-skill" data-eng="🎲 Str">🎲 Sty</button>
                             </span>
                         </td>
                         <td>
                             <span data-toggled-by="#talent-laborer">
-                                <label for="mod-laborer-move">Projekt
+                                <label for="mod-laborer-move"><span data-eng="Project">Projekt</span>
                                     <input type="checkbox" id="mod-laborer-move" class="conditional-mod"
                                         data-skillref="#skill-move" data-mod-name="Knegare" value="2" />
                                 </label>
@@ -326,7 +326,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <label for="skill-shoot">Skjuta (Kyl)</label>
+                            <label for="skill-shoot" data-eng="Shoot (Agi)">Skjuta (Kyl)</label>
                         </td>
                         <td>
                             <input id="skill-shoot" class="saved small color-skill" type="number" size="1"
@@ -338,7 +338,7 @@
                         </td>
                         <td>
                             <span data-toggled-by="#talent-laborer">
-                                <label for="mod-laborer-shoot">Projekt
+                                <label for="mod-laborer-shoot"><span data-eng="Project">Projekt</span>
                                     <input type="checkbox" id="mod-laborer-shoot" class="conditional-mod"
                                         data-skillref="#skill-shoot" data-mod-name="Knegare" value="2" />
                                 </label>
@@ -348,7 +348,7 @@
 
                     <tr>
                         <td>
-                            <label for="skill-scout">Speja (Skp)</label>
+                            <label for="skill-scout" data-eng="Scout (Wit)">Speja (Skp)</label>
                         </td>
                         <td>
                             <input id="skill-scout" class="saved small color-skill" type="number" size="1"
@@ -359,18 +359,18 @@
                                 data-modref="#modifier-skill">🎲</button>
                             <span data-toggled-by="#talent-premonition">
                                 <button class="roll-skill" data-statref="#stat-empathy" data-skillref="#skill-scout"
-                                    data-modref="#modifier-skill">🎲 Kns</button>
+                                    data-modref="#modifier-skill" data-eng="🎲 Emp">🎲 Kns</button>
                             </span>
                         </td>
                         <td>
                             <span data-toggled-by="#talent-monster-hunter">
-                                <label for="mod-monster-hunter">Zonbest
+                                <label for="mod-monster-hunter"><span data-eng="Beast">Zonbest</span>
                                     <input type="checkbox" id="mod-monster-hunter" class="conditional-mod"
                                         data-skillref="#skill-scout" data-mod-name="Monsterjägare" value="2" />
                                 </label>
                             </span>
                             <span data-toggled-by="#talent-laborer">
-                                <label for="mod-laborer-scout">Projekt
+                                <label for="mod-laborer-scout"><span data-eng="Project">Projekt</span>
                                     <input type="checkbox" id="mod-laborer-scout" class="conditional-mod"
                                         data-skillref="#skill-scout" data-mod-name="Knegare" value="2" />
                                 </label>
@@ -379,7 +379,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <label for="skill-comprehend">Förstå sig på (Skp)</label>
+                            <label for="skill-comprehend" data-eng="Comprehend (Wit)">Förstå sig på (Skp)</label>
                         </td>
                         <td>
                             <input id="skill-comprehend" class="saved small color-skill" type="number" size="1"
@@ -391,19 +391,19 @@
                         </td>
                         <td>
                             <span data-toggled-by="#talent-artifact-knowledge">
-                                <label for="mod-artifact-knowledge">Artefakt
+                                <label for="mod-artifact-knowledge"><span data-eng="Artifact">Artefakt</span>
                                     <input type="checkbox" id="mod-artifact-knowledge" class="conditional-mod"
                                         data-skillref="#skill-comprehend" data-mod-name="Prylvan" value="1" />
                                 </label>
                             </span>
                             <span data-toggled-by="#talent-tomb-raider">
-                                <label for="mod-tomb-raider">Ruin
+                                <label for="mod-tomb-raider"><span data-eng="Ruins">Ruin</span>
                                     <input type="checkbox" id="mod-tomb-raider" class="conditional-mod"
                                         data-skillref="#skill-comprehend" data-mod-name="Ruinkrälare" value="2" />
                                 </label>
                             </span>
                             <span data-toggled-by="#talent-laborer">
-                                <label for="mod-laborer-comprehend">Projekt
+                                <label for="mod-laborer-comprehend"><span data-eng="Project">Projekt</span>
                                     <input type="checkbox" id="mod-laborer-comprehend" class="conditional-mod"
                                         data-skillref="#skill-comprehend" data-mod-name="Knegare" value="2" />
                                 </label>
@@ -412,7 +412,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <label for="skill-knowTheZone">Känna Zonen (Skp)</label>
+                            <label for="skill-knowTheZone" data-eng="Know the Zone (Wit)">Känna Zonen (Skp)</label>
                         </td>
                         <td>
                             <input id="skill-knowTheZone" class="saved small color-skill" type="number" size="1"
@@ -424,20 +424,20 @@
                         </td>
                         <td>
                             <span data-toggled-by="#talent-laborer">
-                                <label for="mod-laborer-know-the-zone">Projekt
+                                <label for="mod-laborer-know-the-zone"><span data-eng="Project">Projekt</span>
                                     <input type="checkbox" id="mod-laborer-know-the-zone" class="conditional-mod"
                                         data-skillref="#skill-knowTheZone" data-mod-name="Knegare" value="2" />
                                 </label>
                             </span>
                             <span data-toggled-by="#talent-zone-cook">
-                                <strong>Zonkock</strong>
+                                <strong data-eng="Zone cook">Zonkock</strong>
                             </span>
                         </td>
                     </tr>
 
                     <tr>
                         <td>
-                            <label for="skill-senseEmotion">Genomskåda (Kns)</label>
+                            <label for="skill-senseEmotion" data-eng="Sense emotion (Emp)">Genomskåda (Kns)</label>
                         </td>
                         <td>
                             <input id="skill-senseEmotion" class="saved small color-skill" type="number" size="1"
@@ -448,13 +448,13 @@
                                 data-modref="#modifier-skill">🎲</button>
                             <span data-toggled-by="#talent-personal-mathematics">
                                 <button class="roll-skill" data-statref="#stat-wits" data-skillref="#skill-senseEmotion"
-                                    data-modref="#modifier-skill">🎲
+                                    data-modref="#modifier-skill" data-eng="🎲 Wit">🎲
                                     Skp</button>
                             </span>
                         </td>
                         <td>
                             <span data-toggled-by="#talent-laborer">
-                                <label for="mod-laborer-sense-emotion">Projekt
+                                <label for="mod-laborer-sense-emotion"><span data-eng="Project">Projekt</span>
                                     <input type="checkbox" id="mod-laborer-sense-emotion" class="conditional-mod"
                                         data-skillref="#skill-senseEmotion" data-mod-name="Knegare" value="2" />
                                 </label>
@@ -463,7 +463,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <label for="skill-manipulate">Manipulera (Kns)</label>
+                            <label for="skill-manipulate" data-eng="Manipulate (Emp)">Manipulera (Kns)</label>
                         </td>
                         <td>
                             <input id="skill-manipulate" class="saved small color-skill" type="number" size="1"
@@ -475,7 +475,7 @@
                         </td>
                         <td>
                             <span data-toggled-by="#talent-laborer">
-                                <label for="mod-laborer-manipulate">Projekt
+                                <label for="mod-laborer-manipulate"><span data-eng="Project">Projekt</span>
                                     <input type="checkbox" id="mod-laborer-manipulate" class="conditional-mod"
                                         data-skillref="#skill-manipulate" data-mod-name="Knegare" value="2" />
                                 </label>
@@ -484,7 +484,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <label for="skill-heal">Vårda (Kns)</label>
+                            <label for="skill-heal" data-eng="Heal (Emp)">Vårda (Kns)</label>
                         </td>
                         <td>
                             <input id="skill-heal" class="saved small color-skill" type="number" size="1"
@@ -496,13 +496,13 @@
                         </td>
                         <td>
                             <span data-toggled-by="#talent-physician">
-                                <label for="mod-physician">Skada
+                                <label for="mod-physician"><span data-eng="Damage">Skada</span>
                                     <input type="checkbox" id="mod-physician" class="conditional-mod"
                                         data-skillref="#skill-heal" data-mod-name="Anatomikunnig" value="1" />
                                 </label>
                             </span>
                             <span data-toggled-by="#talent-laborer">
-                                <label for="mod-laborer-heal">Projekt
+                                <label for="mod-laborer-heal"><span data-eng="Project">Projekt</span>
                                     <input type="checkbox" id="mod-laborer-heal" class="conditional-mod"
                                         data-skillref="#skill-heal" data-mod-name="Knegare" value="2" />
                                 </label>
@@ -511,7 +511,7 @@
                     </tr>
                     <tr class="toggled-by-job" data-active-for-job="Krossare">
                         <td>
-                            <label for="skill-intimidate">Mucka (Str)</label>
+                            <label for="skill-intimidate" data-eng="Intimidate (Str)">Mucka (Sty)</label>
                         </td>
                         <td>
                             <input id="skill-intimidate" class="saved small color-skill" type="number" size="1"
@@ -524,7 +524,7 @@
                     </tr>
                     <tr class="toggled-by-job" data-active-for-job="Skrotskalle">
                         <td>
-                            <label for="skill-tinker">Mecka (Skp)</label>
+                            <label for="skill-tinker" data-eng="Tinker (Wit)">Mecka (Skp)</label>
                         </td>
                         <td>
                             <input id="skill-tinker" class="saved small color-skill" type="number" size="1"
@@ -536,19 +536,19 @@
                         </td>
                         <td>
                             <span data-toggled-by="#talent-motorhead">
-                                <label for="mod-tinker-with-vehicle">Fordon
+                                <label for="mod-tinker-with-vehicle"><span data-eng="Vehicle">Fordon</span>
                                     <input type="checkbox" id="mod-tinker-with-vehicle" class="conditional-mod"
                                         data-skillref="#skill-tinker" data-mod-name="Motorskalle" value="1" />
                                 </label>
                             </span>
                             <span data-toggled-by="#talent-fixer">
-                                <label for="mod-repair">Reparation
+                                <label for="mod-repair"><span data-eng="Repairs">Reparation</span>
                                     <input type="checkbox" id="mod-repair" class="conditional-mod"
                                         data-skillref="#skill-tinker" data-mod-name="Reparatör" value="1" />
                                 </label>
                             </span>
                             <span data-toggled-by="#talent-inventor">
-                                <label for="mod-invent">Hemmabygge
+                                <label for="mod-invent"><span data-eng="Invention">Hemmabygge</span>
                                     <input type="checkbox" id="mod-invent" class="conditional-mod"
                                         data-skillref="#skill-tinker" data-mod-name="Uppfinnare" value="1" />
                                 </label>
@@ -557,7 +557,7 @@
                     </tr>
                     <tr class="toggled-by-job" data-active-for-job="Zonstrykare">
                         <td>
-                            <label for="skill-navigate">Leda vägen (Kyl)</label>
+                            <label for="skill-navigate" data-eng="Navigate (Agi)">Leda vägen (Kyl)</label>
                         </td>
                         <td>
                             <input id="skill-navigate" class="saved small color-skill" type="number" size="1"
@@ -569,18 +569,18 @@
                         </td>
                         <td>
                             <span data-toggled-by="#talent-treasure-hunter">
-                                <strong>Sakletare</strong>
+                                <strong data-eng="Treasure hunter">Sakletare</strong>
                             </span>
                         </td>
                         <td>
                             <span data-toggled-by="#talent-rot-nose">
-                                <strong>Rötnos</strong>
+                                <strong data-eng="Rot nose">Rötnos</strong>
                             </span>
                         </td>
                     </tr>
                     <tr class="toggled-by-job" data-active-for-job="Fixare">
                         <td>
-                            <label for="skill-scrounge">Schackra (Kns)</label>
+                            <label for="skill-scrounge" data-eng="Scrounge (Emp)">Schackra (Kns)</label>
                         </td>
                         <td>
                             <input id="skill-scrounge" class="saved small color-skill" type="number" size="1"
@@ -593,7 +593,7 @@
                     </tr>
                     <tr class="toggled-by-job" data-active-for-job="Mutant med hund">
                         <td>
-                            <label for="skill-animal-handling">Bussa på (Kyl)</label>
+                            <label for="skill-animal-handling" data-eng="Animal handling (Agi)">Bussa på (Kyl)</label>
                         </td>
                         <td>
                             <input id="skill-animal-handling" class="saved small color-skill" type="number" size="1"
@@ -605,7 +605,7 @@
                         </td>
                         <td>
                             <span data-toggled-by="#talent-bloodhound">
-                                <label for="mod-track">Spårning
+                                <label for="mod-track"><span data-eng="Tracking">Spårning</span>
                                     <input type="checkbox" id="mod-track" class="conditional-mod"
                                         data-skillref="#skill-animal-handling" data-mod-name="Blodhund" value="2" />
                                 </label>
@@ -614,7 +614,7 @@
                     </tr>
                     <tr class="toggled-by-job" data-active-for-job="Krönikör">
                         <td>
-                            <label for="skill-inspire">Inspirera (Kns)</label>
+                            <label for="skill-inspire" data-eng="Inspire (Emp)">Inspirera (Kns)</label>
                         </td>
                         <td>
                             <input id="skill-inspire" class="saved small color-skill" type="number" size="1"
@@ -626,7 +626,7 @@
                         </td>
                         <td>
                             <span data-toggled-by="#talent-warmonger">
-                                <label for="mod-warmonger">Slåss/Skjuta
+                                <label for="mod-warmonger"><span data-eng="Fight/Shoot">Slåss/Skjuta</span>
                                     <input type="checkbox" id="mod-warmonger" class="conditional-mod"
                                         data-skillref="#skill-inspire" data-mod-name="Våldshetsare" value="1" />
                                 </label>
@@ -638,7 +638,7 @@
                     </tr>
                     <tr class="toggled-by-job" data-active-for-job="Boss">
                         <td>
-                            <label for="skill-command">Kommendera (Kns)</label>
+                            <label for="skill-command" data-eng="Command (Emp)">Kommendera (Kns)</label>
                         </td>
                         <td>
                             <input id="skill-command" class="saved small color-skill" type="number" size="1"
@@ -650,13 +650,14 @@
                         </td>
                         <td>
                             <span data-toggled-by="#talent-protector-of-the-ark">
-                                <label for="mod-protector-of-the-ark">Beskyddarvh.
+                                <label for="mod-protector-of-the-ark"><span
+                                        data-eng="Protection racket">Beskyddarvh.</span>
                                     <input type="checkbox" id="mod-protector-of-the-ark" class="conditional-mod"
                                         data-skillref="#skill-command" data-mod-name="Arkens beskyddare" value="2" />
                                 </label>
                             </span>
                             <span data-toggled-by="#talent-commander">
-                                <label for="mod-commander">Ej beskyddarvh.
+                                <label for="mod-commander"><span data-eng="Not protection racket">Ej beskyddarvh.</span>
                                     <input type="checkbox" id="mod-commander" class="conditional-mod"
                                         data-skillref="#skill-command" data-mod-name="Kommendant" value="2" />
                                 </label>
@@ -665,7 +666,7 @@
                     </tr>
                     <tr class="toggled-by-job" data-active-for-job="Träl">
                         <td>
-                            <label for="skill-persist">Uthärda (Kyl)</label>
+                            <label for="skill-persist" data-eng="Persist (Agi)">Uthärda (Kyl)</label>
                         </td>
                         <td>
                             <input id="skill-persist" class="saved small color-skill" type="number" size="1"
@@ -677,13 +678,13 @@
                         </td>
                         <td>
                             <span data-toggled-by="#talent-unfazed">
-                                <label for="mod-unfazed">Tvivel
+                                <label for="mod-unfazed"><span data-eng="Doubt">Tvivel</span>
                                     <input type="checkbox" id="mod-unfazed" class="conditional-mod"
                                         data-skillref="#skill-persist" data-mod-name="Oberörd" value="1" />
                                 </label>
                             </span>
                             <span data-toggled-by="#talent-tank">
-                                <label for="mod-tank">Skada
+                                <label for="mod-tank"><span data-eng="Damage">Skada</span>
                                     <input type="checkbox" id="mod-tank" class="conditional-mod"
                                         data-skillref="#skill-persist" data-mod-name="Slagtålig" value="1" />
                                 </label>
@@ -697,9 +698,9 @@
                     </tr>
                     <tr>
                         <td colspan="4">
-                            <label for="modifier-skill">Modifikation</label>
+                            <label for="modifier-skill" data-eng="Modifier">Modifikation</label>
                             <input id="modifier-skill" class="small mod" type="number" />
-                            <label for="gear-skill">Prylbonus</label>
+                            <label for="gear-skill" data-eng="Gear bonus">Prylbonus</label>
                             <input id="gear-skill" class="small color-gear" type="number" />
                         </td>
                     </tr>
@@ -707,7 +708,7 @@
             </div>
         </div>
         <div id="tab-talents">
-            <h3>Talanger</h3>
+            <h3 data-eng="Talents">Talanger</h3>
             <div>
                 <table>
                     <tr>
@@ -715,50 +716,51 @@
                             <div class="controlgroup-vertical">
                                 <!-- UNIMPLEMENTED_TALENT MUCKA +1 stress (beskrivning) -->
                                 <label for="talent-tough-bastard" class="toggled-by-job"
-                                    data-active-for-job="Krossare">Hård jävel*
+                                    data-active-for-job="Krossare"><span data-eng="Tough bastard*">Hård jävel*</span>
                                     <input type="checkbox" id="talent-tough-bastard" class="check-talent toggles-fields"
                                         data-save-as="Hård jävel" />
                                 </label>
                                 <!-- UNIMPLEMENTED_TALENT 2 Skada obeväpnad (beskrivning) -->
                                 <label for="talent-kidney-punch" class="toggled-by-job"
-                                    data-active-for-job="Krossare">Njurslag*
+                                    data-active-for-job="Krossare"><span data-eng="Kidney punch*">Njurslag*</span>
                                     <input type="checkbox" id="talent-kidney-punch" class="check-talent toggles-fields"
                                         data-save-as="Njurslag" />
                                 </label>
                                 <label for="talent-excessive-force" class="toggled-by-job"
-                                    data-active-for-job="Krossare">Övervåld
+                                    data-active-for-job="Krossare"><span data-eng="Excessive force">Övervåld</span>
                                     <input type="checkbox" id="talent-excessive-force"
                                         class="check-talent toggles-fields" data-save-as="Övervåld" />
                                 </label>
 
                                 <label for="talent-motorhead" class="toggled-by-job"
-                                    data-active-for-job="Skrotskalle">Motorskalle
+                                    data-active-for-job="Skrotskalle"><span data-eng="Motorhead">Motorskalle</span>
                                     <input type="checkbox" id="talent-motorhead" class="check-talent toggles-fields"
                                         data-save-as="Motorskalle" />
                                 </label>
-                                <label for="talent-fixer" class="toggled-by-job"
-                                    data-active-for-job="Skrotskalle">Reparatör
+                                <label for="talent-fixer" class="toggled-by-job" data-active-for-job="Skrotskalle"><span
+                                        data-eng="Fixer">Reparatör</span>
                                     <input type="checkbox" id="talent-fixer" class="check-talent toggles-fields"
                                         data-save-as="Reparatör" />
                                 </label>
                                 <label for="talent-inventor" class="toggled-by-job"
-                                    data-active-for-job="Skrotskalle">Uppfinnare
+                                    data-active-for-job="Skrotskalle"><span data-eng="Inventor">Uppfinnare</span>
                                     <input type="checkbox" id="talent-inventor" class="check-talent toggles-fields"
                                         data-save-as="Uppfinnare" />
                                 </label>
 
                                 <label for="talent-monster-hunter" class="toggled-by-job"
-                                    data-active-for-job="Zonstrykare">Monsterjägare
+                                    data-active-for-job="Zonstrykare"><span
+                                        data-eng="Monster hunter">Monsterjägare</span>
                                     <input type="checkbox" id="talent-monster-hunter"
                                         class="check-talent toggles-fields" data-save-as="Monsterjägare" />
                                 </label>
                                 <label for="talent-rot-nose" class="toggled-by-job"
-                                    data-active-for-job="Zonstrykare">Rötnos
+                                    data-active-for-job="Zonstrykare"><span data-eng="Rot nose">Rötnos</span>
                                     <input type="checkbox" id="talent-rot-nose" class="check-talent toggles-fields"
                                         data-save-as="Rötnos" />
                                 </label>
                                 <label for="talent-treasure-hunter" class="toggled-by-job"
-                                    data-active-for-job="Zonstrykare">Sakletare
+                                    data-active-for-job="Zonstrykare"><span data-eng="Treasure hunter">Sakletare</span>
                                     <input type="checkbox" id="talent-treasure-hunter"
                                         class="check-talent toggles-fields conditional-mod permanent-mod"
                                         data-skillref="#skill-navigate" data-mod-name="Sakletare" , value="2"
@@ -767,36 +769,38 @@
 
                                 <!-- UNIMPLEMENTED_TALENT Manipulera ger +1 Tvivel (beskrivning) -->
                                 <label for="talent-mean-bastard" class="toggled-by-job"
-                                    data-active-for-job="Fixare">Elak jävel*
+                                    data-active-for-job="Fixare"><span data-eng="Mean bastard*">Elak jävel*</span>
                                     <input type="checkbox" id="talent-mean-bastard" class="check-talent toggles-fields"
                                         data-save-as="Elak jävel" />
                                 </label>
-                                <label for="talent-leverage" class="toggled-by-job"
-                                    data-active-for-job="Fixare">Hållhake
+                                <label for="talent-leverage" class="toggled-by-job" data-active-for-job="Fixare"><span
+                                        data-eng="Leverage">Hållhake</span>
                                     <input type="checkbox" id="talent-leverage" class="check-talent"
                                         data-save-as="Hållhake" />
                                 </label>
                                 <!--UNIMPLEMENTED_TALENT Dubbla resurser av Schackra (beskrivning) -->
                                 <label for="talent-big-spender" class="toggled-by-job"
-                                    data-active-for-job="Fixare">Storhandlare*
+                                    data-active-for-job="Fixare"><span data-eng="Big spender*">Storhandlare*</span>
                                     <input type="checkbox" id="talent-big-spender" class="check-talent toggles-fields"
                                         data-save-as="Storhandlare" />
                                 </label>
 
                                 <label for="talent-bloodhound" class="toggled-by-job"
-                                    data-active-for-job="Mutant med hund">Blodhund
+                                    data-active-for-job="Mutant med hund"><span data-eng="Bloodhound">Blodhund</span>
                                     <input type="checkbox" id="talent-bloodhound" class="check-talent toggles-fields"
                                         data-save-as="Blodhund" />
                                 </label>
                                 <!-- UNIMPLEMENTED_TALENT Hundens STY = 4; +1 Slåss för hunden (permanent mod for dog) -->
                                 <label for="talent-fighting-dog" class="toggled-by-job"
-                                    data-active-for-job="Mutant med hund">Kamphund*
+                                    data-active-for-job="Mutant med hund"><span
+                                        data-eng="Fighting dog*">Kamphund*</span>
                                     <input type="checkbox" id="talent-fighting-dog" class="check-talent toggles-fields"
                                         data-save-as="Kamphund" />
                                 </label>
                                 <!-- UNIMPLEMENTED_TALENT Kan använda hundens GE till Kämpa på, Fly (men eget FV) -->
                                 <label for="talent-mutants-best-friend" class="toggled-by-job"
-                                    data-active-for-job="Mutant med hund">Mutantens bästa vän*
+                                    data-active-for-job="Mutant med hund"><span
+                                        data-eng="Mutant's best friend">Mutantens bästa vän*</span>
                                     <input type="checkbox" id="talent-mutants-best-friend"
                                         class="check-talent toggles-fields" data-save-as="Mutantens bästa vän" />
                                 </label>
@@ -806,43 +810,47 @@
                                         data-save-as="Artist" />
                                 </label>
                                 <label for="talent-physician" class="toggled-by-job"
-                                    data-active-for-job="Krönikör">Anatomikunnig
+                                    data-active-for-job="Krönikör"><span data-eng="Physician">Anatomikunnig</span>
                                     <input type="checkbox" id="talent-physician" class="check-talent toggles-fields"
                                         data-save-as="Anatomikunnig" />
                                 </label>
                                 <label for="talent-warmonger" class="toggled-by-job"
-                                    data-active-for-job="Krönikör">Våldshetsare
+                                    data-active-for-job="Krönikör"><span data-eng="Warmonger">Våldshetsare</span>
                                     <input type="checkbox" id="talent-warmonger" class="check-talent toggles-fields"
                                         data-save-as="Våldshetsare" />
                                 </label>
 
                                 <label for="talent-protector-of-the-ark" class="toggled-by-job"
-                                    data-active-for-job="Boss">Arkens beskyddare
+                                    data-active-for-job="Boss"><span data-eng="Protector of the Ark">Arkens
+                                        beskyddare</span>
                                     <input type="checkbox" id="talent-protector-of-the-ark"
                                         class="check-talent toggles-fields" data-save-as="Arkens beskyddare" />
                                 </label>
-                                <label for="talent-commander" class="toggled-by-job"
-                                    data-active-for-job="Boss">Kommendant
+                                <label for="talent-commander" class="toggled-by-job" data-active-for-job="Boss"><span
+                                        data-eng="Commander">Kommendant</span>
                                     <input type="checkbox" id="talent-commander" class="check-talent toggles-fields"
                                         data-save-as="Kommendant" />
                                 </label>
                                 <!-- UNIMPLEMENTED_TALENT Gänget har skjutvapen (complicated) -->
-                                <label for="talent-gunslingers" class="toggled-by-job"
-                                    data-active-for-job="Boss">Revolvermän*
+                                <label for="talent-gunslingers" class="toggled-by-job" data-active-for-job="Boss"><span
+                                        data-eng="Gunslingers*">Revolvermän*</span>
                                     <input type="checkbox" id="talent-gunslingers" class="check-talent toggles-fields"
                                         data-save-as="Revolvermän" />
                                 </label>
 
-                                <label for="talent-unfazed" class="toggled-by-job" data-active-for-job="Träl">Obrydd
+                                <label for="talent-unfazed" class="toggled-by-job" data-active-for-job="Träl"><span
+                                        data-eng="Unfazed">Obrydd</span>
                                     <input type="checkbox" id="talent-unfazed" class="check-talent toggles-fields"
                                         data-save-as="Obrydd" />
                                 </label>
-                                <label for="talent-tank" class="toggled-by-job" data-active-for-job="Träl">Slagtålig
+                                <label for="talent-tank" class="toggled-by-job" data-active-for-job="Träl"><span
+                                        data-eng="Tank">Slagtålig</span>
                                     <input type="checkbox" id="talent-tank" class="check-talent toggles-fields"
                                         data-save-as="Slagtålig" />
                                 </label>
                                 <!-- UNIMPLEMENTED_TALENT Uthärda ger +1 per 6:a på nästa handling (complicated af)-->
-                                <label for="talent-rebel" class="toggled-by-job" data-active-for-job="Träl">Rebell*
+                                <label for="talent-rebel" class="toggled-by-job" data-active-for-job="Träl"><span
+                                        data-eng="Rebel*">Rebell*</span>
                                     <input type="checkbox" id="talent-rebel" class="check-talent toggles-fields"
                                         data-save-as="Rebell" />
                                 </label>
@@ -850,40 +858,40 @@
                         </td>
                         <td>
                             <div class="controlgroup-vertical">
-                                <label for="talent-analyst">Analytiker
+                                <label for="talent-analyst"><span data-eng="Analyst">Analytiker</span>
                                     <input type="checkbox" id="talent-analyst" class="check-talent toggles-fields"
                                         data-save-as="Analytiker" />
                                 </label>
-                                <label for="talent-admirer">Beundrare
+                                <label for="talent-admirer"><span data-eng="Admirer">Beundrare</span>
                                     <input type="checkbox" id="talent-admirer" class="check-talent"
                                         data-save-as="Beundrare" />
                                 </label>
-                                <label for="talent-loner">Enstöring
+                                <label for="talent-loner"><span data-eng="Loner">Enstöring</span>
                                     <input type="checkbox" id="talent-loner" class="check-talent"
                                         data-save-as="Enstöring" />
                                 </label>
-                                <label for="talent-cowardly-rat">Feg råtta
+                                <label for="talent-cowardly-rat"><span data-eng="Cowardly rat">Feg råtta</span>
                                     <input type="checkbox" id="talent-cowardly-rat" class="check-talent"
                                         data-save-as="Feg råtta" />
                                 </label>
-                                <label for="talent-flyweight">Flugviktare
+                                <label for="talent-flyweight"><span data-eng="Flyweight">Flugviktare</span>
                                     <input type="checkbox" id="talent-flyweight" class="check-talent toggles-fields"
                                         data-save-as="Flugviktare" />
                                 </label>
-                                <label for="talent-laborer">Knegare
+                                <label for="talent-laborer"><span data-eng="Laborer">Knegare</span>
                                     <input type="checkbox" id="talent-laborer" class="check-talent toggles-fields"
                                         data-save-as="Knegare" />
                                 </label>
-                                <label for="talent-heavy-attack">Krafthugg
+                                <label for="talent-heavy-attack"><span data-eng="Heavy attack">Krafthugg</span>
                                     <input type="checkbox" id="talent-heavy-attack" class="check-talent toggles-fields"
                                         data-save-as="Krafthugg" />
                                 </label>
                                 <!-- UNIMPLEMENTED_TALENT +1 Skada när du Skjuter på Långt avstånd (beskrivning) -->
-                                <label for="talent-sniper">Krypskytt
+                                <label for="talent-sniper"><span data-eng="Sniper">Krypskytt</span>
                                     <input type="checkbox" id="talent-sniper" class="check-talent"
                                         data-save-as="Krypskytt" />
                                 </label>
-                                <label for="talent-small-eater">Liten i maten
+                                <label for="talent-small-eater"><span data-eng="Small eater">Liten i maten</span>
                                     <input type="checkbox" id="talent-small-eater" class="check-talent"
                                         data-save-as="Liten i maten" />
                                 </label>
@@ -891,45 +899,48 @@
                         </td>
                         <td>
                             <div class="controlgroup-vertical">
-                                <label for="talent-bodyguard">Livvakt
+                                <label for="talent-bodyguard"><span data-eng="Bodyguard">Livvakt</span>
                                     <input type="checkbox" id="talent-bodyguard" class="check-talent"
                                         data-save-as="Livvakt" />
                                 </label>
                                 <!-- UNIMPLEMENTED_TALENT +1 Skada när du Skjuter på Nära/Armslängds avstånd (beskrivning) -->
-                                <label for="talent-assassin">Lönnmördare*
+                                <label for="talent-assassin"><span data-eng="Assassin*">Lönnmördare*</span>
                                     <input type="checkbox" id="talent-assassin" class="check-talent"
                                         data-save-as="Lönnmördare" />
                                 </label>
-                                <label for="talent-polymath">Mångsysslare
+                                <label for="talent-polymath"><span data-eng="Polymath">Mångsysslare</span>
                                     <input type="checkbox" id="talent-polymath" class="check-talent toggles-fields"
                                         data-save-as="Mångsysslare[0]" />
                                 </label>
-                                <label for="talent-polymath2" data-toggled-by="#talent-polymath">Mångsysslare 2
+                                <label for="talent-polymath2" data-toggled-by="#talent-polymath"><span
+                                        data-eng="Polymath 2">Mångsysslare 2</span>
                                     <input type="checkbox" id="talent-polymath2" class="check-talent toggles-fields"
                                         data-save-as="Mångsysslare[1]" />
                                 </label>
-                                <label for="talent-unmoved">Oberörd
+                                <label for="talent-unmoved"><span data-eng="Unmoved">Oberörd</span>
                                     <input type="checkbox" id="talent-unmoved" class="check-talent toggles-fields"
                                         data-save-as="Oberörd" />
                                 </label>
-                                <label for="talent-premonition">Onda aningar
+                                <label for="talent-premonition"><span data-eng="Premonition">Onda aningar</span>
                                     <input type="checkbox" id="talent-premonition" class="check-talent toggles-fields"
                                         data-save-as="Onda aningar" />
                                 </label>
                                 <!-- UNIMPLEMENTED_TALENT Doubles weight capacity -->
-                                <label for="talent-mule">Packåsna*
+                                <label for="talent-mule"><span data-eng="Mule*">Packåsna*</span>
                                     <input type="checkbox" id="talent-mule" class="check-talent"
                                         data-save-as="Packåsna" />
                                 </label>
-                                <label for="talent-personal-mathematics">Personlig matematik
+                                <label for="talent-personal-mathematics"><span data-eng="Personal mathemetics">Personlig
+                                        matematik</span>
                                     <input type="checkbox" id="talent-personal-mathematics"
                                         class="check-talent toggles-fields" data-save-as="Personlig matematik" />
                                 </label>
-                                <label for="talent-artifact-knowledge">Prylvan
+                                <label for="talent-artifact-knowledge"><span
+                                        data-eng="Artifact knowledge">Prylvan</span>
                                     <input type="checkbox" id="talent-artifact-knowledge"
                                         class="check-talent toggles-fields" data-save-as="Prylvan" />
                                 </label>
-                                <label for="talent-rises-on-nine">Reser sig på nio
+                                <label for="talent-rises-on-nine"><span data-eng="Rises on nine">Reser sig på nio</span>
                                     <input type="checkbox" id="talent-rises-on-nine" class="check-talent"
                                         data-save-as="Reser sig på nio" />
                                 </label>
@@ -937,24 +948,25 @@
                         </td>
                         <td>
                             <div class="controlgroup-vertical">
-                                <label for="talent-tomb-raider">Ruinkrälare
+                                <label for="talent-tomb-raider"><span data-eng="Tomb raider">Ruinkrälare</span>
                                     <input type="checkbox" id="talent-tomb-raider" class="check-talent toggles-fields"
                                         data-save-as="Ruinkrälare" />
                                 </label>
                                 <!-- UNIMPLEMENTED_TALENT +1 mod till person som Inspireras om hen följer råd (beskrivning) -->
-                                <label for="talent-advisor">Rådgivare*
+                                <label for="talent-advisor"><span data-eng="Advisor*">Rådgivare*</span>
                                     <input type="checkbox" id="talent-advisor" class="check-talent"
                                         data-save-as="Rådgivare" />
                                 </label>
-                                <label for="talent-butcher">Slaktare
+                                <label for="talent-butcher"><span data-eng="Butcher">Slaktare</span>
                                     <input type="checkbox" id="talent-butcher" class="check-talent"
                                         data-save-as="Slaktare" />
                                 </label>
-                                <label for="talent-quick-draw">Snabbdragare
+                                <label for="talent-quick-draw"><span data-eng="Quick draw">Snabbdragare</span>
                                     <input type="checkbox" id="talent-quick-draw" class="check-talent"
                                         data-save-as="Snabbdragare" />
                                 </label>
-                                <label for="talent-quick-footwork">Snabbt fotarbete
+                                <label for="talent-quick-footwork"><span data-eng="Quick footwork">Snabbt
+                                        fotarbete</span>
                                     <input type="checkbox" id="talent-quick-footwork"
                                         class="check-talent, toggles-fields" data-save-as="Snabbt fotarbete" />
                                 </label>
@@ -976,15 +988,16 @@
                                     <input type="checkbox" id="talent-specialist4" class="check-talent toggles-fields"
                                         data-save-as="Specialist[3]" />
                                 </label>
-                                <label for="talent-experienced-fighter">Stridsvan
+                                <label for="talent-experienced-fighter"><span
+                                        data-eng="Experienced fighter">Stridsvan</span>
                                     <input type="checkbox" id="talent-experienced-fighter"
                                         class="check-talent toggles-fields" data-save-as="Stridsvan" />
                                 </label>
-                                <label for="talent-insomniac">Sömnlös
+                                <label for="talent-insomniac"><span data-eng="Insomniac">Sömnlös</span>
                                     <input type="checkbox" id="talent-insomniac" class="check-talent"
                                         data-save-as="Sömnlös" />
                                 </label>
-                                <label for="talent-zone-cook">Zonkock
+                                <label for="talent-zone-cook"><span data-eng="Zone cook">Zonkock</span>
                                     <input type="checkbox" id="talent-zone-cook" class="check-talent toggles-fields"
                                         data-save-as="Zonkock" />
                                 </label>
@@ -995,12 +1008,12 @@
             </div>
         </div>
         <div id="tab-mutations">
-            <h3>Mutationer</h3>
+            <h3 data-eng="Mutations">Mutationer</h3>
             <div>
                 <table>
                     <tr>
                         <td>
-                            <label for="mutation-points">Mutationspoäng</label>
+                            <label for="mutation-points" data-eng="Mutation points">Mutationspoäng</label>
                             <input type="number" min="0" max="10" id="mutation-points" class="saved small"
                                 data-save-as="Mutationspoäng" />
                         </td>
@@ -1014,36 +1027,36 @@
                         <td>
                             <select id="mutation-1" class="saved select-mutation" data-save-as="Mutation[0]">
                                 <option value=""></option>
-                                <option value="Amfibisk">Amfibisk</option>
-                                <option value="Dubbelhjärna">Dubbelhjärna</option>
-                                <option value="Eldsprut">Eldsprut</option>
-                                <option value="Elektrisk">Elektrisk</option>
-                                <option value="Fyrarmad">Fyrarmad</option>
-                                <option value="Hoppförmåga">Hoppförmåga</option>
-                                <option value="Hyperreflexer">Hyperreflexer</option>
-                                <option value="Insektoid">Insektoid</option>
-                                <option value="Insektsvingar">Insektsvingar</option>
-                                <option value="Likätare">Likätare</option>
-                                <option value="Luxvarelse">Luxvarelse</option>
+                                <option value="Amfibisk" data-eng="Amphibious">Amfibisk</option>
+                                <option value="Dubbelhjärna" data-eng="Double brain">Dubbelhjärna</option>
+                                <option value="Eldsprut" data-eng="Fire breath">Eldsprut</option>
+                                <option value="Elektrisk" data-eng="Electric">Elektrisk</option>
+                                <option value="Fyrarmad" data-eng="Four arms">Fyrarmad</option>
+                                <option value="Hoppförmåga" data-eng="Jumping">Hoppförmåga</option>
+                                <option value="Hyperreflexer" data-eng="Hyper reflexes">Hyperreflexer</option>
+                                <option value="Insektoid" data-eng="Insectoid">Insektoid</option>
+                                <option value="Insektsvingar" data-eng="Insect wings">Insektsvingar</option>
+                                <option value="Likätare" data-eng="Necrophage">Likätare</option>
+                                <option value="Luxvarelse" data-eng="Grossly incandescent">Luxvarelse</option>
                                 <option value="Magnetism">Magnetism</option>
-                                <option value="Mardrömmare">Mardrömmare</option>
-                                <option value="Mental dominans">Mental dominans</option>
-                                <option value="Monsterkontroll">Monsterkontroll</option>
-                                <option value="Mänsklig planta">Mänsklig planta</option>
-                                <option value="Parasit">Parasit</option>
-                                <option value="Patokinesi">Patokinesi</option>
-                                <option value="Pyrokinesi">Pyrokinesi</option>
-                                <option value="Regenerera">Regenerera</option>
-                                <option value="Reptilisk">Reptilisk</option>
-                                <option value="Riktningsknöl">Riktningsknöl</option>
-                                <option value="Röt-ätare">Röt-ätare</option>
+                                <option value="Mardrömmare" data-eng="Oneiromancer">Mardrömmare</option>
+                                <option value="Mental dominans" data-eng="Mental dominance">Mental dominans</option>
+                                <option value="Monsterkontroll" data-eng="Monster control">Monsterkontroll</option>
+                                <option value="Mänsklig planta" data-eng="Human plant">Mänsklig planta</option>
+                                <option value="Parasit" data-eng="Parasite">Parasit</option>
+                                <option value="Patokinesi" data-eng="Pathokinesis">Patokinesi</option>
+                                <option value="Pyrokinesi" data-eng="Pyrokinesis">Pyrokinesi</option>
+                                <option value="Regenerera" data-eng="Regeneration">Regenerera</option>
+                                <option value="Reptilisk" data-eng="Reptilian">Reptilisk</option>
+                                <option value="Riktningsknöl" data-eng="Inner compass">Riktningsknöl</option>
+                                <option value="Röt-ätare" data-eng="Rot eater">Röt-ätare</option>
                                 <option value="Sonar">Sonar</option>
-                                <option value="Sporsäckar">Sporsäckar</option>
+                                <option value="Sporsäckar" data-eng="Spore sacs">Sporsäckar</option>
                                 <option value="Sprinter">Sprinter</option>
-                                <option value="Spårsinne">Spårsinne</option>
-                                <option value="Syraspott">Syraspott</option>
-                                <option value="Telepati">Telepati</option>
-                                <option value="Vilddjur">Vilddjur</option>
+                                <option value="Spårsinne" data-eng="Heightened smell">Spårsinne</option>
+                                <option value="Syraspott" data-eng="Acid spit">Syraspott</option>
+                                <option value="Telepati" data-eng="Telepathy">Telepati</option>
+                                <option value="Vilddjur" data-eng="Lycanthropy">Vilddjur</option>
                             </select>
                         </td>
                     </tr>
@@ -1051,36 +1064,36 @@
                         <td>
                             <select id="mutation-2" class="saved select-mutation" data-save-as="Mutation[1]">
                                 <option value=""></option>
-                                <option value="Amfibisk">Amfibisk</option>
-                                <option value="Dubbelhjärna">Dubbelhjärna</option>
-                                <option value="Eldsprut">Eldsprut</option>
-                                <option value="Elektrisk">Elektrisk</option>
-                                <option value="Fyrarmad">Fyrarmad</option>
-                                <option value="Hoppförmåga">Hoppförmåga</option>
-                                <option value="Hyperreflexer">Hyperreflexer</option>
-                                <option value="Insektoid">Insektoid</option>
-                                <option value="Insektsvingar">Insektsvingar</option>
-                                <option value="Likätare">Likätare</option>
-                                <option value="Luxvarelse">Luxvarelse</option>
+                                <option value="Amfibisk" data-eng="Amphibious">Amfibisk</option>
+                                <option value="Dubbelhjärna" data-eng="Double brain">Dubbelhjärna</option>
+                                <option value="Eldsprut" data-eng="Fire breath">Eldsprut</option>
+                                <option value="Elektrisk" data-eng="Electric">Elektrisk</option>
+                                <option value="Fyrarmad" data-eng="Four arms">Fyrarmad</option>
+                                <option value="Hoppförmåga" data-eng="Jumping">Hoppförmåga</option>
+                                <option value="Hyperreflexer" data-eng="Hyper reflexes">Hyperreflexer</option>
+                                <option value="Insektoid" data-eng="Insectoid">Insektoid</option>
+                                <option value="Insektsvingar" data-eng="Insect wings">Insektsvingar</option>
+                                <option value="Likätare" data-eng="Necrophage">Likätare</option>
+                                <option value="Luxvarelse" data-eng="Grossly incandescent">Luxvarelse</option>
                                 <option value="Magnetism">Magnetism</option>
-                                <option value="Mardrömmare">Mardrömmare</option>
-                                <option value="Mental dominans">Mental dominans</option>
-                                <option value="Monsterkontroll">Monsterkontroll</option>
-                                <option value="Mänsklig planta">Mänsklig planta</option>
-                                <option value="Parasit">Parasit</option>
-                                <option value="Patokinesi">Patokinesi</option>
-                                <option value="Pyrokinesi">Pyrokinesi</option>
-                                <option value="Regenerera">Regenerera</option>
-                                <option value="Reptilisk">Reptilisk</option>
-                                <option value="Riktningsknöl">Riktningsknöl</option>
-                                <option value="Röt-ätare">Röt-ätare</option>
+                                <option value="Mardrömmare" data-eng="Oneiromancer">Mardrömmare</option>
+                                <option value="Mental dominans" data-eng="Mental dominance">Mental dominans</option>
+                                <option value="Monsterkontroll" data-eng="Monster control">Monsterkontroll</option>
+                                <option value="Mänsklig planta" data-eng="Human plant">Mänsklig planta</option>
+                                <option value="Parasit" data-eng="Parasite">Parasit</option>
+                                <option value="Patokinesi" data-eng="Pathokinesis">Patokinesi</option>
+                                <option value="Pyrokinesi" data-eng="Pyrokinesis">Pyrokinesi</option>
+                                <option value="Regenerera" data-eng="Regeneration">Regenerera</option>
+                                <option value="Reptilisk" data-eng="Reptilian">Reptilisk</option>
+                                <option value="Riktningsknöl" data-eng="Inner compass">Riktningsknöl</option>
+                                <option value="Röt-ätare" data-eng="Rot eater">Röt-ätare</option>
                                 <option value="Sonar">Sonar</option>
-                                <option value="Sporsäckar">Sporsäckar</option>
+                                <option value="Sporsäckar" data-eng="Spore sacs">Sporsäckar</option>
                                 <option value="Sprinter">Sprinter</option>
-                                <option value="Spårsinne">Spårsinne</option>
-                                <option value="Syraspott">Syraspott</option>
-                                <option value="Telepati">Telepati</option>
-                                <option value="Vilddjur">Vilddjur</option>
+                                <option value="Spårsinne" data-eng="Heightened smell">Spårsinne</option>
+                                <option value="Syraspott" data-eng="Acid spit">Syraspott</option>
+                                <option value="Telepati" data-eng="Telepathy">Telepati</option>
+                                <option value="Vilddjur" data-eng="Lycanthropy">Vilddjur</option>
                             </select>
                         </td>
                     </tr>
@@ -1088,36 +1101,36 @@
                         <td>
                             <select id="mutation-3" class="saved select-mutation" data-save-as="Mutation[2]">
                                 <option value=""></option>
-                                <option value="Amfibisk">Amfibisk</option>
-                                <option value="Dubbelhjärna">Dubbelhjärna</option>
-                                <option value="Eldsprut">Eldsprut</option>
-                                <option value="Elektrisk">Elektrisk</option>
-                                <option value="Fyrarmad">Fyrarmad</option>
-                                <option value="Hoppförmåga">Hoppförmåga</option>
-                                <option value="Hyperreflexer">Hyperreflexer</option>
-                                <option value="Insektoid">Insektoid</option>
-                                <option value="Insektsvingar">Insektsvingar</option>
-                                <option value="Likätare">Likätare</option>
-                                <option value="Luxvarelse">Luxvarelse</option>
+                                <option value="Amfibisk" data-eng="Amphibious">Amfibisk</option>
+                                <option value="Dubbelhjärna" data-eng="Double brain">Dubbelhjärna</option>
+                                <option value="Eldsprut" data-eng="Fire breath">Eldsprut</option>
+                                <option value="Elektrisk" data-eng="Electric">Elektrisk</option>
+                                <option value="Fyrarmad" data-eng="Four arms">Fyrarmad</option>
+                                <option value="Hoppförmåga" data-eng="Jumping">Hoppförmåga</option>
+                                <option value="Hyperreflexer" data-eng="Hyper reflexes">Hyperreflexer</option>
+                                <option value="Insektoid" data-eng="Insectoid">Insektoid</option>
+                                <option value="Insektsvingar" data-eng="Insect wings">Insektsvingar</option>
+                                <option value="Likätare" data-eng="Necrophage">Likätare</option>
+                                <option value="Luxvarelse" data-eng="Grossly incandescent">Luxvarelse</option>
                                 <option value="Magnetism">Magnetism</option>
-                                <option value="Mardrömmare">Mardrömmare</option>
-                                <option value="Mental dominans">Mental dominans</option>
-                                <option value="Monsterkontroll">Monsterkontroll</option>
-                                <option value="Mänsklig planta">Mänsklig planta</option>
-                                <option value="Parasit">Parasit</option>
-                                <option value="Patokinesi">Patokinesi</option>
-                                <option value="Pyrokinesi">Pyrokinesi</option>
-                                <option value="Regenerera">Regenerera</option>
-                                <option value="Reptilisk">Reptilisk</option>
-                                <option value="Riktningsknöl">Riktningsknöl</option>
-                                <option value="Röt-ätare">Röt-ätare</option>
+                                <option value="Mardrömmare" data-eng="Oneiromancer">Mardrömmare</option>
+                                <option value="Mental dominans" data-eng="Mental dominance">Mental dominans</option>
+                                <option value="Monsterkontroll" data-eng="Monster control">Monsterkontroll</option>
+                                <option value="Mänsklig planta" data-eng="Human plant">Mänsklig planta</option>
+                                <option value="Parasit" data-eng="Parasite">Parasit</option>
+                                <option value="Patokinesi" data-eng="Pathokinesis">Patokinesi</option>
+                                <option value="Pyrokinesi" data-eng="Pyrokinesis">Pyrokinesi</option>
+                                <option value="Regenerera" data-eng="Regeneration">Regenerera</option>
+                                <option value="Reptilisk" data-eng="Reptilian">Reptilisk</option>
+                                <option value="Riktningsknöl" data-eng="Inner compass">Riktningsknöl</option>
+                                <option value="Röt-ätare" data-eng="Rot eater">Röt-ätare</option>
                                 <option value="Sonar">Sonar</option>
-                                <option value="Sporsäckar">Sporsäckar</option>
+                                <option value="Sporsäckar" data-eng="Spore sacs">Sporsäckar</option>
                                 <option value="Sprinter">Sprinter</option>
-                                <option value="Spårsinne">Spårsinne</option>
-                                <option value="Syraspott">Syraspott</option>
-                                <option value="Telepati">Telepati</option>
-                                <option value="Vilddjur">Vilddjur</option>
+                                <option value="Spårsinne" data-eng="Heightened smell">Spårsinne</option>
+                                <option value="Syraspott" data-eng="Acid spit">Syraspott</option>
+                                <option value="Telepati" data-eng="Telepathy">Telepati</option>
+                                <option value="Vilddjur" data-eng="Lycanthropy">Vilddjur</option>
                             </select>
                         </td>
                     </tr>
@@ -1125,36 +1138,36 @@
                         <td>
                             <select id="mutation-4" class="saved select-mutation" data-save-as="Mutation[3]">
                                 <option value=""></option>
-                                <option value="Amfibisk">Amfibisk</option>
-                                <option value="Dubbelhjärna">Dubbelhjärna</option>
-                                <option value="Eldsprut">Eldsprut</option>
-                                <option value="Elektrisk">Elektrisk</option>
-                                <option value="Fyrarmad">Fyrarmad</option>
-                                <option value="Hoppförmåga">Hoppförmåga</option>
-                                <option value="Hyperreflexer">Hyperreflexer</option>
-                                <option value="Insektoid">Insektoid</option>
-                                <option value="Insektsvingar">Insektsvingar</option>
-                                <option value="Likätare">Likätare</option>
-                                <option value="Luxvarelse">Luxvarelse</option>
+                                <option value="Amfibisk" data-eng="Amphibious">Amfibisk</option>
+                                <option value="Dubbelhjärna" data-eng="Double brain">Dubbelhjärna</option>
+                                <option value="Eldsprut" data-eng="Fire breath">Eldsprut</option>
+                                <option value="Elektrisk" data-eng="Electric">Elektrisk</option>
+                                <option value="Fyrarmad" data-eng="Four arms">Fyrarmad</option>
+                                <option value="Hoppförmåga" data-eng="Jumping">Hoppförmåga</option>
+                                <option value="Hyperreflexer" data-eng="Hyper reflexes">Hyperreflexer</option>
+                                <option value="Insektoid" data-eng="Insectoid">Insektoid</option>
+                                <option value="Insektsvingar" data-eng="Insect wings">Insektsvingar</option>
+                                <option value="Likätare" data-eng="Necrophage">Likätare</option>
+                                <option value="Luxvarelse" data-eng="Grossly incandescent">Luxvarelse</option>
                                 <option value="Magnetism">Magnetism</option>
-                                <option value="Mardrömmare">Mardrömmare</option>
-                                <option value="Mental dominans">Mental dominans</option>
-                                <option value="Monsterkontroll">Monsterkontroll</option>
-                                <option value="Mänsklig planta">Mänsklig planta</option>
-                                <option value="Parasit">Parasit</option>
-                                <option value="Patokinesi">Patokinesi</option>
-                                <option value="Pyrokinesi">Pyrokinesi</option>
-                                <option value="Regenerera">Regenerera</option>
-                                <option value="Reptilisk">Reptilisk</option>
-                                <option value="Riktningsknöl">Riktningsknöl</option>
-                                <option value="Röt-ätare">Röt-ätare</option>
+                                <option value="Mardrömmare" data-eng="Oneiromancer">Mardrömmare</option>
+                                <option value="Mental dominans" data-eng="Mental dominance">Mental dominans</option>
+                                <option value="Monsterkontroll" data-eng="Monster control">Monsterkontroll</option>
+                                <option value="Mänsklig planta" data-eng="Human plant">Mänsklig planta</option>
+                                <option value="Parasit" data-eng="Parasite">Parasit</option>
+                                <option value="Patokinesi" data-eng="Pathokinesis">Patokinesi</option>
+                                <option value="Pyrokinesi" data-eng="Pyrokinesis">Pyrokinesi</option>
+                                <option value="Regenerera" data-eng="Regeneration">Regenerera</option>
+                                <option value="Reptilisk" data-eng="Reptilian">Reptilisk</option>
+                                <option value="Riktningsknöl" data-eng="Inner compass">Riktningsknöl</option>
+                                <option value="Röt-ätare" data-eng="Rot eater">Röt-ätare</option>
                                 <option value="Sonar">Sonar</option>
-                                <option value="Sporsäckar">Sporsäckar</option>
+                                <option value="Sporsäckar" data-eng="Spore sacs">Sporsäckar</option>
                                 <option value="Sprinter">Sprinter</option>
-                                <option value="Spårsinne">Spårsinne</option>
-                                <option value="Syraspott">Syraspott</option>
-                                <option value="Telepati">Telepati</option>
-                                <option value="Vilddjur">Vilddjur</option>
+                                <option value="Spårsinne" data-eng="Heightened smell">Spårsinne</option>
+                                <option value="Syraspott" data-eng="Acid spit">Syraspott</option>
+                                <option value="Telepati" data-eng="Telepathy">Telepati</option>
+                                <option value="Vilddjur" data-eng="Lycanthropy">Vilddjur</option>
                             </select>
                         </td>
                     </tr>
@@ -1163,19 +1176,20 @@
         </div>
 
         <div id="tab-combat">
-            <h3>Strid &amp; Vapen</h3>
+            <h3 data-eng="Combat & Weapons">Strid &amp; Vapen</h3>
             <div class="gear">
                 <fieldset>
-                    <legend>Initiativ</legend>
-                    <button id="roll-initiative">🎲 Initiativ</button>
-                    <span class="gear-value" data-toggled-by="#talent-experienced-fighter">+2 (Stridsvan)</span>
+                    <legend data-eng="Initiative">Initiativ</legend>
+                    <button id="roll-initiative" data-eng="🎲 Initiative">🎲 Initiativ</button>
+                    <span class="gear-value" data-toggled-by="#talent-experienced-fighter"
+                        data-eng="+2 (Experienced fighter)">+2 (Stridsvan)</span>
                 </fieldset>
                 <fieldset>
-                    <legend>Närstrid</legend>
+                    <legend data-eng="Melee">Närstrid</legend>
                     <div>
                         <div class="melee-weapon">
                             <input type="radio" name="selected-melee-weapon" id="selected-melee-weapon-0" value="0" />
-                            <label for="selected-melee-weapon-0">Obeväpnad</label>
+                            <label for="selected-melee-weapon-0" data-eng="Unarmed">Obeväpnad</label>
                             <input type="hidden" id="gear-weapon-melee-0-name" value="Obeväpnad" />
                             <input id="gear-weapon-melee-0" class="small" type="hidden" value="0"
                                 data-nameref="#gear-weapon-melee-0-name" />
@@ -1183,142 +1197,145 @@
                         <div class="melee-weapon">
                             <input type="radio" name="selected-melee-weapon" id="selected-melee-weapon-1" checked
                                 value="1" />
-                            <label for="selected-melee-weapon-1">Vapen 1</label>
+                            <label for="selected-melee-weapon-1" data-eng="Weapon 1">Vapen 1</label>
                             <input id="gear-weapon-melee-1-name" class="saved gear-name" data-save-as="Vapen[1].Namn" />
                             <label for="gear-weapon-melee-1">Bonus</label>
                             <input id="gear-weapon-melee-1" class="saved small color-gear" type="number" size="1"
                                 data-nameref="#gear-weapon-melee-1-name" data-save-as="Vapen[1].Prylbonus" />
-                            <label for="gear-weapon-melee-1-damage">Skada</label>
+                            <label for="gear-weapon-melee-1-damage" data-eng="Damage">Skada</label>
                             <input id="gear-weapon-melee-1-damage" class="saved small" type="number" size="1"
                                 data-save-as="Vapen[1].Skada" />
                         </div>
                         <div class="melee-weapon">
                             <input type="radio" name="selected-melee-weapon" id="selected-melee-weapon-2" value="2" />
-                            <label for="selected-melee-weapon-2">Vapen 2</label>
+                            <label for="selected-melee-weapon-2" data-eng="Weapon 2">Vapen 2</label>
                             <input id="gear-weapon-melee-2-name" class="saved gear-name" data-save-as="Vapen[2].Namn" />
                             <label for="gear-weapon-melee-2">Bonus</label>
                             <input id="gear-weapon-melee-2" class="saved small color-gear" type="number" size="1"
                                 data-nameref="#gear-weapon-melee-2-name" data-save-as="Vapen[2].Prylbonus" />
-                            <label for="gear-weapon-melee-2-damage">Skada</label>
+                            <label for="gear-weapon-melee-2-damage" data-eng="Damage">Skada</label>
                             <input id="gear-weapon-melee-2-damage" class="saved small" type="number" size="1"
                                 data-save-as="Vapen[2].Skada" />
                         </div>
                         <div class="melee-weapon">
                             <input type="radio" name="selected-melee-weapon" id="selected-melee-weapon-3" value="3" />
-                            <label for="selected-melee-weapon-3">Vapen 3</label>
+                            <label for="selected-melee-weapon-3" data-eng="Weapon 3">Vapen 3</label>
                             <input id="gear-weapon-melee-3-name" class="saved gear-name" data-save-as="Vapen[3].Namn" />
                             <label for="gear-weapon-melee-3">Bonus</label>
                             <input id="gear-weapon-melee-3" class="saved small color-gear" type="number" size="1"
                                 data-nameref="#gear-weapon-melee-3-name" data-save-as="Vapen[3].Prylbonus" />
-                            <label for="gear-weapon-melee-3-damage">Skada</label>
+                            <label for="gear-weapon-melee-3-damage" data-eng="Damage">Skada</label>
                             <input id="gear-weapon-melee-3-damage" class="saved small" type="number" size="1"
                                 data-save-as="Vapen[3].Skada" />
                         </div>
                         <div>
-                            <button class="roll-fight">🎲 Slåss</button>
+                            <button class="roll-fight" data-eng="🎲 Fight">🎲 Slåss</button>
                             <input id="modifier-fight" class="small mod" type="number" />
-                            <label for="modifier-fight">Modifikation</label>
+                            <label for="modifier-fight" data-eng="Modifier">Modifikation</label>
                         </div>
                     </div>
                 </fieldset>
 
                 <fieldset>
-                    <legend>Avstånd</legend>
+                    <legend data-eng="Ranged">Avstånd</legend>
                     <div>
                         <div class="ranged-weapon">
                             <input type="radio" name="selected-ranged-weapon" id="selected-ranged-weapon-1" checked
                                 value="1" />
-                            <label for="selected-ranged-weapon-1">Vapen 1</label>
+                            <label for="selected-ranged-weapon-1" data-eng="Weapon 1">Vapen 1</label>
                             <input id="gear-weapon-ranged-1-name" class="saved gear-name"
                                 data-save-as="Vapen[4].Namn" />
                             <label for="gear-weapon-ranged-1">Bonus</label>
                             <input id="gear-weapon-ranged-1" class="saved small color-gear" type="number" size="1"
                                 data-nameref="#gear-weapon-ranged-1-name" data-save-as="Vapen[4].Prylbonus" />
-                            <label for="gear-weapon-ranged-1-damage">Skada</label>
+                            <label for="gear-weapon-ranged-1-damage" data-eng="Damage">Skada</label>
                             <input id="gear-weapon-ranged-1-damage" class="saved small" type="number" size="1"
                                 data-save-as="Vapen[4].Skada" />
                         </div>
                         <div class="ranged-weapon">
                             <input type="radio" name="selected-ranged-weapon" id="selected-ranged-weapon-2" value="2" />
-                            <label for="selected-ranged-weapon-2">Vapen 2</label>
+                            <label for="selected-ranged-weapon-2" data-eng="Weapon 2">Vapen 2</label>
                             <input id="gear-weapon-ranged-2-name" class="saved gear-name"
                                 data-save-as="Vapen[5].Namn" />
                             <label for="gear-weapon-ranged-2">Bonus</label>
                             <input id="gear-weapon-ranged-2" class="saved small color-gear" type="number" size="1"
                                 data-nameref="#gear-weapon-ranged-2-name" data-save-as="Vapen[5].Prylbonus" />
-                            <label for="gear-weapon-ranged-2-damage">Skada</label>
+                            <label for="gear-weapon-ranged-2-damage" data-eng="Damage">Skada</label>
                             <input id="gear-weapon-ranged-2-damage" class="saved small" type="number" size="1"
                                 data-save-as="Vapen[5].Skada" />
                         </div>
                         <div class="ranged-weapon">
                             <input type="radio" name="selected-ranged-weapon" id="selected-ranged-weapon-3" value="3" />
-                            <label for="selected-ranged-weapon-3">Vapen 3</label>
+                            <label for="selected-ranged-weapon-3" data-eng="Weapon 3">Vapen 3</label>
                             <input id="gear-weapon-ranged-3-name" class="saved gear-name"
                                 data-save-as="Vapen[6].Namn" />
                             <label for="gear-weapon-ranged-3">Bonus</label>
                             <input id="gear-weapon-ranged-3" class="saved small color-gear" type="number" size="1"
                                 data-nameref="#gear-weapon-ranged-3-name" data-save-as="Vapen[6].Prylbonus" />
-                            <label for="gear-weapon-ranged-3-damage">Skada</label>
+                            <label for="gear-weapon-ranged-3-damage" data-eng="Damage">Skada</label>
                             <input id="gear-weapon-ranged-3-damage" class="saved small" type="number" size="1"
                                 data-save-as="Vapen[6].Skada" />
                         </div>
                         <div>
-                            <label for="ranged-attack-distance">Avstånd</label>
+                            <label for="ranged-attack-distance" data-eng="Distance">Avstånd</label>
                             <select id="ranged-attack-distance">
-                                <option value="-3">Armslängd (-3)</option>
-                                <option value="0" selected>Nära</option>
-                                <option value="-1">Kort (-1)</option>
-                                <option value="-2">Långt (-2)</option>
-                                <option value="1">Armslängd - hjälplös motståndare (+1)</option>
+                                <option value="-3" data-eng="Arm's length (-3)">Armslängd (-3)</option>
+                                <option value="0" selected data-eng="Close">Nära</option>
+                                <option value="-1" data-eng="Short (-1)">Kort (-1)</option>
+                                <option value="-2" data-end="Long (-2)">Långt (-2)</option>
+                                <option value="1" data-end="Arm's length - helpless opponent (+1)">Armslängd - hjälplös
+                                    motståndare (+1)</option>
                             </select>
-                            <input type="checkbox" id="aim" /><label for="aim">Sikta noga</label>
-                            <input type="checkbox" id="cover" /><label for="cover">Skydd</label>
+                            <input type="checkbox" id="aim" /><label for="aim" data-eng="Aim">Sikta noga</label>
+                            <input type="checkbox" id="cover" /><label for="cover" data-eng="Cover">Skydd</label>
                         </div>
                         <div>
-                            <button class="roll-shoot" data-statref="#stat-agility" data-skillref="#skill-shoot">🎲
+                            <button class="roll-shoot" data-statref="#stat-agility" data-skillref="#skill-shoot"
+                                data-eng="🎲 Shoot">🎲
                                 Skjuta</button>
                             <input type="hidden" id="modifier-shoot-total" />
                             <input id="modifier-shoot" class="small mod" type="number" />
-                            <label for="modifier-shoot">Modifikation</label>
+                            <label for="modifier-shoot" data-eng="Modifier">Modifikation</label>
                         </div>
                     </div>
                 </fieldset>
             </div>
         </div>
         <div id="tab-gear">
-            <h3>Resurser</h3>
+            <h3 data-eng="Resources">Resurser</h3>
             <div>
                 <div class="resource">
-                    <label for="bullets" class="small">Patroner</label>
+                    <label for="bullets" class="small" data-eng="Bullets">Patroner</label>
                     <input id="bullets" class="small" type="number" size="1" min="0" data-save-as="Patroner" />
                 </div>
                 <div class="resource">
-                    <label for="water" class="small">Vatten</label>
+                    <label for="water" class="small" data-eng="Water">Vatten</label>
                     <input id="water" class="small" type="number" size="1" min="0" data-save-as="Vatten" />
                 </div>
                 <div class="resource">
-                    <label for="food" class="small">Krubb</label>
+                    <label for="food" class="small" data-eng="Food">Krubb</label>
                     <input id="food" class="small" type="number" size="1" min="0" data-save-as="Krubb" />
                 </div>
             </div>
         </div>
 
         <div id="tab-notes">
-            <h3>Anteckningar</h3>
+            <h3 data-eng="Notes">Anteckningar</h3>
             <div>
                 <textarea id="notes" class="saved"></textarea>
             </div>
         </div>
         <div id="tab-dice">
-            <h3>Tärningar</h3>
+            <h3 data-eng="Dice">Tärningar</h3>
             <div class="adhoc">
-                <label>Tärningar</label>
+                <label data-eng="Dice">Tärningar</label>
                 <input id="stat-adhoc" class="small color-base" type="number" size="1" title="Grundegenskap" />
                 <input id="skill-adhoc" class="small color-skill" type="number" size="1" title="Färdighet" />
                 <input id="gear-adhoc" class="small color-gear" type="number" size="1" title="Pryl" />
-                <label for="modifier-adhoc">Modifikation</label>
+                <label for="modifier-adhoc" data-eng="Modifier">Modifikation</label>
                 <input id="modifier-adhoc" class="small mod" type="number" size="1" />
-                <button class="roll-adhoc" data-statref="#stat-adhoc" data-skillref="#skill-adhoc" data-gear="adhoc">🎲
+                <button class="roll-adhoc" data-statref="#stat-adhoc" data-skillref="#skill-adhoc" data-gear="adhoc"
+                    data-eng="🎲 Roll">🎲
                     Slå</button>
             </div>
             <p>
@@ -1331,22 +1348,24 @@
         </div>
     </div>
     <div class="save-load">
-        <button onclick="saveData();">Spara</button>
-        <button onclick="loadData();">Ladda</button>
-        <button id="open-import-dialog-button">Importera JSON</button>
-        <button id="open-export-dialog-button">Exportera JSON</button>
+        <button onclick="saveData();" data-eng="Save">Spara</button>
+        <button onclick="loadData();" data-eng="Load">Ladda</button>
+        <button id="open-import-dialog-button" data-eng="Import JSON">Importera JSON</button>
+        <button id="open-export-dialog-button" data-eng="Export JSON">Exportera JSON</button>
     </div>
     <div id="import-dialog" class="dialog" title="Importera JSON">
-        <button id="import-file-button">Importera fil</button>
+        <button id="import-file-button" data-eng="Import file">Importera fil</button>
         <input id="import-file" type="file" accept=".json" class="hidden" />
-        <button id="import-paste-button">Klistra in</button>
+        <button id="import-paste-button" data-eng="Paste">Klistra in</button>
         <textarea id="import-json"></textarea>
     </div>
     <div id="export-dialog" class="dialog" title="Exportera JSON">
         <textarea id="export-json" class="hidden"></textarea>
-        <button id="export-copy-button">Kopiera</button>
-        <a id="export-download-link" href="#" download>Spara fil</a>
+        <button id="export-copy-button" data-eng="Copy">Kopiera</button>
+        <a id="export-download-link" href="#" download data-eng="Save to file">Spara fil</a>
     </div>
+    <a href="#" id="english" onclick="translateToEnglish()"><img src="eng.png" title="English" alt="UK flag" /></a>
+    <a href="#" id="swedish" onclick="translateToSwedish()"><img src="swe.png" title="Svenska" alt="Swedish flag" /></a>
 </body>
 
 </html>
