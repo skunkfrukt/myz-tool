@@ -478,12 +478,16 @@ function translateToEnglish() {
         $(this).attr("data-swe", $(this).text());
         $(this).text($(this).attr("data-eng"));
     });
+    $("#english").addClass("hidden");
+    $("#swedish").removeClass("hidden");
 }
 
 function translateToSwedish() {
     $("[data-eng]").each(function () {
         $(this).text($(this).attr("data-swe"));
     });
+    $("#swedish").addClass("hidden");
+    $("#english").removeClass("hidden");
 }
 
 $(document).ready(function () {
