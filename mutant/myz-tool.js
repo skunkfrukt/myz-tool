@@ -75,7 +75,7 @@ function displayResult(result, clear) {
         addAllDiceGraphicsForOneType(result.other, "other");
         $("#roll").append($("<span></span>"));
 
-        $("#rerollButton").prop("disabled", !result.rerollable)
+        $("#rerollButton").button({ "disabled": !result.rerollable });
     }
 
     var text = "#" + ++rollNumber;
