@@ -11,7 +11,7 @@
     <!--<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
-    <link rel="stylesheet" href="myz-tool.css?_=47e0f829f455be6c1e67d2b7b57faa07def226a6" />
+    <link rel="stylesheet" href="myz-tool.css?_=478785437629aadda9d2d29712a84ee61cde74ec" />
     <script src="myz-tool.js?_=b5cb30227b9b2330f3122b282a5c3a4ab1362659"></script>
 </head>
 
@@ -76,6 +76,10 @@
                 <option value="Boss">Boss</option>
                 <option value="Träl" data-eng="Slave">Träl</option>
             </select>
+            <div class="inline">
+                <label for="experience" data-eng="Experience" class="small">Erfarenhet</label>
+                <input id="experience" type="number" min="0" class="small" data-save-as="Erfarenhet" />
+            </div>
             <h3 data-eng="Base stats">Grundegenskaper</h3>
             <div class="stats">
                 <table>
@@ -177,6 +181,13 @@
                         <td><label for="modifier-stat" data-eng="Modifier">Modifikation</label></td>
                     </tr>
                 </table>
+            </div>
+            <h3 data-eng="Miscellaneous">Övrigt</h3>
+            <div>
+                <label for="rot" data-eng="Rot">Röta</label>
+                <input id="rot" type="number" min="0" class="small" data-save-as="Röta" />
+                <label for="permanent-rot">+&nbsp;Permanent</label>
+                <input id="permanent-rot" type="number" min="0" class="small" data-save-as="Permanent röta" />
             </div>
         </div>
         <div id="tab-skills">
