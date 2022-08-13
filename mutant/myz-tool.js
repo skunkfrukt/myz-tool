@@ -6,6 +6,19 @@ dieGlyphs = {
     "other": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"]
 }
 
+itemTypeIcons = {
+    "Verktyg": "&#128295;",
+    "Närstridsvapen": "&#129683;",
+    "Avståndsvapen": "&#128299;",
+    "Ammunition": "&#127813;",
+    "Rustning": "&#128090;",
+    "Rötskydd": "&#129343;",
+    "Resurs": "&#129387;",
+    "Övrigt": "&#128230;"
+}
+
+var weightUnit = 20;
+
 var rollNumber = 0;
 
 function download(content, fileName, contentType) {
@@ -253,6 +266,9 @@ function serialize() {
             output[key] = value;
         }
     })
+
+    output["Prylar"] = serializeInventory();
+
     var json = JSON.stringify(output, null, 4);
     return json;
 }
@@ -287,6 +303,13 @@ function deserialize(json) {
             $(this).val(value).change();
         }
     })
+
+    $("#dynamic-inventory").empty();
+    if (parsed["Prylar"]) {
+        for (var i = 0; i < parsed["Prylar"].length; i++) {
+            loadInventoryItem(parsed["Prylar"][i]);
+        }
+    }
 }
 
 function rollAdHoc() {
@@ -530,6 +553,221 @@ function updateTotalExperience() {
     $("#total-experience").val(total.toString());
 }
 
+function addInventoryItem() {
+    var itemType = $("#add-item-type").val();
+    var itemData = { "Typ": itemType };
+    loadInventoryItem(itemData);
+    calculateTotalWeight();
+}
+
+function loadInventoryItem(itemData) {
+    var itemType = itemData["Typ"];
+
+    var rowId = $(".inventory-item").length;
+    var elementId = "inventory-item-" + rowId;
+    var row = $('<tr id="' + elementId + '" class="inventory-item", data-item-type="' + itemData["Typ"] + '"></tr>');
+
+    row.append('<td><label for="' + elementId + '-name">' + itemTypeIcons[itemType] + '</label></td>')
+
+    var nameSection = $("<td></td>");
+    var nameField = $('<input type="text" id="' + elementId + '-name" class="inventory-item-name" />')
+    if (itemData["Namn"]) {
+        nameField.val(itemData["Namn"]);
+    }
+    nameField.appendTo(nameSection);
+    nameSection.appendTo(row);
+
+    var countSection = $("<td></td>");
+    if (itemType == "Ammunition" || itemType == "Resurs") {
+        countSection.append('<label for="' + elementId + '-count">x</label>');
+        var countField = $('<input type="number" id="' + elementId + '-count" min="0" class="inventory-item-count small"/>');
+        if (itemData["Antal"]) {
+            countField.val(itemData["Antal"]);
+        }
+        countField.change(calculateTotalWeight).appendTo(countSection);
+    } else {
+        countSection.text("x1");
+    }
+    countSection.appendTo(row);
+
+    var weightSection = $("<td></td>");
+    //weightSection.append('<label for="' + elementId + '-weight">Vikt</label>')
+    var weightField = $('<input type="number" id="' + elementId + '-weight" class="inventory-item-weight small" min="0" />');
+    if (itemData["Vikt"]) {
+        weightField.val(itemData["Vikt"]);
+    }
+    weightField.change(calculateTotalWeight).appendTo(weightSection);
+    weightSection.appendTo(row);
+
+    var bonusSection = $('<td class="align-right"></td>');
+    if (itemType == "Verktyg" || itemType == "Närstridsvapen" || itemType == "Avståndsvapen" || itemType == "Rustning" || itemType == "Rötskydd") {
+        //bonusSection.append('<label for="' + elementId + '-bonus">Bonus</label>');
+        var bonusField = $('<input type="number" id="' + elementId + '-bonus" min="0" class="inventory-item-bonus small color-gear"/>');
+        if (itemData["Prylbonus"]) {
+            bonusField.val(itemData["Prylbonus"]);
+        }
+        bonusField.appendTo(bonusSection);
+    }
+    bonusSection.appendTo(row);
+
+    if (itemType == "Verktyg") {
+        var skillSection = $("<td></td>");
+        var skillSelect = $('<select id="' + elementId + '-skill" class="inventory-item-skill"></select>');
+        skillSelect.append('<option value="">&ndash;</option>');
+        skillSelect.append('<option value="endure">Kämpa på</option>');
+        skillSelect.append('<option value="force">Ta krafttag</option>');
+        skillSelect.append('<option value="fight">Slåss</option>');
+        skillSelect.append('<option value="sneak">Smyga</option>');
+        skillSelect.append('<option value="move">Fly</option>');
+        skillSelect.append('<option value="shoot">Skjuta</option>');
+        skillSelect.append('<option value="scout">Speja</option>');
+        skillSelect.append('<option value="comprehend">Förstå sig på</option>');
+        skillSelect.append('<option value="knowTheZone">Känna Zonen</option>');
+        skillSelect.append('<option value="senseEmotion">Genomskåda</option>');
+        skillSelect.append('<option value="manipulate">Manipulera</option>');
+        skillSelect.append('<option value="heal">Vårda</option>');
+        skillSelect.append('<option value="taunt">Mucka</option>');
+        skillSelect.append('<option value="tinker">Mecka</option>');
+        skillSelect.append('<option value="navigate">Leda vägen</option>');
+        skillSelect.append('<option value="scrounge">Schackra</option>');
+        skillSelect.append('<option value="animalHandling">Bussa på</option>');
+        skillSelect.append('<option value="inspire">Inspirera</option>');
+        skillSelect.append('<option value="command">Kommendera</option>');
+        skillSelect.append('<option value="persist">Uthärda</option>');
+        if (itemData["Färdighet"]) {
+            skillSelect.val(itemData["Färdighet"]);
+        }
+        skillSelect.appendTo(skillSection);
+        skillSection.appendTo(row);
+    } else if (itemType == "Närstridsvapen") {
+        var fightSkillSection = $("<td></td>");
+        fightSkillSection.append('<input type="hidden" id="' + elementId + '-skill" value="fight" class="inventory-item-skill"/>');
+        fightSkillSection.append('<label>Slåss</label>')
+        fightSkillSection.appendTo(row);
+    } else if (itemType == "Avståndsvapen") {
+        var rangeSection = $('<td class="align-right"></td>');
+        rangeSection.append('<input type="hidden" id="' + elementId + '-skill" value="shoot" class="inventory-item-skill"/>');
+        rangeSection.append('<label for="' + elementId + '-range">Skjuta</label>');
+        var rangeField = $('<select id="' + elementId + '-range" class="inventory-item-range"></select>');
+        rangeField.append('<option value="Nära">Nära</option>');
+        rangeField.append('<option value="Kort">Kort</option>');
+        rangeField.append('<option value="Långt">Långt</option>');
+        rangeField.append('<option value="Special">Special</option>');
+        if (itemData["Avstånd"]) {
+            rangeField.val(itemData["Avstånd"]);
+        }
+        rangeField.appendTo(rangeSection);
+        rangeSection.appendTo(row);
+    } else {
+        row.append("<td></td>");
+    }
+
+    if (itemType == "Närstridsvapen" || itemType == "Avståndsvapen") {
+        var damageSection = $("<td></td>");
+        damageSection.append('<label for="' + elementId + '-damage">Skada</label>');
+        var damageField = $('<input type="number" id="' + elementId + '-damage" min="0" class="inventory-item-damage small"/>');
+        if (itemData["Skada"]) {
+            damageField.val(itemData["Skada"]);
+        }
+        damageField.appendTo(damageSection);
+        damageSection.appendTo(row);
+    } else {
+        row.append("<td></td>")
+    }
+
+    var deleteButton = $('<button id="' + elementId + '-delete">&#10060;</button>');
+    deleteButton.click(deleteInventoryRow);
+    deleteButton.appendTo(row);
+
+    row.appendTo("#dynamic-inventory");
+}
+
+function deleteInventoryRow() {
+    $(this).closest(".inventory-item").remove();
+    calculateTotalWeight();
+}
+
+function serializeInventory() {
+    var inventory = [];
+    $(".inventory-item").each(function () {
+        var $this = $(this);
+        var itemData = {
+            "Typ": $this.attr("data-item-type")
+        };
+
+        var nameField = $this.find(".inventory-item-name");
+        if (nameField.length) {
+            itemData["Namn"] = nameField.val();
+        }
+        var weightField = $this.find(".inventory-item-weight");
+        if (weightField.length) {
+            itemData["Vikt"] = weightField.val();
+        }
+        var countField = $this.find(".inventory-item-count");
+        if (countField.length) {
+            itemData["Antal"] = countField.val();
+        }
+        var skillField = $this.find(".inventory-item-skill");
+        if (skillField.length) {
+            itemData["Färdighet"] = skillField.val();
+        }
+        var bonusField = $this.find(".inventory-item-bonus");
+        if (bonusField.length) {
+            itemData["Prylbonus"] = bonusField.val();
+        }
+        var damageField = $this.find(".inventory-item-damage");
+        if (damageField.length) {
+            itemData["Skada"] = damageField.val();
+        }
+        var rangeField = $this.find(".inventory-item-range");
+        if (rangeField.length) {
+            itemData["Avstånd"] = rangeField.val();
+        }
+        inventory.push(itemData);
+    });
+    return inventory;
+}
+
+function calculateTotalWeight() {
+    var totalWeight = 0;
+
+    $(".inventory-item").each(function () {
+        var $this = $(this);
+        var countField = $this.find(".inventory-item-count");
+        var count = countField.length ? parseIntOrDefault(countField.val(), 0) : 1;
+        var weight = parseWeight($this.find(".inventory-item-weight").val());
+        console.log("weight in field was '" + weight)
+        totalWeight += weight * count;
+    });
+
+    var bulletCount = intValueOfField("#bullets");
+    if (bulletCount >= 20) {
+        totalWeight += bulletCount * parseWeight("1/20");
+    }
+
+    $("#total-weight").val(Math.floor(totalWeight / weightUnit));
+}
+
+function parseWeight(weightString) {
+    var parts = weightString.split("/");
+    var weight = parseIntOrDefault(parts[0], 0) * weightUnit;
+    if (parts.length > 1) {
+        weight /= parseInt(parts[1]);
+    }
+    return weight;
+}
+
+function calculateWeightCapacity() {
+    var strength = intValueOfField("#stat-strength");
+    var capacity = strength * 2;
+
+    if ($("#talent-mule").is(":checked")) {
+        capacity *= 2;
+    }
+
+    $("#weight-capacity").val(capacity);
+}
+
 $(document).ready(function () {
     $(".tabs").tabs();
 
@@ -661,6 +899,13 @@ $(document).ready(function () {
     $(".skill").change(updateTotalExperience);
     $("#experience").change(updateTotalExperience);
     $(".talent").change(updateTotalExperience);
+
+    $("#add-item").click(addInventoryItem);
+
+    $("#stat-strength").change(calculateWeightCapacity);
+    $("#talent-mule").change(calculateWeightCapacity);
+
+    $("#fixed-inventory .inventory-item-count").change(calculateTotalWeight);
 
     loadData();
 });

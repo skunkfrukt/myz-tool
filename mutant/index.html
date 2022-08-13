@@ -11,8 +11,8 @@
     <!--<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
-    <link rel="stylesheet" href="myz-tool.css?_=af8db56dbe334c798a85c484cb6ee725e6cef193" />
-    <script src="myz-tool.js?_=e5ec091f0ef809270eee66b12feede40c1e531c9"></script>
+    <link rel="stylesheet" href="myz-tool.css?_=7d7cbbf25745c9604478bd4fd7793cd84689b72e" />
+    <script src="myz-tool.js?_=4bd350ad13c3a6ddcfd709ee87b62c0675543ce4"></script>
 </head>
 
 <body>
@@ -946,7 +946,6 @@
                                     <input type="checkbox" id="talent-premonition"
                                         class="talent check-talent toggles-fields" data-save-as="Onda aningar" />
                                 </label>
-                                <!-- UNIMPLEMENTED_TALENT Doubles weight capacity -->
                                 <label for="talent-mule"><span data-eng="Mule*">Packåsna*</span>
                                     <input type="checkbox" id="talent-mule" class="talent check-talent"
                                         data-save-as="Packåsna" />
@@ -1323,32 +1322,111 @@
             </div>
         </div>
         <div id="tab-gear">
-            <h3 data-eng="Resources">Resurser</h3>
             <div>
-                <div class="resource">
-                    <label for="bullets" class="small" data-eng="Bullets">Patroner</label>
-                    <input id="bullets" class="small" type="number" size="1" min="0" data-save-as="Patroner" />
-                </div>
-                <div class="resource">
-                    <label for="water" class="small" data-eng="Water">Vatten</label>
-                    <input id="water" class="small" type="number" size="1" min="0" data-save-as="Vatten" />
-                </div>
-                <div class="resource">
-                    <label for="food" class="small" data-eng="Food">Krubb</label>
-                    <input id="food" class="small" type="number" size="1" min="0" data-save-as="Krubb" />
-                </div>
-                <div class="resource">
-                    <label for="alcohol" class="small" data-eng="Alcohol">Sprit</label>
-                    <input id="alcohol" class="small" type="number" size="1" min="0" data-save-as="Sprit" />
-                </div>
-                <div class="resource">
-                    <label for="arrows" class="small" data-eng="Arrows">Pilar</label>
-                    <input id="arrows" class="small" type="number" size="1" min="0" data-save-as="Pilar" />
-                </div>
-                <div class="resource">
-                    <label for="torches" class="small" data-eng="Torches">Facklor</label>
-                    <input id="torches" class="small" type="number" size="1" min="0" data-save-as="Facklor" />
-                </div>
+                <label for="total-weight" class="small" data-eng="Total weight">Total vikt</label>
+                <input type="number" id="total-weight" class="small" disabled />
+                <label for="weight-capacity">/</label>
+                <input type="number" id="weight-capacity" class="small" disabled />
+            </div>
+            <h3 data-eng="Resources">Prylar</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th>Antal</th>
+                        <th>Vikt</th>
+                        <th>Bonus</th>
+                        <th>&nbsp;</th>
+                        <th>&nbsp;</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody id="fixed-inventory">
+                    <tr class="inventory-item">
+                        <td>&#128167;</td>
+                        <td><label for="water" class="small" data-eng="Water">Vatten</label></td>
+                        <td>
+                            x<input id="water" class="small inventory-item-count" type="number" size="1" min="0"
+                                data-save-as="Vatten" />
+                        </td>
+                        <td>
+                            1/2?<input type="hidden" id="water-weight" class="inventory-item-weight" value="1/2" />
+                        </td>
+                    </tr>
+                    <tr class="inventory-item">
+                        <td data-eng="&#127828;">&#129387;</td>
+                        <td><label for="food" class="small" data-eng="Food">Krubb</label></td>
+                        <td>
+                            x<input id="food" class="small inventory-item-count" type="number" size="1" min="0"
+                                data-save-as="Krubb" />
+                        </td>
+                        <td>
+                            1/2?<input type="hidden" id="food-weight" class="inventory-item-weight" value="1/2" />
+                        </td>
+                    </tr>
+                    <tr class="inventory-item">
+                        <td>&#129689;</td>
+                        <td><label for="bullets" class="small" data-eng="Bullets">Patroner</label></td>
+                        <td>
+                            x<input id="bullets" class="small inventory-item-count" type="number" size="1" min="0"
+                                data-save-as="Patroner" />
+                        </td>
+                        <td>
+                            1/20<input type="hidden" id="bullets-weight" class="inventory-item-weight" value="0" />
+                        </td>
+                    </tr>
+                    <tr class="inventory-item">
+                        <td>&#127993;</td>
+                        <td><label for="arrows" class="small" data-eng="Arrows">Pilar</label></td>
+                        <td>
+                            x<input id="arrows" class="small inventory-item-count" type="number" size="1" min="0"
+                                data-save-as="Pilar" />
+                        </td>
+                        <td>
+                            ?<input type="hidden" id="arrows-weight" class="inventory-item-weight" value="1/4" />
+                        </td>
+                    </tr>
+                    <tr class="inventory-item">
+                        <td>&#127870;</td>
+                        <td><label for="alcohol" class="small" data-eng="Alcohol">Sprit</label></td>
+                        <td>
+                            x<input id="alcohol" class="small inventory-item-count" type="number" size="1" min="0"
+                                data-save-as="Sprit" />
+                        </td>
+                        <td>
+                            ?<input type="hidden" id="alcohol-weight" class="inventory-item-weight" value="1/4" />
+                        </td>
+                    </tr>
+                    <tr class="inventory-item">
+                        <td>&#128293;</td>
+                        <td><label for="torches" class="small" data-eng="Torches">Facklor</label></td>
+                        <td>
+                            x<input id="torches" class="small inventory-item-count" type="number" size="1" min="0"
+                                data-save-as="Facklor" />
+                        </td>
+                        <td>
+                            1/4?<input type="hidden" id="torches-weight" class="inventory-item-weight" value="1/4" />
+                        </td>
+                    </tr>
+                </tbody>
+                <tbody id="dynamic-inventory">
+
+                </tbody>
+            </table>
+            <hr />
+            <div>
+                <button id="add-item" data-eng="Add item">&#10133; Lägg till</button>
+                <select id="add-item-type">
+                    <option value="Verktyg" data-eng="&#128295; Tool">&#128295; Verktyg</option>
+                    <option value="Närstridsvapen" data-eng="&#129683; Melee weapon">&#129683; Närstridsvapen</option>
+                    <option value="Avståndsvapen" data-eng="&#128299; Ranged weapon">&#128299; Avståndsvapen</option>
+                    <option value="Rustning" data-eng="&#128090; Armour">&#128090; Rustning</option>
+                    <option value="Rötskydd" data-eng="&#129343; Rot protection">&#129343; Rötskydd</option>
+                    <option value="Ammunition">&#127813; Ammunition</option>
+                    <option value="Resurs" data-eng="&#129387; Resource">&#129387; Resurs</option>
+                    <option value="Övrigt" data-eng="&#128230; Miscellaneous">&#128230; Övrigt</option>
+                </select>
             </div>
         </div>
 
