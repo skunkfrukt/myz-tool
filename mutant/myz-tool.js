@@ -129,10 +129,14 @@ function reroll(previousResult) {
     return result;
 }
 
+function parseIntOrDefault(value, defaultValue) {
+    var parsedValue = parseInt(value);
+    return isNaN(parsedValue) ? defaultValue : parsedValue;
+}
+
 function intValueOfField(selector) {
     var rawValue = $(selector).val();
-    var parsedValue = parseInt(rawValue);
-    return isNaN(parsedValue) ? 0 : parsedValue;
+    return parseIntOrDefault(rawValue, 0);
 }
 
 function getValueById(valueId, prefix) {
@@ -490,6 +494,28 @@ function translateToSwedish() {
     $("#english").removeClass("hidden");
 }
 
+function updateTotalExperience() {
+    var total = parseInt($("#experience").val());
+
+    var sumOfSkills = 0;
+    $(".skill").each(function () {
+        sumOfSkills += parseIntOrDefault($(this).val(), 0);
+    });
+    if (sumOfSkills > 10) {
+        total += (sumOfSkills - 10) * 5;
+    }
+
+    var sumOfTalents = 0;
+    $(".talent:checked").each(function () {
+        sumOfTalents++;
+    });
+    if (sumOfTalents > 1) {
+        total += (sumOfTalents - 1) * 5;
+    }
+
+    $("#total-experience").val(total.toString());
+}
+
 $(document).ready(function () {
     $(".tabs").tabs();
 
@@ -617,6 +643,10 @@ $(document).ready(function () {
     $("#import-paste-button").click(pasteJsonFromClipboard);
 
     $("button").button();
+
+    $(".skill").change(updateTotalExperience);
+    $("#experience").change(updateTotalExperience);
+    $(".talent").change(updateTotalExperience);
 
     loadData();
 });
