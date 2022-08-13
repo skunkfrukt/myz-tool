@@ -217,7 +217,7 @@ function exportData() {
     $("#export-dialog #export-json").val(json);
 
     var dataUrl = new Blob([json], { type: "application/json" });
-    var filename = "mutant";
+    var filename = "Mutant-" + $("#name").val().replace(/\s+/, "_");
     $("#export-download-link").attr("href", URL.createObjectURL(dataUrl)).attr("download", filename).button();
 
     $("#export-dialog").dialog("open");
