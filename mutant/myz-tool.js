@@ -246,6 +246,13 @@ function serialize() {
             output[key] = value;
         }
     })
+    $("textarea[data-save-as]").each(function () {
+        var key = $(this).attr("data-save-as");
+        var value = $(this).val();
+        if (value) {
+            output[key] = value;
+        }
+    })
     var json = JSON.stringify(output, null, 4);
     return json;
 }
@@ -271,6 +278,13 @@ function deserialize(json) {
         var value = parsed[key];
         if (value) {
             $(this).prop("checked", value).change();
+        }
+    })
+    $("textarea[data-save-as]").each(function () {
+        var key = $(this).attr("data-save-as");
+        var value = parsed[key];
+        if (value) {
+            $(this).val(value).change();
         }
     })
 }
