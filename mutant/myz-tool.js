@@ -18,6 +18,8 @@ itemTypeIcons = {
 }
 
 var weightUnit = 20;
+var suppressUpdateGearBonusOptionsFromInventory = false;
+var suppressCalculateTotalWeight = false;
 
 var rollNumber = 0;
 
@@ -237,7 +239,7 @@ function exportData() {
 }
 
 function serialize() {
-    var output = { "$version": 1 }
+    var output = { "$version": 2 }
     $("input[data-save-as]:not([type='checkbox'])").each(function () {
         var key = $(this).attr("data-save-as");
         var value = $(this).val();
@@ -273,8 +275,56 @@ function serialize() {
     return json;
 }
 
+function upgradeSaveDataToVersion2(saveData) {
+    if (!saveData["Prylar"]) {
+        saveData["Prylar"] = [];
+    }
+
+    for (var i = 1; i <= 3; i++) {
+        var weaponName = saveData["Vapen[" + i + "].Namn"];
+        var weaponBonus = saveData["Vapen[" + i + "].Prylbonus"];
+        var weaponDamage = saveData["Vapen[" + i + "].Skada"];
+
+        if (weaponName || weaponBonus || weaponDamage) {
+            var weapon = {
+                "Typ": "Närstridsvapen",
+                "Namn": weaponName ? weaponName : "???",
+                "Vikt": "1",
+                "Prylbonus": weaponBonus ? weaponBonus : "0",
+                "Skada": weaponDamage ? weaponDamage : "0"
+            }
+            saveData["Prylar"].push(weapon);
+        }
+    }
+
+    for (var i = 4; i <= 6; i++) {
+        var weaponName = saveData["Vapen[" + i + "].Namn"];
+        var weaponBonus = saveData["Vapen[" + i + "].Prylbonus"];
+        var weaponDamage = saveData["Vapen[" + i + "].Skada"];
+
+        if (weaponName || weaponBonus || weaponDamage) {
+            var weapon = {
+                "Typ": "Avståndsvapen",
+                "Namn": weaponName ? weaponName : "???",
+                "Vikt": "1",
+                "Prylbonus": weaponBonus ? weaponBonus : "0",
+                "Skada": weaponDamage ? weaponDamage : "0"
+            }
+            saveData["Prylar"].push(weapon);
+        }
+    }
+
+    saveData["$version"] = 2;
+    return saveData;
+}
+
 function deserialize(json) {
     var parsed = JSON.parse(json);
+
+    if (parsed["$version"] === 1) {
+        parsed = upgradeSaveDataToVersion2(parsed);
+    }
+
     $("input[data-save-as]:not([type='checkbox'])").each(function () {
         var key = $(this).attr("data-save-as");
         var value = parsed[key];
@@ -306,10 +356,16 @@ function deserialize(json) {
 
     $("#dynamic-inventory").empty();
     if (parsed["Prylar"]) {
+        suppressUpdateGearBonusOptionsFromInventory = true;
+        suppressCalculateTotalWeight = true;
         for (var i = 0; i < parsed["Prylar"].length; i++) {
             loadInventoryItem(parsed["Prylar"][i]);
         }
+        suppressCalculateTotalWeight = false;
+        suppressUpdateGearBonusOptionsFromInventory = false;
     }
+    calculateTotalWeight();
+    updateGearBonusOptionsFromInventory();
 }
 
 function rollAdHoc() {
@@ -367,6 +423,7 @@ function rollSkill(statField, skillField, modField) {
 
     var skillValue = intValueOfField(skillField);
     var skillName = $(skillField).attr("data-name");
+    var skillId = $(skillField).attr("data-skill");
 
     var statAbbr = $(statField).attr("data-abbr");
     var description = skillName + ' [<span class="stat-value">' + modifiedStatValue + "&#x1F3B2; (" + statAbbr + ")</span>";
@@ -391,9 +448,16 @@ function rollSkill(statField, skillField, modField) {
 
     description += describeModField(modField);
 
-    var gearBonus = intValueOfField("#gear-skill");
-    if (gearBonus) {
-        description += ' + <span class="gear-value">' + gearBonus + "&#x1F3B2; (pryl)</span>"
+    var skillGearField = $(".skill-gear[data-skill='" + skillId + "']");
+    if (skillGearField.length) {
+        var gearBonus = parseIntOrDefault(skillGearField.val(), 0);
+        if (gearBonus) {
+            var gearName = skillGearField.find("option:selected").attr("data-name");
+            if (!gearName) {
+                gearName = "prylbonus";
+            }
+            description += ' + <span class="gear-value">' + gearBonus + "&#x1F3B2; (" + gearName + ")</span>";
+        }
     }
 
     description += "]";
@@ -606,7 +670,7 @@ function loadInventoryItem(itemData) {
         if (itemData["Prylbonus"]) {
             bonusField.val(itemData["Prylbonus"]);
         }
-        bonusField.appendTo(bonusSection);
+        bonusField.change(updateGearBonusOptionsFromInventory).appendTo(bonusSection);
     }
     bonusSection.appendTo(row);
 
@@ -637,7 +701,7 @@ function loadInventoryItem(itemData) {
         if (itemData["Färdighet"]) {
             skillSelect.val(itemData["Färdighet"]);
         }
-        skillSelect.appendTo(skillSection);
+        skillSelect.change(updateGearBonusOptionsFromInventory).appendTo(skillSection);
         skillSection.appendTo(row);
     } else if (itemType == "Närstridsvapen") {
         var fightSkillSection = $("<td></td>");
@@ -689,7 +753,7 @@ function deleteInventoryRow() {
 
 function serializeInventory() {
     var inventory = [];
-    $(".inventory-item").each(function () {
+    $("#dynamic-inventory .inventory-item").each(function () {
         var $this = $(this);
         var itemData = {
             "Typ": $this.attr("data-item-type")
@@ -729,6 +793,10 @@ function serializeInventory() {
 }
 
 function calculateTotalWeight() {
+    if (suppressCalculateTotalWeight) {
+        return;
+    }
+
     var totalWeight = 0;
 
     $(".inventory-item").each(function () {
@@ -766,6 +834,40 @@ function calculateWeightCapacity() {
     }
 
     $("#weight-capacity").val(capacity);
+}
+
+function addGenericGearBonusOptions() {
+    $("optgroup.skill-gear-generic").append('<option value="1">Prylbonus +1</option>').append('<option value="2">Prylbonus +2</option>');
+}
+
+function updateGearBonusOptionsFromInventory() {
+    if (suppressUpdateGearBonusOptionsFromInventory) {
+        return;
+    }
+
+    console.log("Updating gear bonus options from inventory.")
+
+    $("optgroup.skill-gear-from-inventory").empty();
+
+    $("#dynamic-inventory .inventory-item").each(function () {
+        var skillField = $(this).find(".inventory-item-skill");
+        if (skillField.length) {
+            var skill = skillField.val();
+
+            var bonusField = $(this).find(".inventory-item-bonus");
+            if (bonusField.length) {
+                var bonus = parseIntOrDefault(bonusField.val(), 0);
+
+                var itemNameField = $(this).find(".inventory-item-name");
+                var itemName = itemNameField.length ? itemNameField.val() : "Pryl";
+
+                console.log("Adding gear bonus +" + bonus + " " + skill + " from " + itemName);
+
+                var option = $('<option value="' + bonus + '" data-name="' + itemName + '">' + itemName + ' +' + bonus + '</option>');
+                $(".skill-gear[data-skill='" + skill + "'] optgroup.skill-gear-from-inventory").append(option);
+            }
+        }
+    });
 }
 
 $(document).ready(function () {
@@ -906,6 +1008,8 @@ $(document).ready(function () {
     $("#talent-mule").change(calculateWeightCapacity);
 
     $("#fixed-inventory .inventory-item-count").change(calculateTotalWeight);
+
+    addGenericGearBonusOptions();
 
     loadData();
 });
