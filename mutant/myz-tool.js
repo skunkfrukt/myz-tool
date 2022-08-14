@@ -17,6 +17,11 @@ itemTypeIcons = {
     "Övrigt": "&#128230;"
 }
 
+emoji = {
+    "crossmark": "&#10060;",
+    "wastebasket": "&#128465;&#xFE0F;"
+}
+
 var weightUnit = 20;
 var suppressUpdateGearBonusOptionsFromInventory = false;
 var suppressCalculateTotalWeight = false;
@@ -655,8 +660,15 @@ function loadInventoryItem(itemData) {
     countSection.appendTo(row);
 
     var weightSection = $("<td></td>");
-    //weightSection.append('<label for="' + elementId + '-weight">Vikt</label>')
-    var weightField = $('<input type="number" id="' + elementId + '-weight" class="inventory-item-weight small" min="0" />');
+    var weightField = $('<select id="' + elementId + '-weight" class="inventory-item-weight" />');
+    weightField.append('<option value="0">0</option>');
+    weightField.append('<option value="1/10">1/10</option>');
+    weightField.append('<option value="1/4">1/4</option>');
+    weightField.append('<option value="1/2">1/2</option>');
+    weightField.append('<option value="1" selected>1</option>');
+    weightField.append('<option value="2">2</option>');
+    weightField.append('<option value="3">3</option>');
+    weightField.append('<option value="4">4</option>');
     if (itemData["Vikt"]) {
         weightField.val(itemData["Vikt"]);
     }
@@ -665,7 +677,6 @@ function loadInventoryItem(itemData) {
 
     var bonusSection = $('<td class="align-right"></td>');
     if (itemType == "Verktyg" || itemType == "Närstridsvapen" || itemType == "Avståndsvapen" || itemType == "Rustning" || itemType == "Rötskydd") {
-        //bonusSection.append('<label for="' + elementId + '-bonus">Bonus</label>');
         var bonusField = $('<input type="number" id="' + elementId + '-bonus" min="0" class="inventory-item-bonus small color-gear"/>');
         if (itemData["Prylbonus"]) {
             bonusField.val(itemData["Prylbonus"]);
@@ -739,7 +750,7 @@ function loadInventoryItem(itemData) {
         row.append("<td></td>")
     }
 
-    var deleteButton = $('<button id="' + elementId + '-delete">&#10060;</button>');
+    var deleteButton = $('<button id="' + elementId + '-delete">' + emoji.crossmark + '</button>');
     deleteButton.click(deleteInventoryRow);
     deleteButton.appendTo(row);
 
@@ -809,8 +820,17 @@ function calculateTotalWeight() {
     });
 
     var bulletCount = intValueOfField("#bullets");
-    if (bulletCount >= 20) {
-        totalWeight += bulletCount * parseWeight("1/20");
+    if (bulletCount >= 40) {
+        totalWeight += parseWeight("2");
+    } else if (bulletCount >= 20) {
+        totalWeight += parseWeight("1");
+    } else if (bulletCount >= 10) {
+        totalWeight += parseWeight("1/2");
+    }
+
+    var alcoholCount = intValueOfField("#alcohol");
+    if (alcoholCount) {
+        totalWeight += parseWeight(Math.ceil(alcoholCount / 10).toString());
     }
 
     $("#total-weight").val(Math.floor(totalWeight / weightUnit));
@@ -827,11 +847,8 @@ function parseWeight(weightString) {
 
 function calculateWeightCapacity() {
     var strength = intValueOfField("#stat-strength");
-    var capacity = strength * 2;
-
-    if ($("#talent-mule").is(":checked")) {
-        capacity *= 2;
-    }
+    var hasMuleTalent = $("#talent-mule").is(":checked");
+    var capacity = hasMuleTalent ? strength * 4 : strength * 2;
 
     $("#weight-capacity").val(capacity);
 }
