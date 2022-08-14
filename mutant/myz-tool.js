@@ -955,6 +955,7 @@ function loadInventoryItem(itemData) {
     deleteButton.appendTo(row);
 
     row.appendTo("#dynamic-inventory");
+    updateGearBonusOptionsFromInventory();
 }
 
 function deleteInventoryRow() {
