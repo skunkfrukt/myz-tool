@@ -117,3 +117,23 @@ div.inline {
     height: 100%;
     min-height: 200px;
 }
+
+#tab-gear table {
+    width: 100%;
+}
+
+#tab-gear table tbody tr:hover {
+    background-color: #ddf;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+#tab-gear tbody tr:nth-child(2n) {
+    background-color: #eee;
+}
+
+label + input, label + select {
+    margin-left: 5px;
+}

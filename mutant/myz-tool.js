@@ -648,7 +648,7 @@ function loadInventoryItem(itemData) {
 
     var countSection = $("<td></td>");
     if (itemType == "Ammunition" || itemType == "Resurs") {
-        countSection.append('<label for="' + elementId + '-count">x</label>');
+        countSection.append('x');
         var countField = $('<input type="number" id="' + elementId + '-count" min="0" class="inventory-item-count small"/>');
         if (itemData["Antal"]) {
             countField.val(itemData["Antal"]);
