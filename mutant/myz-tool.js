@@ -22,6 +22,202 @@ emoji = {
     "wastebasket": "&#128465;&#xFE0F;"
 }
 
+var standardItems = {
+    "Rep": {
+        "Typ": "Verktyg",
+        "Namn": "Rep",
+        "Vikt": "1",
+        "Prylbonus": "2",
+        "Färdighet": "move"
+    },
+    "Rep m. änterhake": {
+        "Typ": "Verktyg",
+        "Namn": "Rep m. änterhake",
+        "Vikt": "2",
+        "Prylbonus": "4",
+        "Färdighet": "move"
+    },
+    "Spritlykta": {
+        "Typ": "Övrigt",
+        "Namn": "Spritlykta",
+        "Vikt": "1"
+    },
+    "Elddon": {
+        "Typ": "Övrigt",
+        "Namn": "Elddon",
+        "Vikt": "1/2"
+    },
+    "Batterilykta": {
+        "Typ": "Övrigt",
+        "Namn": "Batterilykta",
+        "Vikt": "1"
+    },
+    "Varm jacka/rock": {
+        "Typ": "Verktyg",
+        "Namn": "Varm jacka/rock",
+        "Vikt": "0",
+        "Prylbonus": "1",
+        "Färdighet": "endure"
+    },
+    "Rejäla kängor": {
+        "Typ": "Övrigt",
+        "Namn": "Rejäla kängor",
+        "Vikt": "0",
+        "Prylbonus": "1",
+        "Färdighet": "endure"
+    },
+    "Spade": {
+        "Typ": "Verktyg",
+        "Namn": "Spade",
+        "Vikt": "1",
+        "Prylbonus": "1",
+        "Färdighet": "force"
+    },
+    "Filt": {
+        "Typ": "Verktyg",
+        "Namn": "Filt",
+        "Vikt": "1/2",
+        "Prylbonus": "2",
+        "Färdighet": "endure"
+    },
+    "Tält": {
+        "Typ": "Verktyg",
+        "Namn": "Tält",
+        "Vikt": "2",
+        "Prylbonus": "1",
+        "Färdighet": "endure"
+    },
+    "Rötdräkt": {
+        "Typ": "Rötskydd",
+        "Namn": "Rötdräkt",
+        "Vikt": "1",
+        "Prylbonus": "3"
+    },
+    "Rötmask": {
+        "Typ": "Rötskydd",
+        "Namn": "Rötmask",
+        "Vikt": "1/2",
+        "Prylbonus": "2"
+    },
+    "Skrotkikare": {
+        "Typ": "Verktyg",
+        "Namn": "Skrotkikare",
+        "Vikt": "1",
+        "Prylbonus": "1",
+        "Färdighet": "scout"
+    },
+    "Verktyg": {
+        "Typ": "Verktyg",
+        "Namn": "Verktyg",
+        "Vikt": "1",
+        "Prylbonus": "1",
+        "Färdighet": "tinker"
+    },
+    "Kokkärl": {
+        "Typ": "Verktyg",
+        "Namn": "Kokkärl",
+        "Vikt": "1",
+        "Prylbonus": "1",
+        "Färdighet": "knowTheZone"
+    },
+    "Knogjärn": {
+        "Typ": "Närstridsvapen",
+        "Namn": "Knogjärn",
+        "Vikt": "1/2",
+        "Prylbonus": "1",
+        "Skada": "1"
+    },
+    "Skrotkniv": {
+        "Typ": "Närstridsvapen",
+        "Namn": "Skrotkniv",
+        "Vikt": "1/2",
+        "Prylbonus": "1",
+        "Skada": "2"
+    },
+    "Slagträ": {
+        "Typ": "Närstridsvapen",
+        "Namn": "Slagträ",
+        "Vikt": "1",
+        "Prylbonus": "2",
+        "Skada": "1"
+    },
+    "Slagträ m. spikar": {
+        "Typ": "Närstridsvapen",
+        "Namn": "Slagträ m. spikar",
+        "Vikt": "1",
+        "Prylbonus": "2",
+        "Skada": "2"
+    },
+    "Huggare": {
+        "Typ": "Närstridsvapen",
+        "Namn": "Huggare",
+        "Vikt": "1",
+        "Prylbonus": "2",
+        "Skada": "2"
+    },
+    "Skrotspjut": {
+        "Typ": "Närstridsvapen",
+        "Namn": "Skrotspjut",
+        "Vikt": "1",
+        "Prylbonus": "1",
+        "Skada": "2"
+    },
+    "Skrotyxa": {
+        "Typ": "Närstridsvapen",
+        "Namn": "Skrotyxa",
+        "Vikt": "2",
+        "Prylbonus": "1",
+        "Skada": "3"
+    },
+    "Slunga": {
+        "Typ": "Avståndsvapen",
+        "Namn": "Slunga",
+        "Vikt": "1/2",
+        "Prylbonus": "1",
+        "Skada": "1",
+        "Avstånd": "Kort"
+    },
+    "Pilbåge": {
+        "Typ": "Avståndsvapen",
+        "Namn": "Pilbåge",
+        "Vikt": "1",
+        "Prylbonus": "1",
+        "Skada": "1",
+        "Avstånd": "Långt"
+    },
+    "Skrotpistol": {
+        "Typ": "Avståndsvapen",
+        "Namn": "Skrotpistol",
+        "Vikt": "1",
+        "Prylbonus": "1",
+        "Skada": "2",
+        "Avstånd": "Kort"
+    },
+    "Skrotgevär": {
+        "Typ": "Avståndsvapen",
+        "Namn": "Skrotgevär",
+        "Vikt": "1",
+        "Prylbonus": "1",
+        "Skada": "2",
+        "Avstånd": "Långt"
+    },
+    "Derringer": {
+        "Typ": "Avståndsvapen",
+        "Namn": "Derringer",
+        "Vikt": "1/2",
+        "Prylbonus": "1",
+        "Skada": "1",
+        "Avstånd": "Nära"
+    },
+    "Cykelkedja": {
+        "Typ": "Närstridsvapen",
+        "Namn": "Cykelkedja",
+        "Vikt": "1",
+        "Prylbonus": "1",
+        "Skada": "1"
+    }
+};
+
 var weightUnit = 20;
 var suppressUpdateGearBonusOptionsFromInventory = false;
 var suppressCalculateTotalWeight = false;
@@ -624,7 +820,11 @@ function updateTotalExperience() {
 
 function addInventoryItem() {
     var itemType = $("#add-item-type").val();
-    var itemData = { "Typ": itemType };
+    if (itemType.startsWith(":")) {
+        var itemData = standardItems[itemType.substring(1)];
+    } else {
+        var itemData = { "Typ": itemType };
+    }
     loadInventoryItem(itemData);
     calculateTotalWeight();
 }
@@ -819,6 +1019,7 @@ function calculateTotalWeight() {
         totalWeight += weight * count;
     });
 
+    /* // RAW
     var bulletCount = intValueOfField("#bullets");
     if (bulletCount >= 40) {
         totalWeight += parseWeight("2");
@@ -832,6 +1033,7 @@ function calculateTotalWeight() {
     if (alcoholCount) {
         totalWeight += parseWeight(Math.ceil(alcoholCount / 10).toString());
     }
+    */
 
     $("#total-weight").val(Math.floor(totalWeight / weightUnit));
 }
@@ -848,7 +1050,11 @@ function parseWeight(weightString) {
 function calculateWeightCapacity() {
     var strength = intValueOfField("#stat-strength");
     var hasMuleTalent = $("#talent-mule").is(":checked");
+    /* // RAW
     var capacity = hasMuleTalent ? strength * 4 : strength * 2;
+    */
+    // House rules
+    var capacity = hasMuleTalent ? strength * 5 : strength * 3;
 
     $("#weight-capacity").val(capacity);
 }
