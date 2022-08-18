@@ -1,9 +1,9 @@
 dieGlyphs = {
-    "base": ["☣<sup>1</sup>", "2️", "3️", "4️", "5️", "☢<sup>6</sup>"],
-    "skill": ["1️", "2️", "3️", "4️", "5️", "☢<sup>6</sup>"],
-    "gear": ["✴<sup>1</sup>", "2️", "3️", "4️", "5️", "☢<sup>6</sup>"],
-    "negative": ["1️", "2️", "3️", "4️", "5️", "☢<sup>6</sup>"],
-    "other": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"]
+    "base": ["&nbsp;<sup>0</sup>", "☣<sup>1</sup>", "2️", "3️", "4️", "5️", "☢<sup>6</sup>"],
+    "skill": ["&nbsp;<sup>0</sup>", "1️", "2️", "3️", "4️", "5️", "☢<sup>6</sup>"],
+    "gear": ["&nbsp;<sup>0</sup>", "✴<sup>1</sup>", "2️", "3️", "4️", "5️", "☢<sup>6</sup>"],
+    "negative": ["&nbsp;<sup>0</sup>", "1️", "2️", "3️", "4️", "5️", "☢<sup>6</sup>"],
+    "other": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"]
 }
 
 itemTypeIcons = {
@@ -267,11 +267,32 @@ function rollAll(base, skill, gear, other, description = null) {
         "rerollable": true,
         "description": description
     }
+    var negativeSixCount = 0;
+    for (var i = 0; i < result.negative.length; i++) {
+        if (result.negative[i] == 6) {
+            negativeSixCount++;
+            result.negative[i] = 0;
+        }
+    }
+    for (var i = 0; i < result.base.length; i++) {
+        if (negativeSixCount == 0) break;
+        if (result.base[i] == 6) {
+            negativeSixCount--;
+            result.base[i] = 0;
+        }
+    }
+    for (var i = 0; i < result.gear.length; i++) {
+        if (negativeSixCount == 0) break;
+        if (result.gear[i] == 6) {
+            negativeSixCount--;
+            result.gear[i] = 0;
+        }
+    }
     return result;
 }
 
 function addDieGraphic(number, dieType) {
-    var dieGraphic = $('<span class="die"></span>').html(dieGlyphs[dieType][number - 1]).addClass("die-" + dieType);
+    var dieGraphic = $('<span class="die"></span>').html(dieGlyphs[dieType][number]).addClass("die-" + dieType);
     $("#roll").append(dieGraphic);
 }
 
