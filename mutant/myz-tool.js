@@ -2,7 +2,7 @@ dieGlyphs = {
     "base": ["&nbsp;<sup>0</sup>", "☣<sup>1</sup>", "2️", "3️", "4️", "5️", "☢<sup>6</sup>"],
     "skill": ["&nbsp;<sup>0</sup>", "1️", "2️", "3️", "4️", "5️", "☢<sup>6</sup>"],
     "gear": ["&nbsp;<sup>0</sup>", "✴<sup>1</sup>", "2️", "3️", "4️", "5️", "☢<sup>6</sup>"],
-    "negative": ["&nbsp;<sup>0</sup>", "1️", "2️", "3️", "4️", "5️", "☢<sup>6</sup>"],
+    "negative": ["&nbsp;<sup>0</sup>", "&nbsp;", "&nbsp;", "&nbsp;", "&nbsp;", "&nbsp;"],
     "other": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"]
 }
 
