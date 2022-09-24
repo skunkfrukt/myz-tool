@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Mutantkrafs</title>
+    <title>Robotkrafs</title>
     <meta charset="UTF-8" />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -12,7 +12,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
     <link rel="stylesheet" href="myz-tool.css?_=57560ca7128f8ab42903b0c1cdc32e215da026b2" />
-    <script src="myz-tool.js?_=3d9a46dae8f7b34535f936712e360373cf71ac98"></script>
+    <script src="robot.js?_=12c8b00306e36cfada8529348dcc9e3c00f4e99d"></script>
 </head>
 
 <body>
@@ -33,7 +33,7 @@
     <div id="tabs-main" class="tabs">
         <ul>
             <li><a href="#tab-stats" title="Grundegenskaper">&#x1F464;</a></li>
-            <li><a href="#tab-skills" title="Färdigheter">&#x1F393;</a></li>
+            <li><a href="#tab-skills" title="Program">&#x1F393;</a></li>
             <li><a href="#tab-talents" title="Talanger">&#127942;</a></li>
             <li><a href="#tab-mutations" title="Mutationer">&#9763;&#xFE0F;</a></li>
             <li><a href="#tab-notes" title="Anteckningar">&#128211;</a></li>
@@ -42,169 +42,237 @@
             <li><a href="#tab-dice" title="Tärningar">&#127922;</a></li>
         </ul>
         <div id="tab-stats">
-            <h3 data-eng="Name">Namn</h3>
-            <input id="name" type="text" data-save-as="Namn" />
-            <h3 data-eng="Job">Syssla</h3>
-            <select id="job" class="job" data-save-as="Syssla[0]">
-                <option value="" selected></option>
-                <option value="Krossare" data-eng="Bruiser">Krossare</option>
-                <option value="Skrotskalle" data-eng="Gearhead">Skrotskalle</option>
-                <option value="Zonstrykare" data-eng="Ranger">Zonstrykare</option>
-                <option value="Fixare" data-eng="Scrounger">Fixare</option>
-                <option value="Mutant med hund" data-eng="Mutant with dog">Mutant med hund</option>
-                <option value="Krönikör" data-eng="Chronicler">Krönikör</option>
-                <option value="Boss">Boss</option>
-                <option value="Träl" data-eng="Slave">Träl</option>
-            </select>
-            <select id="job2" class="job" data-toggled-by="#talent-polymath" data-save-as="Syssla[1]">
-                <option value="" selected></option>
-                <option value="Krossare" data-eng="Bruiser">Krossare</option>
-                <option value="Skrotskalle" data-eng="Gearhead">Skrotskalle</option>
-                <option value="Zonstrykare" data-eng="Ranger">Zonstrykare</option>
-                <option value="Fixare" data-eng="Scrounger">Fixare</option>
-                <option value="Mutant med hund" data-eng="Mutant with dog">Mutant med hund</option>
-                <option value="Krönikör" data-eng="Chronicler">Krönikör</option>
-                <option value="Boss">Boss</option>
-                <option value="Träl" data-eng="Slave">Träl</option>
-            </select>
-            <select id="job3" class="job" data-toggled-by="#talent-polymath2" data-save-as="Syssla[2]">
-                <option value="" selected></option>
-                <option value="Krossare" data-eng="Bruiser">Krossare</option>
-                <option value="Skrotskalle" data-eng="Gearhead">Skrotskalle</option>
-                <option value="Zonstrykare" data-eng="Ranger">Zonstrykare</option>
-                <option value="Fixare" data-eng="Scrounger">Fixare</option>
-                <option value="Mutant med hund" data-eng="Mutant with dog">Mutant med hund</option>
-                <option value="Krönikör" data-eng="Chronicler">Krönikör</option>
-                <option value="Boss">Boss</option>
-                <option value="Träl" data-eng="Slave">Träl</option>
-            </select>
-            <div>
-                <div class="inline">
-                    <label for="experience" data-eng="Experience" class="small">Erfarenhet</label>
-                    <input id="experience" type="number" min="0" class="small" data-save-as="Erfarenhet" />
-                </div>
-                <div class="inline">
-                    <label for="total-experience" data-eng="Total" class="small">Totalt</label>
-                    <input id="total-experience" type="number" disabled class="small" />
-                </div>
-            </div>
-            <h3 data-eng="Base stats">Grundegenskaper</h3>
-            <div class="stats">
-                <table>
-                    <tr>
-                        <td>
-                            <label for="stat-strength" class="small" lang="sv-SE" data-eng="Strength">Styrka</label>
-                        </td>
-                        <td>
-                            <input id="stat-strength" class="saved small color-base" type="number" size="1"
-                                data-name="Styrka" data-abbr="STY" data-traumaref="#trauma-strength"
-                                data-save-as="Styrka" min="1" max="6" />
-                        </td>
-                        <td>-</td>
-                        <td>
-                            <input id="trauma-strength" class="saved small" type="number" size="1" data-save-as="Skada"
-                                min="0" />
-                        </td>
-                        <td>
-                            <label for="trauma-strength" data-eng="Damage">Skada</label>
-                        </td>
-                        <td>
-                            <button class="roll-stat" data-statref="#stat-strength"
-                                data-modref="#modifier-stat">🎲</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="stat-agility" data-eng="Agility">Kyla</label>
-                        </td>
-                        <td>
-                            <input id="stat-agility" class="saved small color-base" type="number" size="1"
-                                data-name="Kyla" data-abbr="KYL" data-traumaref="#trauma-agility" data-save-as="Kyla"
-                                min="1" max="6" />
-                        </td>
-                        <td>-</td>
-                        <td>
-                            <input id="trauma-agility" class="saved small" type="number" size="1" data-save-as="Stress"
-                                min="0" />
-                        </td>
-                        <td>
-                            <label for="trauma-agility">Stress</label>
-                        </td>
-                        <td>
-                            <button class="roll-stat" data-statref="#stat-agility"
-                                data-modref="#modifier-stat">🎲</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="stat-wits" data-eng="Wits">Skärpa</label>
-                        </td>
-                        <td>
-                            <input id="stat-wits" class="saved small color-base" type="number" size="1"
-                                data-name="Skärpa" data-abbr="SKP" data-traumaref="#trauma-wits" data-save-as="Skärpa"
-                                min="1" max="6" />
-                        </td>
-                        <td>-</td>
-                        <td>
-                            <input id="trauma-wits" class="saved small" type="number" size="1" data-save-as="Förvirring"
-                                min="0" />
-                        </td>
-                        <td>
-                            <label for="trauma-wits" data-eng="Confusion">Förvirring</label>
-                        </td>
-                        <td>
-                            <button class="roll-stat" data-statref="#stat-wits" data-modref="#modifier-stat">🎲</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="stat-empathy" data-eng="Empathy">Känsla</label>
-                        </td>
-                        <td>
-                            <input id="stat-empathy" class="saved small color-base" type="number" size="1"
-                                data-name="Känsla" data-abbr="KNS" data-traumaref="#trauma-empathy"
-                                data-save-as="Känsla" min="1" max="6" />
-                        </td>
-                        <td>-</td>
-                        <td>
-                            <input id="trauma-empathy" class="saved small" type="number" size="1" data-save-as="Tvivel"
-                                min="0" />
-                        </td>
-                        <td>
-                            <label for="trauma-empathy" data-eng="Doubt">Tvivel</label>
-                        </td>
-                        <td>
-                            <button class="roll-stat" data-statref="#stat-empathy"
-                                data-modref="#modifier-stat">🎲</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="5">
-                            <hr />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="3"></td>
-                        <td><input id="modifier-stat" class="small mod" type="number" /></td>
-                        <td><label for="modifier-stat" data-eng="Modifier">Modifikation</label></td>
-                    </tr>
-                </table>
-            </div>
-            <h3 data-eng="Miscellaneous">Övrigt</h3>
-            <div>
-                <label for="rot" data-eng="Rot">Röta</label>
-                <input id="rot" type="number" min="0" class="small" data-save-as="Röta" />
-                <label for="permanent-rot">+&nbsp;Permanent</label>
-                <input id="permanent-rot" type="number" min="0" class="small" data-save-as="Permanent röta" />
-            </div>
+            <table>
+                <tr>
+                    <td>
+                        <h3 data-eng="Name">Namn</h3>
+                        <input id="name" type="text" data-save-as="Namn" />
+                    </td>
+                    <td>
+                        <h3 data-eng="Model">Modell</h3>
+                        <select id="model" class="job" data-save-as="Modell">
+                            <option value="" selected></option>
+                            <option value="Industrirobot" data-eng="Manufacture robot">Industrirobot</option>
+                            <option value="Säkerhetsrobot" data-eng="Security robot">Säkerhetsrobot</option>
+                            <option value="Protokollrobot" data-eng="Protocol robot">Protokollrobot</option>
+                            <option value="Stridsrobot" data-eng="Battle robot">Stritsrobot</option>
+                            <option value="Kompanjonsmodell" data-eng="Companion model">Kompanjonsmodell</option>
+                            <option value="Samordningsmodell" data-eng="Coordination model">Samordningsmodell</option>
+                            <option value="Städrobot" data-eng="Cleaning robot">Städrobot</option>
+                            <option value="Skrotrobot" data-eng="Scrap robot">Skrotrobot</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <div class="inline">
+                            <label for="experience" data-eng="Experience" class="small">Erfarenhet</label>
+                            <input id="experience" type="number" min="0" class="small" data-save-as="Erfarenhet" />
+                        </div>
+                        <div class="inline">
+                            <label for="total-experience" data-eng="Total" class="small">Totalt</label>
+                            <input id="total-experience" type="number" disabled class="small" />
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <th colspan="8">
+                        <h3 data-eng="Chassis">Chassi</h3>
+                    </th>
+                </tr>
+                <tr>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <th>SRV</th>
+                    <th>STB</th>
+                    <th>PRC</th>
+                    <th>NTV</th>
+                    <th>Skydd</th>
+                    <th>Moduler</th>
+                </tr>
+                <tr>
+                    <th class="align-right">
+                        <label for="chassis-head-name" data-eng="Head">Huvud</label>
+                    </th>
+                    <td>
+                        <input id="chassis-head-name" data-save-as="Huvud.Namn" />
+                    </td>
+                    <td>
+                        <input id="chassis-head-srv" class="small" type="number" min="0" data-sum-into="stat-strength"
+                            data-save-as="Huvud.Servo" />
+                    </td>
+                    <td>
+                        <input id="chassis-head-stb" class="small" type="number" min="0" data-sum-into="stat-agility"
+                            data-save-as="Huvud.Stabilitet" />
+                    </td>
+                    <td>
+                        <input id="chassis-head-prc" class="small" type="number" min="0" data-sum-into="stat-wits"
+                            data-save-as="Huvud.Processor" />
+                    </td>
+                    <td>
+                        <input id="chassis-head-ntv" class="small" type="number" min="0" data-sum-into="stat-empathy"
+                            data-save-as="Huvud.Nätverk" />
+                    </td>
+                    <td>
+                        <input id="chassis-head-protection" class="small" type="number" min="0"
+                            data-sum-into="protection" data-save-as="Huvud.Skyddsvärde" />
+                    </td>
+                    <td>
+                        <input id="chassis-head-modules" class="small" type="number" min="0" data-sum-into="modules"
+                            data-save-as="Huvud.Moduler" />
+                    </td>
+                </tr>
+                <tr>
+                    <th class="align-right">
+                        <label for="chassis-torso-name" data-eng="Torso">Bål</label>
+                    </th>
+                    <td>
+                        <input id="chassis-torso-name" data-save-as="Bål.Namn" />
+                    </td>
+                    <td>
+                        <input id="chassis-torso-srv" class="small" type="number" min="0" data-sum-into="stat-strength"
+                            data-save-as="Bål.Servo" />
+                    </td>
+                    <td>
+                        <input id="chassis-torso-stb" class="small" type="number" min="0" data-sum-into="stat-agility"
+                            data-save-as="Bål.Stabilitet" />
+                    </td>
+                    <td>
+                        <input id="chassis-torso-prc" class="small" type="number" min="0" data-sum-into="stat-wits"
+                            data-save-as="Bål.Processor" />
+                    </td>
+                    <td>
+                        <input id="chassis-torso-ntv" class="small" type="number" min="0" data-sum-into="stat-empathy"
+                            data-save-as="Bål.Nätverk" />
+                    </td>
+                    <td>
+                        <input id="chassis-torso-protection" class="small" type="number" min="0"
+                            data-sum-into="protection" data-save-as="Bål.Skyddsvärde" />
+                    </td>
+                    <td>
+                        <input id="chassis-torso-modules" class="small" type="number" min="0" data-sum-into="modules"
+                            data-save-as="Bål.Moduler" />
+                    </td>
+                </tr>
+                <tr>
+                    <th class="align-right">
+                        <label for="chassis-legs-name" data-eng="Legs">Underrede</label>
+                    </th>
+                    <td>
+                        <input id="chassis-legs-name" data-save-as="Underrede.Namn" />
+                    </td>
+                    <td>
+                        <input id="chassis-legs-srv" class="small" type="number" min="0" data-sum-into="stat-strength"
+                            data-save-as="Underrede.Servo" />
+                    </td>
+                    <td>
+                        <input id="chassis-legs-stb" class="small" type="number" min="0" data-sum-into="stat-agility"
+                            data-save-as="Underrede.Stabilitet" />
+                    </td>
+                    <td>
+                        <input id="chassis-legs-prc" class="small" type="number" min="0" data-sum-into="stat-wits"
+                            data-save-as="Underrede.Processor" />
+                    </td>
+                    <td>
+                        <input id="chassis-legs-ntv" class="small" type="number" min="0" data-sum-into="stat-empathy"
+                            data-save-as="Underrede.Nätverk" />
+                    </td>
+                    <td>
+                        <input id="chassis-legs-protection" class="small" type="number" min="0"
+                            data-sum-into="protection" data-save-as="Underrede.Skyddsvärde" />
+                    </td>
+                    <td>
+                        <input id="chassis-legs-modules" class="small" type="number" min="0" data-sum-into="modules"
+                            data-save-as="Underrede.Moduler" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>
+                        <input id="stat-strength" class="saved small color-base" type="number" size="1"
+                            data-name="Styrka" data-abbr="STY" data-traumaref="#trauma-strength" readonly />
+                    </td>
+                    <td>
+                        <input id="stat-agility" class="saved small color-base" type="number" size="1" data-name="Kyla"
+                            data-abbr="KYL" data-traumaref="#trauma-agility" readonly />
+                    </td>
+                    <td>
+                        <input id="stat-wits" class="saved small color-base" type="number" size="1" data-name="Skärpa"
+                            data-abbr="SKP" data-traumaref="#trauma-wits" readonly />
+                    </td>
+                    <td>
+                        <input id="stat-empathy" class="saved small color-base" type="number" size="1"
+                            data-name="Känsla" data-abbr="KNS" data-traumaref="#trauma-empathy" readonly />
+                    </td>
+                    <td>
+                        <input id="protection" class="small color-gear" type="number" size="1" readonly />
+                    </td>
+                    <td><input id="modules" class="small" type="number" size="1" readonly /></td>
+                </tr>
+                <tr>
+                    <th class="align-right" colspan="2">Skada</th>
+                    <td>
+                        <input id="trauma-strength" class="saved small" type="number" size="1" data-save-as="Skada"
+                            min="0" />
+                    </td>
+                    <td>
+                        <input id="trauma-agility" class="saved small" type="number" size="1" data-save-as="Stress"
+                            min="0" />
+                    </td>
+                    <td>
+                        <input id="trauma-wits" class="saved small" type="number" size="1" data-save-as="Förvirring"
+                            min="0" />
+                    </td>
+                    <td>
+                        <input id="trauma-empathy" class="saved small" type="number" size="1" data-save-as="Tvivel"
+                            min="0" />
+                    </td>
+                    <td>
+                        <input id="damage-protection" class="small" type="number" size="1"
+                            data-save-as="Skada (Skyddsvärde)" min="0" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>
+                        <button class="roll-stat" data-statref="#stat-strength" data-modref="#modifier-stat">🎲</button>
+                    </td>
+                    <td>
+                        <button class="roll-stat" data-statref="#stat-agility" data-modref="#modifier-stat">🎲</button>
+                    </td>
+                    <td>
+                        <button class="roll-stat" data-statref="#stat-wits" data-modref="#modifier-stat">🎲</button>
+                    </td>
+                    <td>
+                        <button class="roll-stat" data-statref="#stat-empathy" data-modref="#modifier-stat">🎲</button>
+                    </td>
+                    <td>
+                        <button id="roll-protection">🎲</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="8">
+                        <hr />
+                    </td>
+                </tr>
+                <tr>
+                    <th class="align-right" colspan="2"><label for="modifier-stat"
+                            data-eng="Modifier">Modifikation</label></td>
+                    <td><input id="modifier-stat" class="small mod" type="number" /></td>
+                </tr>
+            </table>
         </div>
         <div id="tab-skills">
-            <h3 data-eng="Skills">Färdigheter</h3>
+            <h3 data-eng="Programs">Program</h3>
             <div class="skills">
                 <table>
                     <tr>
                         <td>
-                            <label for="skill-endure" data-eng="Endure (Str)">Kämpa på (Sty)</label>
+                            <label for="skill-endure" data-eng="Endure (Str)">Överbelasta/Kämpa på (SRV)</label>
                         </td>
                         <td>
                             <input id="skill-endure" data-skill="endure" class="saved small color-skill skill"
@@ -236,7 +304,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <label for="skill-force" data-eng="Force (Str)">Ta krafttag (Sty)</label>
+                            <label for="skill-force" data-eng="Force (Str)">Forcera/Ta krafttag (SRV)</label>
                         </td>
                         <td>
                             <input id="skill-force" data-skill="force" class="saved small color-skill skill"
@@ -265,7 +333,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <label for="skill-fight" data-eng="Fight (Str)">Slåss (Sty)</label>
+                            <label for="skill-fight" data-eng="Fight (Str)">Bekämpa/Slåss (SRV)</label>
                         </td>
                         <td>
                             <input id="skill-fight" data-skill="fight" class="saved small color-skill skill"
@@ -317,7 +385,7 @@
 
                     <tr>
                         <td>
-                            <label for="skill-sneak" data-eng="Sneak (Agi)">Smyga (Kyl)</label>
+                            <label for="skill-sneak" data-eng="Sneak (Agi)">Infiltrera/Smyga (STB)</label>
                         </td>
                         <td>
                             <input id="skill-sneak" data-skill="sneak" class="saved small color-skill skill"
@@ -345,7 +413,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <label for="skill-move" data-eng="Move (Agi)">Fly (Kyl)</label>
+                            <label for="skill-move" data-eng="Move (Agi)">Retirera/Fly (STB)</label>
                         </td>
                         <td>
                             <input id="skill-move" data-skill="move" class="saved small color-skill skill" type="number"
@@ -381,7 +449,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <label for="skill-shoot" data-eng="Shoot (Agi)">Skjuta (Kyl)</label>
+                            <label for="skill-shoot" data-eng="Shoot (Agi)">Beskjuta/Skjuta (STB)</label>
                         </td>
                         <td>
                             <input id="skill-shoot" data-skill="shoot" class="saved small color-skill skill"
@@ -410,7 +478,7 @@
 
                     <tr>
                         <td>
-                            <label for="skill-scout" data-eng="Scout (Wit)">Speja (Skp)</label>
+                            <label for="skill-scout" data-eng="Scout (Wit)">Sondera/Speja (PRC)</label>
                         </td>
                         <td>
                             <input id="skill-scout" data-skill="scout" class="saved small color-skill skill"
@@ -448,7 +516,8 @@
                     </tr>
                     <tr>
                         <td>
-                            <label for="skill-comprehend" data-eng="Comprehend (Wit)">Förstå sig på (Skp)</label>
+                            <label for="skill-comprehend" data-eng="Comprehend (Wit)">Datasöka/Förstå sig på
+                                (PRC)</label>
                         </td>
                         <td>
                             <input id="skill-comprehend" data-skill="comprehend" class="saved small color-skill skill"
@@ -489,7 +558,8 @@
                     </tr>
                     <tr>
                         <td>
-                            <label for="skill-knowTheZone" data-eng="Know the Zone (Wit)">Känna Zonen (Skp)</label>
+                            <label for="skill-knowTheZone" data-eng="Know the Zone (Wit)">Analysera/Känna Zonen
+                                (PRC)</label>
                         </td>
                         <td>
                             <input id="skill-knowTheZone" data-skill="knowTheZone" class="saved small color-skill skill"
@@ -522,7 +592,8 @@
 
                     <tr>
                         <td>
-                            <label for="skill-senseEmotion" data-eng="Sense emotion (Emp)">Genomskåda (Kns)</label>
+                            <label for="skill-senseEmotion" data-eng="Sense emotion (Emp)">Ifrågasätta/Genomskåda
+                                (NTV)</label>
                         </td>
                         <td>
                             <input id="skill-senseEmotion" data-skill="senseEmotion"
@@ -556,7 +627,128 @@
                     </tr>
                     <tr>
                         <td>
-                            <label for="skill-manipulate" data-eng="Manipulate (Emp)">Manipulera (Kns)</label>
+                            <label for="skill-interact" data-eng="Interact (Emp)">Interagera (NTV)</label>
+                        </td>
+                        <td>
+                            <input id="skill-interact" data-skill="interact" class="saved small color-skill skill"
+                                type="number" size="1" data-name="Interagera" data-save-as="Interagera" min="0"
+                                max="5" />
+                        </td>
+                        <td>
+                            <button class="roll-skill" data-statref="#stat-empathy" data-skillref="#skill-interact"
+                                data-modref="#modifier-skill">🎲</button>
+                        </td>
+                        <td>
+                            <select id="manipulate-gear" class="skill-gear color-gear" data-skill="interact">
+                                <option value="0">&ndash;</option>
+                                <optgroup class="skill-gear-from-inventory"></optgroup>
+                                <optgroup class="skill-gear-generic"></optgroup>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="skill-repair" data-eng="Repair (NTW)">Reparera (NTV)</label>
+                        </td>
+                        <td>
+                            <input id="skill-repair" data-skill="repair" class="saved small color-skill skill"
+                                type="number" size="1" data-name="Reparera" data-save-as="Reparera" min="0" max="5" />
+                        </td>
+                        <td>
+                            <button class="roll-skill" data-statref="#stat-empathy" data-skillref="#skill-repair"
+                                data-modref="#modifier-skill">🎲</button>
+                        </td>
+                        <td>
+                            <select id="heal-gear" class="skill-gear color-gear" data-skill="repair">
+                                <option value="0">&ndash;</option>
+                                <optgroup class="skill-gear-from-inventory"></optgroup>
+                                <optgroup class="skill-gear-generic"></optgroup>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr class="toggled-by-job" data-active-for-job="Industrirobot">
+                        <td>
+                            <label for="skill-manufacture" data-eng="Manufacture (SRV)">Tillverka (SRV)</label>
+                        </td>
+                        <td>
+                            <input id="skill-manifacture" data-skill="manifacture" class="saved small color-skill skill"
+                                type="number" size="1" data-name="Tillverka" data-save-as="Tillverka" min="0" max="5" />
+                        </td>
+                        <td>
+                            <button class="roll-skill" data-statref="#stat-strength" data-skillref="#skill-manifacture"
+                                data-modref="#modifier-skill">🎲</button>
+                        </td>
+                        <td>
+                            <select id="manifacture-gear" class="skill-gear color-gear" data-skill="manifacture">
+                                <option value="0">&ndash;</option>
+                                <optgroup class="skill-gear-from-inventory"></optgroup>
+                                <optgroup class="skill-gear-generic"></optgroup>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr class="toggled-by-job" data-active-for-job="Säkerhetsrobot">
+                        <td>
+                            <label for="skill-protect" data-eng="Protect (SRV)">Skydda (SRV)</label>
+                        </td>
+                        <td>
+                            <input id="skill-protect" data-skill="protect" class="saved small color-skill skill"
+                                type="number" size="1" data-name="Skydda" data-save-as="Skydda" min="0" max="5" />
+                        </td>
+                        <td>
+                            <button class="roll-skill" data-statref="#stat-strength" data-skillref="#skill-protect"
+                                data-modref="#modifier-skill">🎲</button>
+                        </td>
+                        <td>
+                            <select id="protect-gear" class="skill-gear color-gear" data-skill="protect">
+                                <option value="0">&ndash;</option>
+                                <optgroup class="skill-gear-from-inventory"></optgroup>
+                                <optgroup class="skill-gear-generic"></optgroup>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr class="toggled-by-job" data-active-for-job="Protokollrobot">
+                        <td>
+                            <label for="skill-calculate" data-eng="Calculate (PRC)">Kalkylera (PRC)</label>
+                        </td>
+                        <td>
+                            <input id="skill-calculate" data-skill="calculate" class="saved small color-skill skill"
+                                type="number" size="1" data-name="Kalkylera" data-save-as="Kalkylera" min="0" max="5" />
+                        </td>
+                        <td>
+                            <button class="roll-skill" data-statref="#stat-wits" data-skillref="#skill-calculate"
+                                data-modref="#modifier-skill">🎲</button>
+                        </td>
+                        <td>
+                            <select id="calculate-gear" class="skill-gear color-gear" data-skill="calculate">
+                                <option value="0">&ndash;</option>
+                                <optgroup class="skill-gear-from-inventory"></optgroup>
+                                <optgroup class="skill-gear-generic"></optgroup>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr class="toggled-by-job" data-active-for-job="Stridsrobot">
+                        <td>
+                            <label for="skill-target" data-eng="Target (STB)">Målsöka (STB)</label>
+                        </td>
+                        <td>
+                            <input id="skill-target" data-skill="target" class="saved small color-skill skill"
+                                type="number" size="1" data-name="Målsöka" data-save-as="Målsöka" min="0" max="5" />
+                        </td>
+                        <td>
+                            <button class="roll-skill" data-statref="#stat-agility" data-skillref="#skill-target"
+                                data-modref="#modifier-skill">🎲</button>
+                        </td>
+                        <td>
+                            <select id="target-gear" class="skill-gear color-gear" data-skill="target">
+                                <option value="0">&ndash;</option>
+                                <optgroup class="skill-gear-from-inventory"></optgroup>
+                                <optgroup class="skill-gear-generic"></optgroup>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr class="toggled-by-job" data-active-for-job="Kompanjonsmodell">
+                        <td>
+                            <label for="skill-manipulate" data-eng="Manipulate (NTW)">Manipulera (NTV)</label>
                         </td>
                         <td>
                             <input id="skill-manipulate" data-skill="manipulate" class="saved small color-skill skill"
@@ -574,289 +766,67 @@
                                 <optgroup class="skill-gear-generic"></optgroup>
                             </select>
                         </td>
-                        <td>
-                            <span data-toggled-by="#talent-laborer">
-                                <label for="mod-laborer-manipulate"><span data-eng="Project">Projekt</span>
-                                    <input type="checkbox" id="mod-laborer-manipulate" class="conditional-mod"
-                                        data-skillref="#skill-manipulate" data-mod-name="Knegare" value="2" />
-                                </label>
-                            </span>
-                        </td>
                     </tr>
-                    <tr>
+                    <tr class="toggled-by-job" data-active-for-job="Samordningsmodell">
                         <td>
-                            <label for="skill-heal" data-eng="Heal (Emp)">Vårda (Kns)</label>
+                            <label for="skill-coordinate" data-eng="Coordinate (NTW)">Koordinera (NTV)</label>
                         </td>
                         <td>
-                            <input id="skill-heal" data-skill="heal" class="saved small color-skill skill" type="number"
-                                size="1" data-name="Vårda" data-save-as="Vårda" min="0" max="5" />
-                        </td>
-                        <td>
-                            <button class="roll-skill" data-statref="#stat-empathy" data-skillref="#skill-heal"
-                                data-modref="#modifier-skill">🎲</button>
-                        </td>
-                        <td>
-                            <select id="heal-gear" class="skill-gear color-gear" data-skill="heal">
-                                <option value="0">&ndash;</option>
-                                <optgroup class="skill-gear-from-inventory"></optgroup>
-                                <optgroup class="skill-gear-generic"></optgroup>
-                            </select>
-                        </td>
-                        <td>
-                            <span data-toggled-by="#talent-physician">
-                                <label for="mod-physician"><span data-eng="Damage">Skada</span>
-                                    <input type="checkbox" id="mod-physician" class="conditional-mod"
-                                        data-skillref="#skill-heal" data-mod-name="Anatomikunnig" value="1" />
-                                </label>
-                            </span>
-                            <span data-toggled-by="#talent-laborer">
-                                <label for="mod-laborer-heal"><span data-eng="Project">Projekt</span>
-                                    <input type="checkbox" id="mod-laborer-heal" class="conditional-mod"
-                                        data-skillref="#skill-heal" data-mod-name="Knegare" value="2" />
-                                </label>
-                            </span>
-                        </td>
-                    </tr>
-                    <tr class="toggled-by-job" data-active-for-job="Krossare">
-                        <td>
-                            <label for="skill-intimidate" data-eng="Intimidate (Str)">Mucka (Sty)</label>
-                        </td>
-                        <td>
-                            <input id="skill-intimidate" data-skill="intimidate" class="saved small color-skill skill"
-                                type="number" size="1" data-name="Mucka" data-save-as="Mucka" min="0" max="5" />
-                        </td>
-                        <td>
-                            <button class="roll-skill" data-statref="#stat-strength" data-skillref="#skill-intimidate"
-                                data-modref="#modifier-skill">🎲</button>
-                        </td>
-                        <td>
-                            <select id="intimidate-gear" class="skill-gear color-gear" data-skill="intimidate">
-                                <option value="0">&ndash;</option>
-                                <optgroup class="skill-gear-from-inventory"></optgroup>
-                                <optgroup class="skill-gear-generic"></optgroup>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr class="toggled-by-job" data-active-for-job="Skrotskalle">
-                        <td>
-                            <label for="skill-tinker" data-eng="Tinker (Wit)">Mecka (Skp)</label>
-                        </td>
-                        <td>
-                            <input id="skill-tinker" data-skill="tinker" class="saved small color-skill skill"
-                                type="number" size="1" data-name="Mecka" data-save-as="Mecka" min="0" max="5" />
-                        </td>
-                        <td>
-                            <button class="roll-skill" data-statref="#stat-wits" data-skillref="#skill-tinker"
-                                data-modref="#modifier-skill">🎲</button>
-                        </td>
-                        <td>
-                            <select id="tinker-gear" class="skill-gear color-gear" data-skill="tinker">
-                                <option value="0">&ndash;</option>
-                                <optgroup class="skill-gear-from-inventory"></optgroup>
-                                <optgroup class="skill-gear-generic"></optgroup>
-                            </select>
-                        </td>
-                        <td>
-                            <span data-toggled-by="#talent-motorhead">
-                                <label for="mod-tinker-with-vehicle"><span data-eng="Vehicle">Fordon</span>
-                                    <input type="checkbox" id="mod-tinker-with-vehicle" class="conditional-mod"
-                                        data-skillref="#skill-tinker" data-mod-name="Motorskalle" value="1" />
-                                </label>
-                            </span>
-                            <span data-toggled-by="#talent-fixer">
-                                <label for="mod-repair"><span data-eng="Repairs">Reparation</span>
-                                    <input type="checkbox" id="mod-repair" class="conditional-mod"
-                                        data-skillref="#skill-tinker" data-mod-name="Reparatör" value="1" />
-                                </label>
-                            </span>
-                            <span data-toggled-by="#talent-inventor">
-                                <label for="mod-invent"><span data-eng="Invention">Hemmabygge</span>
-                                    <input type="checkbox" id="mod-invent" class="conditional-mod"
-                                        data-skillref="#skill-tinker" data-mod-name="Uppfinnare" value="1" />
-                                </label>
-                            </span>
-                        </td>
-                    </tr>
-                    <tr class="toggled-by-job" data-active-for-job="Zonstrykare">
-                        <td>
-                            <label for="skill-navigate" data-eng="Navigate (Agi)">Leda vägen (Kyl)</label>
-                        </td>
-                        <td>
-                            <input id="skill-navigate" data-skill="navigate" class="saved small color-skill skill"
-                                type="number" size="1" data-name="Leda vägen" data-save-as="Leda vägen" min="0"
+                            <input id="skill-coordinate" data-skill="coordinate" class="saved small color-skill skill"
+                                type="number" size="1" data-name="Koordinera" data-save-as="Koordinera" min="0"
                                 max="5" />
                         </td>
                         <td>
-                            <button class="roll-skill" data-statref="#stat-agility" data-skillref="#skill-navigate"
+                            <button class="roll-skill" data-statref="#stat-empathy" data-skillref="#skill-coordinate"
                                 data-modref="#modifier-skill">🎲</button>
                         </td>
                         <td>
-                            <select id="navigate-gear" class="skill-gear color-gear" data-skill="navigate">
+                            <select id="coordinate-gear" class="skill-gear color-gear" data-skill="coordinate">
                                 <option value="0">&ndash;</option>
                                 <optgroup class="skill-gear-from-inventory"></optgroup>
                                 <optgroup class="skill-gear-generic"></optgroup>
                             </select>
                         </td>
-                        <td>
-                            <span data-toggled-by="#talent-treasure-hunter">
-                                <strong data-eng="Treasure hunter">Sakletare</strong>
-                            </span>
-                        </td>
-                        <td>
-                            <span data-toggled-by="#talent-rot-nose">
-                                <strong data-eng="Rot nose">Rötnos</strong>
-                            </span>
-                        </td>
                     </tr>
-                    <tr class="toggled-by-job" data-active-for-job="Fixare">
+                    <tr class="toggled-by-job" data-active-for-job="Städrobot">
                         <td>
-                            <label for="skill-scrounge" data-eng="Scrounge (Emp)">Schackra (Kns)</label>
+                            <label for="skill-clean" data-eng="Clean (STB)">Rengöra (STB)</label>
                         </td>
                         <td>
-                            <input id="skill-scrounge" data-skill="scrounge" class="saved small color-skill skill"
-                                type="number" size="1" data-name="Schackra" data-save-as="Schackra" min="0" max="5" />
+                            <input id="skill-clean" data-skill="clean" class="saved small color-skill skill"
+                                type="number" size="1" data-name="Rengöra" data-save-as="Rengöra" min="0" max="5" />
                         </td>
                         <td>
-                            <button class="roll-skill" data-statref="#stat-empathy" data-skillref="#skill-scrounge"
+                            <button class="roll-skill" data-statref="#stat-agility" data-skillref="#skill-clean"
                                 data-modref="#modifier-skill">🎲</button>
                         </td>
                         <td>
-                            <select id="scrounge-gear" class="skill-gear color-gear" data-skill="scrounge">
+                            <select id="clean-gear" class="skill-gear color-gear" data-skill="clean">
                                 <option value="0">&ndash;</option>
                                 <optgroup class="skill-gear-from-inventory"></optgroup>
                                 <optgroup class="skill-gear-generic"></optgroup>
                             </select>
                         </td>
                     </tr>
-                    <tr class="toggled-by-job" data-active-for-job="Mutant med hund">
+                    <tr class="toggled-by-job" data-active-for-job="Skrotrobot">
                         <td>
-                            <label for="skill-animal-handling" data-eng="Animal handling (Agi)">Bussa på (Kyl)</label>
+                            <label for="skill-recycle" data-eng="Recycle (PRC)">Återanvända (PRC)</label>
                         </td>
                         <td>
-                            <input id="skill-animal-handling" data-skill="animal-handling"
-                                class="saved small color-skill skill" type="number" size="1" data-name="Bussa på"
-                                data-save-as="Bussa på" min="0" max="5" />
-                        </td>
-                        <td>
-                            <button class="roll-skill" data-statref="#stat-agility"
-                                data-skillref="#skill-animal-handling" data-modref="#modifier-skill">🎲</button>
-                        </td>
-                        <td>
-                            <select id="animal-handling-gear" class="skill-gear color-gear"
-                                data-skill="animal-handling">
-                                <option value="0">&ndash;</option>
-                                <optgroup class="skill-gear-from-inventory"></optgroup>
-                                <optgroup class="skill-gear-generic"></optgroup>
-                            </select>
-                        </td>
-                        <td>
-                            <span data-toggled-by="#talent-bloodhound">
-                                <label for="mod-track"><span data-eng="Tracking">Spårning</span>
-                                    <input type="checkbox" id="mod-track" class="conditional-mod"
-                                        data-skillref="#skill-animal-handling" data-mod-name="Blodhund" value="2" />
-                                </label>
-                            </span>
-                        </td>
-                    </tr>
-                    <tr class="toggled-by-job" data-active-for-job="Krönikör">
-                        <td>
-                            <label for="skill-inspire" data-eng="Inspire (Emp)">Inspirera (Kns)</label>
-                        </td>
-                        <td>
-                            <input id="skill-inspire" data-skill="inspire" class="saved small color-skill skill"
-                                type="number" size="1" data-name="Inspirera" data-save-as="Inspirera" min="0" max="5" />
-                        </td>
-                        <td>
-                            <button class="roll-skill" data-statref="#stat-empathy" data-skillref="#skill-inspire"
-                                data-modref="#modifier-skill">🎲</button>
-                        </td>
-                        <td>
-                            <select id="inspire-gear" class="skill-gear color-gear" data-skill="inspire">
-                                <option value="0">&ndash;</option>
-                                <optgroup class="skill-gear-from-inventory"></optgroup>
-                                <optgroup class="skill-gear-generic"></optgroup>
-                            </select>
-                        </td>
-                        <td>
-                            <span data-toggled-by="#talent-warmonger">
-                                <label for="mod-warmonger"><span data-eng="Fight/Shoot">Slåss/Skjuta</span>
-                                    <input type="checkbox" id="mod-warmonger" class="conditional-mod"
-                                        data-skillref="#skill-inspire" data-mod-name="Våldshetsare" value="1" />
-                                </label>
-                            </span>
-                            <span data-toggled-by="talent-artist">
-                                <strong>Artist</strong>
-                            </span>
-                        </td>
-                    </tr>
-                    <tr class="toggled-by-job" data-active-for-job="Boss">
-                        <td>
-                            <label for="skill-command" data-eng="Command (Emp)">Kommendera (Kns)</label>
-                        </td>
-                        <td>
-                            <input id="skill-command" data-skill="command" class="saved small color-skill skill"
-                                type="number" size="1" data-name="Kommendera" data-save-as="Kommendera" min="0"
+                            <input id="skill-recycle" data-skill="recycle" class="saved small color-skill skill"
+                                type="number" size="1" data-name="Återanvända" data-save-as="Återanvända" min="0"
                                 max="5" />
                         </td>
                         <td>
-                            <button class="roll-skill" data-statref="#stat-empathy" data-skillref="#skill-command"
+                            <button class="roll-skill" data-statref="#stat-wits" data-skillref="#skill-recycle"
                                 data-modref="#modifier-skill">🎲</button>
                         </td>
                         <td>
-                            <select id="command-gear" class="skill-gear color-gear" data-skill="command">
+                            <select id="recycle-gear" class="skill-gear color-gear" data-skill="recycle">
                                 <option value="0">&ndash;</option>
                                 <optgroup class="skill-gear-from-inventory"></optgroup>
                                 <optgroup class="skill-gear-generic"></optgroup>
                             </select>
-                        </td>
-                        <td>
-                            <span data-toggled-by="#talent-protector-of-the-ark">
-                                <label for="mod-protector-of-the-ark"><span
-                                        data-eng="Protection racket">Beskyddarvh.</span>
-                                    <input type="checkbox" id="mod-protector-of-the-ark" class="conditional-mod"
-                                        data-skillref="#skill-command" data-mod-name="Arkens beskyddare" value="2" />
-                                </label>
-                            </span>
-                            <span data-toggled-by="#talent-commander">
-                                <label for="mod-commander"><span data-eng="Not protection racket">Ej beskyddarvh.</span>
-                                    <input type="checkbox" id="mod-commander" class="conditional-mod"
-                                        data-skillref="#skill-command" data-mod-name="Kommendant" value="2" />
-                                </label>
-                            </span>
-                        </td>
-                    </tr>
-                    <tr class="toggled-by-job" data-active-for-job="Träl">
-                        <td>
-                            <label for="skill-persist" data-eng="Persist (Agi)">Uthärda (Kyl)</label>
-                        </td>
-                        <td>
-                            <input id="skill-persist" data-skill="persist" class="saved small color-skill skill"
-                                type="number" size="1" data-name="Uthärda" data-save-as="Uthärda" min="0" max="5" />
-                        </td>
-                        <td>
-                            <button class="roll-skill" data-statref="#stat-agility" data-skillref="#skill-persist"
-                                data-modref="#modifier-skill">🎲</button>
-                        </td>
-                        <td>
-                            <select id="persist-gear" class="skill-gear color-gear" data-skill="persist">
-                                <option value="0">&ndash;</option>
-                                <optgroup class="skill-gear-from-inventory"></optgroup>
-                                <optgroup class="skill-gear-generic"></optgroup>
-                            </select>
-                        </td>
-                        <td>
-                            <span data-toggled-by="#talent-unfazed">
-                                <label for="mod-unfazed"><span data-eng="Doubt">Tvivel</span>
-                                    <input type="checkbox" id="mod-unfazed" class="conditional-mod"
-                                        data-skillref="#skill-persist" data-mod-name="Oberörd" value="1" />
-                                </label>
-                            </span>
-                            <span data-toggled-by="#talent-tank">
-                                <label for="mod-tank"><span data-eng="Damage">Skada</span>
-                                    <input type="checkbox" id="mod-tank" class="conditional-mod"
-                                        data-skillref="#skill-persist" data-mod-name="Slagtålig" value="1" />
-                                </label>
-                            </span>
                         </td>
                     </tr>
                     <tr>
@@ -1339,7 +1309,6 @@
                 </table>
             </div>
         </div>
-
         <div id="tab-combat">
             <h3 data-eng="Combat & Weapons">Strid &amp; Vapen</h3>
             <div class="gear">
@@ -1635,7 +1604,6 @@
                 </select>
             </div>
         </div>
-
         <div id="tab-notes">
             <h3 data-eng="Notes">Anteckningar</h3>
             <div>

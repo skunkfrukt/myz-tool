@@ -50,7 +50,7 @@
     width: 120px;
 }
 
-label.small{
+label.small {
     width: 80px;
     display: inline-block;
 }
@@ -95,7 +95,7 @@ sup {
     color: #c00;
 }
 
-.gear-value{
+.gear-value {
     font-weight: bold;
     color: black;
 }
@@ -134,6 +134,10 @@ table {
     background-color: #eee;
 }
 
-label + input, label + select {
+label+input, label+select {
     margin-left: 5px;
+}
+
+.align-right {
+    text-align: right;
 }
