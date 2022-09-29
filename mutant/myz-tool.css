@@ -141,3 +141,7 @@ label+input, label+select {
 .align-right {
     text-align: right;
 }
+
+input[readonly] {
+    border-style: none;
+}

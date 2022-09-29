@@ -1127,8 +1127,9 @@ function sumInto() {
 
 function rollProtection() {
     var protection = parseIntOrDefault($("#protection").val());
+    var protectionDamage = parseIntOrDefault($("#damage-protection").val());
     var description = '<span class="gear-value">' + protection + "&#x1F3B2; (Skyddsvärde)</span>"
-    rollAndDisplay(0, 0, protection, 0, description);
+    rollAndDisplay(0, 0, Math.max(protection - protectionDamage, 0), 0, description);
 }
 
 $(document).ready(function () {
