@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Robotkrafs</title>
+    <title>Replikantkrafs</title>
     <meta charset="UTF-8" />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -11,8 +11,8 @@
     <!--<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
-    <link rel="stylesheet" href="myz-tool.css?_=57560ca7128f8ab42903b0c1cdc32e215da026b2" />
-    <script src="robot.js?_=12c8b00306e36cfada8529348dcc9e3c00f4e99d"></script>
+    <link rel="stylesheet" href="myz-tool.css?_=65253c54891648e2d1447f00911ac287e09d63ca" />
+    <script src="robot.js?_=f3f19fab44a8bd600c7e9f1b195fa98b6941a6d0"></script>
 </head>
 
 <body>
@@ -844,59 +844,64 @@
             </div>
         </div>
         <div id="tab-talents">
-            <h3 data-eng="Talents">Talanger</h3>
+            <h3 data-eng="Subroutines">Sekundärfunktioner</h3>
             <div>
                 <table>
                     <tr>
                         <td>
                             <div class="controlgroup-vertical">
-                                <!-- UNIMPLEMENTED_TALENT MUCKA +1 stress (beskrivning) -->
-                                <label for="talent-tough-bastard" class="toggled-by-job"
-                                    data-active-for-job="Krossare"><span data-eng="Tough bastard*">Hård jävel*</span>
-                                    <input type="checkbox" id="talent-tough-bastard"
-                                        class="talent check-talent toggles-fields" data-save-as="Hård jävel" />
+                                <label for="talent-builtin-tools" class="toggled-by-job"
+                                    data-active-for-job="Industrirobot">
+                                    <span data-eng="Built-in tools*">Inbyggda verktyg*</span>
+                                    <input type="checkbox" id="talent-builtin-tools"
+                                        class="talent check-talent toggles-fields" data-save-as="Inbyggda verktyg" />
                                 </label>
-                                <!-- UNIMPLEMENTED_TALENT 2 Skada obeväpnad (beskrivning) -->
-                                <label for="talent-kidney-punch" class="toggled-by-job"
-                                    data-active-for-job="Krossare"><span data-eng="Kidney punch*">Njurslag*</span>
-                                    <input type="checkbox" id="talent-kidney-punch"
-                                        class="talent check-talent toggles-fields" data-save-as="Njurslag" />
+                                <label for="talent-mass-production" class="toggled-by-job"
+                                    data-active-for-job="Industrirobot">
+                                    <span data-eng="Mass production*">Massproduktion*</span>
+                                    <input type="checkbox" id="talent-mass-production"
+                                        class="talent check-talent toggles-fields" data-save-as="Massproduktion" />
                                 </label>
-                                <label for="talent-excessive-force" class="toggled-by-job"
-                                    data-active-for-job="Krossare"><span data-eng="Excessive force">Övervåld</span>
-                                    <input type="checkbox" id="talent-excessive-force"
-                                        class="talent check-talent toggles-fields" data-save-as="Övervåld" />
+                                <label for="talent-temperature-resistant" class="toggled-by-job"
+                                    data-active-for-job="Industrirobot">
+                                    <span data-eng="Temperature resistant*">Temperaturtålig*</span>
+                                    <input type="checkbox" id="talent-temperature-resistant"
+                                        class="talent check-talent toggles-fields" data-save-as="Temperaturtålig" />
                                 </label>
 
                                 <label for="talent-motorhead" class="toggled-by-job"
-                                    data-active-for-job="Skrotskalle"><span data-eng="Motorhead">Motorskalle</span>
+                                    data-active-for-job="Säkerhetsrobot">
+                                    <span data-eng="Motorhead">Motorskalle</span>
                                     <input type="checkbox" id="talent-motorhead"
                                         class="talent check-talent toggles-fields" data-save-as="Motorskalle" />
                                 </label>
-                                <label for="talent-fixer" class="toggled-by-job" data-active-for-job="Skrotskalle"><span
-                                        data-eng="Fixer">Reparatör</span>
+                                <label for="talent-fixer" class="toggled-by-job" data-active-for-job="Säkerhetsrobot">
+                                    <span data-eng="Fixer">Reparatör</span>
                                     <input type="checkbox" id="talent-fixer" class="talent check-talent toggles-fields"
                                         data-save-as="Reparatör" />
                                 </label>
                                 <label for="talent-inventor" class="toggled-by-job"
-                                    data-active-for-job="Skrotskalle"><span data-eng="Inventor">Uppfinnare</span>
+                                    data-active-for-job="Säkerhetsrobot">
+                                    <span data-eng="Inventor">Uppfinnare</span>
                                     <input type="checkbox" id="talent-inventor"
                                         class="talent check-talent toggles-fields" data-save-as="Uppfinnare" />
                                 </label>
 
                                 <label for="talent-monster-hunter" class="toggled-by-job"
-                                    data-active-for-job="Zonstrykare"><span
-                                        data-eng="Monster hunter">Monsterjägare</span>
+                                    data-active-for-job="Protokollrobot">
+                                    <span data-eng="Monster hunter">Monsterjägare</span>
                                     <input type="checkbox" id="talent-monster-hunter"
                                         class="talent check-talent toggles-fields" data-save-as="Monsterjägare" />
                                 </label>
                                 <label for="talent-rot-nose" class="toggled-by-job"
-                                    data-active-for-job="Zonstrykare"><span data-eng="Rot nose">Rötnos</span>
+                                    data-active-for-job="Protokollrobot">
+                                    <span data-eng="Rot nose">Rötnos</span>
                                     <input type="checkbox" id="talent-rot-nose"
                                         class="talent check-talent toggles-fields" data-save-as="Rötnos" />
                                 </label>
                                 <label for="talent-treasure-hunter" class="toggled-by-job"
-                                    data-active-for-job="Zonstrykare"><span data-eng="Treasure hunter">Sakletare</span>
+                                    data-active-for-job="Protokollrobot">
+                                    <span data-eng="Treasure hunter">Sakletare</span>
                                     <input type="checkbox" id="talent-treasure-hunter"
                                         class="talent check-talent toggles-fields conditional-mod permanent-mod"
                                         data-skillref="#skill-navigate" data-mod-name="Sakletare" , value="2"
@@ -905,40 +910,41 @@
 
                                 <!-- UNIMPLEMENTED_TALENT Manipulera ger +1 Tvivel (beskrivning) -->
                                 <label for="talent-mean-bastard" class="toggled-by-job"
-                                    data-active-for-job="Fixare"><span data-eng="Mean bastard*">Elak jävel*</span>
+                                    data-active-for-job="Stridsrobot">
+                                    <span data-eng="Mean bastard*">Elak jävel*</span>
                                     <input type="checkbox" id="talent-mean-bastard"
                                         class="talent check-talent toggles-fields" data-save-as="Elak jävel" />
                                 </label>
-                                <label for="talent-leverage" class="toggled-by-job" data-active-for-job="Fixare"><span
-                                        data-eng="Leverage">Hållhake</span>
+                                <label for="talent-leverage" class="toggled-by-job" data-active-for-job="Stridsrobot">
+                                    <span data-eng="Leverage">Hållhake</span>
                                     <input type="checkbox" id="talent-leverage" class="talent check-talent"
                                         data-save-as="Hållhake" />
                                 </label>
                                 <!--UNIMPLEMENTED_TALENT Dubbla resurser av Schackra (beskrivning) -->
                                 <label for="talent-big-spender" class="toggled-by-job"
-                                    data-active-for-job="Fixare"><span data-eng="Big spender*">Storhandlare*</span>
+                                    data-active-for-job="Stridsrobot">
+                                    <span data-eng="Big spender*">Storhandlare*</span>
                                     <input type="checkbox" id="talent-big-spender"
                                         class="talent check-talent toggles-fields" data-save-as="Storhandlare" />
                                 </label>
 
-                                <label for="talent-bloodhound" class="toggled-by-job"
-                                    data-active-for-job="Mutant med hund"><span data-eng="Bloodhound">Blodhund</span>
-                                    <input type="checkbox" id="talent-bloodhound"
-                                        class="talent check-talent toggles-fields" data-save-as="Blodhund" />
+                                <label for="talent-sow-discord" class="toggled-by-job"
+                                    data-active-for-job="Kompanjonsmodell">
+                                    <span data-eng="Sow discord*">Förledarfunktion</span>
+                                    <input type="checkbox" id="talent-sow-discord"
+                                        class="talent check-talent toggles-fields" data-save-as="Förledarfunktion" />
                                 </label>
-                                <!-- UNIMPLEMENTED_TALENT Hundens STY = 4; +1 Slåss för hunden (permanent mod for dog) -->
-                                <label for="talent-fighting-dog" class="toggled-by-job"
-                                    data-active-for-job="Mutant med hund"><span
-                                        data-eng="Fighting dog*">Kamphund*</span>
-                                    <input type="checkbox" id="talent-fighting-dog"
-                                        class="talent check-talent toggles-fields" data-save-as="Kamphund" />
+                                <label for="talent-human-shape" class="toggled-by-job"
+                                    data-active-for-job="Kompanjonsmodell">
+                                    <span data-eng="Human shape*">Mänsklig skepnad*</span>
+                                    <input type="checkbox" id="talent-human-shape"
+                                        class="talent check-talent toggles-fields" data-save-as="Mänsklig skepnad" />
                                 </label>
-                                <!-- UNIMPLEMENTED_TALENT Kan använda hundens GE till Kämpa på, Fly (men eget FV) -->
-                                <label for="talent-mutants-best-friend" class="toggled-by-job"
-                                    data-active-for-job="Mutant med hund"><span
-                                        data-eng="Mutant's best friend">Mutantens bästa vän*</span>
-                                    <input type="checkbox" id="talent-mutants-best-friend"
-                                        class="talent check-talent toggles-fields" data-save-as="Mutantens bästa vän" />
+                                <label for="talent-shapeshifting" class="toggled-by-job"
+                                    data-active-for-job="Kompanjonsmodell">
+                                    <span data-eng="Shapeshifting">Utseendeförändring*</span>
+                                    <input type="checkbox" id="talent-shapeshifting"
+                                        class="talent check-talent toggles-fields" data-save-as="Utseendeförändring" />
                                 </label>
 
                                 <label for="talent-artist" class="toggled-by-job" data-active-for-job="Krönikör">Artist
@@ -1143,14 +1149,14 @@
             </div>
         </div>
         <div id="tab-mutations">
-            <h3 data-eng="Mutations">Mutationer</h3>
+            <h3 data-eng="Modules">Moduler</h3>
             <div>
                 <table>
                     <tr>
                         <td>
-                            <label for="mutation-points" data-eng="Mutation points">Mutationspoäng</label>
-                            <input type="number" min="0" max="10" id="mutation-points" class="saved small"
-                                data-save-as="Mutationspoäng" />
+                            <label for="energy-points" data-eng="Energy points">Energipoäng</label>
+                            <input type="number" min="0" max="10" id="energy-points" class="saved small"
+                                data-save-as="Energipoäng" />
                         </td>
                     </tr>
                     <tr>
@@ -1160,38 +1166,34 @@
                     </tr>
                     <tr>
                         <td>
-                            <select id="mutation-1" class="saved select-mutation" data-save-as="Mutation[0]">
+                            <select id="mutation-1" class="saved select-mutation" data-save-as="Modul[0]">
                                 <option value=""></option>
-                                <option value="Amfibisk" data-eng="Amphibious">Amfibisk</option>
-                                <option value="Dubbelhjärna" data-eng="Double brain">Dubbelhjärna</option>
-                                <option value="Eldsprut" data-eng="Fire breath">Eldsprut</option>
-                                <option value="Elektrisk" data-eng="Electric">Elektrisk</option>
-                                <option value="Fyrarmad" data-eng="Four arms">Fyrarmad</option>
-                                <option value="Hoppförmåga" data-eng="Jumping">Hoppförmåga</option>
-                                <option value="Hyperreflexer" data-eng="Hyper reflexes">Hyperreflexer</option>
-                                <option value="Insektoid" data-eng="Insectoid">Insektoid</option>
-                                <option value="Insektsvingar" data-eng="Insect wings">Insektsvingar</option>
-                                <option value="Likätare" data-eng="Necrophage">Likätare</option>
-                                <option value="Luxvarelse" data-eng="Grossly incandescent">Luxvarelse</option>
-                                <option value="Magnetism">Magnetism</option>
-                                <option value="Mardrömmare" data-eng="Oneiromancer">Mardrömmare</option>
-                                <option value="Mental dominans" data-eng="Mental dominance">Mental dominans</option>
-                                <option value="Monsterkontroll" data-eng="Monster control">Monsterkontroll</option>
-                                <option value="Mänsklig planta" data-eng="Human plant">Mänsklig planta</option>
-                                <option value="Parasit" data-eng="Parasite">Parasit</option>
-                                <option value="Patokinesi" data-eng="Pathokinesis">Patokinesi</option>
-                                <option value="Pyrokinesi" data-eng="Pyrokinesis">Pyrokinesi</option>
-                                <option value="Regenerera" data-eng="Regeneration">Regenerera</option>
-                                <option value="Reptilisk" data-eng="Reptilian">Reptilisk</option>
-                                <option value="Riktningsknöl" data-eng="Inner compass">Riktningsknöl</option>
-                                <option value="Röt-ätare" data-eng="Rot eater">Röt-ätare</option>
-                                <option value="Sonar">Sonar</option>
-                                <option value="Sporsäckar" data-eng="Spore sacs">Sporsäckar</option>
-                                <option value="Sprinter">Sprinter</option>
-                                <option value="Spårsinne" data-eng="Heightened smell">Spårsinne</option>
-                                <option value="Syraspott" data-eng="Acid spit">Syraspott</option>
-                                <option value="Telepati" data-eng="Telepathy">Telepati</option>
-                                <option value="Vilddjur" data-eng="Lycanthropy">Vilddjur</option>
+                                <option value="Accelerator">Accelerator</option>
+                                <option value="Aktivt pansar" data-eng="Reactive armor">Aktivt pansar</option>
+                                <option value="Disruptorkod" data-eng="Malware">Disruptorkod</option>
+                                <option value="Drönare" data-eng="Drone">Drönare</option>
+                                <option value="EMP-skydd" data-eng="EMP protection">EMP-skydd</option>
+                                <option value="Energipuls" data-eng="Energy pulse">Energipuls</option>
+                                <option value="Extra armar" data-eng="Extra arms">Extra armar</option>
+                                <option value="Förhörsfunktion" data-eng="Interrogation function">Förhörsfunktion
+                                </option>
+                                <option value="Granatkastare" data-eng="Grenade launcher">Granatkastare</option>
+                                <option value="Gruvbrytare" data-eng="Mining drill">Gruvbrytare</option>
+                                <option value="Holoflage" data-eng="Holographic camouflage">Holoflage</option>
+                                <option value="Holoprojektor" data-eng="Holographic projector">Holoprojektor</option>
+                                <option value="Jetpack">Jetpack</option>
+                                <option value="Kontrollkrets" data-eng="Override">Kontrollkrets</option>
+                                <option value="Kravallkontroll" data-eng="Riot gear">Kravallkontroll</option>
+                                <option value="Psi-skydd" data-eng="Psionic protection">Psi-skydd</option>
+                                <option value="Reparationsenhet" data-eng="Maintenance unit">Reparationsenhet</option>
+                                <option value="Reservsystem" data-eng="Backup system">Reservsystem</option>
+                                <option value="Resursväxling" data-eng="Resource redistribution">Resursväxling</option>
+                                <option value="Sensorpuls" data-eng="Sensor pulse">Sensorpuls</option>
+                                <option value="Sjukvårdsenhet" data-eng="Medical unit">Sjukvårdsenhet</option>
+                                <option value="Tentakelnäste" data-eng="Tentacles">Tentakelnäste</option>
+                                <option value="Vajersystem" data-eng="Wire system">Vajersystem</option>
+                                <option value="Vibrosåg" data-eng="Vibrating saw">Vibrosåg</option>
+                                <option value="Ylare" data-eng="Howler">Ylare</option>
                             </select>
                         </td>
                     </tr>
@@ -1199,36 +1201,32 @@
                         <td>
                             <select id="mutation-2" class="saved select-mutation" data-save-as="Mutation[1]">
                                 <option value=""></option>
-                                <option value="Amfibisk" data-eng="Amphibious">Amfibisk</option>
-                                <option value="Dubbelhjärna" data-eng="Double brain">Dubbelhjärna</option>
-                                <option value="Eldsprut" data-eng="Fire breath">Eldsprut</option>
-                                <option value="Elektrisk" data-eng="Electric">Elektrisk</option>
-                                <option value="Fyrarmad" data-eng="Four arms">Fyrarmad</option>
-                                <option value="Hoppförmåga" data-eng="Jumping">Hoppförmåga</option>
-                                <option value="Hyperreflexer" data-eng="Hyper reflexes">Hyperreflexer</option>
-                                <option value="Insektoid" data-eng="Insectoid">Insektoid</option>
-                                <option value="Insektsvingar" data-eng="Insect wings">Insektsvingar</option>
-                                <option value="Likätare" data-eng="Necrophage">Likätare</option>
-                                <option value="Luxvarelse" data-eng="Grossly incandescent">Luxvarelse</option>
-                                <option value="Magnetism">Magnetism</option>
-                                <option value="Mardrömmare" data-eng="Oneiromancer">Mardrömmare</option>
-                                <option value="Mental dominans" data-eng="Mental dominance">Mental dominans</option>
-                                <option value="Monsterkontroll" data-eng="Monster control">Monsterkontroll</option>
-                                <option value="Mänsklig planta" data-eng="Human plant">Mänsklig planta</option>
-                                <option value="Parasit" data-eng="Parasite">Parasit</option>
-                                <option value="Patokinesi" data-eng="Pathokinesis">Patokinesi</option>
-                                <option value="Pyrokinesi" data-eng="Pyrokinesis">Pyrokinesi</option>
-                                <option value="Regenerera" data-eng="Regeneration">Regenerera</option>
-                                <option value="Reptilisk" data-eng="Reptilian">Reptilisk</option>
-                                <option value="Riktningsknöl" data-eng="Inner compass">Riktningsknöl</option>
-                                <option value="Röt-ätare" data-eng="Rot eater">Röt-ätare</option>
-                                <option value="Sonar">Sonar</option>
-                                <option value="Sporsäckar" data-eng="Spore sacs">Sporsäckar</option>
-                                <option value="Sprinter">Sprinter</option>
-                                <option value="Spårsinne" data-eng="Heightened smell">Spårsinne</option>
-                                <option value="Syraspott" data-eng="Acid spit">Syraspott</option>
-                                <option value="Telepati" data-eng="Telepathy">Telepati</option>
-                                <option value="Vilddjur" data-eng="Lycanthropy">Vilddjur</option>
+                                <option value="Accelerator">Accelerator</option>
+                                <option value="Aktivt pansar" data-eng="Reactive armor">Aktivt pansar</option>
+                                <option value="Disruptorkod" data-eng="Malware">Disruptorkod</option>
+                                <option value="Drönare" data-eng="Drone">Drönare</option>
+                                <option value="EMP-skydd" data-eng="EMP protection">EMP-skydd</option>
+                                <option value="Energipuls" data-eng="Energy pulse">Energipuls</option>
+                                <option value="Extra armar" data-eng="Extra arms">Extra armar</option>
+                                <option value="Förhörsfunktion" data-eng="Interrogation function">Förhörsfunktion
+                                </option>
+                                <option value="Granatkastare" data-eng="Grenade launcher">Granatkastare</option>
+                                <option value="Gruvbrytare" data-eng="Mining drill">Gruvbrytare</option>
+                                <option value="Holoflage" data-eng="Holographic camouflage">Holoflage</option>
+                                <option value="Holoprojektor" data-eng="Holographic projector">Holoprojektor</option>
+                                <option value="Jetpack">Jetpack</option>
+                                <option value="Kontrollkrets" data-eng="Override">Kontrollkrets</option>
+                                <option value="Kravallkontroll" data-eng="Riot gear">Kravallkontroll</option>
+                                <option value="Psi-skydd" data-eng="Psionic protection">Psi-skydd</option>
+                                <option value="Reparationsenhet" data-eng="Maintenance unit">Reparationsenhet</option>
+                                <option value="Reservsystem" data-eng="Backup system">Reservsystem</option>
+                                <option value="Resursväxling" data-eng="Resource redistribution">Resursväxling</option>
+                                <option value="Sensorpuls" data-eng="Sensor pulse">Sensorpuls</option>
+                                <option value="Sjukvårdsenhet" data-eng="Medical unit">Sjukvårdsenhet</option>
+                                <option value="Tentakelnäste" data-eng="Tentacles">Tentakelnäste</option>
+                                <option value="Vajersystem" data-eng="Wire system">Vajersystem</option>
+                                <option value="Vibrosåg" data-eng="Vibrating saw">Vibrosåg</option>
+                                <option value="Ylare" data-eng="Howler">Ylare</option>
                             </select>
                         </td>
                     </tr>
@@ -1236,36 +1234,32 @@
                         <td>
                             <select id="mutation-3" class="saved select-mutation" data-save-as="Mutation[2]">
                                 <option value=""></option>
-                                <option value="Amfibisk" data-eng="Amphibious">Amfibisk</option>
-                                <option value="Dubbelhjärna" data-eng="Double brain">Dubbelhjärna</option>
-                                <option value="Eldsprut" data-eng="Fire breath">Eldsprut</option>
-                                <option value="Elektrisk" data-eng="Electric">Elektrisk</option>
-                                <option value="Fyrarmad" data-eng="Four arms">Fyrarmad</option>
-                                <option value="Hoppförmåga" data-eng="Jumping">Hoppförmåga</option>
-                                <option value="Hyperreflexer" data-eng="Hyper reflexes">Hyperreflexer</option>
-                                <option value="Insektoid" data-eng="Insectoid">Insektoid</option>
-                                <option value="Insektsvingar" data-eng="Insect wings">Insektsvingar</option>
-                                <option value="Likätare" data-eng="Necrophage">Likätare</option>
-                                <option value="Luxvarelse" data-eng="Grossly incandescent">Luxvarelse</option>
-                                <option value="Magnetism">Magnetism</option>
-                                <option value="Mardrömmare" data-eng="Oneiromancer">Mardrömmare</option>
-                                <option value="Mental dominans" data-eng="Mental dominance">Mental dominans</option>
-                                <option value="Monsterkontroll" data-eng="Monster control">Monsterkontroll</option>
-                                <option value="Mänsklig planta" data-eng="Human plant">Mänsklig planta</option>
-                                <option value="Parasit" data-eng="Parasite">Parasit</option>
-                                <option value="Patokinesi" data-eng="Pathokinesis">Patokinesi</option>
-                                <option value="Pyrokinesi" data-eng="Pyrokinesis">Pyrokinesi</option>
-                                <option value="Regenerera" data-eng="Regeneration">Regenerera</option>
-                                <option value="Reptilisk" data-eng="Reptilian">Reptilisk</option>
-                                <option value="Riktningsknöl" data-eng="Inner compass">Riktningsknöl</option>
-                                <option value="Röt-ätare" data-eng="Rot eater">Röt-ätare</option>
-                                <option value="Sonar">Sonar</option>
-                                <option value="Sporsäckar" data-eng="Spore sacs">Sporsäckar</option>
-                                <option value="Sprinter">Sprinter</option>
-                                <option value="Spårsinne" data-eng="Heightened smell">Spårsinne</option>
-                                <option value="Syraspott" data-eng="Acid spit">Syraspott</option>
-                                <option value="Telepati" data-eng="Telepathy">Telepati</option>
-                                <option value="Vilddjur" data-eng="Lycanthropy">Vilddjur</option>
+                                <option value="Accelerator">Accelerator</option>
+                                <option value="Aktivt pansar" data-eng="Reactive armor">Aktivt pansar</option>
+                                <option value="Disruptorkod" data-eng="Malware">Disruptorkod</option>
+                                <option value="Drönare" data-eng="Drone">Drönare</option>
+                                <option value="EMP-skydd" data-eng="EMP protection">EMP-skydd</option>
+                                <option value="Energipuls" data-eng="Energy pulse">Energipuls</option>
+                                <option value="Extra armar" data-eng="Extra arms">Extra armar</option>
+                                <option value="Förhörsfunktion" data-eng="Interrogation function">Förhörsfunktion
+                                </option>
+                                <option value="Granatkastare" data-eng="Grenade launcher">Granatkastare</option>
+                                <option value="Gruvbrytare" data-eng="Mining drill">Gruvbrytare</option>
+                                <option value="Holoflage" data-eng="Holographic camouflage">Holoflage</option>
+                                <option value="Holoprojektor" data-eng="Holographic projector">Holoprojektor</option>
+                                <option value="Jetpack">Jetpack</option>
+                                <option value="Kontrollkrets" data-eng="Override">Kontrollkrets</option>
+                                <option value="Kravallkontroll" data-eng="Riot gear">Kravallkontroll</option>
+                                <option value="Psi-skydd" data-eng="Psionic protection">Psi-skydd</option>
+                                <option value="Reparationsenhet" data-eng="Maintenance unit">Reparationsenhet</option>
+                                <option value="Reservsystem" data-eng="Backup system">Reservsystem</option>
+                                <option value="Resursväxling" data-eng="Resource redistribution">Resursväxling</option>
+                                <option value="Sensorpuls" data-eng="Sensor pulse">Sensorpuls</option>
+                                <option value="Sjukvårdsenhet" data-eng="Medical unit">Sjukvårdsenhet</option>
+                                <option value="Tentakelnäste" data-eng="Tentacles">Tentakelnäste</option>
+                                <option value="Vajersystem" data-eng="Wire system">Vajersystem</option>
+                                <option value="Vibrosåg" data-eng="Vibrating saw">Vibrosåg</option>
+                                <option value="Ylare" data-eng="Howler">Ylare</option>
                             </select>
                         </td>
                     </tr>
@@ -1273,36 +1267,32 @@
                         <td>
                             <select id="mutation-4" class="saved select-mutation" data-save-as="Mutation[3]">
                                 <option value=""></option>
-                                <option value="Amfibisk" data-eng="Amphibious">Amfibisk</option>
-                                <option value="Dubbelhjärna" data-eng="Double brain">Dubbelhjärna</option>
-                                <option value="Eldsprut" data-eng="Fire breath">Eldsprut</option>
-                                <option value="Elektrisk" data-eng="Electric">Elektrisk</option>
-                                <option value="Fyrarmad" data-eng="Four arms">Fyrarmad</option>
-                                <option value="Hoppförmåga" data-eng="Jumping">Hoppförmåga</option>
-                                <option value="Hyperreflexer" data-eng="Hyper reflexes">Hyperreflexer</option>
-                                <option value="Insektoid" data-eng="Insectoid">Insektoid</option>
-                                <option value="Insektsvingar" data-eng="Insect wings">Insektsvingar</option>
-                                <option value="Likätare" data-eng="Necrophage">Likätare</option>
-                                <option value="Luxvarelse" data-eng="Grossly incandescent">Luxvarelse</option>
-                                <option value="Magnetism">Magnetism</option>
-                                <option value="Mardrömmare" data-eng="Oneiromancer">Mardrömmare</option>
-                                <option value="Mental dominans" data-eng="Mental dominance">Mental dominans</option>
-                                <option value="Monsterkontroll" data-eng="Monster control">Monsterkontroll</option>
-                                <option value="Mänsklig planta" data-eng="Human plant">Mänsklig planta</option>
-                                <option value="Parasit" data-eng="Parasite">Parasit</option>
-                                <option value="Patokinesi" data-eng="Pathokinesis">Patokinesi</option>
-                                <option value="Pyrokinesi" data-eng="Pyrokinesis">Pyrokinesi</option>
-                                <option value="Regenerera" data-eng="Regeneration">Regenerera</option>
-                                <option value="Reptilisk" data-eng="Reptilian">Reptilisk</option>
-                                <option value="Riktningsknöl" data-eng="Inner compass">Riktningsknöl</option>
-                                <option value="Röt-ätare" data-eng="Rot eater">Röt-ätare</option>
-                                <option value="Sonar">Sonar</option>
-                                <option value="Sporsäckar" data-eng="Spore sacs">Sporsäckar</option>
-                                <option value="Sprinter">Sprinter</option>
-                                <option value="Spårsinne" data-eng="Heightened smell">Spårsinne</option>
-                                <option value="Syraspott" data-eng="Acid spit">Syraspott</option>
-                                <option value="Telepati" data-eng="Telepathy">Telepati</option>
-                                <option value="Vilddjur" data-eng="Lycanthropy">Vilddjur</option>
+                                <option value="Accelerator">Accelerator</option>
+                                <option value="Aktivt pansar" data-eng="Reactive armor">Aktivt pansar</option>
+                                <option value="Disruptorkod" data-eng="Malware">Disruptorkod</option>
+                                <option value="Drönare" data-eng="Drone">Drönare</option>
+                                <option value="EMP-skydd" data-eng="EMP protection">EMP-skydd</option>
+                                <option value="Energipuls" data-eng="Energy pulse">Energipuls</option>
+                                <option value="Extra armar" data-eng="Extra arms">Extra armar</option>
+                                <option value="Förhörsfunktion" data-eng="Interrogation function">Förhörsfunktion
+                                </option>
+                                <option value="Granatkastare" data-eng="Grenade launcher">Granatkastare</option>
+                                <option value="Gruvbrytare" data-eng="Mining drill">Gruvbrytare</option>
+                                <option value="Holoflage" data-eng="Holographic camouflage">Holoflage</option>
+                                <option value="Holoprojektor" data-eng="Holographic projector">Holoprojektor</option>
+                                <option value="Jetpack">Jetpack</option>
+                                <option value="Kontrollkrets" data-eng="Override">Kontrollkrets</option>
+                                <option value="Kravallkontroll" data-eng="Riot gear">Kravallkontroll</option>
+                                <option value="Psi-skydd" data-eng="Psionic protection">Psi-skydd</option>
+                                <option value="Reparationsenhet" data-eng="Maintenance unit">Reparationsenhet</option>
+                                <option value="Reservsystem" data-eng="Backup system">Reservsystem</option>
+                                <option value="Resursväxling" data-eng="Resource redistribution">Resursväxling</option>
+                                <option value="Sensorpuls" data-eng="Sensor pulse">Sensorpuls</option>
+                                <option value="Sjukvårdsenhet" data-eng="Medical unit">Sjukvårdsenhet</option>
+                                <option value="Tentakelnäste" data-eng="Tentacles">Tentakelnäste</option>
+                                <option value="Vajersystem" data-eng="Wire system">Vajersystem</option>
+                                <option value="Vibrosåg" data-eng="Vibrating saw">Vibrosåg</option>
+                                <option value="Ylare" data-eng="Howler">Ylare</option>
                             </select>
                         </td>
                     </tr>
