@@ -440,9 +440,16 @@
                         </td>
                         <td>
                             <span data-toggled-by="#talent-laborer">
-                                <label for="mod-laborer-move"><span data-eng="Project">Projekt</span>
+                                <label for="mod-laborer-move"><span data-eng="Project">Projekt</span> (+2)
                                     <input type="checkbox" id="mod-laborer-move" class="conditional-mod"
                                         data-skillref="#skill-move" data-mod-name="Knegare" value="2" />
+                                </label>
+                            </span>
+                            <span data-toggled-by="#talent-extra-armor">
+                                <label for="mod-extra-armor-move">
+                                    <span data-eng="Requires speed/agility">Kräver snabbhet/smidighet</span> (-1)
+                                    <input type="checkbox" id="mod-extra-armor-move" class="conditional-mod"
+                                        data-skillref="#skill-move" data-mod-name="Extrapansar" value="-1" />
                                 </label>
                             </span>
                         </td>
@@ -1017,8 +1024,8 @@
                                 </label>
                                 <label for="talent-extra-armor">
                                     <span data-eng="Extra armor*">Extrapansar*</span>
-                                    <input type="checkbox" id="talent-extra-armor" class="talent check-talent"
-                                        data-save-as="Extrapansar" />
+                                    <input type="checkbox" id="talent-extra-armor"
+                                        class="talent check-talent toggles-fields" data-save-as="Extrapansar" />
                                 </label>
                                 <label for="talent-flotation-device">
                                     <span data-eng="Flotation device*">Flytkraft*</span>
